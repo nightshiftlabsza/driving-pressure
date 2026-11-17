@@ -8,7 +8,7 @@
 > The physiology is a simplified teaching model that has **not been clinically validated**.
 > It is **not a medical device** and must never be used for decisions about real patients.
 
-Built by **Zakariyya** ([@nightshiftlabsza](https://github.com/nightshiftlabsza)), a doctor training in critical care.
+Built by **Zakariyya Gardee**, a South African medical doctor with a passion for clinical reasoning and for building medical education tools that promote active learning.
 It is based on the open-source [Open Vent Sim](https://github.com/fedebarra/open-vent-sim) by Federico Lorenzo Barra (MIT licence; see [Credits](#credits)).
 
 ![A ventilated ARDS patient: live waveforms, ventilator readings, the patient monitor, orders and the case clock](docs/images/case-running.png)
