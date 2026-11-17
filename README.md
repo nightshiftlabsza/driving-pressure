@@ -1,6 +1,6 @@
 # Driving Pressure
 
-**An active-learning ICU ventilation trainer. Ten to fifteen minutes a day of deliberate practice on simulated ventilated patients.**
+**An active-learning ICU ventilation trainer, where AI plays a demanding consultant rather than an answer machine. Ten to fifteen minutes a day of deliberate practice on simulated ventilated patients.**
 
 > [!WARNING]
 > **Work in progress.** This is a personal project under active development, not a finished product.
@@ -15,30 +15,55 @@ It is based on the open-source [Open Vent Sim](https://github.com/fedebarra/open
 
 ---
 
-## The idea
+## The idea: AI that makes you think harder, not less
 
-Most of us learn the ventilator by standing next to one on a busy shift. You copy the settings someone else chose and you see a handful of patients. You rarely find out what would have happened if you had chosen differently. ICU ventilators can also feel "boring" until the night they are not.
+### Start with the problem
 
-Driving Pressure tries to fix that with short, repeated, safe practice:
+AI is very good at giving answers, and that is exactly the danger for anyone learning medicine.
 
-- You take over a **simulated patient** (ARDS, COPD on NIV, pneumonia on high-flow oxygen, severe asthma, DKA, weaning trials, high-pressure alarms and more).
-- Before you touch anything, you **predict** what will happen. Then you act, and a deterministic physiology engine shows you the result breath by breath.
-- Afterwards, a **guided debrief** walks you back through the decisions that mattered, not a wall of numbers.
-- A **learner model** tracks which competencies you have shown, and what is due for review today.
+If you ask a chatbot "what should I set the PEEP to?", you get a confident, well-written answer in seconds. You also skip the part that actually builds a clinician: noticing what matters on the screen, forming a hypothesis, committing to it, being wrong, and working out why. Used like this, AI becomes a shortcut around thinking. The learner feels fluent, but the reasoning was never theirs. Early research points the same way: in a large randomised study of high-school maths students, those who practised with unrestricted GPT-4 did better during practice but *worse* once the AI was taken away, while a version built to give hints rather than answers did not cause that harm ([Bastani *et al.*, PNAS 2025](https://doi.org/10.1073/pnas.2422633122)).
 
-The target is a habit, not a course: about **10 to 15 minutes a day**, at home, building real bedside reasoning over weeks.
+Medicine has its own versions of this risk. Over-reliance on a fluent assistant can wear down clinical reasoning, flatter overconfidence, and teach a learner to accept a plausible explanation rather than test it. At the bedside, those habits are dangerous.
+
+### What AI should do instead
+
+The best teachers I have had did not give me the answer. They let me commit to a plan, let me stumble, and then asked one uncomfortable question that showed me where my thinking broke. They were kind, but they did not let flawed reasoning slide, and they never praised a right answer reached for the wrong reason.
+
+That is the role AI plays in Driving Pressure: **a friendly but demanding consultant, not an answer machine.**
+
+- **You think first.** The consultant will not help until you have written what you see and what you think is causing it. Attempts to skip that step ("just tell me") are detected and turned back.
+- **It lets you make mistakes.** The simulated patient responds to what you actually do. The consultant does not step in to save you from a wrong decision. Being wrong safely is the point.
+- **It goes after the reasoning, not just the result.** A right setting chosen for the wrong reason is flagged as such. A confident wrong answer is treated as a calibration problem worth discussing.
+- **It never gives the game away.** It points your attention ("look at the end of the expiratory flow trace") without naming the diagnosis or the setting. It is told never to say how close you are.
+- **No flattery.** No "great job", no empty encouragement. If something in your reasoning was right, it says exactly what and why. Otherwise it asks the next question.
+- **It knows when to stop asking.** Productive struggle is good, but endless struggle is not. If you keep making the same mistake, the app moves from questions to direct teaching.
+- **AI never decides the physiology.** Every number, waveform and outcome comes from a deterministic engine. The app decides how much help a case allows, and the AI only phrases the question. That way it cannot invent a fact about the patient.
+
+The consultant is still experimental and is off by default. The rest of the app, including predictions, cases, debriefs and spaced review, works fully offline without it.
+
+### The practice itself
+
+Most of us learn the ventilator by standing next to one on a busy shift. We copy settings someone else chose, see a handful of patients, and rarely find out what would have happened if we had chosen differently. Driving Pressure gives you short, repeated, safe practice instead:
+
+- You take over a **simulated patient**: ARDS, COPD on NIV, pneumonia on high-flow oxygen, severe asthma, DKA, weaning trials, high-pressure alarms and more.
+- Before you touch anything, you **predict** what will happen. Then you act, and the physiology engine shows the result breath by breath.
+- A **guided debrief** takes you back through the decisions that mattered, and asks for your reflection before it shows the answer.
+- A **learner model** tracks the competencies you have shown, and what is due for review today.
+
+The target is a habit, not a course: about **10 to 15 minutes a day**, building real bedside reasoning over weeks.
 
 ## The active-learning philosophy
 
-The app is designed around a few principles from the learning-science literature, applied to the ventilator:
+Every part of the app is built on one rule: **the learner does the thinking.** The AI consultant is one way of making that happen. The rest of the design follows from the same rule:
 
-1. **Predict before you see.** Each key step asks you to commit to a number or a direction *before* the answer appears, along with how sure you are. Generating an answer and then being corrected teaches far more than watching the right answer appear. A confident wrong prediction is recorded separately, because miscalibration is a safety problem in the ICU.
-2. **Act, then reassess.** Cases run in simulated time. Changes take effect on the next breath, blood gases come back after a delay, and patients get better or worse depending on what you do. The rhythm is *assess, act, reassess*, as at the bedside.
-3. **Justify your reasoning.** An optional AI consultant (off by default, still experimental) asks *why* you made a change, and does not just tell you whether it was right. The app decides how much help a case allows. Any AI component only phrases the question and never decides the physiology.
-4. **Reflect before you are told.** The debrief asks you to explain in your own words what went wrong *before* it shows the takeaway. Then it shows the moments that mattered on a timeline, against a reference run.
-5. **Space it and mix it.** Competencies come back for review on a schedule ("due today"). Disguised variants of each case, such as the same ARDS physiology in a different patient, test whether you can transfer the idea rather than memorise the case.
-6. **Mastery before progression.** A four-level pathway (ventilator literacy, then mechanics and gas exchange, then non-invasive support, then ICU decisions) unlocks as you show competence, not just as you click through.
-7. **No fake physiology.** Waveforms, numbers and alarms come from the engine, never from a script. Cases can change the patient (compliance, resistance, shunt, effort), but they can never set SpO2 or PaCO2 directly.
+1. **Predict before you see.** Each key step asks you to commit to a number or a direction, and how sure you are, *before* the answer appears. Producing an answer and being corrected teaches far more than watching the right answer appear.
+2. **Struggle is allowed.** Cases run in simulated time. Changes take effect on the next breath, blood gases come back after a delay, and patients get better or worse depending on what you do. The rhythm is *assess, act, reassess*, as at the bedside, and nobody rescues you mid-case.
+3. **Justify, do not just choose.** Being right is not enough. The consultant and the debrief both ask *why*, because a correct setting backed by a wrong mental model will fail on the next patient.
+4. **Reflect before you are told.** The debrief asks you to explain in your own words what went wrong before it shows the takeaway. Then it shows the moments that mattered on a timeline, against a reference run.
+5. **Calibration matters.** Confident-and-wrong predictions are tracked separately from wrong guesses. In the ICU, certainty you have not earned is a safety problem.
+6. **Space it and mix it.** Competencies come back for review on a schedule ("due today"). Disguised variants of each case, such as the same ARDS physiology in a different patient, test whether you can transfer the idea rather than memorise the case.
+7. **Mastery before progression.** A four-level pathway (ventilator literacy, then mechanics and gas exchange, then non-invasive support, then ICU decisions) unlocks as you show competence, not as you click through.
+8. **No fake physiology.** Waveforms, numbers and alarms come from the engine, never from a script. Cases can change the patient (compliance, resistance, shunt, effort), but they can never set SpO2 or PaCO2 directly.
 
 ![Predict before you see: the case pauses and asks for a committed answer and a confidence level](docs/images/predict-first.png)
 
@@ -53,7 +78,7 @@ The app is designed around a few principles from the learning-science literature
 | Drills | Blood-gas interpretation, alarm troubleshooting, waveform recognition |
 | Learner model | 38 competencies in 8 domains, event-sourced and confidence-weighted, with spaced review and "due today" |
 | Debrief | Guided steps: reflection first, then decisions that mattered, course charts, and certain-but-wrong predictions |
-| AI consultant | Experimental, off by default; works offline with a local model or with free-tier API keys |
+| AI consultant | Experimental, off by default. It requires your reasoning first, detects attempts to skip that, never names the answer, uses no flattery, and moves to direct teaching when you keep repeating a mistake. Works offline with a local model or with free-tier API keys |
 | Tests | 1,060 automated unit, engine and case tests (Vitest), plus browser end-to-end checks (Playwright), including a rendered "text stays inside its box" check at five screen sizes up to 3440×1440 |
 
 ### Known gaps (honest list)
