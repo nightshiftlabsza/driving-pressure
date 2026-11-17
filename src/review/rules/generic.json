@@ -1,0 +1,30 @@
+[
+  {
+    "id": "GEN-RESCUE-ACTION",
+    "name": "Emergency rescue action",
+    "processClass": "sound",
+    "explanation": "Immediate emergency escalation or rescue maneuver (high oxygen, suction, or senior assistance) under acute physiological distress.",
+    "source": "clinical-practice-standard"
+  },
+  {
+    "id": "GEN-REASONABLE-UNCERTAIN-EMPIRIC-O2",
+    "name": "Empirical oxygen titration under uncertainty",
+    "processClass": "reasonable-uncertain",
+    "explanation": "Oxygen titration titrated to pulse oximetry before blood gas confirmation has returned.",
+    "source": "BTS Emergency Oxygen Guideline 2017; teaching-convention"
+  },
+  {
+    "id": "GEN-UNSAFE-VT-EXTREME",
+    "name": "Excessive tidal volume in injured lung",
+    "processClass": "unsafe",
+    "explanation": "Setting tidal volume > 10 mL/kg PBW in acute lung injury significantly increases cyclical alveolar shear stress and barotrauma mortality.",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8"
+  },
+  {
+    "id": "GEN-UNSAFE-PEEP-ABRUPT-REDUCTION",
+    "name": "Abrupt derecruitment in severe hypoxaemia",
+    "processClass": "unsafe",
+    "explanation": "Abruptly reducing PEEP to minimal levels while the patient is dependent on high FiO2 promotes catastrophic alveolar derecruitment.",
+    "source": "ESICM ARDS Guidelines 2023; teaching-convention"
+  }
+]

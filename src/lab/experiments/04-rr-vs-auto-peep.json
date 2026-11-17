@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "id": "04-rr-vs-auto-peep",
+  "number": 4,
+  "title": "Respiratory Rate versus Auto-PEEP in Airflow Obstruction",
+  "subtitle": "Investigate how respiratory rate titration influences expiratory time and trapped gas in obstructive respiratory mechanics",
+  "difficulty": 1,
+  "competencies": [
+    "mech.auto-peep",
+    "disease.obstructive"
+  ],
+  "contextTags": [
+    "mechanics",
+    "auto-peep",
+    "respiratory-rate",
+    "obstructive",
+    "time-constant"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Synthetic Patient D",
+    "summary": "Intubated patient with severe obstructive airway disease receiving volume-controlled ventilation.",
+    "params": {
+      "sex": "F",
+      "ageYears": 68,
+      "heightCm": 162,
+      "actualWeightKg": 65,
+      "complianceMlPerCmH2O": 60,
+      "inspResistanceCmH2OPerLps": 15,
+      "expResistanceCmH2OPerLps": 35,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 180,
+      "vo2MlPerMin": 220,
+      "anatomicDeadSpaceMl": 130,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.1,
+      "recruitability": 0.05,
+      "hbGPerDl": 13.0,
+      "temperatureC": 37.0,
+      "baselineHco3MmolL": 26,
+      "hrBaselineBpm": 85,
+      "sbpBaselineMmHg": 130,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "clean-kill",
+      "ppvSeverity": 0.6,
+      "respiratoryReserve": 0.7
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 12,
+    "vtSetMl": 480,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 40,
+  "variable": {
+    "target": "device",
+    "field": "rrSetBpm",
+    "label": "Set respiratory rate",
+    "unit": "breaths/min",
+    "baselineValue": 12,
+    "options": [
+      {
+        "label": "Increase rate to 24 bpm",
+        "value": 24
+      },
+      {
+        "label": "Decrease rate to 10 bpm",
+        "value": 10
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When the mandatory respiratory rate is increased from 12 to 24 breaths/min in this patient with severe expiratory resistance, how will auto-PEEP, plateau pressure (Pplat), and end-expiratory flow change?",
+    "metrics": [
+      "autoPeep",
+      "pplat",
+      "endExpFlow"
+    ]
+  },
+  "observeSimSec": 60,
+  "whatToLookAtHint": "Observe the expiratory time interval on the flow-time waveform and note the end-expiratory pressure on an expiratory hold.",
+  "reflection": {
+    "question": "In a patient with severe expiratory airflow obstruction, why does increasing the set respiratory rate from 12 to 24 bpm exacerbate auto-PEEP?",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Increasing the respiratory rate shortens the cycle time and curtails available expiratory time (Te), preventing prolonged passive emptying."
+      },
+      {
+        "id": "opt-b",
+        "text": "Higher respiratory rates stimulate active exhalation via abdominal muscle recruitment."
+      },
+      {
+        "id": "opt-c",
+        "text": "Inspiratory flow becomes turbulent at higher respiratory rates, increasing inspiratory resistance."
+      },
+      {
+        "id": "opt-d",
+        "text": "The ventilator automatically increases PEEP to match the higher respiratory frequency."
+      }
+    ],
+    "correctOptionId": "opt-a",
+    "explanation": "In airflow obstruction, passive exhalation is markedly prolonged due to high resistance and time constants. At RR 12 bpm, cycle time is 5.0 s (Te = 4.2 s). Doubling the rate to 24 bpm cuts total cycle time in half to 2.5 s (Te = 1.7 s). Because the lung needs multiple seconds to empty, cutting expiratory time leaves substantially more trapped gas at the onset of the next breath, causing auto-PEEP and plateau pressure to rise."
+  },
+  "causalChainFields": [
+    "setRr",
+    "teSec",
+    "endExpFlow",
+    "trappedVolume",
+    "autoPeep",
+    "pplat"
+  ],
+  "evidence": [
+    {
+      "claim": "Increasing respiratory rate shortens expiratory time, leading to worsening dynamic hyperinflation and auto-PEEP in patients with airflow limitation.",
+      "source": "Laghi F, Goyal A. Auto-PEEP in respiratory failure. Minerva Anestesiol. 2012;78(2):201-215.",
+      "year": 2012,
+      "kind": "review"
+    },
+    {
+      "claim": "Controlled hypoventilation with lower respiratory rates prevents severe dynamic hyperinflation and hemodynamic compromise in obstructive lung disease.",
+      "source": "Tuxen DV. Detrimental effects of positive end-expiratory pressure during controlled mechanical ventilation of patients with severe airflow obstruction. Am Rev Respir Dis. 1989;140(1):5-9.",
+      "year": 1989,
+      "kind": "observational"
+    }
+  ]
+}

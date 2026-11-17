@@ -1,0 +1,51 @@
+{
+  "id": "mech-05-peep-map",
+  "source": "Marini JJ, Ravenscraft SA. Mean airway pressure: physiologic determinants and clinical importance--Part 1: Physiologic determinants and measurements. Crit Care Med 1992; 20(10):1461-1472.",
+  "claim": "Applying higher positive end-expiratory pressure elevates continuous baseline circuit pressure and directly raises mean airway pressure.",
+  "patient": {
+    "sex": "F",
+    "ageYears": 58,
+    "heightCm": 165,
+    "actualWeightKg": 68,
+    "complianceMlPerCmH2O": 35,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 190,
+    "vo2MlPerMin": 230,
+    "anatomicDeadSpaceMl": 130,
+    "alveolarDeadSpaceFraction": 0.2,
+    "shuntFraction": 0.25,
+    "recruitability": 0.4,
+    "hbGPerDl": 12,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 88,
+    "sbpBaselineMmHg": 115,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.5,
+    "peep": 14,
+    "rrSetBpm": 16,
+    "vtSetMl": 420,
+    "inspFlowLpm": 50,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 42
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pmean", "op": ">=", "value": 15.0 },
+    { "metric": "peep", "op": "approx", "value": 14.0, "tolerance": 0.5 }
+  ],
+  "kind": "direction"
+}

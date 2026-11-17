@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0",
+  "id": "01-rc-time-constant-exhalation",
+  "number": 1,
+  "title": "RC Time Constant and Exhalation",
+  "subtitle": "Observe how expiratory airway resistance affects expiratory time constant and breath-end flow",
+  "difficulty": 1,
+  "competencies": [
+    "mech.time-constants",
+    "wave.incomplete-exhalation"
+  ],
+  "contextTags": [
+    "mechanics",
+    "time-constant",
+    "resistance",
+    "auto-peep"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Synthetic Patient A",
+    "summary": "Intubated patient receiving volume-controlled ventilation under deep sedation following surgery.",
+    "params": {
+      "sex": "M",
+      "ageYears": 55,
+      "heightCm": 175,
+      "actualWeightKg": 75,
+      "complianceMlPerCmH2O": 50,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 10,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.1,
+      "recruitability": 0.1,
+      "hbGPerDl": 14.0,
+      "temperatureC": 37.0,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 75,
+      "sbpBaselineMmHg": 120,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 16,
+    "vtSetMl": 500,
+    "inspFlowLpm": 30,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "patient",
+    "field": "expResistanceCmH2OPerLps",
+    "label": "Expiratory resistance",
+    "unit": "cmH2O/(L/s)",
+    "baselineValue": 10,
+    "options": [
+      {
+        "label": "Severe bronchospasm (40 cmH2O/(L/s))",
+        "value": 40
+      },
+      {
+        "label": "Moderate bronchospasm (25 cmH2O/(L/s))",
+        "value": 25
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When expiratory resistance is increased from 10 to 40 cmH2O/(L/s) at the same respiratory rate and tidal volume, how will auto-PEEP, end-expiratory flow magnitude, and peak airway pressure change?",
+    "metrics": [
+      "autoPeep",
+      "endExpFlow",
+      "ppeak"
+    ]
+  },
+  "observeSimSec": 60,
+  "whatToLookAtHint": "Observe the expiratory flow waveform just prior to the next breath trigger and compare the end-expiratory pressure values.",
+  "reflection": {
+    "question": "Why does increasing expiratory airway resistance lead to intrinsic PEEP (auto-PEEP) at a respiratory rate of 16 bpm?",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "The expiratory time constant (RC) increases, requiring longer expiratory time (3-5 RC) than the ventilator cycle allows, leaving gas trapped when the next breath initiates."
+      },
+      {
+        "id": "opt-b",
+        "text": "The inspiratory valve opens prematurely due to increased patient trigger sensitivity."
+      },
+      {
+        "id": "opt-c",
+        "text": "High resistance directly causes alveolar hyperrecruitment and increases static compliance."
+      },
+      {
+        "id": "opt-d",
+        "text": "Tidal volume automatically doubles to compensate for higher expiratory resistance."
+      }
+    ],
+    "correctOptionId": "opt-a",
+    "explanation": "The passive expiratory time constant is RC = R_exp × C_rs. At baseline (10 cmH2O/(L/s) × 0.05 L/cmH2O = 0.5 s), exhalation is 95% complete in 3 time constants (1.5 s), well within the available expiratory time (2.75 s). Increasing resistance to 40 cmH2O/(L/s) increases the time constant to 2.0 s. Complete exhalation now requires 6 to 10 seconds. Because exhalation is interrupted at 2.75 s while flow is still exiting the lung, gas remains trapped, generating intrinsic positive end-expiratory pressure (auto-PEEP)."
+  },
+  "causalChainFields": [
+    "expResistance",
+    "timeConstant",
+    "endExpFlow",
+    "trappedVolume",
+    "autoPeep"
+  ],
+  "evidence": [
+    {
+      "claim": "Expiratory time constant (RC) governs passive lung emptying; incomplete exhalation occurs when expiratory time is less than 3 to 5 time constants.",
+      "source": "Tobin MJ. Principles and Practice of Mechanical Ventilation. 3rd ed. McGraw-Hill; 2012.",
+      "year": 2012,
+      "kind": "textbook"
+    },
+    {
+      "claim": "End-expiratory flow on the flow-time scalar indicates intrinsic PEEP and dynamic hyperinflation.",
+      "source": "Blanch L, et al. Measurement of air trapping, intrinsic positive end-expiratory pressure, and dynamic hyperinflation in mechanically ventilated patients. Minerva Anestesiol. 2005;71(6):245-257.",
+      "year": 2005,
+      "kind": "review"
+    }
+  ]
+}

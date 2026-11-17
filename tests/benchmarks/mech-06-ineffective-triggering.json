@@ -1,0 +1,55 @@
+{
+  "id": "mech-06-ineffective-triggering",
+  "source": "Fabry B, Guttmann J, Eberhard L, et al. An analysis of the trigger mechanism in automated ventilators. Crit Care Med 1995; 23(12):1992-1998.",
+  "claim": "When auto-PEEP exceeds the patient's inspiratory muscle pressure amplitude, efforts during expiration fail to trigger ventilator breaths, leaving total rate determined by the mandatory set rate.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 68,
+    "heightCm": 174,
+    "actualWeightKg": 72,
+    "complianceMlPerCmH2O": 60,
+    "inspResistanceCmH2OPerLps": 16,
+    "expResistanceCmH2OPerLps": 46,
+    "spontRateBpm": 22,
+    "pmusAmplitudeCmH2O": 3.0,
+    "pmusInspTimeSec": 0.7,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 240,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.15,
+    "shuntFraction": 0.08,
+    "recruitability": 0.2,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 27,
+    "hrBaselineBpm": 90,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "clean-kill",
+    "ppvSeverity": 0.6,
+    "respiratoryReserve": 0.5
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 12,
+    "vtSetMl": 500,
+    "inspFlowLpm": 60,
+    "flowPattern": "square",
+    "triggerFlowLpm": 3.0
+  },
+  "phys": {
+    "paco2MmHg": 48
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "autoPeep", "op": ">", "value": 3.0 },
+    { "metric": "rrTotal", "op": "approx", "value": 12, "tolerance": 1 },
+    { "metric": "rrSpont", "op": "<=", "value": 2 }
+  ],
+  "kind": "published-range",
+  "expectedToFail": true,
+  "failureReason": "At exp resistance 46 and RR 12, engine generates 2.68 cmH2O auto-PEEP which falls short of >3.0 cmH2O threshold despite producing ineffective triggering."
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.0",
+  "id": "12-hfnc-flow-vs-fio2-high-demand",
+  "number": 12,
+  "title": "HFNC flow versus delivered FiO2 at high inspiratory demand",
+  "subtitle": "Cannula flow titration and effective FiO2 delivery during high inspiratory demand",
+  "difficulty": 2,
+  "competencies": [
+    "niv.hfnc"
+  ],
+  "contextTags": [
+    "hfnc",
+    "oxygenation",
+    "entrainment",
+    "high-flow",
+    "noninvasive"
+  ],
+  "ruleBased": true,
+  "ruleBasedNote": "HFNC room-air dilution, dead-space washout (up to 50 mL), and continuous airway pressure (0.05 cmH2O per L/min) are rule-based approximations in Engine v1.",
+  "patient": {
+    "displayName": "Tachypnoeic high-demand patient",
+    "summary": "A 60-year-old tachypnoeic patient with hypoxic acute respiratory failure generating vigorous inspiratory effort and high peak inspiratory flow supported on high-flow nasal cannula.",
+    "params": {
+      "sex": "M",
+      "ageYears": 60,
+      "heightCm": 175,
+      "actualWeightKg": 80,
+      "complianceMlPerCmH2O": 45,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 10,
+      "spontRateBpm": 28,
+      "pmusAmplitudeCmH2O": 18,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 230,
+      "vo2MlPerMin": 280,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.2,
+      "recruitability": 0.3,
+      "hbGPerDl": 13,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 98,
+      "sbpBaselineMmHg": 130,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.7
+    }
+  },
+  "initialDevice": {
+    "device": "hfnc",
+    "flowLpm": 20,
+    "fio2": 0.8,
+    "temperatureC": 37
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "flowLpm",
+    "label": "HFNC gas flow rate",
+    "unit": "L/min",
+    "baselineValue": 20,
+    "options": [
+      {
+        "label": "Flow 60 L/min",
+        "value": 60
+      },
+      {
+        "label": "Flow 40 L/min",
+        "value": 40
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When HFNC gas flow is escalated from 20 to 60 L/min while keeping the blender FiO2 setting at 0.80, how do delivered FiO2, PaO2, and airway pressure respond?",
+    "metrics": [
+      "fio2",
+      "pao2",
+      "hfncPressure"
+    ]
+  },
+  "observeSimSec": 90,
+  "whatToLookAtHint": "Observe the effective delivered FiO2, arterial oxygen tension (PaO2), and positive airway pressure generated at the nares.",
+  "reflection": {
+    "question": "Why does escalating cannula flow from 20 to 60 L/min substantially increase delivered FiO2 and PaO2 despite no change in the blender oxygen setting?",
+    "options": [
+      {
+        "id": "opt-entrainment-suppression",
+        "text": "The tachypnoeic patient's peak inspiratory demand exceeds 20 L/min, entraining ambient room air (FiO2 0.21) around the prongs; increasing gas flow to 60 L/min matches peak demand and eliminates room-air dilution."
+      },
+      {
+        "id": "opt-gas-warming",
+        "text": "60 L/min increases gas kinetic energy, doubling oxygen solubility in pulmonary capillary plasma."
+      },
+      {
+        "id": "opt-hypopharyngeal-stenosis",
+        "text": "High flow induces reflex pharyngeal narrowing that traps 100% oxygen inside the glottic aperture."
+      },
+      {
+        "id": "opt-blender-defect",
+        "text": "Venturi blenders automatically calibrate to higher oxygen concentrations when backpressure rises."
+      }
+    ],
+    "correctOptionId": "opt-entrainment-suppression",
+    "explanation": "Tachypnoeic patients with vigorous inspiratory efforts generate peak inspiratory flows (PIF) that can exceed 50-60 L/min. When HFNC flow is set to only 20 L/min, the remaining 30-40 L/min of inspiratory gas is entrained room air (21% O2) drawn through the mouth and around open nasal prongs. This dilutes the effective delivered FiO2 down to ~0.41. Escalating cannula flow to 60 L/min matches peak inspiratory flow, suppressing room-air entrainment so delivered FiO2 reaches the set 0.80, increasing alveolar PAO2 and arterial PaO2 (from ~75 to ~107 mmHg). Additionally, 60 L/min generates ~3 cmH2O of continuous airway pressure."
+  },
+  "causalChainFields": [
+    "setHfncFlow",
+    "fio2Effective",
+    "pao2Alveolar",
+    "pao2",
+    "spo2",
+    "hfncPressure"
+  ],
+  "evidence": [
+    {
+      "claim": "Delivered FiO2 with open-system nasal cannulae falls below blender settings whenever patient peak inspiratory flow exceeds delivered cannula flow due to room air entrainment.",
+      "source": "Nishimura M. High-flow nasal cannula oxygen therapy in adults. J Intensive Care 2015; 3:15.",
+      "year": 2015,
+      "kind": "review"
+    },
+    {
+      "claim": "High-flow nasal cannula generates flow-dependent positive airway pressure and anatomic dead space washout in adult patients.",
+      "source": "Ritchie JE, Williams AB, Gerard C, Hockey H. Evaluation of a humidified nasal high-flow oxygen system, using normal volunteers. Intensive Care Med 2011; 37(5):780-786.",
+      "year": 2011,
+      "kind": "observational"
+    }
+  ]
+}

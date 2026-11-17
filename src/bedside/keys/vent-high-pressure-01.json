@@ -1,0 +1,6 @@
+{
+  "caseId": "vent-high-pressure-01",
+  "acceptedAssessments": ["equipment_tube_problem", "low_compliance"],
+  "explanation": "Sudden tension pneumothorax causing acute loss of lung/thoracic compliance, high airway pressure alarm, and obstructive shock (DOPE mnemonic).",
+  "source": "Leigh-Smith S, Harris T. Tension pneumothorax--time for a re-think? Emerg Med J 2005;22(1):8-16; Roberts DJ, et al. Ann Surg 2015;261:1068-1078"
+}

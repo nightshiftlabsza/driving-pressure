@@ -1,0 +1,81 @@
+[
+  {
+    "id": "ARDS-01-VT-REDUCTION-SOUND",
+    "name": "Lung-protective tidal volume reduction with rate compensation",
+    "processClass": "sound",
+    "explanation": "Prompt reduction of tidal volume toward 6 mL/kg PBW (~400 mL) paired with rate increase prevents both volutrauma and severe acute respiratory acidosis.",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8; ESICM ARDS Guidelines 2023"
+  },
+  {
+    "id": "ARDS-01-RR-COMPENSATION-DELAYED",
+    "name": "Delayed respiratory rate compensation after tidal volume reduction",
+    "processClass": "delayed",
+    "persistSimSec": 600,
+    "requiresOutcome": { "metric": "ph", "op": "<", "value": 7.25 },
+    "explanation": "Following tidal volume reduction toward 6 mL/kg PBW, the set respiratory rate was left low (<= 18 bpm) without compensation, allowing acute respiratory acidosis (pH < 7.25) to develop over subsequent minutes.",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8; The Ventilator Book, 3rd ed."
+  },
+  {
+    "id": "ARDS-01-PEEP-TITRATION-SOUND-UNLUCKY",
+    "name": "Sound PEEP titration with unforeseen hemodynamic compromise",
+    "processClass": "sound-unlucky",
+    "explanation": "Increasing PEEP was clinically indicated by ARDSNet high-PEEP titration, but the patient experienced an unforeseen drop in preload and blood pressure (MAP < 65 mmHg) requiring fluid or vasopressor support.",
+    "source": "ALVEOLI Study Group. N Engl J Med 2004;351:327-36; ATS Guidelines 2024"
+  },
+  {
+    "id": "ARDS-01-EMPIRIC-TITRATION-BEFORE-ABG",
+    "name": "Empirical titration based on PBW and SpO2 before blood gas",
+    "processClass": "reasonable-uncertain",
+    "explanation": "Titrating ventilation based on predicted body weight and continuous pulse oximetry before laboratory arterial blood gas return is standard clinical practice under diagnostic delay.",
+    "source": "teaching-convention; clinical-practice-standard"
+  },
+  {
+    "id": "ARDS-01-PEEP-TITRATION-SOUND",
+    "name": "PEEP optimization for recruitability",
+    "processClass": "sound",
+    "explanation": "Increasing PEEP from 5 to 10-14 cmH2O recruits atelectatic lung units and improves PaO2/FiO2 in moderate-to-severe ARDS.",
+    "source": "ALVEOLI Study Group. N Engl J Med 2004;351:327-36; ATS Guidelines 2024"
+  },
+  {
+    "id": "ARDS-01-PRONE-SOUND",
+    "name": "Early prone positioning for severe ARDS",
+    "processClass": "sound",
+    "explanation": "Prone positioning significantly improves ventilation-perfusion matching and reduces mortality when PaO2/FiO2 is persistently < 150.",
+    "source": "Guérin C, et al. PROSEVA trial. N Engl J Med 2013;368:2159-68"
+  },
+  {
+    "id": "ARDS-01-PRONE-DELAYED",
+    "name": "Delayed prone positioning",
+    "processClass": "delayed",
+    "explanation": "Prone positioning was ordered late after sustained exposure to severe refractory hypoxaemia and high mechanical strain.",
+    "source": "Guérin C, et al. PROSEVA trial. N Engl J Med 2013;368:2159-68"
+  },
+  {
+    "id": "ARDS-01-HIGH-VT-MAINTAINED-UNSAFE",
+    "name": "Failure to reduce injurious tidal volume in ARDS",
+    "processClass": "unsafe",
+    "explanation": "Maintaining or increasing tidal volume >= 650 mL (almost 10 mL/kg PBW) causes excessive cyclical alveolar overdistension and barotrauma.",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8"
+  },
+  {
+    "id": "ARDS-01-WRONG-TARGET-BRONCHODILATOR",
+    "name": "Bronchodilator in acute parenchymal ARDS",
+    "processClass": "wrong-target",
+    "explanation": "Administering bronchodilators in the absence of bronchospasm or obstructive airway disease does not address diffuse alveolar damage or shunt.",
+    "source": "teaching-convention; ESICM ARDS Guidelines 2023"
+  },
+  {
+    "id": "ARDS-01-ABG-REASSESSMENT-SOUND",
+    "name": "Timely post-titration arterial blood gas",
+    "processClass": "sound",
+    "explanation": "Reassessing blood gas within 15-30 minutes of major ventilator titration objectively verifies gas exchange response and safety limits.",
+    "source": "teaching-convention"
+  },
+  {
+    "id": "ARDS-01-CONSERVATIVE-PEEP-REASONABLE",
+    "name": "Conservative PEEP titration under hemodynamic uncertainty",
+    "processClass": "reasonable-uncertain",
+    "explanation": "Selecting moderate PEEP (10-12 cmH2O) rather than aggressive high PEEP (>= 14 cmH2O) is clinically defensible when mean arterial pressure or right ventricular afterload is borderline, avoiding severe hemodynamic instability while providing lung recruitment.",
+    "source": "ALVEOLI Study Group. N Engl J Med 2004;351:327-36; ESICM ARDS Guidelines 2023"
+  }
+]

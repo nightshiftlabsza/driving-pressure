@@ -1,0 +1,6 @@
+{
+  "caseId": "copd-psv-trigger-01",
+  "acceptedAssessments": ["dyssynchrony", "dynamic_hyperinflation"],
+  "explanation": "Ineffective triggering dyssynchrony caused by intrinsic PEEP imposing an inspiratory threshold load during pressure support ventilation.",
+  "source": "Thille AW, et al. Intensive Care Med 2006;32(10):1515-1522; Blanch L, et al. Minerva Anestesiol 2005;71(6):291-296"
+}

@@ -1,0 +1,41 @@
+{
+  "caseId": "copd-psv-trigger-01",
+  "scenarios": [
+    {
+      "name": "no changes made",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 20, "metric": "autoPeep", "op": ">", "value": 6 },
+        { "atSimMin": 20, "metric": "rrTotal", "op": "<=", "value": 19 },
+        { "atSimMin": 30, "metric": "fatigue", "op": ">", "value": 0.6 },
+        { "atSimMin": 30, "metric": "ph", "op": "<=", "value": 7.30 }
+      ]
+    },
+    {
+      "name": "correct management: counterbalance auto-PEEP and increase cycle-off percent",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 5, "order": "change-settings", "detail": { "peep": 8, "cyclePctPeakFlow": 40, "psAbovePeep": 14, "triggerFlowLpm": 1.5 } },
+        { "atSimMin": 6, "order": "bronchodilator" },
+        { "atSimMin": 15, "order": "abg" }
+      ],
+      "expect": [
+        { "atSimMin": 20, "metric": "autoPeep", "op": "<=", "value": 5 },
+        { "atSimMin": 12, "metric": "rrTotal", "op": ">=", "value": 20 },
+        { "atSimMin": 35, "metric": "fatigue", "op": "<", "value": 0.4 }
+      ]
+    },
+    {
+      "name": "incorrect management: sedating the patient",
+      "outcome": "deteriorated",
+      "orders": [
+        { "atSimMin": 5, "order": "sedation" }
+      ],
+      "expect": [
+        { "atSimMin": 15, "metric": "rrSpont", "op": "<", "value": 10 },
+        { "atSimMin": 25, "metric": "ph", "op": "<", "value": 7.28 }
+      ]
+    }
+  ]
+}

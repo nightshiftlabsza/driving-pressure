@@ -1,0 +1,11 @@
+{
+  "caseId": "sbt-pass-01",
+  "patientName": "Elena Rostova (synthetic)",
+  "location": "ICU Bed 7",
+  "who": "64-year-old female (165 cm, 65 kg)",
+  "whyAdmitted": "Intubated 4 days ago for severe right lower lobe community-acquired pneumonia with hypoxaemic respiratory failure.",
+  "whatHasBeenDone": "Treated with antibiotics; afebrile for 36 hours; secretions minimal and clear; sedation turned off and has just been placed on low pressure support for a spontaneous breathing trial.",
+  "currentSupport": "Invasive mechanical ventilation: PSV, PS 5 cmH2O above PEEP 5 cmH2O, FiO2 0.30.",
+  "theWorry": "Breathing quietly for 15 minutes on low support; nurse asks whether to check a blood gas and assess next steps.",
+  "background": "Hypertension on amlodipine; ex-smoker (10 pack-years, quit 15 years ago)."
+}

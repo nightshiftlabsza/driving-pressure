@@ -1,0 +1,495 @@
+{
+  "schemaVersion": "1.0",
+  "id": "apo-cpap-01",
+  "version": "0.1.3",
+  "title": "Severe orthopnoea and hypertension in the emergency department",
+  "summary": "A 74-year-old with sudden severe shortness of breath and high blood pressure presents in extremis to the emergency resuscitation bay.",
+  "difficulty": 1,
+  "setting": "ed",
+  "competencies": [
+    "circ.ppv-preload",
+    "niv.titration",
+    "niv.selection",
+    "gas.hypoxaemia-mechanism",
+    "modes.peep-fio2",
+    "safety.reassess"
+  ],
+  "hiddenCompetencies": [
+    "gas.hypoxaemia-mechanism"
+  ],
+  "contextTags": [
+    "apo",
+    "pulmonary-oedema",
+    "cpap",
+    "niv",
+    "heart-failure",
+    "ed"
+  ],
+  "evidence": [
+    {
+      "claim": "CPAP or bilevel NIV significantly reduces the need for endotracheal intubation and in-hospital mortality in patients with acute cardiogenic pulmonary oedema compared to standard oxygen therapy.",
+      "source": "Masip J, et al. Noninvasive ventilation in acute cardiogenic pulmonary edema: systematic review and meta-analysis. JAMA 2005;294(24):3124-3130",
+      "year": 2005,
+      "kind": "review"
+    },
+    {
+      "claim": "Continuous positive airway pressure (CPAP 8-12 cmH2O) rapidly improves oxygenation by recruiting fluid-filled alveoli and improves cardiac performance by reducing left ventricular transmural pressure (afterload).",
+      "source": "Gray A, et al. Noninvasive ventilation in acute cardiogenic pulmonary edema. N Engl J Med 2008;359(2):142-151",
+      "year": 2008,
+      "kind": "trial"
+    },
+    {
+      "claim": "Intravenous loop diuretics in combination with positive pressure ventilation promote diuresis and rapid symptomatic relief in acute heart failure.",
+      "source": "Ponikowski P, et al. 2016 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J 2016;37(27):2129-2200",
+      "year": 2016,
+      "kind": "guideline"
+    },
+    {
+      "claim": "SpO2 target range of 92-96% should be maintained in acute non-hypercapnic respiratory failure.",
+      "source": "O'Driscoll BR, et al. BTS guideline for oxygen use in adults in healthcare and emergency settings. Thorax 2017;72 Suppl 1:ii1-90",
+      "year": 2017,
+      "kind": "guideline"
+    },
+    {
+      "claim": "Intravenous furosemide starts to produce a diuresis within about 5 to 15 minutes, with the peak at 30 to 60 minutes; relief of pulmonary congestion follows over the first hour, not within 5 minutes.",
+      "source": "Verified by reasoning from established clinical knowledge; not located in the local textbooks",
+      "year": 2026,
+      "kind": "expert-opinion"
+    }
+  ],
+  "patient": {
+    "displayName": "Eleanor Vance (synthetic)",
+    "presentingStory": "A 74-year-old female brought to ED resuscitation bay by ambulance with sudden severe breathlessness that woke her from sleep 2 hours ago. Sits bolt upright, sweating profusely, coughing pink frothy sputum. On a simple face mask at 10 L/min, SpO2 is 84%. Blood pressure is 198/108 mmHg, heart rate 124 bpm.",
+    "history": "Hypertension, ischemic cardiomyopathy (ejection fraction 35%), previous myocardial infarction 4 years ago. Medication compliance interrupted recently.",
+    "params": {
+      "sex": "F",
+      "ageYears": 74,
+      "heightCm": 160,
+      "actualWeightKg": 78,
+      "complianceMlPerCmH2O": 35,
+      "inspResistanceCmH2OPerLps": 10,
+      "expResistanceCmH2OPerLps": 12,
+      "spontRateBpm": 28,
+      "pmusAmplitudeCmH2O": 20,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 260,
+      "vo2MlPerMin": 310,
+      "anatomicDeadSpaceMl": 110,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.32,
+      "recruitability": 0.5,
+      "hbGPerDl": 12.8,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 22,
+      "hrBaselineBpm": 124,
+      "sbpBaselineMmHg": 198,
+      "dbpBaselineMmHg": 108,
+      "ppvResponse": "helpful",
+      "ppvSeverity": 0.85,
+      "respiratoryReserve": 0.75
+    }
+  },
+  "initialDevice": {
+    "device": "none",
+    "o2": "simple-mask",
+    "o2FlowLpm": 10
+  },
+  "initialPhys": {
+    "paco2MmHg": 36,
+    "pao2MmHg": 52,
+    "hco3MmolL": 22,
+    "fatigue": 0.25
+  },
+  "availableOrders": [
+    "abg",
+    "cxr",
+    "examine",
+    "change-device",
+    "change-settings",
+    "diuretic",
+    "intubate"
+  ],
+  "orderEffects": [
+    {
+      "order": "diuretic",
+      "delaySimMin": 15,
+      "note": "Intravenous loop diuretic causes early venodilation followed by diuresis",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "shuntFraction": 0.15,
+            "complianceMlPerCmH2O": 48,
+            "spontRateBpm": 16,
+            "pmusAmplitudeCmH2O": 10,
+            "sbpBaselineMmHg": 150,
+            "dbpBaselineMmHg": 85
+          },
+          "rampSimMin": 45
+        },
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Furosemide went in fifteen minutes ago. He has started passing urine."
+        }
+      ]
+    },
+    {
+      "order": "intubate",
+      "delaySimMin": 0,
+      "actions": [
+        {
+          "type": "endCase",
+          "outcome": "escalated",
+          "reason": "Intubated. While endotracheal intubation secures the airway, non-invasive CPAP or BiPAP combined with medical afterload reduction successfully resolves cardiogenic pulmonary oedema in over 85% of cases without invasive mechanical ventilation."
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "examine": "Distressed, sitting upright, unable to speak more than single syllables. Severe tachypnoea (RR 34) with sternocleidomastoid retractions. Diaphoretic with cool clammy extremities. Marked bilateral coarse crackles extending from lung bases to upper zones; scattered expiratory wheezes ('cardiac asthma'). Elevated jugular venous pressure to mandibular angle. S3 gallop audible.",
+    "cxr": "Cardiomegaly with bilateral perihilar alveolar opacification ('bat-wing' appearance), upper lobe venous diversion, interstitial markings, and Kerley B lines. Small bilateral pleural effusions. No pneumothorax."
+  },
+  "course": [],
+  "triggers": [
+    {
+      "id": "t-predict-cpap",
+      "when": {
+        "ordered": {
+          "order": "change-device"
+        }
+      },
+      "then": [
+        {
+          "type": "prediction",
+          "predictionId": "p-apo-cpap"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-premature-intubate",
+      "when": {
+        "ordered": {
+          "order": "intubate"
+        }
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "premature_closure",
+          "competency": "niv.selection",
+          "severity": "major",
+          "detail": "Proceeding directly to invasive intubation without a trial of CPAP or NIV in acute cardiogenic pulmonary oedema increases morbidity and ICU stay."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-delayed-niv",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 15
+            }
+          },
+          {
+            "threshold": {
+              "metric": "spo2",
+              "op": "<=",
+              "value": 85
+            }
+          },
+          {
+            "not": {
+              "ordered": {
+                "order": "change-device"
+              }
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "poor_prioritisation",
+          "competency": "niv.selection",
+          "severity": "major",
+          "detail": "Leaving a patient with acute cardiogenic pulmonary oedema on low-flow oxygen with SpO2 <= 85% causes severe respiratory fatigue and risks cardiorespiratory arrest."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-improved",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "spo2",
+              "op": ">=",
+              "value": 92,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "rrTotal",
+              "op": "<=",
+              "value": 28,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": "<=",
+              "value": 165,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 20
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "She is breathing much more easily, her respiratory rate is coming down, her SpO2 is climbing on the monitor, and the crackles are clearing."
+        },
+        {
+          "type": "endCase",
+          "outcome": "improved",
+          "reason": "CPAP/NIV and medical therapy effectively recruited flooded alveoli, reduced left ventricular afterload, and resolved acute pulmonary oedema without intubation."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-deteriorated",
+      "when": {
+        "any": [
+          {
+            "threshold": {
+              "metric": "fatigue",
+              "op": ">=",
+              "value": 0.9,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "spo2",
+              "op": "<",
+              "value": 75,
+              "forSimSec": 300
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "The patient is gasping, becoming somnolent, and her SpO2 is falling fast on the monitor! Immediate intubation and resuscitation required!"
+        },
+        {
+          "type": "endCase",
+          "outcome": "deteriorated",
+          "reason": "Uncorrected hypoxaemia and respiratory muscle exhaustion resulted in impending respiratory arrest."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-nurse-worse",
+      "when": {
+        "threshold": {
+          "metric": "fatigue",
+          "op": ">=",
+          "value": 0.38,
+          "forSimSec": 60
+        }
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Doctor, she's tiring and still struggling for breath. Can you come and look?"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-nurse-better",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "spo2",
+              "op": ">=",
+              "value": 91,
+              "forSimSec": 180
+            }
+          },
+          {
+            "threshold": {
+              "metric": "rrTotal",
+              "op": "<=",
+              "value": 26,
+              "forSimSec": 180
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "She looks easier now and her breathing has slowed. I'll keep an eye on her."
+        }
+      ],
+      "once": true
+    }
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-apo-cpap",
+      "competency": "circ.ppv-preload",
+      "evidenceType": "prediction",
+      "question": "You place the patient on CPAP (EPAP 10 cmH2O, FiO2 0.60) via an oronasal mask. Over the next 15-30 minutes, which direction will each parameter move?",
+      "format": "direction",
+      "variables": [
+        "spo2",
+        "rrTotal",
+        "sbp"
+      ],
+      "marking": "engine",
+      "explanation": "CPAP recruits fluid-filled alveoli, lowering shunt fraction and rapidly improving SpO2. Positive intrathoracic pressure offloads the respiratory muscles, lowering respiratory rate. In hypertensive acute pulmonary oedema, positive pressure decreases LV transmural pressure (afterload reduction) and lowers excessive venous return, bringing down severe hypertensive systolic blood pressure.",
+      "hidden": false
+    },
+    {
+      "id": "p-apo-mechanism",
+      "competency": "gas.hypoxaemia-mechanism",
+      "evidenceType": "interpretation",
+      "question": "What is the primary mechanism of severe hypoxaemia in acute cardiogenic pulmonary oedema?",
+      "format": "choice",
+      "options": [
+        "Right-to-left intrapulmonary shunt caused by alveolar fluid flooding and atelectasis",
+        "Anatomical diffusion barrier thickening from chronic emphysema",
+        "Severe alveolar hypoventilation due to central respiratory depression",
+        "Increased alveolar dead space from pulmonary microvascular occlusion"
+      ],
+      "marking": "fixed",
+      "answerKey": "Right-to-left intrapulmonary shunt caused by alveolar fluid flooding and atelectasis",
+      "explanation": "Alveoli completely flooded with transudative fluid continue to receive perfusion but zero ventilation (V/Q = 0), generating a severe intrapulmonary shunt. CPAP applies positive pressure to push fluid into interstitial spaces and re-expand flooded alveoli.",
+      "hidden": true
+    }
+  ],
+  "rubric": [
+    {
+      "id": "r-start-niv-early",
+      "description": "Started non-invasive positive pressure support (CPAP or BiPAP) within 15 minutes",
+      "competency": "niv.selection",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "change-device",
+          "withinSimMin": 15
+        }
+      },
+      "bySimMin": 15,
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "r-titrate-epap",
+      "description": "Set EPAP / CPAP to at least 8 cmH2O to recruit flooded alveoli",
+      "competency": "niv.titration",
+      "evidenceType": "decision",
+      "met": {
+        "threshold": {
+          "metric": "peep",
+          "op": ">=",
+          "value": 8
+        }
+      },
+      "bySimMin": 25,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-diuretic",
+      "description": "Administered loop diuretic or medical preload/afterload reducing therapy",
+      "competency": "circ.ppv-preload",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "diuretic"
+        }
+      },
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-target-oxygenation",
+      "description": "Achieved SpO2 >= 92% without unnecessary invasive endotracheal intubation",
+      "competency": "modes.peep-fio2",
+      "evidenceType": "safety",
+      "met": {
+        "threshold": {
+          "metric": "spo2",
+          "op": ">=",
+          "value": 92
+        }
+      },
+      "bySimMin": 35,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-reassess-work-of-breathing",
+      "description": "Reduced respiratory rate below 25 bpm through non-invasive respiratory offloading",
+      "competency": "safety.reassess",
+      "evidenceType": "reassessment",
+      "met": {
+        "threshold": {
+          "metric": "rrTotal",
+          "op": "<=",
+          "value": 25
+        }
+      },
+      "bySimMin": 45,
+      "weight": 1,
+      "critical": false
+    }
+  ],
+  "maxSimMin": 180,
+  "debrief": {
+    "keyPoints": [
+      "In acute cardiogenic pulmonary oedema, non-invasive positive airway pressure (CPAP or BiPAP) is first-line therapy, reducing intubation rates and mortality.",
+      "The physiological response to positive pressure in acute cardiogenic pulmonary oedema is uniquely beneficial ('helpful'): it reduces left ventricular afterload (lowering LV transmural pressure) and decreases excessive venous return (lowering preload and congestion).",
+      "EPAP/CPAP recruits fluid-filled, atelectatic alveoli, rapidly shrinking the right-to-left intrapulmonary shunt and correcting hypoxaemia.",
+      "Medical therapy with loop diuretics and nitrates complements CPAP by promoting venodilation and reducing volume overload."
+    ],
+    "resources": [
+      {
+        "title": "Noninvasive ventilation in acute cardiogenic pulmonary edema",
+        "ref": "Masip J, et al. JAMA 2005;294(24):3124-3130"
+      },
+      {
+        "title": "Noninvasive ventilation in acute cardiogenic pulmonary edema (3CPO Trial)",
+        "ref": "Gray A, et al. N Engl J Med 2008;359(2):142-151"
+      }
+    ]
+  }
+}

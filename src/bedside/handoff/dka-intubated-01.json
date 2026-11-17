@@ -1,0 +1,11 @@
+{
+  "caseId": "dka-intubated-01",
+  "patientName": "Jordan Bennett (synthetic)",
+  "location": "ICU Bed 1",
+  "who": "21-year-old male (180 cm, 70 kg)",
+  "whyAdmitted": "Brought to ED comatose (GCS 5/15) with deep rapid Kussmaul respirations following gastroenteritis; intubated 15 minutes ago for airway protection.",
+  "whatHasBeenDone": "Intubated in ED and placed on standard ventilator settings (VC-AC rate 12, VT 450 mL, PEEP 5 cmH2O, FiO2 0.40). Transferred directly to ICU.",
+  "currentSupport": "Invasive mechanical ventilation on VC-AC.",
+  "theWorry": "Just connected to ICU bedside monitor: heart rate 136 bpm, blood pressure 84/48 mmHg, and telemetry shows widening QRS complexes.",
+  "background": "Type 1 diabetes for 8 years on basal-bolus insulin. Missed insulin doses over past 3 days due to gastroenteritis. No other past medical history."
+}

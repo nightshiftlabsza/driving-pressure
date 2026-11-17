@@ -1,0 +1,49 @@
+{
+  "id": "effort-02-delta-pocc-pmus-relation",
+  "source": "Bertoni M, Telias I, Urner M, et al. A novel non-invasive method to detect excessively high respiratory effort and transpulmonary driving pressure during mechanical ventilation. Crit Care 2019; 23(1):346.",
+  "claim": "During an end-expiratory occlusion manoeuvre, the maximum negative airway pressure deflection (ΔPocc) is proportional to muscular pressure (Pmus ≈ -0.75 × ΔPocc) and dynamic transpulmonary driving pressure; with Pmus = 16 cmH2O, ΔPocc reaches >= 18 cmH2O.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 54,
+    "heightCm": 178,
+    "actualWeightKg": 80,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 24,
+    "pmusAmplitudeCmH2O": 16.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 240,
+    "vo2MlPerMin": 300,
+    "anatomicDeadSpaceMl": 160,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.08,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 96,
+    "sbpBaselineMmHg": 130,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.6
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "PSV",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 0,
+    "psAbovePeep": 8
+  },
+  "phys": {
+    "paco2MmHg": 38,
+    "pao2MmHg": 85
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "deltaPocc", "op": ">=", "value": 18.0 }
+  ],
+  "kind": "published-range"
+}

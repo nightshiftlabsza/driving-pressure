@@ -1,0 +1,53 @@
+{
+  "id": "gas-06-ardsnet-titration",
+  "source": "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med 2000; 342(18):1301-1308.",
+  "claim": "Titrating according to the ARDSNet protocol with 6 mL/kg PBW, higher PEEP of 12 cmH2O and FiO2 of 0.70 recruits collapsible lung units and maintains arterial oxygenation above clinical targets.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 56,
+    "heightCm": 175,
+    "actualWeightKg": 82,
+    "complianceMlPerCmH2O": 28,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 270,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.25,
+    "shuntFraction": 0.35,
+    "recruitability": 0.45,
+    "hbGPerDl": 12.5,
+    "temperatureC": 37.5,
+    "baselineHco3MmolL": 23,
+    "hrBaselineBpm": 96,
+    "sbpBaselineMmHg": 115,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 0.7
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.7,
+    "peep": 12,
+    "rrSetBpm": 22,
+    "vtSetMl": 420,
+    "inspFlowLpm": 55,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 46,
+    "pao2MmHg": 60
+  },
+  "runSec": 90,
+  "checks": [
+    { "metric": "pao2", "op": ">=", "value": 68.0 },
+    { "metric": "spo2", "op": ">=", "value": 92.0 },
+    { "metric": "vteMlKgPbw", "op": "<=", "value": 6.5 }
+  ],
+  "kind": "published-range"
+}

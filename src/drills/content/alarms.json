@@ -1,0 +1,533 @@
+[
+  {
+    "id": "alarm-01",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 58-year-old on VC-AC suddenly triggers a high peak pressure alarm. Coarse crackles are heard over the trachea and both lungs are ventilating. What is the most likely cause, and what do you do first?",
+    "vignette": "A 58-year-old on VC-AC suddenly triggers a high peak pressure alarm. Coarse crackles are heard over the trachea and both lungs are ventilating.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 480,
+        "PEEP": 5,
+        "RR": 14,
+        "Flow": 60
+      },
+      "ppeakCmH2O": 44,
+      "pplatCmH2O": 21,
+      "vteMl": 475,
+      "rrBpm": 14,
+      "spo2Pct": 96,
+      "alarmText": "HIGH PEAK PRESSURE"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Increased airway resistance due to secretions; perform endotracheal suctioning"
+      },
+      {
+        "id": "opt-b",
+        "text": "Decreased lung compliance; administer intravenous neuromuscular blocker"
+      },
+      {
+        "id": "opt-c",
+        "text": "Tension pneumothorax; perform immediate needle thoracostomy"
+      },
+      {
+        "id": "opt-d",
+        "text": "Circuit leak; inspect humidifier and condensate water traps"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Ppeak has risen to 44 cmH2O while Pplat is still 21. A wide peak-to-plateau gap (23 cmH2O) with an unchanged plateau means the problem is resistance in the tube or airways, not stiff lungs. Coarse crackles over the trachea point to secretions, so suction first. If the catheter will not pass, think of a bitten, kinked or blocked tube; if it passes and there is wheeze, bronchospasm."
+  },
+  {
+    "id": "alarm-02",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 42-year-old is waking and agitated after abdominal surgery. The high pressure alarm sounds with every breath. Breath sounds are equal with no wheeze, and a suction catheter will not pass beyond the teeth. What is the most likely cause, and what do you do first?",
+    "vignette": "A 42-year-old is waking and agitated after abdominal surgery. The high pressure alarm sounds with every breath. Breath sounds are equal with no wheeze, and a suction catheter will not pass beyond the teeth.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 450,
+        "PEEP": 5,
+        "RR": 16
+      },
+      "ppeakCmH2O": 48,
+      "pplatCmH2O": 22,
+      "vteMl": 410,
+      "rrBpm": 22,
+      "spo2Pct": 98,
+      "alarmText": "HIGH AIRWAY PRESSURE"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Tube occlusion from biting; place a bite block or oral airway and assess sedation"
+      },
+      {
+        "id": "opt-b",
+        "text": "Acute bronchospasm; administer 8 puffs of inhaled albuterol via spacer"
+      },
+      {
+        "id": "opt-c",
+        "text": "Right mainstem migration; pull back the endotracheal tube by 3 cm"
+      },
+      {
+        "id": "opt-d",
+        "text": "Circuit disconnection; re-attach the Y-piece firmly"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Biting the endotracheal tube mechanically occludes the airway lumen, causing an acute spike in Ppeak while alveolar plateau pressure (Pplat) remains normal. Inserting an oral bite block relieves the luminal narrowing while sedation and analgesia are optimized."
+  },
+  {
+    "id": "alarm-03",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 35-year-old ventilated for acute severe asthma triggers high pressure alarms. Breath sounds are equal with widespread expiratory wheeze, and a suction catheter passes easily. What is the most likely cause, and what do you do first?",
+    "vignette": "A 35-year-old ventilated for acute severe asthma triggers high pressure alarms. Breath sounds are equal with widespread expiratory wheeze, and a suction catheter passes easily.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 400,
+        "PEEP": 5,
+        "RR": 14,
+        "Flow": 60
+      },
+      "ppeakCmH2O": 46,
+      "pplatCmH2O": 23,
+      "vteMl": 390,
+      "rrBpm": 14,
+      "spo2Pct": 92,
+      "alarmText": "HIGH PRESSURE LIMIT EXCEEDED"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Acute bronchospasm with high airway resistance; administer inhaled bronchodilators"
+      },
+      {
+        "id": "opt-b",
+        "text": "Tension pneumothorax; emergent needle thoracostomy of the left hemithorax"
+      },
+      {
+        "id": "opt-c",
+        "text": "Severe pulmonary oedema; increase PEEP from 5 to 14 cmH2O immediately"
+      },
+      {
+        "id": "opt-d",
+        "text": "Tracheal cuff herniation; perform immediate emergency extubation"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Marked increase in Ppeak (46 cmH2O) with normal Pplat (23 cmH2O) indicates elevated airway resistance rather than lung parenchymal stiffening. In a patient with severe asthma and diffuse expiratory wheezes, acute bronchospasm is the cause; inhaled beta-2 agonist bronchodilators are indicated."
+  },
+  {
+    "id": "alarm-04",
+    "drillId": "alarms",
+    "competency": "safety.crisis",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 64-year-old on VC-AC suddenly alarms with high airway pressure. Breath sounds are absent on the right. Heart rate is 138 and blood pressure has fallen to 76/40 mmHg. What is the most likely cause, and what do you do first?",
+    "vignette": "A 64-year-old on VC-AC suddenly alarms with high airway pressure. Breath sounds are absent on the right. Heart rate is 138 and blood pressure has fallen to 76/40 mmHg.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 450,
+        "PEEP": 5,
+        "RR": 16
+      },
+      "ppeakCmH2O": 54,
+      "pplatCmH2O": 48,
+      "vteMl": 440,
+      "rrBpm": 26,
+      "spo2Pct": 84,
+      "bpMmHg": "76/40",
+      "alarmText": "HIGH AIRWAY PRESSURE"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Tension pneumothorax; perform immediate needle decompression or finger thoracostomy"
+      },
+      {
+        "id": "opt-b",
+        "text": "Endotracheal tube mucous plug; attempt deep suctioning"
+      },
+      {
+        "id": "opt-c",
+        "text": "Severe bronchospasm; administer intravenous magnesium and epinephrine"
+      },
+      {
+        "id": "opt-d",
+        "text": "Circuit disconnection; inspect the ventilator corrugated tubing"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Both Ppeak (54 cmH2O) and Pplat (48 cmH2O) have spiked together, demonstrating an acute collapse in total respiratory system compliance. Coupled with unilateral absent breath sounds and hemodynamic shock (BP 76/40, HR 138), this is a tension pneumothorax requiring emergent needle or finger thoracostomy."
+  },
+  {
+    "id": "alarm-05",
+    "drillId": "alarms",
+    "competency": "mech.res-vs-comp",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "After washing and turning, the high pressure alarm sounds. The left chest is not moving and has no breath sounds; the right is loud. Blood pressure is unchanged. The tube is at 27 cm at the teeth. What is the most likely cause, and what do you do first?",
+    "vignette": "After washing and turning, the high pressure alarm sounds. The left chest is not moving and has no breath sounds; the right is loud. Blood pressure is unchanged. The tube is at 27 cm at the teeth.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 460,
+        "PEEP": 5,
+        "RR": 16
+      },
+      "ppeakCmH2O": 45,
+      "pplatCmH2O": 39,
+      "vteMl": 450,
+      "rrBpm": 16,
+      "spo2Pct": 91,
+      "alarmText": "HIGH PRESSURE"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Right mainstem endobronchial intubation; deflate cuff, withdraw ETT to 21-22 cm, and re-auscultate"
+      },
+      {
+        "id": "opt-b",
+        "text": "Left pneumothorax; insert an emergent left-sided thoracostomy tube"
+      },
+      {
+        "id": "opt-c",
+        "text": "Tracheal mucous plugging; perform deep tracheal suctioning"
+      },
+      {
+        "id": "opt-d",
+        "text": "Circuit malfunction; replace the entire ventilator expiratory cassette"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "A tube at 27 cm at the teeth is too deep for an adult (about 21 to 23 cm is usual), and turning can advance it. With the tip in the right main bronchus the whole tidal volume goes into one lung, so Ppeak and Pplat rise together, as they do in any fall in compliance. One-sided absent breath sounds with stable blood pressure and a deep tube point to mainstem intubation rather than pneumothorax: deflate the cuff, withdraw to 21 to 22 cm, re-inflate and listen again."
+  },
+  {
+    "id": "alarm-06",
+    "drillId": "alarms",
+    "competency": "mech.auto-peep",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 68-year-old with COPD on VC-AC had the set rate increased to 24 an hour ago for a high PaCO2. The high pressure alarm now sounds and blood pressure has drifted down to 86/52 mmHg. Breath sounds are quiet but equal and the trachea is central. What is the most likely cause, and what do you do first?",
+    "vignette": "A 68-year-old with COPD on VC-AC had the set rate increased to 24 an hour ago for a high PaCO2. The high pressure alarm now sounds and blood pressure has drifted down to 86/52 mmHg. Breath sounds are quiet but equal and the trachea is central.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 480,
+        "PEEP": 5,
+        "RR": 24
+      },
+      "ppeakCmH2O": 46,
+      "pplatCmH2O": 36,
+      "vteMl": 470,
+      "rrBpm": 24,
+      "spo2Pct": 90,
+      "bpMmHg": "86/52",
+      "alarmText": "HIGH PRESSURE"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Auto-PEEP / Dynamic hyperinflation; briefly disconnect circuit to allow exhalation, then reduce set RR to prolong expiratory time"
+      },
+      {
+        "id": "opt-b",
+        "text": "Tension pneumothorax; immediate needle decompression in the 2nd intercostal space"
+      },
+      {
+        "id": "opt-c",
+        "text": "Severe atelectasis; increase set PEEP to 15 cmH2O to match the measured total PEEP"
+      },
+      {
+        "id": "opt-d",
+        "text": "Patient fighting ventilator; administer intravenous neuromuscular blockade"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "COPD, a recent rate increase, pressures that have climbed and a falling blood pressure with equal breath sounds: think gas trapping first. The checks that confirm it are an expiratory flow trace that has not reached zero when the next breath starts and an expiratory hold showing total PEEP well above the set 5 cmH2O (auto-PEEP). Trapped gas raises intrathoracic pressure and obstructs venous return. With hypotension, disconnect briefly to let the chest empty, then reduce the rate (and tidal volume if needed) to lengthen expiratory time, and accept a higher PaCO2. Matching set PEEP to total PEEP does not treat hypotension from trapping in a passive patient."
+  },
+  {
+    "id": "alarm-07",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "An alarm sounds in an ICU room. The chest is not moving and peak airway pressure has dropped to near zero. What is the most likely cause, and what do you do first?",
+    "vignette": "An alarm sounds in an ICU room. The chest is not moving and peak airway pressure has dropped to near zero.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 500,
+        "PEEP": 5,
+        "RR": 14
+      },
+      "ppeakCmH2O": 7,
+      "pplatCmH2O": null,
+      "vteMl": 0,
+      "rrBpm": 0,
+      "spo2Pct": 91,
+      "alarmText": "LOW MINUTE VOLUME / LOW PRESSURE / APNOEA"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Complete circuit disconnection; immediately reconnect the circuit to the endotracheal tube adapter"
+      },
+      {
+        "id": "opt-b",
+        "text": "Patient apnoea; switch ventilator mode to pressure support ventilation"
+      },
+      {
+        "id": "opt-c",
+        "text": "Severe acute bronchospasm; administer nebulised salbutamol"
+      },
+      {
+        "id": "opt-d",
+        "text": "Tracheal cuff rupture; inject 20 mL of saline into the pilot balloon"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "A collapse of Ppeak to 7 cmH2O (barely above ambient) combined with zero exhaled tidal volume and absent chest rise is diagnostic of an open circuit disconnection. Immediately reconnect the circuit at the ETT connection; if any failure is suspected, begin bag-valve ventilation with 100% O2."
+  },
+  {
+    "id": "alarm-08",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 62-year-old on VC-AC triggers a low volume alarm. There is gurgling at the mouth with each inspiration, and the patient can be heard groaning. What is the most likely cause, and what do you do first?",
+    "vignette": "A 62-year-old on VC-AC triggers a low volume alarm. There is gurgling at the mouth with each inspiration, and the patient can be heard groaning.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 500,
+        "PEEP": 5,
+        "RR": 16
+      },
+      "ppeakCmH2O": 15,
+      "pplatCmH2O": null,
+      "vteMl": 190,
+      "rrBpm": 16,
+      "spo2Pct": 94,
+      "alarmText": "LOW EXHALED TIDAL VOLUME"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Endotracheal cuff leak or deflation; check pilot balloon and re-inflate cuff to 20-30 cmH2O pressure"
+      },
+      {
+        "id": "opt-b",
+        "text": "Circuit disconnection at the Y-piece; reconnect the corrugated tubing"
+      },
+      {
+        "id": "opt-c",
+        "text": "Severe atelectasis; perform an inspiratory recruitment manoeuvre"
+      },
+      {
+        "id": "opt-d",
+        "text": "Patient dyssynchrony; administer IV benzodiazepine sedation"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Audible air leak around the mouth during inspiration, vocalisation around the tube, and marked loss of returned volume (VTe 190 mL on set VT 500 mL) confirm loss of the tracheal cuff seal. The immediate action is inspecting the pilot balloon and reinflating the cuff to 20-30 cmH2O using a manometer."
+  },
+  {
+    "id": "alarm-09",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A patient on VC-AC triggers a low minute ventilation alarm. There is no sound of air at the mouth, but an intermittent hiss comes from the heated humidifier. What is the most likely cause, and what do you do first?",
+    "vignette": "A patient on VC-AC triggers a low minute ventilation alarm. There is no sound of air at the mouth, but an intermittent hiss comes from the heated humidifier.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 500,
+        "PEEP": 5,
+        "RR": 16
+      },
+      "ppeakCmH2O": 18,
+      "pplatCmH2O": null,
+      "vteMl": 310,
+      "rrBpm": 16,
+      "spo2Pct": 96,
+      "alarmText": "LOW MINUTE VOLUME"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Circuit leak at the humidifier port; inspect and securely seat the humidifier connections"
+      },
+      {
+        "id": "opt-b",
+        "text": "Tracheooesophageal fistula; schedule urgent bronchoscopy"
+      },
+      {
+        "id": "opt-c",
+        "text": "Auto-PEEP; decrease the inspiratory flow rate"
+      },
+      {
+        "id": "opt-d",
+        "text": "Right mainstem migration; withdraw the endotracheal tube"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Discrepancy between set VT (500 mL) and exhaled VTe (310 mL) with an audible hiss at the humidifier chamber indicates an external circuit leak at the humidifier jar or tubing ports. Inspecting and re-seating the chamber and tubing seals the leak."
+  },
+  {
+    "id": "alarm-10",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 55-year-old on pressure support was given 100 micrograms of IV fentanyl five minutes ago. An urgent alarm sounds and the chest has stopped moving. What is the most likely cause, and what do you do first?",
+    "vignette": "A 55-year-old on pressure support was given 100 micrograms of IV fentanyl five minutes ago. An urgent alarm sounds and the chest has stopped moving.",
+    "alarmReadings": {
+      "mode": "PSV",
+      "setValues": {
+        "PS": 10,
+        "PEEP": 5
+      },
+      "ppeakCmH2O": 5,
+      "pplatCmH2O": null,
+      "vteMl": 0,
+      "rrBpm": 0,
+      "spo2Pct": 92,
+      "alarmText": "APNOEA / BACKUP VENTILATION INITIATED"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Opioid-induced apnoea; confirm backup ventilation is delivering adequate breaths, then reassess drive"
+      },
+      {
+        "id": "opt-b",
+        "text": "Circuit disconnect; search for disconnected tubing"
+      },
+      {
+        "id": "opt-c",
+        "text": "Severe bronchospasm; administer inhaled bronchodilators"
+      },
+      {
+        "id": "opt-d",
+        "text": "Trigger sensitivity too insensitive; increase flow trigger from 2 to 6 L/min"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "In PSV mode, the patient must initiate every breath. Fentanyl administration has suppressed central respiratory drive, causing apnoea. The immediate priority is confirming that the ventilator's apnoea backup parameters have engaged to provide effective ventilation, followed by patient assessment and reversal if indicated."
+  },
+  {
+    "id": "alarm-11",
+    "drillId": "alarms",
+    "competency": "safety.alarm-response",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 50-year-old with septic shock on VC-AC has a persistent high respiratory rate alarm: set rate 14, measured rate 38. ABG: pH 7.20, PaCO2 28 mmHg, HCO3 11 mmol/L, lactate 6.2 mmol/L. What is the most likely cause, and what do you do first?",
+    "vignette": "A 50-year-old with septic shock on VC-AC has a persistent high respiratory rate alarm: set rate 14, measured rate 38. ABG: pH 7.20, PaCO2 28 mmHg, HCO3 11 mmol/L, lactate 6.2 mmol/L.",
+    "alarmReadings": {
+      "mode": "VC-AC",
+      "setValues": {
+        "VT": 450,
+        "PEEP": 6,
+        "setRR": 14
+      },
+      "ppeakCmH2O": 32,
+      "pplatCmH2O": 22,
+      "vteMl": 440,
+      "rrBpm": 38,
+      "spo2Pct": 92,
+      "alarmText": "HIGH RESPIRATORY RATE"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Tachypnoea compensating for lactic acidosis; treat the sepsis and set the ventilator to meet the demand"
+      },
+      {
+        "id": "opt-b",
+        "text": "Auto-triggering caused by cardiac oscillations; decrease trigger sensitivity"
+      },
+      {
+        "id": "opt-c",
+        "text": "Primary hyperventilation; deeply sedate and paralyse the patient"
+      },
+      {
+        "id": "opt-d",
+        "text": "Circuit leak; replace the entire ventilator tubing set"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Severe metabolic acidosis (lactic acidosis with base deficit) drives respiratory drive to lower PaCO2 as compensation (Winter's formula target ~24.5 mmHg). The ventilator high rate alarm reflects physiological hyperpnoea; the clinician must address sepsis and ensure ventilator settings support this high minute ventilation demand."
+  },
+  {
+    "id": "alarm-12",
+    "drillId": "alarms",
+    "competency": "niv.interface-leak",
+    "evidenceType": "decision",
+    "category": "alarm",
+    "stem": "A 71-year-old with a COPD exacerbation and hypercapnia is on bilevel NIV (ST mode). The leak alarm sounds continuously, the patient is rubbing their eyes, and the mask sits to one side. What is the most likely cause, and what do you do first?",
+    "vignette": "A 71-year-old with a COPD exacerbation and hypercapnia is on bilevel NIV (ST mode). The leak alarm sounds continuously, the patient is rubbing their eyes, and the mask sits to one side.",
+    "alarmReadings": {
+      "mode": "NIV ST",
+      "setValues": {
+        "IPAP": 18,
+        "EPAP": 6,
+        "backupRR": 14
+      },
+      "ppeakCmH2O": 18,
+      "pplatCmH2O": null,
+      "vteMl": 210,
+      "rrBpm": 26,
+      "spo2Pct": 88,
+      "alarmText": "HIGH LEAK / LOW TIDAL VOLUME"
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Mask displaced with a large leak; reposition it and even out the straps without overtightening"
+      },
+      {
+        "id": "opt-b",
+        "text": "Immediate endotracheal intubation without attempting interface repositioning"
+      },
+      {
+        "id": "opt-c",
+        "text": "Increase IPAP to 26 cmH2O to blow through the leak"
+      },
+      {
+        "id": "opt-d",
+        "text": "Switch device to high-flow nasal cannula at 30 L/min"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "A displaced NIV mask creates a massive unintentional leak that prevents effective pressurization during IPAP, dropping delivered tidal volume and causing eye irritation. The correct first action is reseating the mask and adjusting the headgear straps evenly, achieving a seal without excessive skin pressure."
+  }
+]

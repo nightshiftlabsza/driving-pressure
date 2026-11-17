@@ -1,0 +1,11 @@
+{
+  "caseId": "copd-niv-01",
+  "patientName": "Mr T. Ndlovu (synthetic)",
+  "location": "Respiratory Ward Bed 8",
+  "who": "68-year-old male (172 cm, 70 kg)",
+  "whyAdmitted": "Admitted yesterday with acute breathlessness and cough.",
+  "whatHasBeenDone": "Ward oxygen was increased to 4 L/min an hour ago for SpO2 85%, then reduced back to 2 L/min by the nurse.",
+  "currentSupport": "Nasal cannula at 2 L/min.",
+  "theWorry": "Called at 3 a.m. because he has become increasingly drowsy, breathing with accessory muscles and pursed lips, and is difficult to rouse.",
+  "background": "Known COPD (FEV1 38% predicted), 50 pack-year smoking history, no home oxygen. Independent walking 50 m on flat. No documented treatment limitations."
+}

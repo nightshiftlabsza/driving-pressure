@@ -1,0 +1,53 @@
+{
+  "id": "dys-05-auto-triggering-leak",
+  "source": "Imanaka H, Nishimura M, Takeuchi M, et al. Autotriggering, detection limit, and work of breathing during flow-triggered mechanical ventilation. Am J Respir Crit Care Med 2000; 161(2 Pt 1):478-483.",
+  "claim": "In an apnoeic patient without spontaneous effort (Pmus 0 cmH2O, spontRate 0 bpm), an unintentional circuit leak (circuitLeakLpm 8.0 L/min) exceeding the flow trigger sensitivity threshold (triggerFlowLpm 2.0 L/min) falsely triggers the ventilator, producing runaway auto-triggering (autoTriggerCount >= 10 breaths/min).",
+  "patient": {
+    "sex": "F",
+    "ageYears": 55,
+    "heightCm": 165,
+    "actualWeightKg": 65,
+    "complianceMlPerCmH2O": 45,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 180,
+    "vo2MlPerMin": 220,
+    "anatomicDeadSpaceMl": 130,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.1,
+    "recruitability": 0.1,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.35,
+    "peep": 5,
+    "rrSetBpm": 10,
+    "vtSetMl": 450,
+    "inspFlowLpm": 55,
+    "flowPattern": "square",
+    "triggerFlowLpm": 2.0,
+    "circuitLeakLpm": 8.0
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 95
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "autoTriggerCount", "op": ">=", "value": 10 }
+  ],
+  "kind": "direction"
+}

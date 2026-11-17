@@ -1,0 +1,6 @@
+{
+  "caseId": "sbt-fail-01",
+  "acceptedAssessments": ["weaning_failure", "low_compliance"],
+  "explanation": "Tachypnoea, diaphoresis, and rapid shallow breathing (RSBI > 105) indicate weaning intolerance and impending respiratory muscle fatigue requiring restoration of ventilatory support.",
+  "source": "Schmidt GA, et al. CHEST 2017;151:160-165; Yang KL & Tobin MJ. N Engl J Med 1991;324:1445-1450"
+}

@@ -1,0 +1,39 @@
+{
+  "caseId": "dka-intubated-01",
+  "scenarios": [
+    {
+      "name": "no changes made",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 12, "metric": "ph", "op": "<", "value": 6.9 },
+        { "atSimMin": 5, "metric": "sbp", "op": "<", "value": 85 }
+      ]
+    },
+    {
+      "name": "correct management: high minute ventilation matching metabolic acidosis plus fluid bolus",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 2, "order": "change-settings", "detail": { "rrSetBpm": 32, "vtSetMl": 580 } },
+        { "atSimMin": 3, "order": "fluid-bolus" },
+        { "atSimMin": 15, "order": "abg" }
+      ],
+      "expect": [
+        { "atSimMin": 15, "metric": "minuteVent", "op": ">=", "value": 18 },
+        { "atSimMin": 20, "metric": "paco2", "op": "<=", "value": 26 },
+        { "atSimMin": 25, "metric": "ph", "op": ">=", "value": 7.05 },
+        { "atSimMin": 30, "metric": "sbp", "op": ">=", "value": 95 }
+      ]
+    },
+    {
+      "name": "fluid resuscitation alone without increasing minute ventilation",
+      "outcome": "deteriorated",
+      "orders": [
+        { "atSimMin": 2, "order": "fluid-bolus" }
+      ],
+      "expect": [
+        { "atSimMin": 12, "metric": "ph", "op": "<", "value": 6.90 }
+      ]
+    }
+  ]
+}

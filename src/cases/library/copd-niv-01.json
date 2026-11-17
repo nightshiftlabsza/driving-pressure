@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "id": "copd-niv-01",
+  "version": "0.1.1",
+  "title": "Breathless at 3 a.m. on the respiratory ward",
+  "summary": "A 68-year-old with known lung disease is more breathless and drowsy than at handover.",
+  "difficulty": 1,
+  "setting": "ward",
+  "competencies": ["niv.selection", "niv.titration", "gas.acid-base", "gas.alveolar-ventilation", "modes.peep-fio2", "safety.reassess", "niv.failure"],
+  "hiddenCompetencies": ["safety.reassess"],
+  "contextTags": ["copd", "hypercapnia", "niv", "ward", "night-shift"],
+  "evidence": [
+    { "claim": "NIV indicated for acute hypercapnic respiratory failure in COPD with pH < 7.35 and PaCO2 > 45 mmHg after initial medical therapy", "source": "Rochwerg B, et al. Official ERS/ATS clinical practice guidelines: noninvasive ventilation for acute respiratory failure. Eur Respir J 2017;50:1602426", "year": 2017, "kind": "guideline" },
+    { "claim": "Repeat blood gas within 1-2 hours of starting NIV; failure to improve pH and RR by 4 hours should prompt escalation decision", "source": "Davidson AC, et al. BTS/ICS guideline for the ventilatory management of acute hypercapnic respiratory failure in adults. Thorax 2016;71 Suppl 2:ii1-35", "year": 2016, "kind": "guideline" },
+    { "claim": "Target SpO2 88-92% in patients at risk of hypercapnic respiratory failure", "source": "O'Driscoll BR, et al. BTS guideline for oxygen use in adults in healthcare and emergency settings. Thorax 2017;72 Suppl 1:ii1-90", "year": 2017, "kind": "guideline" }
+  ],
+  "patient": {
+    "displayName": "Mr T. Ndlovu (synthetic)",
+    "presentingStory": "Admitted yesterday with a COPD exacerbation. Nurse calls because he is more drowsy and his oxygen was turned up to 4 L/min an hour ago for SpO2 85%. Now on nasal cannula 2 L/min after the nurse turned it back down.",
+    "history": "COPD (FEV1 38% predicted), ex-smoker 50 pack-years, home oxygen not prescribed. Lives with wife, walks 50 m on the flat. No treatment limits documented.",
+    "params": {
+      "sex": "M", "ageYears": 68, "heightCm": 172, "actualWeightKg": 70,
+      "complianceMlPerCmH2O": 50, "inspResistanceCmH2OPerLps": 12, "expResistanceCmH2OPerLps": 16,
+      "spontRateBpm": 28, "pmusAmplitudeCmH2O": 20, "pmusInspTimeSec": 0.9,
+      "vco2MlPerMin": 250, "vo2MlPerMin": 300, "anatomicDeadSpaceMl": 150, "alveolarDeadSpaceFraction": 0.45,
+      "lowVqFraction": 0.20, "lowVqRatio": 0.15,
+      "shuntFraction": 0.05, "recruitability": 0.2, "hbGPerDl": 15, "temperatureC": 37.6,
+      "baselineHco3MmolL": 30,
+      "chronicPaco2MmHg": 55,
+      "hrBaselineBpm": 112, "sbpBaselineMmHg": 152, "dbpBaselineMmHg": 86,
+      "ppvResponse": "unhelpful", "ppvSeverity": 0.3,
+      "respiratoryReserve": 0.7
+    }
+  },
+  "initialDevice": { "device": "none", "o2": "nasal-cannula", "o2FlowLpm": 2 },
+  "initialPhys": { "paco2MmHg": 72, "hco3MmolL": 30, "fatigue": 0.3 },
+  "availableOrders": ["abg", "cxr", "examine", "change-device", "change-settings", "bronchodilator", "steroid", "intubate"],
+  "orderEffects": [
+    { "order": "bronchodilator", "delaySimMin": 5, "note": "Partial reversal of bronchospasm", "actions": [ { "type": "patientChange", "change": { "inspResistanceCmH2OPerLps": 10, "expResistanceCmH2OPerLps": 13 }, "rampSimMin": 20 } ] },
+    { "order": "steroid", "delaySimMin": 360, "note": "No meaningful effect within the case window; included so the order is realistic", "actions": [ { "type": "patientChange", "change": { "expResistanceCmH2OPerLps": 12 }, "rampSimMin": 360 } ] },
+    { "order": "intubate", "delaySimMin": 0, "actions": [ { "type": "endCase", "outcome": "escalated", "reason": "Intubated. The debrief reviews whether NIV was given a fair trial first." } ] }
+  ],
+  "findings": {
+    "examine": "Drowsy but rousable, speaking in short phrases. RR 28, accessory muscle use, pursed lips. Widespread expiratory wheeze, prolonged expiration, hyperinflated chest. No asterixis. Warm peripheries.",
+    "cxr": "Hyperinflated lungs with flattened diaphragms. No consolidation, no pneumothorax, no effusion."
+  },
+  "course": [],
+  "triggers": [
+    { "id": "niv-started-predict", "when": { "ordered": { "order": "change-device" } }, "then": [ { "type": "prediction", "predictionId": "p-niv-effect" } ], "once": true },
+    { "id": "over-oxygenated", "when": { "threshold": { "metric": "spo2", "op": ">", "value": 96, "forSimSec": 1200 } }, "then": [ { "type": "mistake", "mistake": "unsafe_action", "competency": "modes.peep-fio2", "severity": "major", "detail": "SpO2 above 96% for 20+ minutes in a patient at risk of hypercapnia (target 88-92%)." } ], "once": true },
+    { "id": "improved", "when": { "all": [ { "threshold": { "metric": "ph", "op": ">=", "value": 7.32, "forSimSec": 1800 } }, { "threshold": { "metric": "simMin", "op": ">=", "value": 120 } } ] }, "then": [ { "type": "message", "from": "nurse", "text": "He's more awake and asking for a cup of tea." }, { "type": "endCase", "outcome": "improved", "reason": "pH and work of breathing improving on NIV." } ], "once": true },
+    { "id": "deteriorated", "when": { "threshold": { "metric": "ph", "op": "<", "value": 7.15, "forSimSec": 900 } }, "then": [ { "type": "message", "from": "nurse", "text": "He's barely responding to voice now." }, { "type": "endCase", "outcome": "deteriorated", "reason": "Worsening acidosis with falling consciousness." } ], "once": true },
+    {"id":"t-nurse-worse","when":{"threshold":{"metric":"fatigue","op":">=","value":0.55,"forSimSec":90}},"then":[{"type":"message","from":"nurse","text":"Doctor, he's tiring and getting drowsy. Can you come and look?"}],"once":true},
+    {"id":"t-nurse-better","when":{"all":[{"threshold":{"metric":"rrTotal","op":"<=","value":22,"forSimSec":180}},{"threshold":{"metric":"fatigue","op":"<=","value":0.25,"forSimSec":180}}]},"then":[{"type":"message","from":"nurse","text":"He's breathing more slowly and looks more settled. I'll keep an eye on him."}],"once":true}
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-niv-effect", "competency": "gas.alveolar-ventilation", "evidenceType": "prediction",
+      "question": "You have just changed his support. Over the next hour, which way will each of these go?",
+      "format": "direction", "variables": ["paco2", "rrTotal", "ph"],
+      "marking": "engine",
+      "explanation": "Pressure support above EPAP adds tidal volume and offloads tired muscles. Alveolar ventilation rises, so PaCO2 falls and pH rises; as work of breathing eases, RR usually falls. If you changed to HFNC or a mask instead, the response depends on the device, which is why the engine marks this rather than a fixed key.",
+      "hidden": false
+    },
+    {
+      "id": "p-why-ipap", "competency": "niv.titration", "evidenceType": "interpretation",
+      "question": "On BiPAP, which setting mainly lowers PaCO2?",
+      "format": "choice", "options": ["EPAP", "The difference between IPAP and EPAP", "FiO2", "Backup rate alone"],
+      "marking": "fixed", "answerKey": "The difference between IPAP and EPAP",
+      "explanation": "The IPAP-EPAP difference is the pressure support that generates extra tidal volume. EPAP mainly helps oxygenation, splints the upper airway and offsets intrinsic PEEP.",
+      "hidden": false
+    }
+  ],
+  "rubric": [
+    { "id": "r-abg-first", "description": "Checked a blood gas early", "competency": "gas.acid-base", "evidenceType": "prioritisation", "met": { "ordered": { "order": "abg", "withinSimMin": 20 } }, "bySimMin": 20, "weight": 1, "critical": false },
+    { "id": "r-niv-start", "description": "Started NIV for acute hypercapnic acidosis", "competency": "niv.selection", "evidenceType": "decision", "met": { "ordered": { "order": "change-device", "withinSimMin": 60, "deviceKind": ["niv"] } }, "bySimMin": 60, "weight": 2, "critical": true },
+    { "id": "r-bronchodilator", "description": "Gave a bronchodilator", "competency": "disease.obstructive", "evidenceType": "decision", "met": { "ordered": { "order": "bronchodilator" } }, "weight": 1, "critical": false },
+    { "id": "r-repeat-abg", "description": "Repeated the blood gas within 2 hours of starting", "competency": "safety.reassess", "evidenceType": "reassessment", "met": { "ordered": { "order": "abg", "minCount": 2, "withinSimMin": 150 } }, "bySimMin": 150, "weight": 2, "critical": false },
+    { "id": "r-spo2-target", "description": "Kept SpO2 in the 88-92% target range (no prolonged over-oxygenation)", "competency": "modes.peep-fio2", "evidenceType": "safety", "met": { "not": { "fired": "over-oxygenated" } }, "weight": 1, "critical": false },
+    { "id": "r-ph-improving", "description": "pH 7.30 or better by 4 hours", "competency": "niv.titration", "evidenceType": "decision", "met": { "threshold": { "metric": "ph", "op": ">=", "value": 7.30 } }, "bySimMin": 240, "weight": 2, "critical": false }
+  ],
+  "maxSimMin": 360,
+  "debrief": {
+    "keyPoints": [
+      "pH below 7.35 with a raised PaCO2 after initial treatment is the trigger for NIV in a COPD exacerbation.",
+      "Pressure support (IPAP minus EPAP) drives CO2 clearance; EPAP helps oxygenation and offsets intrinsic PEEP.",
+      "Hypoxaemia in COPD is driven predominantly by ventilation-perfusion (V/Q) mismatch rather than true anatomical shunt, making it readily responsive to modest supplemental oxygen.",
+      "Target SpO2 88-92%. Excessive oxygen worsens hypercapnia through three mechanisms: reversal of hypoxic pulmonary vasoconstriction worsening V/Q mismatch, the Haldane effect shifting CO2 off deoxygenated haemoglobin, and a fall in minute ventilation (Aubier 1980; West 12e).",
+      "Re-check the gas within 1-2 hours. No improvement in pH and RR by about 4 hours means deciding on escalation."
+    ],
+    "resources": [
+      { "title": "ICUedu: BiPAP", "ref": "ICUedu teaching slides, BiPAP settings" },
+      { "title": "BTS/ICS guideline for acute hypercapnic respiratory failure (2016)", "ref": "Thorax 2016;71 Suppl 2" }
+    ]
+  }
+}

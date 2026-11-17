@@ -1,0 +1,403 @@
+{
+  "variantId": "sbt-fail-01--weak-diaphragm-hypercapnic",
+  "baseCaseId": "sbt-fail-01",
+  "title": "Rising CO2 and fatigue during a breathing trial",
+  "summary": "A 63-year-old woman after a long ICU stay becomes tachypnoeic with small breaths on minimal support.",
+  "rationale": "Weak muscles (critical illness weakness) cannot sustain a tidal volume on PS 5, so she breathes fast and shallow, CO2 climbs and fatigue builds; PS 12 / PEEP 8 unloads the muscles. Headless engine check on the starting settings and after the named actions: untouched by 5 min: PaCO2 52, pH 7.30, SpO2 97%, Pplat 13, RSBI 157, RR 38, SBP 134; untouched by 40 min: PaCO2 79, pH 7.16, SpO2 94%, Pplat 12, RSBI 171, RR 38, SBP 134; reasonable management by 40 min: PaCO2 40, pH 7.39, SpO2 98%, Pplat 20, RSBI 77, RR 30, SBP 133. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "failure_to_reassess",
+    "competencyId": "safety.liberation",
+    "clinicalFocus": "Rapid shallow breathing from respiratory muscle weakness: recognise the failed SBT (RSBI above 105, rising PaCO2) and restore support instead of pushing on or extubating"
+  },
+  "source": "The Ventilator Book 3e (weaning / SBT chapter, number unverified); Marino ICU Book 2025 (liberation from mechanical ventilation chapter, unverified); Nunn & Lumb 9e (control of breathing / respiratory muscle chapter, unverified); Tobin MJ. Why physiology is critical to the practice of medicine. Clin Chest Med 2010;31:151-69; Yang KL, Tobin MJ. N Engl J Med 1991;324:1445-50. Pmus 7 and reserve 0.25 are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Female 63, 162 cm, 58 kg. PSV 5 / PEEP 5, FiO2 0.3, 25 minutes in.",
+    "parametersChanged": {
+      "sex": {
+        "from": "M",
+        "to": "F",
+        "reason": "Female"
+      },
+      "ageYears": {
+        "from": 68,
+        "to": 63,
+        "reason": "Typical"
+      },
+      "heightCm": {
+        "from": 175,
+        "to": 162,
+        "reason": "Typical"
+      },
+      "actualWeightKg": {
+        "from": 75,
+        "to": 58,
+        "reason": "Lost weight"
+      },
+      "complianceMlPerCmH2O": {
+        "from": 28,
+        "to": 34,
+        "reason": "Mildly reduced"
+      },
+      "spontRateBpm": {
+        "from": 28,
+        "to": 27,
+        "reason": "Tachypnoeic"
+      },
+      "pmusAmplitudeCmH2O": {
+        "from": 7.5,
+        "to": 7,
+        "reason": "Weak effort"
+      },
+      "respiratoryReserve": {
+        "from": 0.25,
+        "to": 0.25,
+        "reason": "Muscle weakness (unverified)"
+      },
+      "shuntFraction": {
+        "from": 0.14,
+        "to": 0.08,
+        "reason": "Little shunt, ventilatory failure"
+      },
+      "alveolarDeadSpaceFraction": {
+        "from": 0.3,
+        "to": 0.25,
+        "reason": "Moderate"
+      },
+      "hbGPerDl": {
+        "from": 10.5,
+        "to": 10,
+        "reason": "Anaemia of illness"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mrs S. Oyelaran (synthetic)",
+      "presentingStory": "Day 12 of ventilation after septic shock; weak limbs, sedation off. On a spontaneous breathing trial for 25 minutes she has become sweaty and tachypnoeic with small breaths. The registrar wants to wait for 30 minutes before deciding.",
+      "history": "Septic shock, critical illness myopathy suspected. Full escalation.",
+      "params": {
+        "sex": "F",
+        "ageYears": 63,
+        "heightCm": 162,
+        "actualWeightKg": 58,
+        "complianceMlPerCmH2O": 34,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 12,
+        "spontRateBpm": 27,
+        "pmusAmplitudeCmH2O": 7,
+        "pmusInspTimeSec": 0.65,
+        "vco2MlPerMin": 240,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.25,
+        "shuntFraction": 0.08,
+        "recruitability": 0.1,
+        "hbGPerDl": 10,
+        "temperatureC": 37.4,
+        "baselineHco3MmolL": 23.8,
+        "hrBaselineBpm": 98,
+        "sbpBaselineMmHg": 135,
+        "dbpBaselineMmHg": 82,
+        "ppvResponse": "helpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.25
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "PSV",
+      "fio2": 0.3,
+      "peep": 5,
+      "rrSetBpm": 0,
+      "psAbovePeep": 5,
+      "cyclePctPeakFlow": 25,
+      "triggerFlowLpm": 2,
+      "riseTimeSec": 0.1
+    },
+    "initialPhys": {
+      "paco2MmHg": 46,
+      "pao2MmHg": 75,
+      "hco3MmolL": 24,
+      "fatigue": 0.3
+    },
+    "triggers": [
+      {
+        "id": "t-sbt-failing-warning",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": ">=",
+                "value": 105,
+                "forSimSec": 60
+              }
+            },
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": ">=",
+                "value": 0.45
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient is struggling on PS 5. Look at the monitor: the respiratory rate is high and the tidal volumes are small, so the RSBI is clearly poor and she is visibly fatiguing. Should we abort the trial?"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-support-resumed",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "vte",
+                "op": ">=",
+                "value": 350,
+                "forSimSec": 180
+              }
+            },
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": "<=",
+                "value": 85,
+                "forSimSec": 180
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient looks much calmer and is resting comfortably. Tachypnoea has settled, tidal volume has recovered on the monitor, and the diaphragm is resting."
+          },
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "SBT failure recognized; ventilatory support resumed to prevent diaphragmatic exhaustion."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-exhaustion-deteriorated",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": ">=",
+                "value": 0.55,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": ">=",
+                "value": 110,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient has completely exhausted her respiratory musculature. Diaphoresis is drenching, tidal volume has collapsed, and progressive hypercapnia is setting in."
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Unrecognized spontaneous breathing trial failure led to severe diaphragmatic fatigue and ventilatory exhaustion."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "orderEffects": [
+      {
+        "order": "extubate",
+        "delaySimMin": 0,
+        "actions": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "safety.extubation",
+            "severity": "major",
+            "detail": "Extubating a patient with severe rapid shallow breathing (RSBI > 105), tachypnoea, and diaphragmatic fatigue causes post-extubation respiratory failure requiring emergent reintubation."
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient is extubated. Over the next few minutes breathing becomes faster and shallower, with accessory muscle use and paradoxical abdominal movement. SpO2 falls steeply on the monitor and the patient is drowsy. Emergency reintubation is called."
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Patient experienced post-extubation respiratory distress and required urgent reintubation following premature extubation during an active SBT failure."
+          }
+        ],
+        "note": "Premature extubation during active SBT failure leads to post-extubation collapse"
+      }
+    ],
+    "predictionPoints": [
+      {
+        "id": "p-sbt-fail-interpretation",
+        "competency": "safety.liberation",
+        "evidenceType": "interpretation",
+        "question": "What is the primary physiological interpretation of an RSBI of 150 bpm/L, tachypnoea (RR 36 bpm), and accessory muscle use during an SBT?",
+        "format": "choice",
+        "options": [
+          "SBT failure due to load-capacity imbalance and impending diaphragmatic fatigue; the trial should be terminated",
+          "Normal physiological adaptation to unassisted breathing; continue the trial for another 60 minutes",
+          "Severe psychological anxiety requiring high-dose sedative infusions before proceeding to extubation",
+          "Successful SBT completion warranting immediate endotracheal extubation"
+        ],
+        "marking": "fixed",
+        "answerKey": "SBT failure due to load-capacity imbalance and impending diaphragmatic fatigue; the trial should be terminated",
+        "explanation": "An RSBI > 105 bpm/L combined with tachypnoea, low tidal volume, and accessory muscle use reflects respiratory muscle load exceeding capacity. It is the hallmark of SBT failure and indicates high risk of extubation failure if not aborted (Yang & Tobin 1991; ATS/ACCP 2017).",
+        "hidden": false
+      },
+      {
+        "id": "p-sbt-fail-action",
+        "competency": "safety.liberation",
+        "evidenceType": "decision",
+        "question": "Following identification of SBT failure in this patient, what is the most appropriate next clinical action?",
+        "format": "choice",
+        "options": [
+          "Abort the spontaneous breathing trial and resume resting ventilatory support (e.g. PS >= 12 cmH2O or assist-control)",
+          "Extubate the patient immediately to high-flow nasal cannula",
+          "Administer an intravenous neuromuscular blocker to eliminate breathing efforts",
+          "Reduce extrinsic PEEP to 0 cmH2O and switch to T-piece"
+        ],
+        "marking": "fixed",
+        "answerKey": "Abort the spontaneous breathing trial and resume resting ventilatory support (e.g. PS >= 12 cmH2O or assist-control)",
+        "explanation": "Once an SBT fails, the trial must be discontinued promptly and ventilatory assistance restored to offload the diaphragm, relieve dyspnoea, and prevent acute diaphragmatic fatigue and hypercapnic crisis (ATS/ACCP 2017).",
+        "hidden": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-recognize-sbt-failure",
+        "description": "Recognized spontaneous breathing trial failure and resumed ventilatory support to restore tidal volume (Vte >= 350 mL)",
+        "competency": "safety.liberation",
+        "evidenceType": "decision",
+        "met": {
+          "threshold": {
+            "metric": "vte",
+            "op": ">=",
+            "value": 350
+          }
+        },
+        "bySimMin": 25,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-avoid-premature-extubation",
+        "description": "Avoided premature extubation in a patient failing an SBT",
+        "competency": "safety.extubation",
+        "evidenceType": "safety",
+        "met": {
+          "not": {
+            "ordered": {
+              "order": "extubate"
+            }
+          }
+        },
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-reassess-distress",
+        "description": "Evaluated clinical distress during SBT via physical examination or arterial blood gas",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "any": [
+            {
+              "ordered": {
+                "order": "examine"
+              }
+            },
+            {
+              "ordered": {
+                "order": "abg"
+              }
+            }
+          ]
+        },
+        "bySimMin": 15,
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-restore-assist",
+        "description": "Restored adequate pressure support or assist ventilation to reduce fatigue and normalize RSBI",
+        "competency": "safety.liberation",
+        "evidenceType": "decision",
+        "met": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": "<=",
+                "value": 85
+              }
+            },
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": "<=",
+                "value": 0.45
+              }
+            }
+          ]
+        },
+        "bySimMin": 25,
+        "weight": 2,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "Patients with unresolved lung stiffness (low compliance) or muscle weakness fail spontaneous breathing trials rapidly due to load-capacity imbalance.",
+        "SBT failure manifests clinically as rapid shallow breathing: tachypnoea (RR 34-38 bpm), small tidal volumes (200-240 mL), RSBI > 105 bpm/L (often 130-160), diaphoresis, and accessory muscle use.",
+        "Clinical Caveat: Inspiratory pressure support masks tachypnea and artificially reduces RSBI by up to 40%. Observable clinical distress (accessory muscle use, abdominal paradox, diaphoresis) always supersedes a borderline numeric RSBI.",
+        "Extubating a patient failing an SBT is a major safety blunder that results in acute post-extubation distress and emergency reintubation.",
+        "When SBT failure is identified, the trial must be terminated promptly and adequate ventilatory support restored (e.g. PS >= 12 cmH2O or assist-control) to allow the fatigued diaphragm to recover."
+      ],
+      "resources": [
+        {
+          "title": "Liberation From Mechanical Ventilation in Critically Ill Adults: Executive Summary",
+          "ref": "Schmidt GA, et al. CHEST 2017;151(1):160-165"
+        },
+        {
+          "title": "A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation",
+          "ref": "Yang KL, Tobin MJ. N Engl J Med 1991;324(21):1445-1450"
+        },
+        {
+          "title": "A comparison of four methods of weaning patients from mechanical ventilation",
+          "ref": "Esteban A, et al. N Engl J Med 1995;332(6):345-350"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "caseId": "sbt-fail-01",
+  "scenarios": [
+    {
+      "name": "correct recognition of failure: abort SBT and restore ventilatory support",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 5, "order": "examine" },
+        { "atSimMin": 8, "order": "change-settings", "detail": { "psAbovePeep": 15, "peep": 6 } },
+        { "atSimMin": 12, "order": "abg" }
+      ],
+      "expect": [
+        { "atSimMin": 6, "metric": "rsbi", "op": ">", "value": 105 },
+        { "atSimMin": 15, "metric": "vte", "op": ">=", "value": 350 },
+        { "atSimMin": 18, "metric": "rsbi", "op": "<=", "value": 85 },
+        { "atSimMin": 20, "metric": "fatigue", "op": "<=", "value": 0.45 }
+      ],
+      "fired": ["t-support-resumed"],
+      "notFired": ["t-exhaustion-deteriorated"]
+    },
+    {
+      "name": "untreated failure: left unsupported leading to exhaustion",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 10, "metric": "rsbi", "op": ">", "value": 110 },
+        { "atSimMin": 10, "metric": "rrTotal", "op": ">=", "value": 30 },
+        { "atSimMin": 10, "metric": "vte", "op": "<=", "value": 260 },
+        { "atSimMin": 20, "metric": "fatigue", "op": ">", "value": 0.55 }
+      ],
+      "fired": ["t-sbt-failing-warning", "t-exhaustion-deteriorated"],
+      "notFired": ["t-support-resumed"]
+    },
+    {
+      "name": "premature extubation blunder: extubating during active SBT failure",
+      "outcome": "deteriorated",
+      "orders": [
+        { "atSimMin": 8, "order": "extubate" }
+      ],
+      "expect": [
+        { "atSimMin": 7, "metric": "rsbi", "op": ">", "value": 105 }
+      ],
+      "notFired": ["t-support-resumed"]
+    }
+  ]
+}

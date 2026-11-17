@@ -1,0 +1,360 @@
+{
+  "variantId": "sbt-pass-01--borderline-reassess",
+  "baseCaseId": "sbt-pass-01",
+  "title": "Breathing trial that is neither clearly passing nor failing",
+  "summary": "A 66-year-old woman after pneumonia has been on minimal support for 30 minutes with borderline numbers.",
+  "rationale": "RSBI sits close to the 105 cutoff with a patient who is using more effort over time, so the reassessment (second gas, examination, trend) decides extubation versus return to support. Headless engine check on the starting settings and after the named actions: untouched by 5 min: PaCO2 43, pH 7.36, SpO2 99%, Pplat 14, RSBI 122, RR 33, SBP 123; untouched by 60 min: PaCO2 45, pH 7.35, SpO2 99%, Pplat 13, RSBI 144, RR 36, SBP 123; reasonable management by 60 min: PaCO2 37, pH 7.42, SpO2 99%, Pplat 17, RSBI 53, RR 21, SBP 123; typical mistake by 60 min: PaCO2 68, pH 7.21, SpO2 98%, Pplat 12, RSBI 185, RR 36, SBP 124. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "premature_closure",
+    "competencyId": "safety.reassess",
+    "clinicalFocus": "Borderline SBT: reassess with an examination and gas at set intervals; do not extubate on the first impression, and restore support if the trend is worsening"
+  },
+  "source": "The Ventilator Book 3e (weaning / SBT chapter, number unverified); Marino ICU Book 2025 (liberation from mechanical ventilation chapter, unverified); Nunn & Lumb 9e (control of breathing / respiratory muscle chapter, unverified); Boles JM, et al. Eur Respir J 2007;29:1033-56 (SBT criteria); Yang KL, Tobin MJ 1991 (RSBI cut-off 105; positive predictive value is modest, unverified here). Reserve 0.3 and compliance 34 are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Female 66, 160 cm, 62 kg. PSV 5 / PEEP 5, FiO2 0.35, 30 minutes in.",
+    "parametersChanged": {
+      "sex": {
+        "from": "F",
+        "to": "F",
+        "reason": "Female"
+      },
+      "ageYears": {
+        "from": 64,
+        "to": 66,
+        "reason": "Typical"
+      },
+      "heightCm": {
+        "from": 165,
+        "to": 160,
+        "reason": "Typical"
+      },
+      "actualWeightKg": {
+        "from": 65,
+        "to": 62,
+        "reason": "Typical"
+      },
+      "complianceMlPerCmH2O": {
+        "from": 48,
+        "to": 34,
+        "reason": "Mildly reduced"
+      },
+      "inspResistanceCmH2OPerLps": {
+        "from": 7,
+        "to": 9,
+        "reason": "Slight"
+      },
+      "expResistanceCmH2OPerLps": {
+        "from": 8,
+        "to": 12,
+        "reason": "Slight"
+      },
+      "spontRateBpm": {
+        "from": 18,
+        "to": 26,
+        "reason": "Upper limit"
+      },
+      "pmusAmplitudeCmH2O": {
+        "from": 8,
+        "to": 7,
+        "reason": "Modest"
+      },
+      "respiratoryReserve": {
+        "from": 0.6,
+        "to": 0.3,
+        "reason": "Borderline (unverified)"
+      },
+      "alveolarDeadSpaceFraction": {
+        "from": 0.15,
+        "to": 0.22,
+        "reason": "Moderate"
+      },
+      "hbGPerDl": {
+        "from": 12.5,
+        "to": 11.5,
+        "reason": "Recovering"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mrs F. Moreau (synthetic)",
+      "presentingStory": "Day 7 for severe pneumonia. After 30 minutes on PS 5 / PEEP 5 the breathing is quicker than yesterday and she looks a little tired, but the saturations and gas are acceptable. The nurse asks if she can come off the ventilator now.",
+      "history": "COPD (mild), ex-smoker, hypertension. Full escalation.",
+      "params": {
+        "sex": "F",
+        "ageYears": 66,
+        "heightCm": 160,
+        "actualWeightKg": 62,
+        "complianceMlPerCmH2O": 34,
+        "inspResistanceCmH2OPerLps": 9,
+        "expResistanceCmH2OPerLps": 12,
+        "spontRateBpm": 26,
+        "pmusAmplitudeCmH2O": 7,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 190,
+        "vo2MlPerMin": 230,
+        "anatomicDeadSpaceMl": 130,
+        "alveolarDeadSpaceFraction": 0.22,
+        "shuntFraction": 0.08,
+        "recruitability": 0.1,
+        "hbGPerDl": 11.5,
+        "temperatureC": 36.9,
+        "baselineHco3MmolL": 24.2,
+        "hrBaselineBpm": 78,
+        "sbpBaselineMmHg": 124,
+        "dbpBaselineMmHg": 76,
+        "ppvResponse": "helpful",
+        "ppvSeverity": 0.1,
+        "respiratoryReserve": 0.3
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "PSV",
+      "fio2": 0.35,
+      "peep": 5,
+      "rrSetBpm": 0,
+      "psAbovePeep": 5,
+      "cyclePctPeakFlow": 25,
+      "triggerFlowLpm": 2,
+      "riseTimeSec": 0.1
+    },
+    "initialPhys": {
+      "paco2MmHg": 43,
+      "pao2MmHg": 88,
+      "hco3MmolL": 24,
+      "fatigue": 0.3
+    },
+    "triggers": [
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": "<=",
+                "value": 85,
+                "forSimSec": 600
+              }
+            },
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": "<=",
+                "value": 0.25,
+                "forSimSec": 600
+              }
+            },
+            {
+              "ordered": {
+                "order": "abg",
+                "minCount": 2
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "After the reassessment she is resting comfortably on more support, with a calmer rate and a better gas. The team plans a repeat trial later today."
+          },
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "Borderline numbers were reassessed with repeat gases, support was restored and the patient settled, instead of committing to extubation on the first impression."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-extubate",
+        "when": {
+          "all": [
+            {
+              "ordered": {
+                "order": "extubate"
+              }
+            },
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": ">=",
+                "value": 105
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "premature_closure",
+            "competency": "safety.extubation",
+            "severity": "major",
+            "detail": "Extubating with an RSBI of 105 or more and a tired-looking patient, without a repeat gas or a trend, risks post-extubation failure."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-extubate-early",
+        "when": {
+          "ordered": {
+            "order": "extubate",
+            "withinSimMin": 29.99
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "safety.extubation",
+            "severity": "major",
+            "detail": "Extubated before completing a 30-minute spontaneous breathing trial. Even when the first minutes look good, finish the trial."
+          },
+          {
+            "type": "endCase",
+            "outcome": "stable",
+            "reason": "Extubated before the trial was complete. She did well, but the decision was made too early."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "any": [
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": ">=",
+                "value": 0.7,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "paco2",
+                "op": ">=",
+                "value": 65,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "She is exhausted, breathing fast with small breaths and sweating."
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "The trial was continued or pushed on a borderline patient until the muscles tired and CO2 rose."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "orderEffects": [
+      {
+        "order": "sedation",
+        "delaySimMin": 1,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "spontRateBpm": 2,
+              "pmusAmplitudeCmH2O": 1
+            }
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Sedation administered. The patient has become unarousable; spontaneous respiratory drive is suppressed and low minute ventilation alarms are sounding."
+          }
+        ],
+        "note": "Sedative administration blunts respiratory drive and arrests the spontaneous breathing trial"
+      }
+    ],
+    "predictionPoints": [],
+    "rubric": [
+      {
+        "id": "r-examine",
+        "description": "Examined the patient during the trial",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "examine",
+            "withinSimMin": 30
+          }
+        },
+        "bySimMin": 30,
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-two-gases",
+        "description": "Checked at least two blood gases to see the trend",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg",
+            "minCount": 2,
+            "withinSimMin": 50
+          }
+        },
+        "bySimMin": 50,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-no-premature-extubation",
+        "description": "Did not extubate while the RSBI was 105 or more",
+        "competency": "safety.extubation",
+        "evidenceType": "safety",
+        "met": {
+          "not": {
+            "fired": "t-mistake-extubate"
+          }
+        },
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-settled",
+        "description": "RSBI of 85 or less at the end, with support restored if the trend was worsening",
+        "competency": "safety.liberation",
+        "evidenceType": "decision",
+        "met": {
+          "threshold": {
+            "metric": "rsbi",
+            "op": "<=",
+            "value": 85
+          }
+        },
+        "bySimMin": 55,
+        "weight": 2,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "An RSBI close to 105 on pressure support is borderline: it neither passes nor fails the trial, so the trend and a repeat assessment decide.",
+        "Repeat the examination and the blood gas; a rising rate, falling tidal volume or rising PaCO2 means the muscles are tiring, so restore support and try again later.",
+        "RSBI on pressure support under-estimates the work of breathing, so a borderline value deserves caution before extubation.",
+        "Extubation is decided on the whole picture (gas exchange, cough, secretions, mental state), not on the first set of numbers."
+      ],
+      "resources": [
+        {
+          "title": "A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation",
+          "ref": "Yang KL, Tobin MJ. N Engl J Med 1991;324(21):1445-1450"
+        }
+      ]
+    }
+  }
+}

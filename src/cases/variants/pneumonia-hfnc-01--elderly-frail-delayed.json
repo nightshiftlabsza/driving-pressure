@@ -1,0 +1,68 @@
+{
+  "variantId": "pneumonia-hfnc-01--elderly-frail-delayed",
+  "baseCaseId": "pneumonia-hfnc-01",
+  "title": "Severe pneumonia and rapid exhaustion in an older adult",
+  "summary": "A 77-year-old woman with severe pneumonia presents with hypoxaemia and marked muscle exhaustion on non-rebreather oxygen.",
+  "rationale": "Frail older adult with reduced physiological reserve (0.35) and low baseline compliance (32 mL/cmH2O). Re-tests failure to recognize rapid exhaustion under non-invasive support, along with the requirement for lung-protective ventilation tailored to small female stature (height 155 cm, PBW 48 kg, target Vt ~290 mL) after intubation.",
+  "retestsMistake": {
+    "mistakeId": "failure_to_reassess",
+    "competencyId": "niv.hfnc",
+    "clinicalFocus": "Early reassessment of respiratory reserve in elderly frail patients to avert acute arrest"
+  },
+  "source": "Frat JP, et al. FLORALI trial. N Engl J Med 2015;372:2185-96; Rochwerg B, et al. High-flow nasal cannula guideline. Intensive Care Med 2020;46:2226-37; teaching-convention",
+  "changes": {
+    "vignette": "Female 77, height 155 cm, weight 52 kg (PBW ~48 kg). Reduced physiological reserve.",
+    "parametersChanged": {
+      "sex": { "from": "F", "to": "F", "reason": "Female cohort" },
+      "ageYears": { "from": 56, "to": 77, "reason": "Frail geriatric presentation" },
+      "heightCm": { "from": 163, "to": 155, "reason": "Shorter stature setting PBW to 48 kg" },
+      "actualWeightKg": { "from": 70, "to": 52, "reason": "Low body mass with sarcopenia" },
+      "respiratoryReserve": { "from": 0.5, "to": 0.35, "reason": "Limited physiological endurance" },
+      "complianceMlPerCmH2O": { "from": 40, "to": 32, "reason": "Reduced chest wall and lung compliance with age and consolidation" },
+      "anatomicDeadSpaceMl": { "from": 140, "to": 115, "reason": "Scaled to smaller body habitus" },
+      "vco2MlPerMin": { "from": 280, "to": 210, "reason": "Lower basal metabolic rate in elderly female" },
+      "vo2MlPerMin": { "from": 320, "to": 250, "reason": "Lower metabolic demand" }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mrs B. Johansson (synthetic)",
+      "presentingStory": "Three days of progressive cough, confusion, and pleuritic pain following a choking episode at a nursing home. Brought to ED hypoxaemic with SpO2 88% on 15 L/min non-rebreather mask. Nurse reports she appears exhausted and is struggling to breathe.",
+      "history": "Mild vascular dementia, prior stroke with mild dysphagia, osteoporosis. Lives in assisted facility. Baseline mobility with walker. Full active medical treatment agreed with family. Height 155 cm, weight 52 kg.",
+      "params": {
+        "sex": "F",
+        "ageYears": 77,
+        "heightCm": 155,
+        "actualWeightKg": 52,
+        "complianceMlPerCmH2O": 32,
+        "inspResistanceCmH2OPerLps": 7,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 32,
+        "pmusAmplitudeCmH2O": 10,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 210,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 115,
+        "alveolarDeadSpaceFraction": 0.24,
+        "shuntFraction": 0.27,
+        "recruitability": 0.35,
+        "hbGPerDl": 11.2,
+        "temperatureC": 38.3,
+        "baselineHco3MmolL": 22,
+        "hrBaselineBpm": 104,
+        "sbpBaselineMmHg": 108,
+        "dbpBaselineMmHg": 60,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.25,
+        "respiratoryReserve": 0.35
+      }
+    },
+    "initialPhys": {
+      "paco2MmHg": 34
+    },
+    "findings": {
+      "examine": "Frail, weak, drowsy but responds to questioning in whispered monosyllables. RR 32 with weak, shallow excursions and abdominal paradox. Bronchial breathing and coarse crepitations over the right mid and lower posterior zones. Cool peripheries, capillary refill 3 s.",
+      "cxr": "Extensive right mid and lower zone consolidation with air bronchograms, consistent with aspiration pneumonia. Mild cardiomegaly. No pneumothorax."
+    }
+  }
+}

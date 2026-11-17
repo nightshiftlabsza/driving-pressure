@@ -1,0 +1,53 @@
+[
+  {
+    "id": "pplat_over_30",
+    "name": "Plateau pressure > 30 cmH2O",
+    "description": "Cumulative duration with alveolar overdistension risk (Pplat > 30 cmH2O).",
+    "metric": "pplat",
+    "op": ">",
+    "threshold": 30,
+    "source": "ARDS Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and ARDS. N Engl J Med 2000;342:1301-8; ESICM ARDS Guidelines 2023."
+  },
+  {
+    "id": "driving_pressure_over_15",
+    "name": "Driving pressure > 15 cmH2O",
+    "description": "Cumulative duration with elevated cyclical lung strain (ΔP = Pplat - PEEP > 15 cmH2O).",
+    "metric": "drivingPressure",
+    "op": ">",
+    "threshold": 15,
+    "source": "Amato MBP, et al. Driving pressure and survival in the acute respiratory distress syndrome. N Engl J Med 2015;372:747-55."
+  },
+  {
+    "id": "vt_over_8_ml_kg_pbw",
+    "name": "Tidal volume > 8 mL/kg PBW",
+    "description": "Cumulative duration with excessive tidal volume on invasive ventilation (> 8 mL/kg predicted body weight).",
+    "metric": "vteMlKgPbw",
+    "op": ">",
+    "threshold": 8.0,
+    "deviceFilter": "invasive",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8; Acute Respiratory Distress Syndrome: The Berlin Definition. JAMA 2012;307:2526-33."
+  },
+  {
+    "id": "hyperoxia_fio2_over_60_spo2_over_96",
+    "name": "FiO2 > 0.6 while SpO2 > 96%",
+    "description": "Cumulative duration with avoidable high oxygen exposure causing reactive oxygen species injury and absorption atelectasis risk.",
+    "metric": "fio2",
+    "op": ">",
+    "threshold": 0.6,
+    "secondary": {
+      "metric": "spo2",
+      "op": ">",
+      "threshold": 96
+    },
+    "source": "Chu DK, et al. Mortality and morbidity in acutely ill adults treated with liberal versus conservative oxygen therapy (IOTA): a systematic review and meta-analysis. Lancet 2018;391:1693-705; BTS Emergency Oxygen Guideline 2017."
+  },
+  {
+    "id": "hypoxaemia_spo2_under_88",
+    "name": "SpO2 < 88%",
+    "description": "Cumulative duration in severe arterial hypoxaemia below the steep inflexion of the oxygen dissociation curve.",
+    "metric": "spo2",
+    "op": "<",
+    "threshold": 88,
+    "source": "ARDS Network ARMA protocol targets (SpO2 88-95%); ESICM ARDS Guidelines 2023."
+  }
+]

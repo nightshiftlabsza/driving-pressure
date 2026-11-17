@@ -1,0 +1,52 @@
+{
+  "id": "dys-06-reverse-triggering-rule-based",
+  "source": "Akoumianaki E, Lyazidi A, Rey N, et al. Mechanical ventilation-induced reverse-triggered breaths: a frequently unrecognized form of neuromechanical coupling. Chest 2013; 143(4):927-938.",
+  "claim": "In deeply sedated patients receiving mandatory mechanical breaths, ventilator-induced lung inflation can entrain diaphragmatic muscle contraction (reverse triggering) via a vagally mediated reflex. As established in Akoumianaki 2013, this is an empirical, rule-based neuromechanical coupling behavior (reverseTriggerProbability 0.40) causing delayed patient effort.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 58,
+    "heightCm": 172,
+    "actualWeightKg": 72,
+    "complianceMlPerCmH2O": 40,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 10,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.1,
+    "recruitability": 0.1,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 84,
+    "sbpBaselineMmHg": 122,
+    "dbpBaselineMmHg": 76,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.7,
+    "reverseTriggerProbability": 0.4
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 16,
+    "vtSetMl": 450,
+    "inspFlowLpm": 55,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 90
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "reverseTriggerCount", "op": ">=", "value": 3 }
+  ],
+  "kind": "direction"
+}

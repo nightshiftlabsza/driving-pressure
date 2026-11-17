@@ -1,0 +1,11 @@
+{
+  "caseId": "asthma-vent-01",
+  "patientName": "Elena Rostova (synthetic)",
+  "location": "ICU Bed 5",
+  "who": "26-year-old female (165 cm, 60 kg)",
+  "whyAdmitted": "Arrived in ICU 20 minutes following emergency rapid sequence intubation in ED for acute severe breathlessness unresponsive to continuous nebulisers.",
+  "whatHasBeenDone": "Intubated in ED, switched from transport ventilator to ICU ventilator upon arrival.",
+  "currentSupport": "Invasive mechanical ventilation on VC-AC (VT 480 mL, RR 18, PEEP 5 cmH2O, FiO2 0.60).",
+  "theWorry": "High peak airway pressure alarm is sounding and the bedside nurse urgently reports that the blood pressure is acutely falling.",
+  "background": "Severe persistent asthma since childhood with two prior ICU admissions. No regular inhaled corticosteroids for past 3 months. Presented to ED in extremis with silent chest and exhaustion."
+}

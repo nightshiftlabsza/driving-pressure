@@ -1,0 +1,45 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Copyrighted reference material (PDFs, textbook extracts). Never commit.
+/reference/
+*.pdf
+.explore/
+src/practice/private/
+docs/private/
+test-results/
+*.cmd
+
+# Tutor data and evaluation results
+.tutor-data/
+.tutor-data-test/
+eval/tutor/results/
+
+.env
+.env.*
+!.env.example
+
+# Bug reports saved by the in-app reporter (kept on this computer, not in git)
+bug-reports/

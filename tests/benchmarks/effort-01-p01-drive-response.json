@@ -1,0 +1,49 @@
+{
+  "id": "effort-01-p01-drive-response",
+  "source": "Telias I, Damiani F, Brochard L. The airway occlusion pressure (P0.1) to monitor respiratory drive during mechanical ventilation: pros and cons. Intensive Care Med 2018; 44(11):1946-1949.",
+  "claim": "Airway occlusion pressure in the first 100 ms of inspiration (P0.1) directly indexes central respiratory drive; while normal resting P0.1 is 1.0 to 2.0 cmH2O, excessive respiratory drive (Pmus 16 cmH2O) causes P0.1 to rise above 3.5 cmH2O.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 54,
+    "heightCm": 178,
+    "actualWeightKg": 80,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 26,
+    "pmusAmplitudeCmH2O": 16.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 240,
+    "vo2MlPerMin": 300,
+    "anatomicDeadSpaceMl": 160,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.08,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 96,
+    "sbpBaselineMmHg": 130,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.6
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "PSV",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 0,
+    "psAbovePeep": 8
+  },
+  "phys": {
+    "paco2MmHg": 38,
+    "pao2MmHg": 85
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "p01", "op": ">=", "value": 3.5 }
+  ],
+  "kind": "published-range"
+}

@@ -1,0 +1,642 @@
+{
+  "variantId": "ards-vent-01--severe-low-recruit",
+  "baseCaseId": "ards-vent-01",
+  "title": "Persistent hypoxaemia despite higher PEEP",
+  "summary": "A 66-year-old man with severe pneumonia becomes more hypoxaemic and stiffer as PEEP is stepped up.",
+  "rationale": "Consolidated, non-recruitable lung: extra PEEP overdistends the open units (driving pressure rises), whereas proning works on V/Q matching. Headless engine check on the starting settings and after the named actions: untouched by 2 min: PaCO2 52, pH 7.29, SpO2 80%, Pplat 22, SBP 106; untouched by 60 min: PaCO2 51, pH 7.29, SpO2 81%, Pplat 22, SBP 106; reasonable management by 60 min: PaCO2 51, pH 7.29, SpO2 92%, Pplat 22, SBP 106; typical mistake by 60 min: PaCO2 51, pH 7.29, SpO2 83%, Pplat 34, SBP 104. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "premature_closure",
+    "competencyId": "mech.driving-pressure",
+    "clinicalFocus": "Severe ARDS with low recruitability: high PEEP raises driving pressure and Pplat without benefit; prone position is the better next step"
+  },
+  "source": "ARDSNet ARMA. N Engl J Med 2000;342:1301-8; Grasselli G, et al. ESICM ARDS guidelines. Intensive Care Med 2023;49:727-59; The Ventilator Book 3e (ARDS chapter, number unverified); Murray & Nadel 7e (ARDS chapter, number unverified); Guerin C, et al. PROSEVA. N Engl J Med 2013;368:2159-68. Recruitability 0.08 and shunt 0.42 are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Male 66, 172 cm (PBW 67 kg), 80 kg. On 400 mL (6 mL/kg), PEEP 10, FiO2 0.8.",
+    "parametersChanged": {
+      "ageYears": {
+        "from": 61,
+        "to": 66,
+        "reason": "Older"
+      },
+      "heightCm": {
+        "from": 170,
+        "to": 172,
+        "reason": "PBW 67 kg"
+      },
+      "actualWeightKg": {
+        "from": 98,
+        "to": 80,
+        "reason": "Near PBW"
+      },
+      "complianceMlPerCmH2O": {
+        "from": 24,
+        "to": 22,
+        "reason": "Stiff consolidated lung"
+      },
+      "shuntFraction": {
+        "from": 0.38,
+        "to": 0.42,
+        "reason": "Dense consolidation"
+      },
+      "recruitability": {
+        "from": 0.5,
+        "to": 0.08,
+        "reason": "Consolidation does not recruit (unverified)"
+      },
+      "alveolarDeadSpaceFraction": {
+        "from": 0.35,
+        "to": 0.4,
+        "reason": "Raised"
+      },
+      "vco2MlPerMin": {
+        "from": 260,
+        "to": 250,
+        "reason": "Febrile"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr T. Okafor (synthetic)",
+      "presentingStory": "Day 2 of ventilation for severe bacterial pneumonia with dense consolidation. On protective volume and PEEP 10 but SpO2 is only 85% on FiO2 0.8. The registrar suggests increasing PEEP again.",
+      "history": "COPD (mild), ex-smoker. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 66,
+        "heightCm": 172,
+        "actualWeightKg": 80,
+        "complianceMlPerCmH2O": 22,
+        "inspResistanceCmH2OPerLps": 12,
+        "expResistanceCmH2OPerLps": 12,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 250,
+        "vo2MlPerMin": 300,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.4,
+        "shuntFraction": 0.42,
+        "recruitability": 0.08,
+        "hbGPerDl": 11,
+        "temperatureC": 38.4,
+        "baselineHco3MmolL": 21,
+        "hrBaselineBpm": 104,
+        "sbpBaselineMmHg": 108,
+        "dbpBaselineMmHg": 60,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.4,
+        "respiratoryReserve": 0.6,
+        "lungModel": "two-compartment",
+        "twoCompartmentParams": {
+          "openingPressureCmH2O": 10,
+          "closingPressureCmH2O": 5,
+          "recruitComplianceMlPerCmH2O": 12,
+          "overdistensionVolumeMl": 480,
+          "overdistensionFalloff": 0.18
+        }
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.8,
+      "peep": 10,
+      "rrSetBpm": 28,
+      "vtSetMl": 400,
+      "inspFlowLpm": 60,
+      "flowPattern": "square"
+    },
+    "initialPhys": {
+      "paco2MmHg": 52,
+      "hco3MmolL": 24
+    },
+    "predictionPoints": [
+      {
+        "id": "p-pbw",
+        "competency": "disease.ards",
+        "evidenceType": "interpretation",
+        "question": "Before touching the ventilator: what is his predicted body weight? (male, 172 cm)",
+        "format": "numeric",
+        "unit": "kg",
+        "marking": "fixed",
+        "answerKey": 68,
+        "tolerance": 2,
+        "explanation": "PBW (male) = 50 + 0.91 x (height in cm - 152.4) = about 68 kg. Tidal volume is set from PBW, not actual weight; 6 mL/kg is about 408 mL.",
+        "hidden": false
+      },
+      {
+        "id": "p-settings-effect",
+        "competency": "mech.eom",
+        "evidenceType": "prediction",
+        "question": "You have just changed the ventilator. Once things settle, which way will each of these go?",
+        "format": "direction",
+        "variables": [
+          "pplat",
+          "paco2",
+          "spo2"
+        ],
+        "marking": "engine",
+        "explanation": "Plateau pressure = PEEP + VT/compliance. Lowering VT lowers it. In a recruitable lung, raising PEEP recruits collapsed alveoli, increasing compliance and lowering driving pressure, but excessive PEEP can cause overdistension. A lower VT cuts alveolar ventilation unless the rate rises enough, so PaCO2 tends to rise. More PEEP usually improves oxygenation in recruitable lung. The engine marks this against what actually happened with your settings.",
+        "hidden": false
+      },
+      {
+        "id": "p-severe-next",
+        "competency": "disease.ards",
+        "evidenceType": "decision",
+        "question": "Twenty minutes on protective settings. What is the next step for his oxygenation?",
+        "format": "choice",
+        "options": [
+          "Prone positioning for 16 hours or more a day",
+          "Inhaled nitric oxide",
+          "High-frequency oscillatory ventilation",
+          "Staircase recruitment manoeuvres"
+        ],
+        "marking": "fixed",
+        "answerKey": "Prone positioning for 16 hours or more a day",
+        "explanation": "PROSEVA showed lower mortality with early prolonged proning when P/F was below 150. Inhaled nitric oxide improves oxygenation without a survival benefit, and high-frequency oscillation (OSCILLATE) and staircase recruitment manoeuvres (ART) were associated with harm.",
+        "hidden": false
+      }
+    ],
+    "triggers": [
+      {"id": "t-fio2-not-weaned", "when": {"all": [{"threshold": {"metric": "spo2", "op": ">", "value": 95, "forSimSec": 1800}}, {"threshold": {"metric": "fio2", "op": ">", "value": 0.5, "forSimSec": 1800}}]}, "then": [{"type": "mistake", "mistake": "failure_to_reassess", "competency": "modes.peep-fio2", "severity": "minor", "detail": "SpO2 stayed above 95% on an FiO2 over 0.5 for 30 minutes. The ARDSNet target is 88 to 95%: wean the oxygen."}], "once": true},
+      {"id": "t-proned-before-vt", "when": {"all": [{"ordered": {"order": "prone"}}, {"threshold": {"metric": "vteMlKgPbw", "op": ">", "value": 8}}]}, "then": [{"type": "mistake", "mistake": "poor_prioritisation", "competency": "disease.ards", "severity": "major", "detail": "Proned before tidal volume was reduced. Set lung-protective ventilation first, then reassess oxygenation."}], "once": true},
+      {
+        "id": "pbw-question",
+        "when": {
+          "threshold": {
+            "metric": "simMin",
+            "op": ">=",
+            "value": 0
+          }
+        },
+        "then": [
+          {
+            "type": "prediction",
+            "predictionId": "p-pbw"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "settings-predict",
+        "when": {
+          "ordered": {
+            "order": "change-settings"
+          }
+        },
+        "then": [
+          {
+            "type": "prediction",
+            "predictionId": "p-settings-effect"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "pplat-high",
+        "when": {
+          "threshold": {
+            "metric": "pplat",
+            "op": ">",
+            "value": 30,
+            "forSimSec": 1800
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "disease.ards",
+            "severity": "major",
+            "detail": "Plateau pressure above 30 cmH2O for 30+ minutes in ARDS."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "high-vt",
+        "when": {
+          "threshold": {
+            "metric": "vteMlKgPbw",
+            "op": ">",
+            "value": 8,
+            "forSimSec": 1800
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "knowledge_gap",
+            "competency": "disease.ards",
+            "severity": "major",
+            "detail": "Tidal volume above 8 mL/kg predicted body weight for 30+ minutes. Tidal volume is set by predicted (height-based) weight, not actual weight."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "prone-prompt",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "pplat",
+                "op": "<=",
+                "value": 30,
+                "forSimSec": 1200
+              }
+            },
+            {
+              "threshold": {
+                "metric": "vteMlKgPbw",
+                "op": "<=",
+                "value": 8,
+                "forSimSec": 1200
+              }
+            },
+            {
+              "threshold": {
+                "metric": "pfRatio",
+                "op": "<",
+                "value": 150,
+                "forSimSec": 1200
+              }
+            },
+            {
+              "not": {
+                "ordered": {
+                  "order": "prone"
+                }
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "He has been on these settings for 20 minutes. Reassess him. What is your next step?"
+          },
+          {
+            "type": "prediction",
+            "predictionId": "p-severe-next"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "refractory",
+        "when": {
+          "threshold": {
+            "metric": "spo2",
+            "op": "<",
+            "value": 78,
+            "forSimSec": 900
+          }
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Sats have been in the 70s for a quarter of an hour and his heart rate keeps climbing."
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Refractory hypoxaemia."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "senior-oxygenation",
+        "when": {
+          "threshold": {
+            "metric": "spo2",
+            "op": "<",
+            "value": 88,
+            "forSimSec": 600
+          }
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "He's still desaturated. What is your plan for his oxygenation?"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "hypoxaemia-persisted",
+        "when": {
+          "threshold": {
+            "metric": "spo2",
+            "op": "<",
+            "value": 85,
+            "forSimSec": 1800
+          }
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Severe hypoxaemia persisted for 30 minutes without correction."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "stabilised",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 150
+              }
+            },
+            {
+              "threshold": {
+                "metric": "pplat",
+                "op": "<=",
+                "value": 30,
+                "forSimSec": 1800
+              }
+            },
+            {
+              "threshold": {
+                "metric": "vteMlKgPbw",
+                "op": "<=",
+                "value": 8,
+                "forSimSec": 1800
+              }
+            },
+            {
+              "threshold": {
+                "metric": "ph",
+                "op": ">=",
+                "value": 7.2,
+                "forSimSec": 1800
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": ">=",
+                "value": 88,
+                "forSimSec": 1800
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "Stable on lung-protective ventilation with acceptable oxygenation and pH."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-prone-indicated",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "pfRatio",
+                "op": "<",
+                "value": 150
+              }
+            },
+            {
+              "threshold": {
+                "metric": "fio2",
+                "op": ">=",
+                "value": 0.6
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "patientChange",
+            "change": {}
+          }
+        ],
+        "once": true
+      }
+    ],
+    "orderEffects": [
+      {
+        "order": "prone",
+        "delaySimMin": 10,
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "He's prone. Lines, tube and pressure areas checked."
+          },
+          {
+            "type": "patientChange",
+            "change": {
+              "shuntFraction": 0.27
+            },
+            "rampSimMin": 60
+          }
+        ],
+        "note": "Prone positioning improves V/Q matching; modelled as a gradual fall in shunt"
+      },
+      {
+        "order": "call-senior",
+        "delaySimMin": 5,
+        "actions": [
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "What's his predicted body weight, and what plateau and driving pressure is he on now?"
+          }
+        ]
+      }
+    ],
+    "rubric": [
+      {"id": "r-fio2-weaned", "description": "Weaned FiO2 once SpO2 was above 95%", "competency": "modes.peep-fio2", "evidenceType": "decision", "met": {"not": {"all": [{"threshold": {"metric": "spo2", "op": ">", "value": 95}}, {"threshold": {"metric": "fio2", "op": ">", "value": 0.5}}]}}, "weight": 1, "critical": false},
+      {
+        "id": "r-vt",
+        "description": "Reduced tidal volume to 8 mL/kg PBW or less within 30 minutes (target about 6)",
+        "competency": "disease.ards",
+        "evidenceType": "decision",
+        "met": {
+          "threshold": {
+            "metric": "vteMlKgPbw",
+            "op": "<=",
+            "value": 8
+          }
+        },
+        "bySimMin": 30,
+        "weight": 2,
+        "critical": true
+      },
+      {
+        "id": "r-pplat",
+        "description": "Kept plateau pressure at 30 cmH2O or less (no prolonged breach)",
+        "competency": "disease.ards",
+        "evidenceType": "safety",
+        "met": {
+          "not": {
+            "fired": "pplat-high"
+          }
+        },
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-dp",
+        "description": "Kept driving pressure at 15 cmH2O or less, or tidal volume at 6.5 mL/kg PBW or less",
+        "competency": "mech.driving-pressure",
+        "evidenceType": "decision",
+        "met": {
+          "any": [
+            {
+              "threshold": {
+                "metric": "drivingPressure",
+                "op": "<=",
+                "value": 15
+              }
+            },
+            {
+              "threshold": {
+                "metric": "vteMlKgPbw",
+                "op": "<=",
+                "value": 6.5
+              }
+            }
+          ]
+        },
+        "bySimMin": 360,
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-peep",
+        "description": "Raised PEEP to 10 cmH2O or more within the first hour while keeping driving pressure at 15 cmH2O or less",
+        "competency": "modes.peep-fio2",
+        "evidenceType": "decision",
+        "met": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "peep",
+                "op": ">=",
+                "value": 10
+              }
+            },
+            {
+              "threshold": {
+                "metric": "drivingPressure",
+                "op": "<=",
+                "value": 15
+              }
+            }
+          ]
+        },
+        "bySimMin": 60,
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-reassess",
+        "description": "Checked a blood gas after changing settings (2 or more within 90 minutes)",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg",
+            "withinSimMin": 90,
+            "minCount": 2
+          }
+        },
+        "bySimMin": 90,
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-ph",
+        "description": "pH 7.20 or higher at the end, with rate rather than tidal volume used to clear CO2",
+        "competency": "gas.alveolar-ventilation",
+        "evidenceType": "decision",
+        "met": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "ph",
+                "op": ">=",
+                "value": 7.2
+              }
+            },
+            {
+              "threshold": {
+                "metric": "vteMlKgPbw",
+                "op": "<=",
+                "value": 8
+              }
+            }
+          ]
+        },
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-prone",
+        "description": "Proned for P/F below 150 despite protective settings",
+        "competency": "disease.ards",
+        "evidenceType": "decision",
+        "met": {
+          "all": [
+            {
+              "ordered": {
+                "order": "prone"
+              }
+            },
+            {
+              "fired": "t-prone-indicated"
+            }, { "not": { "fired": "t-proned-before-vt" } }
+          ]
+        },
+        "weight": 2,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "Set tidal volume by predicted body weight (height and sex), not actual weight. He has a PBW of 68 kg: 6 mL/kg is about 407 mL.",
+        "Check plateau pressure with an inspiratory hold and keep it at 30 cmH2O or less. Lower driving pressure (plateau minus PEEP) is associated with lower mortality in ARDS (Amato, NEJM 2015); many units aim for 15 cmH2O or less.",
+        "Raise the rate to offset the lower tidal volume. Some hypercapnia is acceptable (permissive hypercapnia), usually keeping pH at 7.20 or above.",
+        "Use PEEP for oxygenation in recruitable lung. At a fixed tidal volume, every cmH2O of PEEP adds to plateau pressure.",
+        "If P/F stays below 150 despite optimised settings, prone early for 16 hours or more a day (PROSEVA).",
+        "In recruitable ARDS, titrating PEEP balances alveolar recruitment (improving compliance and lowering driving pressure) against overdistension at high volumes (raising driving pressure).",
+        "Prone positioning is for a P/F ratio below 150 on protective settings, in sessions of about 16 hours (PROSEVA)."
+      ],
+      "resources": [
+        {
+          "title": "ARDSNet ARMA trial (2000)",
+          "ref": "N Engl J Med 2000;342:1301-8"
+        },
+        {
+          "title": "Driving pressure (Amato 2015)",
+          "ref": "N Engl J Med 2015;372:747-55"
+        },
+        {
+          "title": "PROSEVA (Guérin 2013)",
+          "ref": "N Engl J Med 2013;368:2159-68"
+        },
+        {
+          "title": "ESICM ARDS guideline (2023)",
+          "ref": "Intensive Care Med 2023;49:727-59"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0",
+  "id": "08-fio2-vs-pao2-high-shunt",
+  "number": 8,
+  "title": "FiO2 versus PaO2 with high shunt",
+  "subtitle": "Response of arterial oxygenation to inspired oxygen fraction in severe true shunt",
+  "difficulty": 2,
+  "competencies": [
+    "gas.hypoxaemia-mechanism",
+    "modes.peep-fio2"
+  ],
+  "contextTags": [
+    "oxygenation",
+    "shunt",
+    "hypoxaemia",
+    "ards"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Severe lobar pneumonia patient",
+    "summary": "A 58-year-old mechanically ventilated patient with severe multifocal pneumonia and dense alveolar consolidation refractory to moderate oxygen levels.",
+    "params": {
+      "sex": "F",
+      "ageYears": 58,
+      "heightCm": 165,
+      "actualWeightKg": 65,
+      "complianceMlPerCmH2O": 30,
+      "inspResistanceCmH2OPerLps": 10,
+      "expResistanceCmH2OPerLps": 12,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 180,
+      "vo2MlPerMin": 220,
+      "anatomicDeadSpaceMl": 130,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.45,
+      "recruitability": 0.2,
+      "hbGPerDl": 12,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 92,
+      "sbpBaselineMmHg": 118,
+      "dbpBaselineMmHg": 72,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.3,
+      "respiratoryReserve": 1.0
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "vtSetMl": 450,
+    "rrSetBpm": 16,
+    "peep": 5,
+    "fio2": 0.4,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "fio2",
+    "label": "Fraction of inspired oxygen (FiO2)",
+    "unit": "",
+    "baselineValue": 0.4,
+    "options": [
+      {
+        "label": "FiO2 1.00 (100% O2)",
+        "value": 1.0
+      },
+      {
+        "label": "FiO2 0.70 (70% O2)",
+        "value": 0.7
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When FiO2 is increased from 0.40 to 1.00 in this patient with extensive alveolar filling (45% shunt), how do PaO2, SpO2, and PaCO2 respond?",
+    "metrics": [
+      "pao2",
+      "spo2",
+      "paco2"
+    ]
+  },
+  "observeSimSec": 120,
+  "whatToLookAtHint": "Compare the magnitude of change in PaO2 and SpO2 against what would normally be expected from a large increase in inspired oxygen, and check PaCO2.",
+  "reflection": {
+    "question": "Why does delivering 100% inspired oxygen produce only a modest increase in arterial PaO2 in this patient?",
+    "options": [
+      {
+        "id": "opt-true-shunt",
+        "text": "True right-to-left shunt bypasses ventilated alveoli entirely; because capillary blood from ventilated units is already nearly 100% saturated, dissolved oxygen cannot overcome the mixing of severely desaturated shunted blood."
+      },
+      {
+        "id": "opt-absorption-atelectasis",
+        "text": "FiO2 1.0 causes instantaneous total absorption atelectasis, reducing diffusing capacity to zero."
+      },
+      {
+        "id": "opt-vasoconstriction",
+        "text": "Hyperoxia stimulates diffuse precapillary vasoconstriction, shutting down pulmonary blood flow completely."
+      },
+      {
+        "id": "opt-haldane",
+        "text": "Oxygen molecules displace carbon dioxide from hemoglobin, preventing further oxygen binding by allosteric inhibition."
+      }
+    ],
+    "correctOptionId": "opt-true-shunt",
+    "explanation": "True shunt (Qs/Qt = 0.45) represents blood traversing unventilated, fluid-filled alveoli. Even though PAO2 rises from ~239 to ~670 mmHg in ventilated units, end-capillary hemoglobin is already on the flat portion of the oxyhemoglobin dissociation curve. The only additional oxygen carried by ventilated blood is dissolved O2 (0.003 mL/dL per mmHg PO2). When this mixes with 45% desaturated mixed venous blood, PaO2 increases only modestly (from ~45 to ~55 mmHg), demonstrating classic shunt refractoriness."
+  },
+  "causalChainFields": [
+    "setFio2",
+    "fio2Effective",
+    "pao2Alveolar",
+    "shuntUsed",
+    "pao2",
+    "spo2"
+  ],
+  "evidence": [
+    {
+      "claim": "True shunt is refractory to oxygen therapy because capillary blood in ventilated units is already fully saturated and cannot carry enough extra dissolved oxygen to compensate for venous admixture.",
+      "source": "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 10th ed. Wolters Kluwer; 2016:63-78.",
+      "year": 2016,
+      "kind": "textbook"
+    },
+    {
+      "claim": "In patients with severe shunt fractions exceeding 30%, increasing FiO2 to 1.0 yields only minimal increments in PaO2 without PEEP recruitment.",
+      "source": "Petersson J, Glenny RW. Gas exchange and ventilation-perfusion relationships in the lung. Eur Respir J 2014; 44(4):1023-1041.",
+      "year": 2014,
+      "kind": "review"
+    }
+  ]
+}

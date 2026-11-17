@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.0",
+  "id": "02-vc-vs-pc-compliance",
+  "number": 2,
+  "title": "VC versus PC when Compliance Falls",
+  "subtitle": "Compare airway pressure and delivered volume responses when respiratory compliance changes under volume control",
+  "difficulty": 1,
+  "competencies": [
+    "modes.vc-vs-pc",
+    "mech.res-vs-comp"
+  ],
+  "contextTags": [
+    "mechanics",
+    "modes",
+    "compliance",
+    "driving-pressure"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Synthetic Patient B",
+    "summary": "Intubated patient with acute lung injury mechanically ventilated under deep sedation.",
+    "params": {
+      "sex": "M",
+      "ageYears": 50,
+      "heightCm": 175,
+      "actualWeightKg": 75,
+      "complianceMlPerCmH2O": 50,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 8,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.1,
+      "shuntFraction": 0.1,
+      "recruitability": 0.1,
+      "hbGPerDl": 14.0,
+      "temperatureC": 37.0,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 75,
+      "sbpBaselineMmHg": 120,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 15,
+    "vtSetMl": 500,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "patient",
+    "field": "complianceMlPerCmH2O",
+    "label": "Respiratory system compliance",
+    "unit": "mL/cmH2O",
+    "baselineValue": 50,
+    "options": [
+      {
+        "label": "Compliance drops to 25 mL/cmH2O (VC-AC)",
+        "value": 25
+      },
+      {
+        "label": "Switch to PC-AC (Pinsp 10, PEEP 5) at compliance 25 mL/cmH2O",
+        "value": 25,
+        "deviceOverride": {
+          "device": "invasive",
+          "mode": "PC-AC",
+          "fio2": 0.4,
+          "peep": 5,
+          "rrSetBpm": 15,
+          "pinspAbovePeep": 10,
+          "tiSec": 1.0,
+          "riseTimeSec": 0.1
+        },
+        "patientOverride": {
+          "complianceMlPerCmH2O": 25
+        }
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When respiratory system compliance decreases from 50 to 25 mL/cmH2O in volume-control mode (VC-AC, VT 500 mL), how will peak airway pressure (Ppeak), plateau pressure (Pplat), and delivered expiratory tidal volume (VTe) change?",
+    "metrics": [
+      "ppeak",
+      "pplat",
+      "vte"
+    ]
+  },
+  "observeSimSec": 30,
+  "whatToLookAtHint": "Monitor peak inspiratory pressure, plateau pressure, and delivered tidal volume on the ventilator display.",
+  "reflection": {
+    "question": "In volume-control ventilation (VC-AC), why does falling compliance cause plateau pressure to rise while tidal volume remains unchanged?",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "VC mode guarantees delivered volume by cycling on volume, so alveolar elastic recoil pressure (VT / C) must rise when compliance drops."
+      },
+      {
+        "id": "opt-b",
+        "text": "The ventilator increases flow rate automatically to overcome lower chest wall stiffness."
+      },
+      {
+        "id": "opt-c",
+        "text": "VC mode regulates peak airway pressure at a constant level by reducing expiratory time."
+      },
+      {
+        "id": "opt-d",
+        "text": "Falling compliance reduces airway resistance, allowing higher alveolar pressures."
+      }
+    ],
+    "correctOptionId": "opt-a",
+    "explanation": "Volume control fixes the inspiratory flow waveform and delivered tidal volume. According to the equation of motion, alveolar plateau pressure is Pplat = PEEP + VT / C. When compliance falls by half (from 50 to 25 mL/cmH2O), the elastic driving pressure required to distend the lung with the same 500 mL tidal volume doubles (from 10 to 20 cmH2O). In contrast, pressure control (PC-AC) fixes the inspiratory pressure, meaning falling compliance causes delivered tidal volume to drop while pressure remains constant."
+  },
+  "causalChainFields": [
+    "compliance",
+    "drivingPressure",
+    "pplat",
+    "ppeak",
+    "vte"
+  ],
+  "evidence": [
+    {
+      "claim": "In volume-controlled ventilation, delivered tidal volume is constant while peak and plateau pressures vary with respiratory system compliance; in pressure-controlled ventilation, pressure is fixed and volume varies.",
+      "source": "Chatburn RL, Volsko TA. Mechanical ventilation: modern concepts and practice. In: Hess DR, et al., eds. Respiratory Care: Principles and Practice. 4th ed. Jones & Bartlett; 2021.",
+      "year": 2021,
+      "kind": "textbook"
+    },
+    {
+      "claim": "Driving pressure (Pplat - PEEP) is inversely proportional to respiratory system compliance at a fixed tidal volume.",
+      "source": "Amato MB, et al. Driving pressure and survival in the acute respiratory distress syndrome. N Engl J Med. 2015;372(8):747-755.",
+      "year": 2015,
+      "kind": "trial"
+    }
+  ]
+}

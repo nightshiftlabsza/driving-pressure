@@ -1,0 +1,66 @@
+{
+  "variantId": "copd-niv-01--exhaustion-failure",
+  "baseCaseId": "copd-niv-01",
+  "title": "Severe respiratory fatigue and tachypnoea in acute hypercapnia",
+  "summary": "A 65-year-old man with acute severe COPD exacerbation is working intensely with rapid shallow breathing.",
+  "rationale": "High resistive load and impending muscle fatigue (fatigue 0.35, spontRate 30, expResistance 18). Tests prompt initiation and adequate titration of the IPAP-EPAP gradient (pressure support) to offload respiratory pump failure and prevent invasive intubation.",
+  "retestsMistake": {
+    "mistakeId": "faulty_model",
+    "competencyId": "niv.titration",
+    "clinicalFocus": "Adequate pressure support titration (IPAP-EPAP delta) to alleviate respiratory muscle fatigue"
+  },
+  "source": "Davidson AC, et al. BTS/ICS guideline for ventilatory management of acute hypercapnic respiratory failure. Thorax 2016;71 Suppl 2:ii1-35; teaching-convention",
+  "changes": {
+    "vignette": "Male 65, severe resistive work of breathing, tachypnoeic at 30/min, diaphoresis.",
+    "parametersChanged": {
+      "inspResistanceCmH2OPerLps": { "from": 12, "to": 14, "reason": "Higher bronchospasm resistive load" },
+      "expResistanceCmH2OPerLps": { "from": 16, "to": 18, "reason": "Elevated expiratory airflow limitation" },
+      "spontRateBpm": { "from": 28, "to": 30, "reason": "Compensatory respiratory rate driven by acid load" },
+      "pmusAmplitudeCmH2O": { "from": 20, "to": 21, "reason": "High neuromuscular effort near exhaustion threshold" },
+      "vco2MlPerMin": { "from": 250, "to": 260, "reason": "Increased metabolic cost of breathing" }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr K. Patel (synthetic)",
+      "presentingStory": "Admitted 6 hours ago with an acute exacerbation of COPD. The ward nurse requests an urgent review: he is sweating, breathless at rest, and unable to finish a sentence. Current oxygen: 2 L/min via nasal cannula.",
+      "history": "Severe COPD (FEV1 35% predicted), heavy smoking history (45 pack-years), previous ICU admission for NIV 2 years ago. Full escalation agreed.",
+      "params": {
+        "sex": "M",
+        "ageYears": 65,
+        "heightCm": 168,
+        "actualWeightKg": 68,
+        "complianceMlPerCmH2O": 48,
+        "inspResistanceCmH2OPerLps": 14,
+        "expResistanceCmH2OPerLps": 18,
+        "spontRateBpm": 30,
+        "pmusAmplitudeCmH2O": 21,
+        "pmusInspTimeSec": 0.85,
+        "vco2MlPerMin": 260,
+        "vo2MlPerMin": 305,
+        "anatomicDeadSpaceMl": 145,
+        "alveolarDeadSpaceFraction": 0.46,
+        "shuntFraction": 0.18,
+        "recruitability": 0.2,
+        "hbGPerDl": 15.5,
+        "temperatureC": 37.9,
+        "baselineHco3MmolL": 29,
+        "hrBaselineBpm": 116,
+        "sbpBaselineMmHg": 154,
+        "dbpBaselineMmHg": 88,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.35,
+        "respiratoryReserve": 0.6
+      }
+    },
+    "initialPhys": {
+      "paco2MmHg": 74,
+      "hco3MmolL": 29,
+      "fatigue": 0.34
+    },
+    "findings": {
+      "examine": "Diaphoretic, anxious, seated upright grasping the bed rails. RR 30, marked sternocleidomastoid activation and intercostal indrawing. Loud expiratory polyphonic wheezes bilaterally with prolonged expiratory phase. Trachea midline.",
+      "cxr": "Bilateral hyperinflated lung fields with tubular heart contour. No pneumothorax or consolidation."
+    }
+  }
+}

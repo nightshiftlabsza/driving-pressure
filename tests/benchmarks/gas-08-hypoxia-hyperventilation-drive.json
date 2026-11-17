@@ -1,0 +1,47 @@
+{
+  "id": "gas-08-hypoxia-hyperventilation-drive",
+  "source": "Nunn JF. Nunn's Applied Respiratory Physiology. 8th ed. Elsevier, 2016; Chapter 4.",
+  "claim": "Severe arterial hypoxemia below 60 mmHg stimulates carotid body peripheral chemoreceptors, increasing respiratory drive and minute ventilation.",
+  "patient": {
+    "sex": "F",
+    "ageYears": 46,
+    "heightCm": 164,
+    "actualWeightKg": 62,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 16,
+    "pmusAmplitudeCmH2O": 10.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 190,
+    "vo2MlPerMin": 230,
+    "anatomicDeadSpaceMl": 125,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.35,
+    "recruitability": 0.1,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 85,
+    "sbpBaselineMmHg": 118,
+    "dbpBaselineMmHg": 72,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 52
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pao2", "op": "<", "value": 60.0 },
+    { "metric": "hr", "op": ">=", "value": 85 }
+  ],
+  "kind": "direction"
+}

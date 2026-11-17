@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0",
+  "id": "pneumonia-hfnc-01",
+  "version": "0.1.1",
+  "title": "Pneumonia on a non-rebreather in the ED",
+  "summary": "A 56-year-old with community-acquired pneumonia is hypoxaemic and tachypnoeic on 15 L/min by mask.",
+  "difficulty": 2,
+  "setting": "ed",
+  "competencies": ["niv.hfnc", "niv.failure", "gas.hypoxaemia-mechanism", "gas.oxy-vs-vent", "safety.reassess", "disease.ards", "modes.peep-fio2"],
+  "hiddenCompetencies": ["niv.failure"],
+  "contextTags": ["pneumonia", "hypoxaemia", "hfnc", "ed", "intubation-timing"],
+  "evidence": [
+    { "claim": "In acute hypoxaemic respiratory failure, high-flow nasal oxygen did not reduce intubation overall versus standard oxygen or NIV but improved 90-day mortality; a reasonable first-line support", "source": "Frat JP, et al. High-flow oxygen through nasal cannula in acute hypoxemic respiratory failure (FLORALI). N Engl J Med 2015;372:2185-96", "year": 2015, "kind": "trial" },
+    { "claim": "Guideline suggests HFNC over conventional oxygen therapy in acute hypoxaemic respiratory failure", "source": "Rochwerg B, et al. The role for high flow nasal cannula as a respiratory support strategy in adults: a clinical practice guideline. Intensive Care Med 2020;46:2226-37", "year": 2020, "kind": "guideline" },
+    { "claim": "ROX index (SpO2/FiO2 divided by RR): 4.88 or more at 2, 6 or 12 h predicts HFNC success; below 2.85 at 2 h, 3.47 at 6 h or 3.85 at 12 h predicts failure", "source": "Roca O, et al. An index combining respiratory rate and oxygenation to predict outcome of nasal high-flow therapy. Am J Respir Crit Care Med 2019;199:1368-76", "year": 2019, "kind": "observational" },
+    { "claim": "Intubation delayed beyond 48 h of HFNC failure was associated with higher ICU mortality", "source": "Kang BJ, et al. Failure of high-flow nasal cannula therapy may delay intubation and increase mortality. Intensive Care Med 2015;41:623-32", "year": 2015, "kind": "observational" },
+    { "claim": "Tidal volume 6 mL/kg predicted body weight with plateau pressure 30 cmH2O or less reduced mortality in ARDS", "source": "ARDS Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and ARDS. N Engl J Med 2000;342:1301-8", "year": 2000, "kind": "trial" }
+  ],
+  "patient": {
+    "displayName": "Ms R. Okafor (synthetic)",
+    "presentingStory": "Three days of fever, productive cough and right-sided pleuritic pain. Antibiotics and fluids have been given in the ED. She is on a non-rebreather mask at 15 L/min and the nurse is worried that she is working hard to breathe.",
+    "history": "Type 2 diabetes on metformin, otherwise well. Works as a teacher. Independent. No treatment limits. 163 cm, about 70 kg.",
+    "params": {
+      "sex": "F", "ageYears": 56, "heightCm": 163, "actualWeightKg": 70,
+      "complianceMlPerCmH2O": 40, "inspResistanceCmH2OPerLps": 6, "expResistanceCmH2OPerLps": 7,
+      "spontRateBpm": 32, "pmusAmplitudeCmH2O": 11, "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 280, "vo2MlPerMin": 320, "anatomicDeadSpaceMl": 140, "alveolarDeadSpaceFraction": 0.2,
+      "shuntFraction": 0.24, "recruitability": 0.4, "hbGPerDl": 12.5, "temperatureC": 38.9,
+      "baselineHco3MmolL": 21.8,
+      "hrBaselineBpm": 112, "sbpBaselineMmHg": 112, "dbpBaselineMmHg": 64,
+      "ppvResponse": "unhelpful", "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.5
+    }
+  },
+  "initialDevice": { "device": "none", "o2": "non-rebreather", "o2FlowLpm": 15 },
+  "initialPhys": { "paco2MmHg": 32 },
+  "availableOrders": ["abg", "cxr", "examine", "change-device", "change-settings", "intubate", "sedation", "call-senior"],
+  "orderEffects": [
+    { "order": "intubate", "delaySimMin": 0, "note": "Induction and post-intubation sedation reduce, but do not abolish, respiratory drive", "actions": [ { "type": "patientChange", "change": { "spontRateBpm": 14, "pmusAmplitudeCmH2O": 3 } }, { "type": "message", "from": "senior", "text": "Tube's in, 7.5 at 21 cm, end-tidal CO2 trace confirmed. She's on the default settings. Over to you for the ventilator." } ] },
+    { "order": "sedation", "delaySimMin": 2, "actions": [ { "type": "patientChange", "change": { "spontRateBpm": 10, "pmusAmplitudeCmH2O": 2 } } ] },
+    { "order": "call-senior", "delaySimMin": 10, "actions": [ { "type": "message", "from": "senior", "text": "I'm here. What's your plan, and what will make you intubate?" } ] }
+  ],
+  "findings": {
+    "examine": "Alert and anxious, speaking in short sentences. RR in the mid-30s, using accessory muscles, thoraco-abdominal paradox at times. Bronchial breathing and crackles at the right base and mid-zone. Warm, capillary refill 2 s. GCS 15.",
+    "cxr": "Dense right lower and middle lobe consolidation with air bronchograms and patchy shadowing at the left base. No effusion, no pneumothorax."
+  },
+  "course": [
+    { "atSimMin": 30, "actions": [ { "type": "patientChange", "change": { "shuntFraction": 0.32 }, "rampSimMin": 120 } ] }
+  ],
+  "triggers": [
+    { "id": "support-predict", "when": { "ordered": { "order": "change-device" } }, "then": [ { "type": "prediction", "predictionId": "p-support-effect" } ], "once": true },
+    { "id": "two-hour-review", "when": { "all": [ { "threshold": { "metric": "simMin", "op": ">=", "value": 120 } }, { "ordered": { "order": "change-device" } }, { "not": { "ordered": { "order": "intubate" } } } ] }, "then": [ { "type": "message", "from": "nurse", "text": "She's been on the new support for about two hours now. Can you come and review her?" }, { "type": "prediction", "predictionId": "p-next-step" } ], "once": true },
+    { "id": "deteriorated", "when": { "all": [ { "not": { "ordered": { "order": "intubate" } } }, { "any": [ { "threshold": { "metric": "ph", "op": "<", "value": 7.15, "forSimSec": 600 } }, { "threshold": { "metric": "spo2", "op": "<", "value": 85, "forSimSec": 600 } } ] } ] }, "then": [ { "type": "message", "from": "nurse", "text": "She's exhausted and confused now, and her sats are dropping. I've put out a peri-arrest call." }, { "type": "endCase", "outcome": "deteriorated", "reason": "Exhaustion and peri-arrest before a controlled intubation. Recognising failure of non-invasive support early allows a planned, safer intubation." } ], "once": true },
+    { "id": "high-vt", "when": { "all": [ { "ordered": { "order": "intubate" } }, { "threshold": { "metric": "vteMlKgPbw", "op": ">", "value": 8, "forSimSec": 1200 } } ] }, "then": [ { "type": "mistake", "mistake": "unsafe_action", "competency": "disease.ards", "severity": "major", "detail": "Tidal volume above 8 mL/kg predicted body weight for 20+ minutes in a patient with bilateral infiltrates and severe hypoxaemia." } ], "once": true },
+    { "id": "protected", "when": { "all": [ { "ordered": { "order": "intubate" } }, { "threshold": { "metric": "vteMlKgPbw", "op": "<=", "value": 8, "forSimSec": 1200 } }, { "threshold": { "metric": "peep", "op": ">=", "value": 8, "forSimSec": 1200 } }, { "threshold": { "metric": "spo2", "op": ">=", "value": 88, "forSimSec": 600 } } ] }, "then": [ { "type": "message", "from": "nurse", "text": "She's settled on the ventilator. ICU have a bed ready." }, { "type": "endCase", "outcome": "improved", "reason": "Controlled intubation after a monitored trial of non-invasive support, then lung-protective ventilation with adequate PEEP." } ], "once": true },
+    {"id":"t-nurse-worse","when":{"any":[{"threshold":{"metric":"rrTotal","op":">=","value":38,"forSimSec":90}},{"threshold":{"metric":"spo2","op":"<=","value":89,"forSimSec":90}}]},"then":[{"type":"message","from":"nurse","text":"Doctor, she's breathing harder and her colour is worse. Can you come and look?"}],"once":true},
+    {"id":"t-nurse-better","when":{"all":[{"threshold":{"metric":"spo2","op":">=","value":96,"forSimSec":180}},{"threshold":{"metric":"rrTotal","op":"<=","value":26,"forSimSec":180}}]},"then":[{"type":"message","from":"nurse","text":"She looks more comfortable and her breathing has slowed. I'll keep an eye on her."}],"once":true}
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-support-effect", "competency": "niv.hfnc", "evidenceType": "prediction",
+      "question": "You have just changed her support. Over the next 15 minutes, which way will each of these go?",
+      "format": "direction", "variables": ["spo2", "rrTotal"],
+      "marking": "engine",
+      "explanation": "High flow delivers a reliable FiO2 that keeps up with her inspiratory flow, washes CO2 out of the upper airway and adds a little PEEP. SpO2 usually rises a little and RR may ease slightly. It does not fix the shunt from consolidated lung, so the response is often modest, which is why reassessment matters.",
+      "hidden": false
+    },
+    {
+      "id": "p-next-step", "competency": "niv.failure", "evidenceType": "decision",
+      "question": "Two hours in, her respiratory rate is higher than when you started and her ROX index (SpO2/FiO2 divided by RR) has fallen. What is the best next step?",
+      "format": "choice",
+      "options": ["Increase FiO2 to 1.0 and reassess in 2 hours", "Switch to NIV and reassess in 2 hours", "Plan a controlled intubation now", "Give a fluid bolus and reassess"],
+      "marking": "fixed", "answerKey": "Plan a controlled intubation now",
+      "explanation": "A falling ROX index with a rising RR predicts failure of high flow (ROX below 2.85 at 2 hours is the published high-risk threshold, Roca 2019). Turning up the FiO2 raises SpO2 but lowers ROX and buys time without treating the problem. Delayed intubation after HFNC failure has been associated with higher mortality, so a planned intubation now is safer than a crash intubation later.",
+      "hidden": false
+    }
+  ],
+  "rubric": [
+    { "id": "r-abg-first", "description": "Checked a blood gas early", "competency": "gas.oxy-vs-vent", "evidenceType": "prioritisation", "met": { "ordered": { "order": "abg", "withinSimMin": 20 } }, "bySimMin": 20, "weight": 1, "critical": false },
+    { "id": "r-support", "description": "Escalated from the mask to high-flow (or other non-invasive support) early", "competency": "niv.hfnc", "evidenceType": "decision", "met": { "ordered": { "order": "change-device", "withinSimMin": 30, "deviceKind": ["hfnc", "niv"] } }, "bySimMin": 30, "weight": 2, "critical": false },
+    { "id": "r-reassess", "description": "Reassessed with a repeat blood gas within 2.5 hours", "competency": "safety.reassess", "evidenceType": "reassessment", "met": { "ordered": { "order": "abg", "minCount": 2, "withinSimMin": 150 } }, "bySimMin": 150, "weight": 1, "critical": false },
+    { "id": "r-intubate", "description": "Intubated in a controlled way before exhaustion (within 3 hours)", "competency": "niv.failure", "evidenceType": "decision", "met": { "ordered": { "order": "intubate", "withinSimMin": 180 } }, "bySimMin": 180, "weight": 2, "critical": true },
+    { "id": "r-lpv", "description": "Set a tidal volume of 8 mL/kg PBW or less after intubation", "competency": "disease.ards", "evidenceType": "safety", "met": { "all": [ { "ordered": { "order": "intubate" } }, { "not": { "fired": "high-vt" } } ] }, "weight": 2, "critical": false },
+    { "id": "r-peep", "description": "Used PEEP of 8 cmH2O or more on the ventilator", "competency": "modes.peep-fio2", "evidenceType": "decision", "met": { "all": [ { "ordered": { "order": "intubate" } }, { "threshold": { "metric": "peep", "op": ">=", "value": 8 } } ] }, "bySimMin": 300, "weight": 1, "critical": false }
+  ],
+  "maxSimMin": 300,
+  "debrief": {
+    "keyPoints": [
+      "High-flow nasal oxygen is a reasonable first step in acute hypoxaemic respiratory failure: reliable FiO2, CO2 washout, a little PEEP and better comfort.",
+      "It does not reverse shunt from consolidated lung. Reassess within 1 to 2 hours: RR, SpO2/FiO2, work of breathing and a gas.",
+      "ROX index = (SpO2/FiO2) / RR. Failure thresholds are time-dependent: < 2.85 at 2 hours, < 3.47 at 6 hours, and < 3.85 at 12 hours (Roca 2016, 2019); a score >= 4.88 predicts successful HFNC weaning. Escalating FiO2 without reducing respiratory rate lowers ROX and delays necessary intubation.",
+      "When non-invasive support is failing, a planned intubation is safer than a crash intubation later.",
+      "After intubation, set tidal volume by predicted body weight (6 mL/kg; she is about 55 kg PBW, so about 330 mL), and use PEEP. The default 450 mL is over 8 mL/kg for her."
+    ],
+    "resources": [
+      { "title": "FLORALI trial (Frat 2015)", "ref": "N Engl J Med 2015;372:2185-96" },
+      { "title": "ROX index (Roca 2019)", "ref": "Am J Respir Crit Care Med 2019;199:1368-76" },
+      { "title": "ESICM HFNC guideline (Rochwerg 2020)", "ref": "Intensive Care Med 2020;46:2226-37" }
+    ]
+  }
+}

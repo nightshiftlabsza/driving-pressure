@@ -1,0 +1,35 @@
+{
+  "caseId": "apo-cpap-01",
+  "scenarios": [
+    {
+      "name": "no changes made",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 15, "metric": "spo2", "op": "<", "value": 88 },
+        { "atSimMin": 25, "metric": "fatigue", "op": ">", "value": 0.4 }
+      ]
+    },
+    {
+      "name": "correct management: CPAP titration with PEEP 10 and diuretic",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 5, "order": "change-device", "detail": { "device": "niv", "mode": "CPAP", "epap": 10, "fio2": 0.6, "interface": "oronasal", "maskFit": "good" } },
+        { "atSimMin": 6, "order": "diuretic" }
+      ],
+      "expect": [
+        { "atSimMin": 20, "metric": "spo2", "op": ">=", "value": 92 },
+        { "atSimMin": 35, "metric": "rrTotal", "op": "<=", "value": 28 },
+        { "atSimMin": 75, "metric": "sbp", "op": "<=", "value": 160 }
+      ]
+    },
+    {
+      "name": "premature intubation",
+      "outcome": "escalated",
+      "orders": [
+        { "atSimMin": 5, "order": "intubate" }
+      ],
+      "expect": []
+    }
+  ]
+}

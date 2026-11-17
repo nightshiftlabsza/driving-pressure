@@ -1,0 +1,52 @@
+{
+  "id": "gas-04-acute-respiratory-acidosis",
+  "source": "Brackett NC Jr, Cohen JJ, Schwartz WB. Carbon dioxide titration curve of normal man. Effect of increasing degrees of acute hypercapnia on acid-base equilibrium. N Engl J Med 1965; 272:6-12.",
+  "claim": "In acute uncompensated respiratory acidosis, arterial pH decreases by approximately 0.08 units for every 10 mmHg increase in PaCO2 above 40 mmHg.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 50,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 10,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.05,
+    "recruitability": 0.3,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 8,
+    "vtSetMl": 350,
+    "inspFlowLpm": 50,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 65
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "paco2", "op": ">=", "value": 60.0 },
+    { "metric": "ph", "op": "<=", "value": 7.25 },
+    { "metric": "ph", "op": ">=", "value": 7.18 }
+  ],
+  "kind": "exact-relation"
+}

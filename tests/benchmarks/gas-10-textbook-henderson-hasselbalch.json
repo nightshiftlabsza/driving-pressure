@@ -1,0 +1,51 @@
+{
+  "id": "gas-10-textbook-henderson-hasselbalch",
+  "source": "Severinghaus JW, Stupfel M, Bradley AF. Variations of serum carbonic acid pK' with pH and temperature. J Appl Physiol 1956; 9(2):197-200.",
+  "claim": "Standard Henderson-Hasselbalch acid-base equilibrium with normal standard bicarbonate 24 mmol/L and PaCO2 40 mmHg yields arterial pH 7.40 ± 0.005 when CO2 solubility is calibrated to 0.0301 mmol/L/mmHg.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 40,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.05,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 75,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 14,
+    "vtSetMl": 475,
+    "inspFlowLpm": 50,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "hco3MmolL": 24
+  },
+  "runSec": 10,
+  "checks": [
+    { "metric": "ph", "op": "approx", "value": 7.40, "tolerance": 0.005 }
+  ],
+  "kind": "exact-relation"
+}

@@ -1,0 +1,521 @@
+{
+  "schemaVersion": "1.0",
+  "id": "vent-high-pressure-01",
+  "version": "0.1.1",
+  "title": "Sudden high-pressure alarm and hemodynamic deterioration",
+  "summary": "A 58-year-old mechanically ventilated patient in the intensive care unit suddenly triggers the high peak pressure alarm with concurrent hypotension.",
+  "difficulty": 2,
+  "setting": "icu",
+  "competencies": [
+    "safety.alarm-response",
+    "safety.crisis",
+    "mech.res-vs-comp",
+    "circ.auto-peep-hypotension",
+    "safety.reassess"
+  ],
+  "hiddenCompetencies": [
+    "mech.res-vs-comp"
+  ],
+  "contextTags": [
+    "high-pressure-alarm",
+    "pneumothorax",
+    "crisis",
+    "compliance",
+    "hemodynamic-collapse",
+    "icu"
+  ],
+  "evidence": [
+    {
+      "claim": "Tension pneumothorax in a ventilated patient is a clinical diagnosis requiring immediate decompression; waiting for radiological confirmation is dangerous and can lead to cardiac arrest.",
+      "source": "Leigh-Smith S, Harris T. Tension pneumothorax--time for a re-think? Emerg Med J 2005;22(1):8-16",
+      "year": 2005,
+      "kind": "review"
+    },
+    {
+      "claim": "The DOPE mnemonic (Displacement, Obstruction, Pneumothorax, Equipment) guides systematic crisis management of sudden deterioration and high-pressure alarms in mechanical ventilation.",
+      "source": "Roberts DJ, et al. Clinical presentation and immediate management of tension pneumothorax. Ann Surg 2015;261(6):1068-1078",
+      "year": 2015,
+      "kind": "review"
+    },
+    {
+      "claim": "Measurement of plateau pressure via inspiratory hold differentiates high resistance (elevated Ppeak, normal Pplat) from low compliance (both Ppeak and Pplat elevated).",
+      "source": "Hess DR. Respiratory mechanics in the mechanically ventilated patient. Respir Care 2014;59(11):1773-1794",
+      "year": 2014,
+      "kind": "review"
+    },
+    {
+      "claim": "Systolic blood pressure < 90 mmHg in the setting of elevated peak airway pressure and unilateral absent breath sounds indicates obstructive shock secondary to tension pneumothorax.",
+      "source": "MacDuff A, et al. Management of spontaneous pneumothorax: British Thoracic Society pleural disease guideline 2010. Thorax 2010;65 Suppl 2:ii18-31",
+      "year": 2010,
+      "kind": "guideline"
+    },
+    {
+      "claim": "Needle decompression of a tension pneumothorax uses a long (8 cm) cannula in the fifth intercostal space just anterior to the mid-axillary line; the second intercostal space in the mid-clavicular line has a higher failure rate.",
+      "source": "Marino PL. Marino's The ICU Book, 2025 edition, chapter on pneumothorax",
+      "year": 2025,
+      "kind": "textbook"
+    }
+  ],
+  "patient": {
+    "displayName": "David Thorne (synthetic)",
+    "presentingStory": "A 58-year-old male admitted 48 hours ago with severe right lower lobe community-acquired pneumonia, intubated and ventilated in VC-AC. Has been hemodynamically stable. At minute 5, the high airway pressure alarm sounds loudly, and the bedside monitor alarms for sudden tachycardia and precipitous hypotension.",
+    "history": "40 pack-year smoking history, mild chronic bronchitis. No previous pneumothorax or cardiothoracic surgery.",
+    "params": {
+      "sex": "M",
+      "ageYears": 58,
+      "heightCm": 172,
+      "actualWeightKg": 75,
+      "complianceMlPerCmH2O": 42,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 8,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 230,
+      "vo2MlPerMin": 280,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.22,
+      "shuntFraction": 0.2,
+      "recruitability": 0.25,
+      "hbGPerDl": 13.5,
+      "temperatureC": 38,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 88,
+      "sbpBaselineMmHg": 124,
+      "dbpBaselineMmHg": 78,
+      "ppvResponse": "clean-kill",
+      "ppvSeverity": 0.95,
+      "respiratoryReserve": 0.5
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 8,
+    "rrSetBpm": 16,
+    "vtSetMl": 420,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "initialPhys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 85,
+    "hco3MmolL": 24,
+    "fatigue": 0.2
+  },
+  "availableOrders": [
+    "abg",
+    "cxr",
+    "examine",
+    "change-settings",
+    "disconnect-ventilator",
+    "suction",
+    "needle-decompression"
+  ],
+  "orderEffects": [
+    {
+      "order": "needle-decompression",
+      "delaySimMin": 0,
+      "note": "Immediate release of pressurized air from the pleural space",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "complianceMlPerCmH2O": 38,
+            "shuntFraction": 0.22,
+            "sbpBaselineMmHg": 118,
+            "dbpBaselineMmHg": 74,
+            "hrBaselineBpm": 92,
+            "ppvSeverity": 0.35
+          }
+        },
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "A 14G, 8 cm cannula is inserted in the fifth intercostal space just anterior to the right mid-axillary line: there is an immediate rush of air. Peak pressure is falling and blood pressure is recovering on the monitor. A chest drain is still needed."
+        }
+      ]
+    },
+    {
+      "order": "suction",
+      "delaySimMin": 1,
+      "note": "Airway suction clears minimal secretions but does not relieve intrapleural tension",
+      "actions": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Suction catheter passed easily to carina with no mucus plug found. High peak pressure alarm continues and blood pressure remains dangerously low."
+        }
+      ]
+    },
+    {
+      "order": "disconnect-ventilator",
+      "delaySimMin": 0,
+      "note": "Ventilator disconnection briefly stops positive pressure delivery",
+      "actions": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Ventilator disconnected; manual bag ventilation meets severe high resistance. Hemodynamic instability persists."
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "examine": "Trachea central. Equal chest expansion, vesicular breath sounds on both sides with scattered coarse crackles at the right base. Warm, well perfused, no distended neck veins. Tube at 22 cm at the teeth, ventilator circuit intact.",
+    "cxr": "Portable CXR: tube 4 cm above the carina, right lower zone consolidation, both lungs fully expanded, no pneumothorax, mediastinum central."
+  },
+  "course": [
+    {
+      "atSimMin": 5,
+      "actions": [
+        {
+          "type": "finding",
+          "order": "examine",
+          "text": "Trachea shifted markedly to the left side. Right hemithorax is visibly hyper-expanded with absent chest movement during inspiration. Hyper-resonant percussion note and absent breath sounds throughout the right chest. Distended neck veins and cyanosis present."
+        },
+        {
+          "type": "finding",
+          "order": "cxr",
+          "text": "Portable CXR (stat): Complete collapse of right lung with marked hyper-transradiancy of right hemithorax, flattening/inversion of right diaphragm, and significant shift of mediastinum and trachea to the left."
+        },
+        {
+          "type": "patientChange",
+          "change": {
+            "complianceMlPerCmH2O": 11,
+            "shuntFraction": 0.48,
+            "sbpBaselineMmHg": 72,
+            "dbpBaselineMmHg": 42,
+            "hrBaselineBpm": 138,
+            "ppvSeverity": 0.95
+          }
+        },
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "URGENT: Ventilator high-pressure alarm sounding! Peak pressure has spiked! Blood pressure has dropped and the heart rate is racing; see the monitor!"
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "id": "t-predict-decompression",
+      "when": {
+        "ordered": {
+          "order": "needle-decompression"
+        }
+      },
+      "then": [
+        {
+          "type": "prediction",
+          "predictionId": "p-pneumo-response"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-cxr-delay",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 5
+            }
+          },
+          {
+            "ordered": {
+              "order": "cxr"
+            }
+          },
+          {
+            "not": {
+              "ordered": {
+                "order": "needle-decompression"
+              }
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "unsafe_action",
+          "competency": "safety.crisis",
+          "severity": "critical",
+          "detail": "Ordering a chest radiograph and waiting for confirmation during a tension pneumothorax crisis with severe hypotension causes fatal delay; immediate needle decompression is required based on clinical examination."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-high-pressure-ignore",
+      "when": {
+        "threshold": {
+          "metric": "ppeak",
+          "op": ">=",
+          "value": 50,
+          "forSimSec": 300
+        }
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "misinterpretation",
+          "competency": "safety.alarm-response",
+          "severity": "major",
+          "detail": "A severe spike in peak airway pressure accompanied by hypotension requires urgent clinical evaluation and troubleshooting (DOPE algorithm)."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-improved",
+      "when": {
+        "all": [
+          {
+            "ordered": {
+              "order": "needle-decompression"
+            }
+          },
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": ">=",
+              "value": 95,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "ppeak",
+              "op": "<=",
+              "value": 30,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 10
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "The patient's hemodynamics are restored (blood pressure back to normal on the monitor) and peak airway pressure is normal. Tube thoracostomy team called for definitive chest tube."
+        },
+        {
+          "type": "endCase",
+          "outcome": "improved",
+          "reason": "Immediate needle decompression of tension pneumothorax relieved mediastinal compression, restored compliance and venous return, and saved the patient's life."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-deteriorated",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 5
+            }
+          },
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": "<",
+              "value": 65,
+              "forSimSec": 240
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "No carotid pulse! The monitor shows pulseless electrical activity (PEA) arrest!"
+        },
+        {
+          "type": "endCase",
+          "outcome": "deteriorated",
+          "reason": "Unrelieved tension pneumothorax caused complete obstruction of cardiac venous return and fatal PEA cardiac arrest."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-high-pressure-silenced",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "alarmActive:ppeak-high",
+              "op": ">=",
+              "value": 1,
+              "forSimSec": 120
+            }
+          },
+          {
+            "not": {
+              "ordered": {
+                "order": "needle-decompression"
+              }
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "unsafe_action",
+          "competency": "safety.alarm-response",
+          "severity": "major",
+          "detail": "High-pressure alarm remained active without needle decompression for over 2 minutes during an acute tension pneumothorax."
+        }
+      ],
+      "once": true
+    }
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-pneumo-response",
+      "competency": "safety.crisis",
+      "evidenceType": "prediction",
+      "question": "You perform emergent needle decompression of the right pleural space. Over the next 5 minutes, which direction will each parameter move?",
+      "format": "direction",
+      "variables": [
+        "ppeak",
+        "sbp",
+        "spo2"
+      ],
+      "marking": "engine",
+      "explanation": "Venting high-pressure pleural gas restores lung expansion, drastically increasing respiratory compliance and driving peak airway pressure (ppeak) down. Releasing mediastinal compression eliminates vena caval obstruction, immediately restoring venous return and cardiac output (sbp rises). Re-expanding the collapsed lung restores ventilation to perfused units, reducing shunt and improving SpO2.",
+      "hidden": false
+    },
+    {
+      "id": "p-res-vs-comp",
+      "competency": "mech.res-vs-comp",
+      "evidenceType": "interpretation",
+      "question": "When the high-pressure alarm sounded, an inspiratory pause revealed that both Ppeak (54 cmH2O) and Pplat (46 cmH2O) were markedly elevated. What does this indicate?",
+      "format": "choice",
+      "options": [
+        "Decreased respiratory system compliance (e.g. pneumothorax, pulmonary oedema, atelectasis)",
+        "Increased airway resistance only (e.g. bronchospasm, mucus plugging, kinked ETT)",
+        "Excessive patient respiratory effort with flow starvation",
+        "A major circuit leak leading to ventilator overcompensation"
+      ],
+      "marking": "fixed",
+      "answerKey": "Decreased respiratory system compliance (e.g. pneumothorax, pulmonary oedema, atelectasis)",
+      "explanation": "In the equation of motion, Ppeak depends on flow x resistance + volume / compliance + PEEP, whereas Pplat (measured at zero flow) depends only on volume / compliance + PEEP. When Ppeak and Pplat rise together with a normal peak-to-plateau difference, the problem is loss of compliance, such as a tension pneumothorax or acute atelectasis.",
+      "hidden": true
+    }
+  ],
+  "rubric": [
+    {
+      "id": "r-needle-decompression",
+      "description": "Performed emergent needle decompression without delaying for imaging",
+      "competency": "safety.crisis",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "needle-decompression",
+          "withinSimMin": 12
+        }
+      },
+      "bySimMin": 12,
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "r-prompt-exam",
+      "description": "Examined the patient promptly following the high-pressure and hypotension alarm",
+      "competency": "safety.alarm-response",
+      "evidenceType": "prioritisation",
+      "met": {
+        "ordered": {
+          "order": "examine",
+          "withinSimMin": 8
+        }
+      },
+      "bySimMin": 8,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-avoid-cxr-delay",
+      "description": "Did not delay needle decompression by ordering and waiting for a chest X-ray",
+      "competency": "safety.crisis",
+      "evidenceType": "safety",
+      "met": {
+        "not": {
+          "fired": "t-mistake-cxr-delay"
+        }
+      },
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-restore-blood-pressure",
+      "description": "Restored systolic blood pressure >= 95 mmHg post-decompression",
+      "competency": "safety.reassess",
+      "evidenceType": "reassessment",
+      "met": {
+        "threshold": {
+          "metric": "sbp",
+          "op": ">=",
+          "value": 95
+        }
+      },
+      "bySimMin": 15,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-restore-airway-pressure",
+      "description": "Restored peak airway pressure <= 32 cmH2O post-decompression",
+      "competency": "mech.res-vs-comp",
+      "evidenceType": "reassessment",
+      "met": {
+        "threshold": {
+          "metric": "ppeak",
+          "op": "<=",
+          "value": 32
+        }
+      },
+      "bySimMin": 15,
+      "weight": 1,
+      "critical": false
+    }
+  ],
+  "maxSimMin": 120,
+  "debrief": {
+    "keyPoints": [
+      "A sudden high-pressure alarm accompanied by acute hypotension in a mechanically ventilated patient is a medical emergency that must be treated as tension pneumothorax until proven otherwise.",
+      "The DOPE algorithm (Displacement, Obstruction, Pneumothorax, Equipment) provides structured crisis troubleshooting.",
+      "An inspiratory pause differentiates resistance (high Ppeak, normal Pplat) from compliance (both Ppeak and Pplat high). Tension pneumothorax causes an acute collapse in compliance.",
+      "Tension pneumothorax is a clinical diagnosis. Never delay needle decompression to wait for radiological confirmation in an unstable patient."
+    ],
+    "resources": [
+      {
+        "title": "Tension pneumothorax--time for a re-think?",
+        "ref": "Leigh-Smith S, Harris T. Emerg Med J 2005;22(1):8-16"
+      },
+      {
+        "title": "Clinical presentation and immediate management of tension pneumothorax",
+        "ref": "Roberts DJ, et al. Ann Surg 2015;261(6):1068-1078"
+      }
+    ]
+  }
+}

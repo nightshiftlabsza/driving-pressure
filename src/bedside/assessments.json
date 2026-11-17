@@ -1,0 +1,68 @@
+[
+  {
+    "id": "hypoxaemic_failure",
+    "label": "Mainly oxygenation failure (shunt / refractory hypoxaemia)",
+    "description": "Severe V/Q mismatch or intrapulmonary shunt requiring PEEP/FiO2 optimisation",
+    "source": "teaching-convention"
+  },
+  {
+    "id": "hypercapnic_failure",
+    "label": "Mainly ventilation failure (hypoventilation / severe acidaemia)",
+    "description": "Inadequate alveolar ventilation relative to CO2 production",
+    "source": "teaching-convention"
+  },
+  {
+    "id": "high_resistance",
+    "label": "Raised airway resistance (bronchospasm / airway narrowing)",
+    "description": "Marked resistive load; high peak pressure with normal or lower plateau",
+    "source": "Hess DR. Respir Care 2014;59:1773-1794"
+  },
+  {
+    "id": "low_compliance",
+    "label": "Reduced respiratory compliance (stiff lung / chest wall)",
+    "description": "Low lung compliance requiring lung protection; elevated plateau pressure",
+    "source": "ARDSNet NEJM 2000;342:1301-1308"
+  },
+  {
+    "id": "dynamic_hyperinflation",
+    "label": "Dynamic hyperinflation & auto-PEEP (air trapping)",
+    "description": "Incomplete exhalation leading to intrinsic PEEP and hemodynamic compromise",
+    "source": "Leatherman J. Chest 2015;147:1671-1680"
+  },
+  {
+    "id": "dyssynchrony",
+    "label": "Patient-ventilator dyssynchrony (missed trigger / fighting)",
+    "description": "Mismatch between patient neural respiratory effort and ventilator delivery",
+    "source": "Thille AW. Intensive Care Med 2006;32:1515-1522"
+  },
+  {
+    "id": "cardiogenic_pulmonary_edema",
+    "label": "Cardiogenic pulmonary oedema (elevated filling pressures)",
+    "description": "Acute hydrostatic alveolar flooding responsive to positive airway pressure and afterload reduction",
+    "source": "Masip J. JAMA 2005;294:3124-3130"
+  },
+  {
+    "id": "equipment_tube_problem",
+    "label": "Equipment, circuit, or tube problem (DOPE / pneumothorax)",
+    "description": "Acute tension pneumothorax, mechanical obstruction, tube displacement, or circuit problem",
+    "source": "Roberts DJ. Ann Surg 2015;261:1068-1078"
+  },
+  {
+    "id": "weaning_failure",
+    "label": "Weaning intolerance / SBT failure (excessive load)",
+    "description": "Rapid shallow breathing, fatigue, or distress during low-support trial requiring increased ventilatory assist",
+    "source": "Schmidt GA, et al. CHEST 2017;151:160-165"
+  },
+  {
+    "id": "weaning_ready",
+    "label": "Weaning tolerance / liberation ready",
+    "description": "Quiet, stable spontaneous breathing with adequate mechanics and gas exchange supporting liberation assessment",
+    "source": "Schmidt GA, et al. CHEST 2017;151:160-165"
+  },
+  {
+    "id": "uncertain",
+    "label": "Not sure yet (gathering clinical data)",
+    "description": "Working hypothesis pending further diagnostic maneuvers and physiological response",
+    "source": "teaching-convention"
+  }
+]

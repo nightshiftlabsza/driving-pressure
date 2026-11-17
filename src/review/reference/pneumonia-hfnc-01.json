@@ -1,0 +1,59 @@
+{
+  "caseId": "pneumonia-hfnc-01",
+  "title": "Severe pneumonia HFNC trial followed by early controlled intubation",
+  "label": "One reasonable approach",
+  "source": "FLORALI trial NEJM 2015; Kang BJ et al. ICM 2015; Roca O et al. AJRCCM 2019",
+  "decisions": [
+    {
+      "simTimeSec": 60,
+      "kind": "settings_change",
+      "order": "change-device",
+      "detail": {
+        "device": {
+          "device": "hfnc",
+          "flowLpm": 60,
+          "fio2": 0.8,
+          "temperatureC": 37
+        }
+      },
+      "rationale": "Escalate from non-rebreather mask to HFNC 60 L/min and FiO2 0.8 to meet high peak inspiratory flow demands and wash out anatomic dead space.",
+      "source": "Rochwerg B, et al. ESICM/ERS Guideline on HFNC. Intensive Care Med 2020;46:2226-37"
+    },
+    {
+      "simTimeSec": 180,
+      "kind": "order",
+      "order": "abg",
+      "rationale": "Objective blood gas to quantify severe hypoxaemia and calculate baseline ROX index.",
+      "source": "clinical-practice-standard; Roca O et al. 2019"
+    },
+    {
+      "simTimeSec": 5400,
+      "kind": "order",
+      "order": "abg",
+      "rationale": "Reassessment arterial blood gas during HFNC trial as respiratory rate climbs and ROX index falls.",
+      "source": "Roca O, et al. Am J Respir Crit Care Med 2019;199:1368-76"
+    },
+    {
+      "simTimeSec": 7500,
+      "kind": "order",
+      "order": "intubate",
+      "rationale": "Proceed to controlled endotracheal intubation after 2-hour HFNC review shows rising respiratory rate and falling ROX index predicting HFNC failure.",
+      "source": "Kang BJ, et al. Failure of high-flow nasal cannula therapy may delay needed intubation and increase mortality. Intensive Care Med 2015;41:623-32"
+    },
+    {
+      "simTimeSec": 7560,
+      "kind": "settings_change",
+      "order": "change-settings",
+      "detail": {
+        "settings": {
+          "vtSetMl": 330,
+          "rrSetBpm": 26,
+          "peep": 10,
+          "fio2": 0.7
+        }
+      },
+      "rationale": "Immediate post-intubation lung protective ventilation calibrated to 6 mL/kg predicted body weight (330 mL for 55 kg PBW) with RR 26 bpm to maintain pH and moderate PEEP 10 cmH2O.",
+      "source": "ARDS Network. N Engl J Med 2000;342:1301-8; ESICM ARDS Guidelines 2023"
+    }
+  ]
+}

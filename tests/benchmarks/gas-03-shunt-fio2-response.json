@@ -1,0 +1,52 @@
+{
+  "id": "gas-03-shunt-fio2-response",
+  "source": "Nunn JF. Nunn's Applied Respiratory Physiology. 8th ed. Elsevier, 2016; Chapter 10.",
+  "claim": "In the presence of large true intrapulmonary right-to-left shunt, arterial oxygen tension remains severely depressed and responds poorly even to maximum inspired oxygen fraction.",
+  "patient": {
+    "sex": "F",
+    "ageYears": 52,
+    "heightCm": 165,
+    "actualWeightKg": 65,
+    "complianceMlPerCmH2O": 30,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 190,
+    "vo2MlPerMin": 230,
+    "anatomicDeadSpaceMl": 130,
+    "alveolarDeadSpaceFraction": 0.2,
+    "shuntFraction": 0.45,
+    "recruitability": 0.0,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 95,
+    "sbpBaselineMmHg": 110,
+    "dbpBaselineMmHg": 65,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 1.0,
+    "peep": 5,
+    "rrSetBpm": 16,
+    "vtSetMl": 400,
+    "inspFlowLpm": 55,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 50
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pao2", "op": "<=", "value": 60.0 },
+    { "metric": "pfRatio", "op": "<=", "value": 60.0 }
+  ],
+  "kind": "published-range"
+}

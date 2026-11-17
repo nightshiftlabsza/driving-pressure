@@ -1,0 +1,11 @@
+{
+  "caseId": "sbt-fail-01",
+  "patientName": "Marcus Vance (synthetic)",
+  "location": "ICU Bed 6",
+  "who": "68-year-old male (175 cm, 75 kg)",
+  "whyAdmitted": "Intubated 6 days ago for septic shock and acute lung injury from an intra-abdominal source.",
+  "whatHasBeenDone": "Completed targeted antibiotics; norepinephrine ceased yesterday; sedation held this morning. Placed on low pressure support 30 minutes ago.",
+  "currentSupport": "Invasive mechanical ventilation: PSV, PS 5 cmH2O above PEEP 5 cmH2O, FiO2 0.35.",
+  "theWorry": "Over the last 30 minutes he has become very sweaty with fast, shallow breathing; nurse requests urgent bedside evaluation.",
+  "background": "Peripheral vascular disease, hypertension, mild CKD; former smoker (20 pack-years, quit 10 years ago)."
+}

@@ -1,0 +1,11 @@
+{
+  "caseId": "dyssynchrony-01",
+  "patientName": "Elena Rostova (synthetic)",
+  "location": "ICU Bed 4",
+  "who": "48-year-old female (165 cm, 62 kg)",
+  "whyAdmitted": "Intubated 4 days ago for severe viral pneumonia and secondary respiratory failure; previously healthy non-smoker.",
+  "whatHasBeenDone": "Sedation was lightened 2 hours ago to evaluate readiness for weaning.",
+  "currentSupport": "Invasive mechanical ventilation: VC-AC, VT 360 mL, RR 14, PEEP 8 cmH2O, FiO2 0.45, inspiratory flow 34 L/min (square).",
+  "theWorry": "Patient appears to be fighting the ventilator and is tachycardic while the high peak pressure alarm keeps sounding; nurse asks if a propofol bolus can be given.",
+  "background": "No prior cardiopulmonary disease. Full escalation."
+}

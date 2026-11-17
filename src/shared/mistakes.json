@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "mistakes": [
+    {
+      "id": "knowledge_gap",
+      "name": "Knowledge gap",
+      "response": "Lab exercise on the concept"
+    },
+    {
+      "id": "faulty_model",
+      "name": "Faulty physiological model",
+      "response": "Lab contrast exercise, then a case with the same mechanism"
+    },
+    {
+      "id": "misinterpretation",
+      "name": "Misinterpretation",
+      "response": "Drill on that data type"
+    },
+    {
+      "id": "missed_clue",
+      "name": "Missed discriminating clue",
+      "response": "Case with the clue less prominent next time"
+    },
+    {
+      "id": "poor_prioritisation",
+      "name": "Poor prioritisation",
+      "response": "Time-pressured case"
+    },
+    {
+      "id": "premature_closure",
+      "name": "Premature closure",
+      "response": "Case with a misleading first impression"
+    },
+    {
+      "id": "failure_to_reassess",
+      "name": "Failure to reassess",
+      "response": "Case where the change has a delayed harm"
+    },
+    {
+      "id": "right_action_wrong_reason",
+      "name": "Prediction error with correct action",
+      "response": "Treated as a model problem, not a success"
+    },
+    {
+      "id": "calibration_error",
+      "name": "Calibration error",
+      "response": "Calibration shown in debrief; competency retested sooner"
+    },
+    {
+      "id": "unsafe_action",
+      "name": "Unsafe action",
+      "response": "Always shown in debrief, regardless of outcome"
+    }
+  ]
+}

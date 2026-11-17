@@ -1,0 +1,48 @@
+{
+  "id": "drive-03-acute-on-chronic-copd",
+  "source": "Brackett NC Jr, Cohen JJ, Schwartz WB. Carbon dioxide titration curve of normal man. Effect of increasing degrees of acute hypercapnia on acid-base equilibrium. N Engl J Med 1965; 272:6-12.",
+  "claim": "In acute-on-chronic respiratory acidosis (chronic PaCO2 55 mmHg presenting with acute PaCO2 72 mmHg), arterial pH is below the chronic setpoint (~7.355), stimulating chemoreflex drive above baseline (>1.0) to mount compensatory ventilatory effort.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 68,
+    "heightCm": 172,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 14,
+    "spontRateBpm": 18,
+    "pmusAmplitudeCmH2O": 10.0,
+    "pmusInspTimeSec": 0.9,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 270,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.35,
+    "shuntFraction": 0.12,
+    "recruitability": 0.1,
+    "hbGPerDl": 15,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 30,
+    "chronicPaco2MmHg": 55,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 130,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "paco2MmHg": 72,
+    "hco3MmolL": 30
+  },
+  "runSec": 300,
+  "checks": [
+    { "metric": "drive", "op": ">=", "value": 1.30 },
+    { "metric": "ph", "op": "<", "value": 7.35 }
+  ],
+  "kind": "direction"
+}

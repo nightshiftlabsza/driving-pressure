@@ -1,0 +1,52 @@
+{
+  "id": "drive-04-corrected-acidosis-drive",
+  "source": "Javaheri S, Kazemi H. Metabolic alkalosis and hypoventilation in humans. Am Rev Respir Dis 1987; 136(4):1011-1016.",
+  "claim": "When acute respiratory acidosis (pH ~7.20) is corrected by pressure support ventilation to normal PaCO2 (~40 mmHg, pH 7.40), intrinsic chemoreflex drive must not fall below 0.80 (the patient should not become pathologically under-driven merely because the starting state was acidotic).",
+  "patient": {
+    "sex": "M",
+    "ageYears": 45,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 16,
+    "pmusAmplitudeCmH2O": 12.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.05,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "PSV",
+    "fio2": 0.3,
+    "peep": 5,
+    "psAbovePeep": 14,
+    "rrSetBpm": 0,
+    "triggerFlowLpm": 2,
+    "cyclePctPeakFlow": 25
+  },
+  "phys": {
+    "paco2MmHg": 65,
+    "hco3MmolL": 24
+  },
+  "runSec": 1200,
+  "checks": [
+    { "metric": "paco2", "op": "<=", "value": 45.0 },
+    { "metric": "drive", "op": ">=", "value": 0.80 }
+  ],
+  "kind": "direction"
+}

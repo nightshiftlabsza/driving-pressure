@@ -1,0 +1,468 @@
+{
+  "schemaVersion": "1.0",
+  "id": "asthma-vent-01",
+  "version": "0.1.1",
+  "title": "Severe bronchospasm and falling blood pressure after intubation",
+  "summary": "A 26-year-old intubated in the emergency department for severe acute dyspnoea develops high airway pressures and hemodynamic instability.",
+  "difficulty": 2,
+  "setting": "icu",
+  "competencies": [
+    "mech.auto-peep",
+    "circ.auto-peep-hypotension",
+    "disease.obstructive",
+    "modes.ie-flow-ti",
+    "safety.crisis",
+    "safety.reassess",
+    "gas.acid-base"
+  ],
+  "hiddenCompetencies": ["circ.auto-peep-hypotension"],
+  "contextTags": ["asthma", "auto-peep", "hypotension", "obstructive", "icu", "invasive"],
+  "evidence": [
+    {
+      "claim": "In severe asthma on mechanical ventilation, set respiratory rate should be reduced (10-14 bpm) with high inspiratory flow (70-80 L/min) to prolong expiratory time and minimize auto-PEEP and dynamic hyperinflation.",
+      "source": "Leatherman J. Mechanical ventilation for severe asthma. Chest 2015;147(6):1671-1680",
+      "year": 2015,
+      "kind": "review"
+    },
+    {
+      "claim": "Ventilator disconnection (apnoea trial) is the immediate diagnostic and therapeutic intervention for suspected auto-PEEP-induced hypotension or pulseless electrical activity in obstructive lung disease.",
+      "source": "Tuxen DV. Detrimental effects of positive end-expiratory pressure during controlled mechanical ventilation of patients with severe airflow obstruction. Am Rev Respir Dis 1989;140(1):5-9",
+      "year": 1989,
+      "kind": "trial"
+    },
+    {
+      "claim": "Plateau pressure should be maintained <= 30 cmH2O and auto-PEEP <= 5-10 cmH2O to prevent pulmonary barotrauma and hemodynamic compromise in mechanically ventilated asthma.",
+      "source": "Oddo M, et al. Management of mechanical ventilation in acute severe asthma. Intensive Care Med 2006;32:501-510",
+      "year": 2006,
+      "kind": "review"
+    }
+  ],
+  "patient": {
+    "displayName": "Elena Rostova (synthetic)",
+    "presentingStory": "Transferred from the emergency department 20 minutes after rapid sequence intubation for acute severe bronchospasm unresponsive to initial continuous nebulisers. The transport ventilator was switched to the ICU ventilator. The bedside nurse calls urgently because the high peak pressure alarm is active and blood pressure is falling.",
+    "history": "Severe persistent asthma since childhood with two prior ICU admissions. No regular inhaled corticosteroids for past 3 months. Presented to ED in extremis with silent chest and exhaustion.",
+    "params": {
+      "sex": "F",
+      "ageYears": 26,
+      "heightCm": 165,
+      "actualWeightKg": 60,
+      "complianceMlPerCmH2O": 65,
+      "inspResistanceCmH2OPerLps": 20,
+      "expResistanceCmH2OPerLps": 60,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 240,
+      "vo2MlPerMin": 280,
+      "anatomicDeadSpaceMl": 140,
+      "alveolarDeadSpaceFraction": 0.3,
+      "shuntFraction": 0.1,
+      "recruitability": 0.1,
+      "hbGPerDl": 13.5,
+      "temperatureC": 37.2,
+      "baselineHco3MmolL": 22,
+      "hrBaselineBpm": 95,
+      "sbpBaselineMmHg": 115,
+      "dbpBaselineMmHg": 75,
+      "ppvResponse": "clean-kill",
+      "ppvSeverity": 0.75,
+      "respiratoryReserve": 0.3
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.6,
+    "peep": 4,
+    "rrSetBpm": 22,
+    "vtSetMl": 500,
+    "inspFlowLpm": 45,
+    "flowPattern": "square"
+  },
+  "initialPhys": {
+    "paco2MmHg": 68,
+    "pao2MmHg": 82,
+    "hco3MmolL": 24.8,
+    "fatigue": 0.5
+  },
+  "availableOrders": [
+    "abg",
+    "cxr",
+    "examine",
+    "change-settings",
+    "disconnect-ventilator",
+    "bronchodilator",
+    "steroid",
+    "fluid-bolus"
+  ],
+  "orderEffects": [
+    {
+      "order": "disconnect-ventilator",
+      "delaySimMin": 0,
+      "note": "Apnoea trial / ventilator disconnection permits complete exhalation of trapped air",
+      "actions": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "You disconnect the ventilator. A prolonged, continuous rush of air escapes from the endotracheal tube over 15 seconds. Blood pressure rises quickly and the heart rate settles; check the monitor."
+        }
+      ]
+    },
+    {
+      "order": "bronchodilator",
+      "delaySimMin": 3,
+      "note": "Inhaled beta-2 agonist and anticholinergic reduce bronchospasm",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "expResistanceCmH2OPerLps": 28,
+            "inspResistanceCmH2OPerLps": 12
+          },
+          "rampSimMin": 15
+        }
+      ]
+    },
+    {
+      "order": "steroid",
+      "delaySimMin": 240,
+      "note": "Systemic corticosteroid anti-inflammatory action occurs over hours",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "expResistanceCmH2OPerLps": 24
+          },
+          "rampSimMin": 240
+        }
+      ]
+    },
+    {
+      "order": "fluid-bolus",
+      "delaySimMin": 2,
+      "note": "Intravascular volume expansion partially counteracts intrathoracic pressure on venous return",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "sbpBaselineMmHg": 120,
+            "dbpBaselineMmHg": 78
+          },
+          "rampSimMin": 5
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "examine": "Endotracheal tube secured at 21 cm at teeth. Bilateral chest hyperinflation with minimal chest wall deflation between breaths. Expiratory wheeze is faint bilaterally with prolonged expiratory phase. Trachea is midline. Neck veins are distended. Peripheral pulses are weak and thready, synchronous with tachycardia.",
+    "cxr": "Endotracheal tube tip 3.5 cm above carina. Marked bilateral hyperinflation with 10 posterior ribs visible and flattened diaphragms. Narrow cardiac silhouette. No pneumothorax, focal consolidation, or pleural effusion."
+  },
+  "course": [],
+  "triggers": [
+    {
+      "id": "t-auto-peep-warning",
+      "when": {
+        "threshold": {
+          "metric": "autoPeep",
+          "op": ">=",
+          "value": 11,
+          "forSimSec": 60
+        }
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Nurse notes: Expiratory hold shows auto-PEEP is high! Her systolic pressure is dipping on the monitor."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-predict-settings",
+      "when": {
+        "ordered": {
+          "order": "change-settings"
+        }
+      },
+      "then": [
+        {
+          "type": "prediction",
+          "predictionId": "p-asthma-mechanics"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-high-rr",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "rrTotal",
+              "op": ">=",
+              "value": 20
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 10
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "unsafe_action",
+          "competency": "disease.obstructive",
+          "severity": "critical",
+          "detail": "Maintaining or increasing set respiratory rate (>= 20 bpm) in severe bronchospasm leads to dynamic hyperinflation, severe auto-PEEP, and hemodynamic collapse."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-high-peep",
+      "when": {
+        "threshold": {
+          "metric": "peep",
+          "op": ">=",
+          "value": 10
+        }
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "faulty_model",
+          "competency": "mech.auto-peep",
+          "severity": "major",
+          "detail": "Applying high external PEEP (>= 10 cmH2O) in passively ventilated asthma adds directly to alveolar pressure and exacerbates hyperinflation and hypotension."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-improved",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "autoPeep",
+              "op": "<=",
+              "value": 6,
+              "forSimSec": 900
+            }
+          },
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": ">=",
+              "value": 95,
+              "forSimSec": 900
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 30
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Her blood pressure has stabilized on the monitor, peak pressures have come down, and dynamic hyperinflation is resolving."
+        },
+        {
+          "type": "endCase",
+          "outcome": "improved",
+          "reason": "Obstructive strategy applied successfully: dynamic hyperinflation resolved, auto-PEEP lowered, and hemodynamic collapse averted."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-deteriorated",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": "<",
+              "value": 85,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "autoPeep",
+              "op": ">=",
+              "value": 10
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "The patient is in severe obstructive shock with unrecordable blood pressure and pulseless electrical activity!"
+        },
+        {
+          "type": "endCase",
+          "outcome": "deteriorated",
+          "reason": "Severe dynamic hyperinflation and auto-PEEP caused complete loss of venous return and PEA arrest."
+        }
+      ],
+      "once": true
+    },
+    {"id":"t-nurse-worse","when":{"any":[{"threshold":{"metric":"sbp","op":"<=","value":72,"forSimSec":90}},{"threshold":{"metric":"spo2","op":"<=","value":92,"forSimSec":90}}]},"then":[{"type":"message","from":"nurse","text":"Doctor, she looks washed out and her colour is going. Can you come and look?"}],"once":true},
+    {"id":"t-nurse-better","when":{"all":[{"threshold":{"metric":"sbp","op":">=","value":100,"forSimSec":180}},{"threshold":{"metric":"autoPeep","op":"<=","value":8,"forSimSec":180}}]},"then":[{"type":"message","from":"nurse","text":"She looks more comfortable and her chest seems less tight. I'll keep an eye on her."}],"once":true}
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-asthma-mechanics",
+      "competency": "modes.ie-flow-ti",
+      "evidenceType": "prediction",
+      "question": "You are implementing an obstructive lung strategy (reducing RR to 10-12 bpm and increasing peak inspiratory flow to 70-80 L/min). Over the next 15-30 minutes, which direction will each parameter move?",
+      "format": "direction",
+      "variables": ["autoPeep", "ppeak", "sbp", "paco2"],
+      "marking": "engine",
+      "explanation": "Lengthening expiratory time allows trapped air to escape, reducing auto-PEEP and peak airway pressure. Lower intrathoracic pressure restores venous return and increases SBP. PaCO2 will initially rise due to reduced minute ventilation (permissive hypercapnia), which is well tolerated and protective.",
+      "hidden": false
+    },
+    {
+      "id": "p-asthma-disconnect",
+      "competency": "circ.auto-peep-hypotension",
+      "evidenceType": "decision",
+      "question": "If a mechanically ventilated patient with life-threatening bronchospasm abruptly develops severe hypotension and tachycardia, what is the most immediate life-saving action?",
+      "format": "choice",
+      "options": [
+        "Disconnect the patient from the ventilator to allow complete exhalation of trapped air",
+        "Increase the set respiratory rate to clear accumulating carbon dioxide",
+        "Increase external PEEP to 15 cmH2O to stent open small airways",
+        "Infuse 100 mL of 8.4% sodium bicarbonate immediately"
+      ],
+      "marking": "fixed",
+      "answerKey": "Disconnect the patient from the ventilator to allow complete exhalation of trapped air",
+      "explanation": "Ventilator disconnection (the 'apnoea trial') immediately vents trapped intra-thoracic air. If hypotension was caused by auto-PEEP and reduced venous return, hemodynamics will dramatically improve within 10-20 seconds.",
+      "hidden": true
+    }
+  ],
+  "rubric": [
+    {
+      "id": "r-lower-rr",
+      "description": "Reduced set respiratory rate to 14 bpm or below to prolong expiratory time",
+      "competency": "modes.ie-flow-ti",
+      "evidenceType": "decision",
+      "met": {
+        "threshold": {
+          "metric": "rrTotal",
+          "op": "<=",
+          "value": 14
+        }
+      },
+      "bySimMin": 25,
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "r-relieve-auto-peep",
+      "description": "Reduced auto-PEEP below 6 cmH2O",
+      "competency": "mech.auto-peep",
+      "evidenceType": "reassessment",
+      "met": {
+        "threshold": {
+          "metric": "autoPeep",
+          "op": "<=",
+          "value": 6
+        }
+      },
+      "bySimMin": 40,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-bronchodilator",
+      "description": "Ordered inhaled bronchodilators",
+      "competency": "disease.obstructive",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "bronchodilator"
+        }
+      },
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "r-steroid",
+      "description": "Ordered systemic corticosteroids",
+      "competency": "disease.obstructive",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "steroid"
+        }
+      },
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "r-avoid-hypotension",
+      "description": "Prevented persistent severe hypotension (SBP < 80 mmHg)",
+      "competency": "circ.auto-peep-hypotension",
+      "evidenceType": "safety",
+      "met": {
+        "not": {
+          "threshold": {
+            "metric": "sbp",
+            "op": "<",
+            "value": 80,
+            "forSimSec": 600
+          }
+        }
+      },
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-check-abg",
+      "description": "Obtained an arterial blood gas to assess ventilation and acid-base status",
+      "competency": "gas.acid-base",
+      "evidenceType": "reassessment",
+      "met": {
+        "ordered": {
+          "order": "abg"
+        }
+      },
+      "weight": 1,
+      "critical": false
+    }
+  ],
+  "maxSimMin": 180,
+  "debrief": {
+    "keyPoints": [
+      "In mechanically ventilated asthma, dynamic hyperinflation and auto-PEEP occur when expiratory time is shorter than the time required for passive lung emptying.",
+      "Auto-PEEP transmits to the intrathoracic space, compressing the vena cava and right atrium, drastically reducing venous return and causing severe hypotension or PEA arrest.",
+      "The definitive ventilator strategy is obstructive: reduce respiratory rate (10-12 bpm), increase inspiratory flow (70-80 L/min) or shorten Ti to maximize Te, and accept permissive hypercapnia (pH >= 7.15-7.20).",
+      "If sudden hemodynamic collapse occurs, immediately disconnect the patient from the ventilator to allow trapped air to decompress."
+    ],
+    "resources": [
+      {
+        "title": "Mechanical ventilation for severe asthma",
+        "ref": "Leatherman J. Chest 2015;147(6):1671-1680"
+      },
+      {
+        "title": "Management of mechanical ventilation in acute severe asthma",
+        "ref": "Oddo M, et al. Intensive Care Med 2006;32:501-510"
+      }
+    ]
+  }
+}

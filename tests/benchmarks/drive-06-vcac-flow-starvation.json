@@ -1,0 +1,65 @@
+{
+  "id": "drive-06-vcac-flow-starvation",
+  "source": "Marini JJ, Rodriguez RM, Lamb VJ. The inspiratory work of breathing during assist-control ventilation. Am Rev Respir Dis 1986; 134(5):902-909.",
+  "claim": "In a triggering patient on VC-AC with set peak flow (30 L/min) below inspiratory demand (flow starvation), patient effort is not unloaded and fatigue is no lower than on unassisted CPAP 5.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 50,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 24,
+    "pmusAmplitudeCmH2O": 16.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 260,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 90,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.4
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 0,
+    "vtSetMl": 450,
+    "inspFlowLpm": 30,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "hco3MmolL": 24,
+    "fatigue": 0.1
+  },
+  "baseline": {
+    "device": {
+      "device": "invasive",
+      "mode": "CPAP",
+      "fio2": 0.4,
+      "peep": 5,
+      "rrSetBpm": 0,
+      "psAbovePeep": 0
+    },
+    "checks": [
+      { "metric": "fatigue", "op": ">=" }
+    ]
+  },
+  "runSec": 600,
+  "checks": [
+    { "metric": "fatigue", "op": "<=", "value": 1.0 }
+  ],
+  "kind": "direction"
+}

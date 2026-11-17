@@ -1,0 +1,47 @@
+{
+  "id": "drive-01-metabolic-acidosis-compensation",
+  "source": "Pierce NF, Fedson DS, Brigham KL, Mitra RC, Sack RB, Mondal A. The ventilatory response to acute base deficit in humans. Ann Intern Med 1970; 72(5):633-640.",
+  "claim": "In acute primary metabolic acidosis with bicarbonate reduced to 12 mmol/L, intact chemoreflex stimulation drives compensatory hyperventilation, increasing minute ventilation by at least 30% and reducing PaCO2 below 35 mmHg within 15 minutes.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 35,
+    "heightCm": 175,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 60,
+    "inspResistanceCmH2OPerLps": 5,
+    "expResistanceCmH2OPerLps": 5,
+    "spontRateBpm": 14,
+    "pmusAmplitudeCmH2O": 10.0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.05,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 12,
+    "hrBaselineBpm": 72,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "hco3MmolL": 12,
+    "paco2MmHg": 40
+  },
+  "runSec": 900,
+  "checks": [
+    { "metric": "paco2", "op": "<", "value": 35.0 },
+    { "metric": "drive", "op": ">=", "value": 1.3 }
+  ],
+  "kind": "direction"
+}

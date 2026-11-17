@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0",
+  "id": "03-peep-vs-pplat",
+  "number": 3,
+  "title": "PEEP versus Pplat at a Fixed Tidal Volume",
+  "subtitle": "Evaluate the effect of positive end-expiratory pressure titration on plateau pressure and driving pressure at a constant tidal volume",
+  "difficulty": 1,
+  "competencies": [
+    "mech.driving-pressure",
+    "mech.eom"
+  ],
+  "contextTags": [
+    "mechanics",
+    "peep",
+    "driving-pressure",
+    "plateau-pressure"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Synthetic Patient C",
+    "summary": "Intubated patient with moderate ARDS passively ventilated in volume-control mode with fixed tidal volume.",
+    "params": {
+      "sex": "M",
+      "ageYears": 62,
+      "heightCm": 172,
+      "actualWeightKg": 70,
+      "complianceMlPerCmH2O": 30,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 10,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 140,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.25,
+      "recruitability": 0.0,
+      "hbGPerDl": 12.5,
+      "temperatureC": 37.0,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 80,
+      "sbpBaselineMmHg": 125,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.5,
+    "peep": 5,
+    "rrSetBpm": 15,
+    "vtSetMl": 450,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "peep",
+    "label": "Set PEEP",
+    "unit": "cmH2O",
+    "baselineValue": 5,
+    "options": [
+      {
+        "label": "PEEP 12 cmH2O",
+        "value": 12
+      },
+      {
+        "label": "PEEP 15 cmH2O",
+        "value": 15
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When PEEP is increased from 5 to 12 cmH2O at a constant tidal volume and respiratory rate, how will plateau pressure (Pplat), peak pressure (Ppeak), and driving pressure change?",
+    "metrics": [
+      "pplat",
+      "ppeak",
+      "drivingPressure"
+    ]
+  },
+  "observeSimSec": 30,
+  "whatToLookAtHint": "Compare the change in plateau pressure against the change in set PEEP, and calculate the difference between plateau and total PEEP.",
+  "reflection": {
+    "question": "When PEEP is raised from 5 to 12 cmH2O at a fixed tidal volume in a patient with constant compliance, why does driving pressure remain unchanged despite the rise in Pplat?",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Driving pressure equals Pplat - total PEEP (VT / C); with constant VT and compliance, the elastic pressure needed to distend the lung is unchanged."
+      },
+      {
+        "id": "opt-b",
+        "text": "Increasing PEEP automatically reduces airway resistance, keeping driving pressure constant."
+      },
+      {
+        "id": "opt-c",
+        "text": "Plateau pressure is independent of PEEP on volume-controlled ventilation."
+      },
+      {
+        "id": "opt-d",
+        "text": "The ventilator automatically lowers tidal volume as PEEP rises to protect against barotrauma."
+      }
+    ],
+    "correctOptionId": "opt-a",
+    "explanation": "Plateau pressure is the sum of end-expiratory pressure and the elastic pressure required to deliver the tidal volume: Pplat = PEEP + (VT / C). Driving pressure is defined as ΔP = Pplat - PEEP = VT / C. When PEEP is raised from 5 to 12 cmH2O without changing VT or compliance, Pplat rises 1:1 with PEEP (from 20 to 27 cmH2O), but the difference between them (driving pressure) remains 15 cmH2O (constant). Driving pressure only changes if compliance or tidal volume changes."
+  },
+  "causalChainFields": [
+    "setPeep",
+    "pplat",
+    "ppeak",
+    "drivingPressure"
+  ],
+  "evidence": [
+    {
+      "claim": "Plateau pressure equals PEEP plus driving pressure (VT / Crs); raising PEEP at constant VT and compliance raises Pplat 1:1 while driving pressure remains unchanged.",
+      "source": "Bellani G, et al. Driving pressure is a key ventilatory target in ARDS. Intensive Care Med. 2016;42(10):1647-1650.",
+      "year": 2016,
+      "kind": "review"
+    },
+    {
+      "claim": "The equation of motion dictates that airway pressure is the sum of resistive and elastic recoil pressures.",
+      "source": "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 11th ed. Wolters Kluwer; 2021.",
+      "year": 2021,
+      "kind": "textbook"
+    }
+  ]
+}

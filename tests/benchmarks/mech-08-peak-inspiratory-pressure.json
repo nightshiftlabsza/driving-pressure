@@ -1,0 +1,51 @@
+{
+  "id": "mech-08-peak-inspiratory-pressure",
+  "source": "Tobin MJ. Principles and Practice of Mechanical Ventilation. 3rd ed. McGraw-Hill, 2013; Chapter 4.",
+  "claim": "In volume-controlled ventilation with constant inspiratory flow, peak airway pressure exceeds plateau pressure by the product of inspiratory airway resistance and flow rate.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 50,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 15,
+    "expResistanceCmH2OPerLps": 15,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.05,
+    "recruitability": 0.3,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 14,
+    "vtSetMl": 500,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pplat", "op": "approx", "value": 15.0, "tolerance": 0.5 },
+    { "metric": "ppeak", "op": "approx", "value": 30.0, "tolerance": 1.0 }
+  ],
+  "kind": "exact-relation"
+}

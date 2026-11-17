@@ -1,0 +1,6 @@
+{
+  "caseId": "ards-vent-01",
+  "acceptedAssessments": ["low_compliance", "hypoxaemic_failure"],
+  "explanation": "Severe acute lung injury with high shunt fraction and markedly reduced compliance requiring low tidal volume lung protection and PEEP.",
+  "source": "ARDS Network. N Engl J Med 2000;342:1301-8; Berlin Definition. JAMA 2012;307:2526-33"
+}

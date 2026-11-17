@@ -1,0 +1,60 @@
+# Model Card: Open Vent Sim Physiology Engine v2
+
+## 1. Intended Use and Target Audience
+- **Target Audience**: Critical care fellows, respiratory therapy students, ICU residents, and clinical educators.
+- **Intended Use**: Simulation-based training in invasive mechanical ventilation, non-invasive ventilation (NIV), and high-flow nasal cannula (HFNC). It is designed to teach respiratory mechanics, gas exchange dynamics, effort monitoring, and clinical decision-making across structured scenarios.
+- **Out-of-Scope Use**: **Not for clinical decision support or real patient care.** Never use predictions from this model to manage human patients.
+
+## 2. What Is Modelled
+- **Respiratory Mechanics**:
+  - *Single-Compartment Baseline*: Standard equation of motion ($P_{\text{aw}} - (V/C - P_{\text{mus}}) = R \cdot \dot{V}$) solved continuously at 200 Hz ($dt = 0.005$ s). Trapped gas volume carries over between breaths, allowing intrinsic PEEP and ineffective triggering to emerge from physical mechanics.
+  - *Recruitable Two-Compartment Lung Model (`lungModel: 'two-compartment'`)**: Two compartments sharing a common airway (Gattinoni et al. NEJM 2006; Amato et al. NEJM 2015; Grasso et al. ICM 2016). A baseline baby lung compliance operates in parallel with a recruitable compartment governed by opening pressure (default 10 cmH2O) and closing pressure (default 5 cmH2O). PEEP and plateau pressure recruit alveolar units over time, adding compliance and lowering driving pressure $\Delta P$ at fixed $V_T$. When lung volume exceeds an overdistension threshold ($V_{\text{overdist}}$, default 600 mL), compliance falls off non-linearly with excess volume, increasing driving pressure.
+- **Expiratory Flow Limitation**: Optional waterfall model where downstream airway pressure below closing pressure does not accelerate expiratory emptying.
+- **Gas Exchange Kinetics**:
+  - *Carbon Dioxide*: Alveolar ventilation equation ($\text{PaCO}_2 = 0.863 \cdot \dot{V}_{\text{CO}_2} / \dot{V}_A$) with a two-compartment kinetic model: an arterial/lung store ($\tau = 90$ s) and a tissue store ($\tau = 8\text{--}15$ min). Alveolar ventilation averages breaths over their actual span; EtCO2 scales down when tidal volume approaches anatomic dead space.
+  - *Oxygenation & V/Q Mismatch*: Full alveolar gas equation, Severinghaus oxyhemoglobin dissociation curve with temperature/pH shifts, Berggren shunt equation with mixed venous oxygen content floor ($C_v \ge 0.30 C_{c'}$, critical extraction ratio cap 70%), and Riley three-compartment gas exchange model (Riley & Cournand J Appl Physiol 1949; West Respiratory Physiology 10th ed.; Nunn's Applied Respiratory Physiology 8th ed.). Perfusion is partitioned into ideal ($V/Q \approx 1$), low $V/Q$ (`lowVqFraction`, `lowVqRatio`), and shunt compartments. The low $V/Q$ compartment calculates local $P_A\text{O}_2$ via local steady-state balance with nitrogen washout at high $\text{FiO}_2$. Arterial oxygen content is derived via perfusion-weighted Fick mixing.
+  - *Acid-Base*: Henderson-Hasselbalch equation with $\text{CO}_2$ solubility $\alpha = 0.0301\text{ mmol}/(\text{L}\cdot\text{mmHg})$ (Siggaard-Andersen 1974), chronic setpoint adjustment for hypercapnic retention (Brackett, Cohen, Schwartz 1965), acute non-renal bicarbonate buffering relative to chronic $\text{PaCO}_2$, and extracellular Van Slyke standard base excess (SBE).
+  - *Non-Rebreather (NRB) Dilution*: Reservoir mask delivers $\text{FiO}_2 \approx 0.80$ at 15 L/min at normal $V_E$, diluted when minute ventilation exceeds delivered oxygen flow (Wagstaff & Soni 2007; BTS Guideline 2017).
+- **Effort Monitoring & Advanced Mechanics**:
+  - *Elastance Partitioning*: $1/C_{\text{rs}} = 1/C_l + 1/C_{\text{cw}}$. Esophageal pressure is continuously tracked as $P_{\text{es}}(t) = V(t)/C_{\text{cw}} - P_{\text{mus}}(t)$.
+  - *Transpulmonary Pressures*: $P_L(t) = P_{\text{aw}}(t) - P_{\text{es}}(t)$, tracked at end-inspiration ($P_{L,\text{end-insp}}$) and end-expiration ($P_{L,\text{end-exp}}$) (Mauri et al. ICM 2016; Akoumianaki et al. AJRCCM 2014).
+  - *Airway Occlusion Pressure ($P_{0.1}$)*: Drop in airway/muscular pressure 100 ms after the onset of patient inspiratory effort during an occlusion, reflecting central neuromuscular drive (Telias et al. ICM 2018).
+  - *Occlusion Manoeuvre ($\Delta P_{\text{occ}}$)*: End-expiratory occlusion manoeuvre measuring spontaneous airway pressure deflection against a closed valve, providing non-invasive estimation of muscular pressure ($P_{\text{mus}} \approx -0.75 \cdot \Delta P_{\text{occ}}$) and dynamic transpulmonary pressure swings (Bertoni et al. Crit Care 2019).
+- **Mechanistic Patient-Ventilator Dyssynchrony**:
+  - *Double Triggering*: Sustained patient effort where neural inspiratory time ($T_{i,\text{neural}}$) substantially outlasts ventilator inspiratory time ($T_{i,\text{vent}}$), triggering an immediate second machine cycle during early expiration (Thille et al. ICM 2006; de Wit et al. Crit Care 2009).
+  - *Premature Cycling*: Excessively high PSV cycle-off flow percentage terminating mechanical assistance while patient inspiratory muscular effort is still ongoing (Tassaux et al. AJRCCM 2005).
+  - *Delayed Cycling*: Low PSV cycle-off flow percentage in patients with prolonged expiratory time constants (e.g. COPD), extending mechanical inflation into patient exhalation (Yamada & Du Am J Respir Crit Care Med 2000).
+  - *Flow Starvation*: Fixed flow delivery in volume control (VC-AC) that fails to meet patient peak inspiratory demand flow under strong effort, producing pressure scooping and elevated work of breathing (Marini et al. Am Rev Respir Dis 1986; MacIntyre Respir Care 2011).
+  - *Circuit Leak Auto-Triggering*: Invasive circuit leaks (`circuitLeakLpm`) exceeding ventilator flow trigger thresholds, precipitating self-sustaining runaway cycles without muscular effort (Imanaka et al. Chest 2000).
+
+## 3. What Is Rule-Based
+- **Reverse Triggering**: **Rule-based empirical model.** There is currently no consensus mechanistic mathematical model for reflex entrainment; reverse triggering is implemented as an explicit probabilistic neuromechanical coupling parameter (`reverseTriggerProbability`, 0 to 1). When active, mandatory machine-delivered breaths trigger an entrained diaphragmatic effort 100 to 300 ms post-trigger (Akoumianaki et al. Intensive Care Med 2013).
+- **PEEP Recruitment (Single Compartment)**: Phenomenological shunt reduction as end-expiratory pressure increases from 5 to 15 cmH2O.
+- **Chemoreflex Drive & Unloading**: Chemoreflex drive defends a chronic setpoint pH ($pH_{\text{set}} = 7.40 - 0.003 \cdot (\text{chronicPaCO}_2 - 40)$), scaling rate and effort with acute acidemia and hypoxemia. Patient inspiratory effort unloads by up to 50% under positive pressure assistance; in VC-AC, unloading drops to zero when set flow is below inspiratory demand.
+- **Diaphragmatic Fatigue**: Accumulates when pressure-time product (PTP) exceeds patient reserve capacity, progressively reducing spontaneous muscular effort.
+- **Hemodynamics**: Phenomenological blood pressure and heart rate responses to mean alveolar pressure ($V/C - P_{\text{mus}}$), arterial oxygen saturation, and acute acidemia. Spontaneous breathing does not induce spurious positive-pressure blood pressure drops.
+- **HFNC Mechanics**: Fixed dead-space washout (~50 mL) and flow-dependent positive airway pressure (~0.5 cmH2O per 10 L/min).
+
+## 4. What Is NOT Modelled
+- **Multi-compartment Pendelluft**: Pendelluft gas shifting between asynchronous regional lung units is not modelled.
+- **Altitude**: Atmospheric pressure is assumed sea-level standard (760 mmHg).
+- **Dynamic Renal Compensation**: Metabolic renal compensation is static or baseline-configured; active renal tubular proton/bicarbonate flux is not simulated dynamically during acute simulations.
+- **Haldane Effect & Bohr Chemical Curve Coupling**: Oxygen-induced hypercapnia in chronic retainers teaches the physiological triad clinically (`copd-niv-01` & variant notes), while the math engine models gas exchange primarily via standard V/Q mismatch, hypoxic pulmonary vasoconstriction reversal, and chemoreflex drive rather than dynamic chemical Haldane hemoglobin-CO2 dissociation shifts.
+- **Pharmacology & Secretions**: Dynamic sedation PK/PD, neuromuscular blockade on/off kinetics, airway mucus plugging, and changing endotracheal tube resistance are not modelled.
+- **Circulation & Hemodynamics Closed Loop**: Cardiac output and vascular resistance are phenomenological, not a full closed-loop lumped-parameter circulatory tree.
+- **Monitor Noise & Sensor Artefacts**: Airway pressure, flow, and esophageal balloon traces are simulated without physical cable resonance, cardiac oscillations, or transducer drift.
+
+## 5. Known Misleading Situations & Simulation Limits
+- **Single-Compartment vs. Two-Compartment PEEP Titration**: In the single-compartment model (`lungModel: 'single'`), compliance is constant across all PEEP levels; users must opt into `lungModel: 'two-compartment'` to simulate the clinical trade-off between alveolar recruitment and overdistension.
+- **Low V/Q vs. Shunt Response**: Shunt hypoxemia remains refractory to moderate FiO2 escalations; in contrast, low V/Q units (`lowVqFraction`) respond promptly with steep PaO2 increases as FiO2 rises.
+- **Severe Metabolic Acidosis Clamping**: While chemoreflex drive defends chronic setpoint pH (permitting Winters' formula compensation in typical metabolic acidosis), total drive is clamped at 1.6x, so extreme compensation (PaCO2 < 15 mmHg) is limited without active mechanical support.
+- **Chronic Retainer Baseline Defense**: A chronic hypercapnic retainer defends their baseline PaCO2 setpoint stably only if the patient has sufficient spontaneous ventilatory capacity and respiratory reserve relative to their dead-space fraction; patients with high dead-space fraction and compromised reserve drift higher without ventilatory assistance.
+- **Time-Compressed ARDS Proning Window**: In `ards-vent-01`, prone positioning occurs around `t = 10` simulation minutes to make bedside physiology observable within a training session; clinical guidelines (PROSEVA 2013; ESICM 2023) mandate proning only after 12–24 hours of optimized ventilation and hemodynamic stabilization.
+- **Decision Review Reference Scope & Conservative PEEP**: Full attending reference trajectories are authored specifically for `ards-vent-01` and `pneumonia-hfnc-01` (labeled `Attending Reference Case` in DecisionReview); all other cases evaluate decisions against structured guideline rubrics (`Guideline Rubric Review`). Moderate PEEP titration (10–12 cmH2O) under borderline blood pressure (MAP <= 72 mmHg) is explicitly graded as `reasonable-uncertain`.
+- **AI Clinical Tutor Epistemic Boundaries**: The optional AI Tutor (`src/tutor/`) never alters simulated physiology, never decides clinical safety, never grades learner scores, and stays strictly offline unless configured with free-tier local server keys. Prompts prohibit hallucinating unmeasured vitals or unmodelled Haldane dissociation mechanics.
+
+## 6. Verification and Validation Record
+- **Verification**: Full automated test suite (`npm test`), strict TypeScript type-checking (`npm run typecheck`), schema validations (`npm run case:check`, `npm run practice:check`, `npm run variant:check`), and end-to-end Playwright verification (`npx playwright test`).
+- **Benchmark Suite**: 42 automated reference benchmarks (`tests/benchmarks.test.ts` and `tests/benchmarks/*.json`) anchoring mechanics, recruitment/overdistension, gas exchange (V/Q vs shunt), acid-base kinetics, effort monitoring, and dyssynchrony mechanisms against peer-reviewed literature.
+- **Continuous 24-Hour Fast-Forward**: Validated over 24-hour continuous runs across recruitable ARDS and COPD NIV scenarios, bedside presets, and library cases without numerical drift, oscillation, or NaN errors.
+- **Clinical Validation**: **None.** This software has never been evaluated or approved against clinical human trial data.

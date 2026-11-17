@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0",
+  "id": "10-ps-level-vs-vt-rr",
+  "number": 10,
+  "title": "Pressure support level versus VT and RR in a spontaneous patient",
+  "subtitle": "Effect of inspiratory pressure support on tidal volume, work of breathing, and ventilation in spontaneous breathing",
+  "difficulty": 2,
+  "competencies": [
+    "modes.ps-spont"
+  ],
+  "contextTags": [
+    "pressure-support",
+    "spontaneous",
+    "work-of-breathing",
+    "weaning"
+  ],
+  "ruleBased": true,
+  "ruleBasedNote": "Effort unloading by pressure support is a rule-based relationship in Engine v1.",
+  "patient": {
+    "displayName": "Spontaneously breathing weaning patient",
+    "summary": "A 50-year-old spontaneously breathing patient recovering from acute lung injury undergoing a pressure support weaning trial.",
+    "params": {
+      "sex": "M",
+      "ageYears": 50,
+      "heightCm": 170,
+      "actualWeightKg": 70,
+      "complianceMlPerCmH2O": 45,
+      "inspResistanceCmH2OPerLps": 10,
+      "expResistanceCmH2OPerLps": 12,
+      "spontRateBpm": 22,
+      "pmusAmplitudeCmH2O": 12,
+      "pmusInspTimeSec": 0.9,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 140,
+      "alveolarDeadSpaceFraction": 0.1,
+      "shuntFraction": 0.08,
+      "recruitability": 0.3,
+      "hbGPerDl": 13,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 84,
+      "sbpBaselineMmHg": 124,
+      "dbpBaselineMmHg": 74,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "PSV",
+    "psAbovePeep": 5,
+    "peep": 5,
+    "fio2": 0.35,
+    "rrSetBpm": 0,
+    "cyclePctPeakFlow": 25,
+    "triggerFlowLpm": 2
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "psAbovePeep",
+    "label": "Pressure support above PEEP (PS)",
+    "unit": "cmH2O",
+    "baselineValue": 5,
+    "options": [
+      {
+        "label": "PS 16 cmH2O",
+        "value": 16
+      },
+      {
+        "label": "PS 10 cmH2O",
+        "value": 10
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When pressure support above PEEP is increased from 5 to 16 cmH2O, how do exhaled tidal volume (VTE), peak airway pressure (Ppeak), and arterial PaCO2 respond?",
+    "metrics": [
+      "vte",
+      "ppeak",
+      "paco2"
+    ]
+  },
+  "observeSimSec": 90,
+  "whatToLookAtHint": "Observe the exhaled tidal volume (VTE), peak airway pressure on the ventilator, and arterial carbon dioxide tension.",
+  "reflection": {
+    "question": "How does increasing pressure support level alter the patient's respiratory pattern and work of breathing?",
+    "options": [
+      {
+        "id": "opt-ps-unloading",
+        "text": "Greater inspiratory pressure assistance increases the transpulmonary pressure gradient, expanding delivered tidal volume and unburdening patient inspiratory muscles, which increases alveolar ventilation and lowers PaCO2."
+      },
+      {
+        "id": "opt-fixed-vt",
+        "text": "Pressure support enforces a fixed delivered volume regardless of patient effort, converting the breath to mandatory volume control."
+      },
+      {
+        "id": "opt-hypoventilation",
+        "text": "Increasing pressure support level reduces neural inspiratory drive below the apnoea threshold, producing severe hypoventilation."
+      },
+      {
+        "id": "opt-no-vt-effect",
+        "text": "Pressure support alters expiratory triggering resistance only, without modifying peak pressure or delivered tidal volume."
+      }
+    ],
+    "correctOptionId": "opt-ps-unloading",
+    "explanation": "In pressure support ventilation (PSV), the ventilator assists each patient-triggered breath up to the set target pressure (PEEP + PS). Increasing PS from 5 to 16 cmH2O raises peak airway pressure from 10 to 21 cmH2O. This larger pressure gradient inflates the lung with a significantly greater tidal volume (from ~455 mL to ~732 mL). As mechanical support unloads the respiratory muscles, total alveolar ventilation rises and arterial PaCO2 falls from ~38 to ~31 mmHg, moderately dampening chemoreflex respiratory drive."
+  },
+  "causalChainFields": [
+    "setPs",
+    "unloading",
+    "vte",
+    "alveolarVentilation",
+    "paco2",
+    "drive"
+  ],
+  "evidence": [
+    {
+      "claim": "Pressure support ventilation reduces the patient's work of breathing in proportion to the level of pressure assistance by increasing tidal volume and unloading respiratory muscles.",
+      "source": "Brochard L. Pressure support ventilation. In: Tobin MJ, ed. Principles and Practice of Mechanical Ventilation. 3rd ed. McGraw-Hill; 2013:227-248.",
+      "year": 2013,
+      "kind": "textbook"
+    },
+    {
+      "claim": "Titration of inspiratory pressure support modifies tidal volume, respiratory rate, and PaCO2 according to respiratory system compliance and patient effort.",
+      "source": "MacIntyre NR. Respiratory mechanics in the patient-ventilator system. Respir Care 2005; 50(2):238-245.",
+      "year": 2005,
+      "kind": "review"
+    }
+  ]
+}

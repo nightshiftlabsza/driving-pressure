@@ -1,0 +1,446 @@
+{
+  "schemaVersion": "1.0",
+  "id": "dka-intubated-01",
+  "version": "0.1.2",
+  "title": "Intubated for coma: the first blood gas afterwards",
+  "summary": "A 21-year-old with type 1 diabetes is intubated for profound coma; the post-intubation blood gas reveals severe, life-threatening acidaemia.",
+  "difficulty": 2,
+  "setting": "icu",
+  "competencies": [
+    "disease.metabolic-acidosis",
+    "gas.acid-base",
+    "gas.alveolar-ventilation",
+    "circ.ppv-preload",
+    "safety.reassess",
+    "safety.crisis"
+  ],
+  "hiddenCompetencies": ["gas.acid-base"],
+  "contextTags": ["dka", "metabolic-acidosis", "hyperventilation", "invasive", "kussmaul", "icu"],
+  "evidence": [
+    {
+      "claim": "In severe metabolic acidosis, expected PaCO2 compensation is calculated by Winter's formula: PaCO2 = 1.5 x [HCO3-] + 8 (± 2 mmHg); failure to replicate this hyperventilation post-intubation leads to severe acidaemia.",
+      "source": "Albert MS, Dell RB, Winters RW. Quantitative displacement of acid-base equilibrium in metabolic acidosis. Ann Intern Med 1967;66(2):312-322",
+      "year": 1967,
+      "kind": "trial"
+    },
+    {
+      "claim": "Intubation in severe metabolic acidosis carries a high risk of peri-intubation cardiac arrest if minute ventilation is not matched to the profound metabolic demand.",
+      "source": "Mosier JM, et al. The physiologically difficult airway in critical illness. West J Emerg Med 2015;16(7):1109-1117",
+      "year": 2015,
+      "kind": "review"
+    },
+    {
+      "claim": "Patients with DKA have an average 100 mL/kg water deficit (5-8 L); aggressive crystalloid fluid replacement is required to maintain intravascular preload under positive pressure ventilation.",
+      "source": "Dhatariya KK, et al. Joint British Diabetes Societies for Inpatient Care guideline for the management of diabetic ketoacidosis. Diabet Med 2022;39(6):e14888",
+      "year": 2022,
+      "kind": "guideline"
+    },
+    {
+      "claim": "Arterial blood gas analysis is indicated within 15-30 minutes of initiating or modifying mechanical ventilation in critically ill patients with acute physiological derangements.",
+      "source": "Adrogué HJ, Madias NE. Management of life-threatening acid-base disorders: First of two parts. N Engl J Med 1998;338(1):26-34",
+      "year": 1998,
+      "kind": "review"
+    },
+    {
+      "claim": "A ventilated patient with severe metabolic acidosis needs a high minute ventilation, often 18 to 25 L/min or more, set to reach the expected compensatory PaCO2; a 'normal' PaCO2 can be fatal.",
+      "source": "Owens W. The Ventilator Book, 3rd edition, chapters on initial settings and severe metabolic acidosis",
+      "year": 2021,
+      "kind": "textbook"
+    }
+  ],
+  "patient": {
+    "displayName": "Jordan Bennett (synthetic)",
+    "presentingStory": "A 21-year-old university student with type 1 diabetes brought to ED comatose with GCS 5/15. Marked Kussmaul respirations were noted on arrival. Intubated 15 minutes ago in ED for airway protection and transferred directly to ICU. The ED team connected him to the ventilator on 'standard settings' (VC-AC rate 12, VT 450 mL). Now in the ICU, the bedside monitor shows widening QRS complexes, heart rate 136 bpm, and SBP 84/48 mmHg.",
+    "history": "Type 1 diabetes for 8 years on basal-bolus insulin. Missed doses over past 3 days due to gastroenteritis. No other medical history.",
+    "params": {
+      "sex": "M",
+      "ageYears": 21,
+      "heightCm": 178,
+      "actualWeightKg": 65,
+      "complianceMlPerCmH2O": 50,
+      "inspResistanceCmH2OPerLps": 4,
+      "expResistanceCmH2OPerLps": 4,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 250,
+      "vo2MlPerMin": 300,
+      "anatomicDeadSpaceMl": 130,
+      "alveolarDeadSpaceFraction": 0.05,
+      "shuntFraction": 0.05,
+      "recruitability": 0.1,
+      "hbGPerDl": 15.5,
+      "temperatureC": 37.8,
+      "baselineHco3MmolL": 8,
+      "hrBaselineBpm": 115,
+      "sbpBaselineMmHg": 115,
+      "dbpBaselineMmHg": 72,
+      "ppvResponse": "clean-kill",
+      "ppvSeverity": 0.85,
+      "respiratoryReserve": 0.4
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 12,
+    "vtSetMl": 450,
+    "inspFlowLpm": 60,
+    "flowPattern": "decelerating"
+  },
+  "initialPhys": {
+    "paco2MmHg": 35,
+    "pao2MmHg": 95,
+    "hco3MmolL": 7.7,
+    "fatigue": 0.2
+  },
+  "availableOrders": [
+    "abg",
+    "cxr",
+    "examine",
+    "change-settings",
+    "fluid-bolus",
+    "sedation"
+  ],
+  "orderEffects": [
+    {
+      "order": "fluid-bolus",
+      "delaySimMin": 2,
+      "note": "Isotonic crystalloid bolus restores intravascular volume in severe DKA",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "sbpBaselineMmHg": 120,
+            "dbpBaselineMmHg": 76,
+            "hrBaselineBpm": 95,
+            "ppvResponse": "unhelpful",
+            "ppvSeverity": 0.2
+          },
+          "rampSimMin": 10
+        },
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "2 L IV crystalloid bolus infusing rapidly. Peripheral pulse volume is improving and blood pressure is coming up on the monitor."
+        }
+      ]
+    },
+    {
+      "order": "sedation",
+      "delaySimMin": 1,
+      "note": "High dose sedation further depresses vascular tone",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "sbpBaselineMmHg": 72,
+            "dbpBaselineMmHg": 40
+          }
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "examine": "Intubated, paralysed, completely unresponsive. Pupils 3 mm, sluggishly reactive. Skin is dry with tenting and reduced turgor; mucous membranes parched. Peripheral pulses are weak and rapid. Fruity ketotic breath detectable around the ETT. Lungs clear to auscultation bilaterally. Abdomen soft, scaphoid.",
+    "cxr": "Endotracheal tube in good position 4 cm above carina. Lungs are clear with no focal consolidation, pneumothorax, or pulmonary congestion. Cardiac size is small (hypovolaemic silhouette)."
+  },
+  "course": [],
+  "triggers": [
+    {
+      "id": "t-predict-ve",
+      "when": {
+        "ordered": {
+          "order": "change-settings"
+        }
+      },
+      "then": [
+        {
+          "type": "prediction",
+          "predictionId": "p-dka-ve"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-low-ve",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "minuteVent",
+              "op": "<=",
+              "value": 8
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 10
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "faulty_model",
+          "competency": "disease.metabolic-acidosis",
+          "severity": "critical",
+          "detail": "Failing to match the ventilator minute ventilation to severe metabolic acidosis permits PaCO2 to rise, causing lethal post-intubation acidaemia (pH < 7.0)."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-fluid-neglect",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 20
+            }
+          },
+          {
+            "not": {
+              "ordered": {
+                "order": "fluid-bolus"
+              }
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "poor_prioritisation",
+          "competency": "circ.ppv-preload",
+          "severity": "major",
+          "detail": "Failing to aggressively resuscitate intravascular volume in severe DKA exacerbates positive pressure-induced hypotension."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-improved",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "ph",
+              "op": ">=",
+              "value": 7.05,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "paco2",
+              "op": "<=",
+              "value": 26,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": ">=",
+              "value": 95,
+              "forSimSec": 600
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 20
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Arterial blood gas shows pH has recovered; read the PaCO2 and pH on the ABG. Blood pressure is stable on the monitor, and ECG rhythms have normalized."
+        },
+        {
+          "type": "endCase",
+          "outcome": "improved",
+          "reason": "Compensatory hyperventilation restored with high minute ventilation and intravascular volume repleted, successfully averting acidemic arrest."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-deteriorated",
+      "when": {
+        "any": [
+          {
+            "threshold": {
+              "metric": "ph",
+              "op": "<",
+              "value": 6.8,
+              "forSimSec": 300
+            }
+          },
+          {
+            "threshold": {
+              "metric": "sbp",
+              "op": "<",
+              "value": 60,
+              "forSimSec": 300
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Severe bradycardia and wide-complex rhythm degeneration on monitor; no central pulse palpable! Starting CPR!"
+        },
+        {
+          "type": "endCase",
+          "outcome": "deteriorated",
+          "reason": "Extreme acidaemia (pH < 6.80) from inadequate post-intubation minute ventilation triggered refractory cardiac arrest."
+        }
+      ],
+      "once": true
+    },
+    {"id":"t-nurse-worse","when":{"any":[{"threshold":{"metric":"sbp","op":"<=","value":75,"forSimSec":90}},{"threshold":{"metric":"etco2","op":">=","value":44,"forSimSec":90}}]},"then":[{"type":"message","from":"nurse","text":"Doctor, he looks greyer and more unwell than before. Can you come and look?"}],"once":true},
+    {"id":"t-nurse-better","when":{"all":[{"threshold":{"metric":"sbp","op":">=","value":100,"forSimSec":180}},{"threshold":{"metric":"hr","op":"<=","value":105,"forSimSec":180}}]},"then":[{"type":"message","from":"nurse","text":"His colour has improved and he looks more settled. I'll keep an eye on him."}],"once":true}
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-dka-ve",
+      "competency": "gas.alveolar-ventilation",
+      "evidenceType": "prediction",
+      "question": "You raise minute ventilation to about 18 L/min by increasing the respiratory rate and tidal volume. Over the next 20 minutes, which direction will each parameter move?",
+      "format": "direction",
+      "variables": ["paco2", "ph", "minuteVent"],
+      "marking": "engine",
+      "explanation": "Doubling minute ventilation increases alveolar ventilation, driving PaCO2 sharply downward toward the target compensatory level (16-20 mmHg). With bicarbonate at 6 mmol/L, lowering PaCO2 from 30 to 18 mmHg raises pH from about 6.9 to about 7.15. Ventilation only buys time: fluids and insulin are what correct the bicarbonate.",
+      "hidden": false
+    },
+    {
+      "id": "p-dka-formula",
+      "competency": "disease.metabolic-acidosis",
+      "evidenceType": "decision",
+      "question": "Which formula guides the appropriate PaCO2 target for a patient with severe metabolic acidosis undergoing mechanical ventilation?",
+      "format": "choice",
+      "options": [
+        "Winter's formula: expected PaCO2 = 1.5 x [HCO3-] + 8 (± 2 mmHg)",
+        "The rule of 40: maintain PaCO2 strictly at 40 mmHg regardless of bicarbonate",
+        "Permissive hypercapnia: allow PaCO2 to rise to 55-65 mmHg to rest the respiratory muscles",
+        "Half-and-half rule: set tidal volume to half the body weight and rate to half the bicarbonate"
+      ],
+      "marking": "fixed",
+      "answerKey": "Winter's formula: expected PaCO2 = 1.5 x [HCO3-] + 8 (± 2 mmHg)",
+      "explanation": "Winter's formula (expected PaCO2 = 1.5 * HCO3 + 8 ± 2) calculates the necessary respiratory compensation. For [HCO3-] = 6 mmol/L, expected PaCO2 is 15-19 mmHg. The ventilator must be programmed to deliver this hypocapnia; setting 'normal' PaCO2 of 40 removes compensation and produces lethal acidaemia.",
+      "hidden": true
+    }
+  ],
+  "rubric": [
+    {
+      "id": "r-increase-ve",
+      "description": "Increased minute ventilation to 18 L/min or more, to match the compensation the patient was providing before intubation",
+      "competency": "disease.metabolic-acidosis",
+      "evidenceType": "decision",
+      "met": {
+        "threshold": {
+          "metric": "minuteVent",
+          "op": ">=",
+          "value": 18
+        }
+      },
+      "bySimMin": 15,
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "r-fluid-resuscitation",
+      "description": "Administered intravenous fluid bolus to treat severe intravascular dehydration",
+      "competency": "circ.ppv-preload",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "fluid-bolus"
+        }
+      },
+      "bySimMin": 20,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-target-paco2",
+      "description": "Achieved target compensatory PaCO2 <= 26 mmHg",
+      "competency": "gas.alveolar-ventilation",
+      "evidenceType": "reassessment",
+      "met": {
+        "threshold": {
+          "metric": "paco2",
+          "op": "<=",
+          "value": 26
+        }
+      },
+      "bySimMin": 35,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-check-abg-early",
+      "description": "Checked arterial blood gas promptly after intubation/setting changes",
+      "competency": "gas.acid-base",
+      "evidenceType": "prioritisation",
+      "met": {
+        "ordered": {
+          "order": "abg"
+        }
+      },
+      "bySimMin": 15,
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "r-reversal-of-acidaemia",
+      "description": "Achieved reversal of lethal acidaemia with pH >= 7.05 within 30 minutes",
+      "competency": "safety.crisis",
+      "evidenceType": "safety",
+      "met": {
+        "threshold": {
+          "metric": "ph",
+          "op": ">=",
+          "value": 7.05
+        }
+      },
+      "bySimMin": 30,
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "maxSimMin": 180,
+  "debrief": {
+    "keyPoints": [
+      "In severe metabolic acidosis, the body depends on massive compensatory hyperventilation (Kussmaul breathing) to keep PaCO2 low (often 12-20 mmHg).",
+      "When the patient is intubated and sedated or paralysed, spontaneous hyperventilation ceases. Setting 'standard' ventilator rates (12-14 bpm) creates profound hypoventilation relative to metabolic need, allowing PaCO2 to rise and dropping pH below 6.90.",
+      "Winter's formula (PaCO2 = 1.5 x HCO3 + 8 ± 2) determines the target PaCO2. High minute ventilation (12-16 L/min via RR 28-35 and appropriate VT) must be set immediately.",
+      "Severe osmotic diuresis creates major hypovolaemia. Positive pressure further impairs venous return, requiring immediate aggressive fluid resuscitation."
+    ],
+    "resources": [
+      {
+        "title": "The physiologically difficult airway in critical illness",
+        "ref": "Mosier JM, et al. West J Emerg Med 2015;16(7):1109-1117"
+      },
+      {
+        "title": "Winter's formula and acid-base compensation",
+        "ref": "Albert MS, Dell RB, Winters RW. Ann Intern Med 1967;66(2):312-322"
+      }
+    ]
+  }
+}

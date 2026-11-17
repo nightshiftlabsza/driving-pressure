@@ -1,0 +1,6 @@
+{
+  "caseId": "dyssynchrony-01",
+  "acceptedAssessments": ["dyssynchrony"],
+  "explanation": "High neural respiratory drive with short ventilator inspiratory time causes double triggering and breath stacking on VC-AC; requires matching ventilator flow/timing or PSV rather than sedation.",
+  "source": "Thille AW. Intensive Care Med 2006;32:1515-1522; Beitler JR. Crit Care Med 2016;44:2071-2081"
+}

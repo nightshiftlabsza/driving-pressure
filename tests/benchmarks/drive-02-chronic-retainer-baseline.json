@@ -1,0 +1,50 @@
+{
+  "id": "drive-02-chronic-retainer-baseline",
+  "source": "Schwartz WB, Brackett NC Jr, Cohen JJ. The response of extracellular hydrogen ion concentration to symptomatic hypercapnia. J Clin Invest 1965; 44(2):291-301.",
+  "claim": "In a stable chronic hypercapnic patient (baseline PaCO2 55 mmHg, HCO3 30 mmol/L) breathing room air without an assistive device, arterial PaCO2 is maintained stably between 50 and 60 mmHg over 30 minutes without pathological hyperventilation.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 68,
+    "heightCm": 172,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 14,
+    "spontRateBpm": 18,
+    "pmusAmplitudeCmH2O": 10.0,
+    "pmusInspTimeSec": 0.9,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 270,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.35,
+    "shuntFraction": 0.12,
+    "recruitability": 0.1,
+    "hbGPerDl": 15,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 30,
+    "chronicPaco2MmHg": 55,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 130,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "paco2MmHg": 55,
+    "hco3MmolL": 30
+  },
+  "runSec": 1800,
+  "checks": [
+    { "metric": "paco2", "op": ">=", "value": 50.0 },
+    { "metric": "paco2", "op": "<=", "value": 60.0 }
+  ],
+  "kind": "published-range",
+  "expectedToFail": true,
+  "failureReason": "The benchmark patient lacks the ventilatory capacity to hold its setpoint."
+}

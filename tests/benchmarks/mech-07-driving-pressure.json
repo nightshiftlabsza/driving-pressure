@@ -1,0 +1,51 @@
+{
+  "id": "mech-07-driving-pressure",
+  "source": "Amato MB, Meade MO, Slutsky AS, et al. Driving pressure and survival in the acute respiratory distress syndrome. N Engl J Med 2015; 372(8):747-755.",
+  "claim": "In passive volume-controlled ventilation, driving pressure represents the ratio of delivered tidal volume to respiratory system compliance.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 54,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 25,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.25,
+    "shuntFraction": 0.3,
+    "recruitability": 0.4,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 95,
+    "sbpBaselineMmHg": 110,
+    "dbpBaselineMmHg": 65,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.4,
+    "respiratoryReserve": 0.7
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.6,
+    "peep": 10,
+    "rrSetBpm": 20,
+    "vtSetMl": 400,
+    "inspFlowLpm": 55,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 45
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "drivingPressure", "op": "approx", "value": 16.0, "tolerance": 0.5 },
+    { "metric": "pplat", "op": "approx", "value": 26.0, "tolerance": 0.5 }
+  ],
+  "kind": "exact-relation"
+}

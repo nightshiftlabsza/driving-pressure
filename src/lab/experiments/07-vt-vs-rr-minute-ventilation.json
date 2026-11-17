@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "1.0",
+  "id": "07-vt-vs-rr-minute-ventilation",
+  "number": 7,
+  "title": "VT versus RR at the same minute ventilation",
+  "subtitle": "Impact of shallow rapid breathing on dead space fraction and alveolar ventilation",
+  "difficulty": 1,
+  "competencies": [
+    "gas.alveolar-ventilation",
+    "gas.dead-space"
+  ],
+  "contextTags": [
+    "mechanics",
+    "dead-space",
+    "ventilation",
+    "abg"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Post-operative surgical patient",
+    "summary": "A 45-year-old mechanically ventilated patient following abdominal surgery, sedated and fully adapted to volume control ventilation.",
+    "params": {
+      "sex": "M",
+      "ageYears": 45,
+      "heightCm": 175,
+      "actualWeightKg": 75,
+      "complianceMlPerCmH2O": 55,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 9,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.1,
+      "shuntFraction": 0.05,
+      "recruitability": 0.2,
+      "hbGPerDl": 14,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 75,
+      "sbpBaselineMmHg": 125,
+      "dbpBaselineMmHg": 75,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 1.0
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "vtSetMl": 500,
+    "rrSetBpm": 12,
+    "peep": 5,
+    "fio2": 0.35,
+    "inspFlowLpm": 50,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "vtSetMl",
+    "label": "Tidal volume & respiratory rate pattern (constant VE)",
+    "unit": "mL",
+    "baselineValue": 500,
+    "options": [
+      {
+        "label": "VT 250 mL × RR 24 bpm (VE 6.0 L/min)",
+        "value": 250,
+        "deviceOverride": {
+          "device": "invasive",
+          "mode": "VC-AC",
+          "vtSetMl": 250,
+          "rrSetBpm": 24,
+          "peep": 5,
+          "fio2": 0.35,
+          "inspFlowLpm": 50,
+          "flowPattern": "square"
+        }
+      },
+      {
+        "label": "VT 750 mL × RR 8 bpm (VE 6.0 L/min)",
+        "value": 750,
+        "deviceOverride": {
+          "device": "invasive",
+          "mode": "VC-AC",
+          "vtSetMl": 750,
+          "rrSetBpm": 8,
+          "peep": 5,
+          "fio2": 0.35,
+          "inspFlowLpm": 50,
+          "flowPattern": "square"
+        }
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When tidal volume is halved and respiratory rate is doubled to keep total minute ventilation constant at 6.0 L/min, what happens to minute ventilation, PaCO2, and arterial pH?",
+    "metrics": [
+      "minuteVent",
+      "paco2",
+      "ph"
+    ]
+  },
+  "observeSimSec": 180,
+  "whatToLookAtHint": "Observe the total minute ventilation on the ventilator monitor alongside the arterial blood gas values for PaCO2 and pH.",
+  "reflection": {
+    "question": "Why does PaCO2 rise significantly despite total minute ventilation remaining unchanged at 6.0 L/min?",
+    "options": [
+      {
+        "id": "opt-alv-dead-space",
+        "text": "Fixed anatomic dead space is cleared on every single breath before fresh gas reaches alveoli; doubling the respiratory rate wastes dead space volume twice as frequently, reducing alveolar ventilation."
+      },
+      {
+        "id": "opt-blood-flow",
+        "text": "Halving tidal volume compresses pulmonary capillaries, directly impeding carbon dioxide diffusion across the blood-gas barrier."
+      },
+      {
+        "id": "opt-co2-production",
+        "text": "A higher ventilator frequency triggers muscular shivering and doubles total metabolic carbon dioxide production."
+      },
+      {
+        "id": "opt-gas-compression",
+        "text": "Rapid cycling causes ventilator circuit gas compression, causing the ventilator to display a false minute ventilation reading."
+      }
+    ],
+    "correctOptionId": "opt-alv-dead-space",
+    "explanation": "Alveolar ventilation determines carbon dioxide elimination: VA = (VT - VD) × RR. Because anatomic dead space (150 mL) is constant for each breath, at VT 500 mL × RR 12, VA is (500 - 150) × 12 = 4.2 L/min. At VT 250 mL × RR 24, VA is (250 - 150) × 24 = 2.4 L/min. Alveolar ventilation drops by 43% despite identical minute ventilation (6.0 L/min), causing PaCO2 to accumulate and arterial pH to fall."
+  },
+  "causalChainFields": [
+    "setVt",
+    "setRr",
+    "minuteVent",
+    "alveolarVentilation",
+    "steadyPaco2Target",
+    "paco2",
+    "ph"
+  ],
+  "evidence": [
+    {
+      "claim": "Alveolar ventilation is the difference between tidal volume and dead space multiplied by respiratory rate, and determines arterial PaCO2.",
+      "source": "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 10th ed. Wolters Kluwer; 2016:15-28.",
+      "year": 2016,
+      "kind": "textbook"
+    },
+    {
+      "claim": "Shallow rapid breathing increases dead space fraction (VD/VT) and causes hypercapnia despite preserved minute ventilation.",
+      "source": "Nunn's Applied Respiratory Physiology. 8th ed. Elsevier; 2017:135-152.",
+      "year": 2017,
+      "kind": "textbook"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "dys-04-flow-starvation",
+  "source": "Marini JJ, Rodriguez RM, Lamb VJ. The inspiratory work of breathing during assist-control ventilation. Am Rev Respir Dis 1986; 134(5):902-909; MacIntyre NR. Patient-ventilator interactions: optimizing conventional modes of mechanical ventilation. Respir Care 2011; 56(1):43-57.",
+  "claim": "In volume control with fixed constant flow set well below patient inspiratory demand (inspFlowLpm 25 L/min square vs patient demand flow > 60 L/min, Pmus 18 cmH2O), vigorous patient effort distorts airway pressure below the passive trajectory, generating a scooped concave pressure waveform and flow starvation dyssynchrony.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 50,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 24,
+    "pmusAmplitudeCmH2O": 18.0,
+    "pmusInspTimeSec": 0.9,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 280,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 92,
+    "sbpBaselineMmHg": 128,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.5
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 12,
+    "vtSetMl": 450,
+    "inspFlowLpm": 25,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 38,
+    "pao2MmHg": 90
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "flowStarvationCount", "op": ">=", "value": 3 }
+  ],
+  "kind": "direction"
+}

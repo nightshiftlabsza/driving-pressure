@@ -1,0 +1,52 @@
+{
+  "caseId": "pneumonia-hfnc-01",
+  "scenarios": [
+    {
+      "name": "left on the non-rebreather",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 5, "metric": "spo2", "op": ">=", "value": 89 },
+        { "atSimMin": 75, "metric": "ph", "op": "<", "value": 7.25 }
+      ]
+    },
+    {
+      "name": "high flow alone: early improvement, then failure",
+      "outcome": "deteriorated",
+      "orders": [ { "atSimMin": 5, "order": "change-device", "detail": { "device": "hfnc", "flowLpm": 50, "fio2": 0.7, "temperatureC": 37 } } ],
+      "expect": [
+        { "atSimMin": 20, "metric": "spo2", "op": ">=", "value": 92 },
+        { "atSimMin": 120, "metric": "rrTotal", "op": ">=", "value": 38 },
+        { "atSimMin": 120, "metric": "ph", "op": ">", "value": 7.2 }
+      ],
+      "fired": ["two-hour-review"]
+    },
+    {
+      "name": "high flow, then controlled intubation with lung-protective settings",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 5, "order": "abg" },
+        { "atSimMin": 6, "order": "change-device", "detail": { "device": "hfnc", "flowLpm": 60, "fio2": 0.8, "temperatureC": 37 } },
+        { "atSimMin": 90, "order": "abg" },
+        { "atSimMin": 125, "order": "intubate" },
+        { "atSimMin": 126, "order": "change-settings", "detail": { "settings": { "vtSetMl": 330, "rrSetBpm": 26, "peep": 10, "fio2": 0.7 } } }
+      ],
+      "expect": [
+        { "atSimMin": 145, "metric": "spo2", "op": ">=", "value": 90 },
+        { "atSimMin": 145, "metric": "ph", "op": ">=", "value": 7.25 }
+      ],
+      "notFired": ["high-vt"]
+    },
+    {
+      "name": "intubated but left on the default 450 mL",
+      "runToSimMin": 170,
+      "orders": [
+        { "atSimMin": 6, "order": "change-device", "detail": { "device": "hfnc", "flowLpm": 60, "fio2": 0.8, "temperatureC": 37 } },
+        { "atSimMin": 125, "order": "intubate" }
+      ],
+      "expect": [ { "atSimMin": 140, "metric": "vteMlKgPbw", "op": ">", "value": 8 } ],
+      "fired": ["high-vt"],
+      "notFired": ["protected"]
+    }
+  ]
+}

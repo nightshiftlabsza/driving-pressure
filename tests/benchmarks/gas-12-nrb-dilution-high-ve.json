@@ -1,0 +1,47 @@
+{
+  "id": "gas-12-nrb-dilution-high-ve",
+  "source": "Wagstaff TA, Soni N. Performance of oxygen delivery devices. Br J Anaesth 2007; 99(5):426-434.",
+  "claim": "At a fresh gas flow of 15 L/min with elevated minute ventilation (~20 L/min), a non-rebreather reservoir mask delivers an effective inspired oxygen fraction (FiO2) between 0.55 and 0.80.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 45,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 6,
+    "expResistanceCmH2OPerLps": 6,
+    "spontRateBpm": 34,
+    "pmusAmplitudeCmH2O": 24.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 250,
+    "vo2MlPerMin": 300,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 95,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "none",
+    "o2": "non-rebreather",
+    "o2FlowLpm": 15
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "hco3MmolL": 24
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "fio2", "op": ">=", "value": 0.55 },
+    { "metric": "fio2", "op": "<=", "value": 0.80 }
+  ],
+  "kind": "published-range"
+}

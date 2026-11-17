@@ -1,0 +1,318 @@
+/**
+ * OpenVentSim Clinical Design Tokens
+ * Disciplined, high-contrast, instrument-grade tokens.
+ * WCAG AA compliant across Dark and Light modes.
+ */
+
+:root {
+  /* Type Scale */
+  --font-sans: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "SF Mono", Consolas, monospace;
+  --font-numeric: Bahnschrift, "DIN Alternate", "DIN 2014", "Roboto Condensed", "Arial Narrow", var(--font-sans);
+
+  --text-2xs: 0.6875rem; /* 11px */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.875rem; /* 14px */
+  --text-md: 1rem;       /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+
+  /* Spacing Scale (4px/8px modular rhythm) */
+  --space-0-5: 0.125rem; /* 2px */
+  --space-1: 0.25rem;    /* 4px */
+  --space-1-5: 0.375rem; /* 6px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-2-5: 0.625rem; /* 10px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+
+  /* Radii */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 100ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Theme Tokens (Default: Low-Lux Dark Mode) */
+.vt,
+.vt[data-theme="dark"] {
+  --bg-app-canvas: #070a0f;
+  --bg-surface-primary: #10151e;
+  --bg-surface-elevated: #161d29;
+  --bg-telemetry-well: #090d13;
+  --border-hairline: #1e2736;
+
+  --bg: #070a0f;
+  --surface: #10151e;
+  --surface-2: #161d29;
+  --surface-3: #1f2936;
+  --surface-muted: #0d1117;
+  --line: #1e2736;
+  --line-strong: #2d3a4f;
+
+  --text: #f1f5f9;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+
+  --wave-bg: #090d13;
+  --grid: rgba(148, 163, 184, 0.12);
+  --grid-strong: rgba(148, 163, 184, 0.28);
+
+  /* Clinical Waveform & Numerics */
+  --ch-paw: #ffd43b;
+  --ch-flow: #4be08a;
+  --ch-vol: #38bdf8;
+  --ch-co2: #f8fafc;
+
+  --mon-hr: #4be08a;
+  --mon-spo2: #38bdf8;
+  --mon-bp: #f43f5e;
+  --mon-temp: #f1f5f9;
+
+  /* Interaction and States */
+  --act: #f59e0b;
+  --act-ink: #0f0b00;
+  --act-soft: rgba(245, 158, 11, 0.15);
+  --key: #151d27;
+  --key-line: #293748;
+  --key-hover: #1e2937;
+  --sel: #2563eb;
+
+  /* Alarms & Status */
+  --alarm-high: #ef4444;
+  --alarm-high-ink: #ffffff;
+  --alarm-med: #f59e0b;
+  --alarm-med-ink: #110e00;
+  --ok: #10b981;
+  --focus: #38bdf8;
+
+  /* Tinted status surfaces (callouts, badges). Use these, never fixed palette colours. */
+  --info-bg: rgba(56, 189, 248, 0.10);  --info-ink: #7dd3fc;  --info-line: rgba(56, 189, 248, 0.40);
+  --ok-bg: rgba(16, 185, 129, 0.12);    --ok-ink: #6ee7b7;    --ok-line: rgba(16, 185, 129, 0.45);
+  --warn-bg: rgba(245, 158, 11, 0.12);  --warn-ink: #fcd34d;  --warn-line: rgba(245, 158, 11, 0.45);
+  --danger-bg: rgba(239, 68, 68, 0.14); --danger-ink: #fca5a5; --danger-line: rgba(239, 68, 68, 0.50);
+  --primary: #1d4ed8; --primary-ink: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* Clinical Daylight Light Mode */
+.vt[data-theme="light"] {
+  --bg-app-canvas: #efede7;
+  --bg-surface-primary: #f8f7f4;
+  --bg-surface-elevated: #ffffff;
+  --bg-telemetry-well: #f3f1ec;
+  --border-hairline: #dfdcd2;
+
+  --bg: #efede7;
+  --surface: #f8f7f4;
+  --surface-2: #ffffff;
+  --surface-3: #eae6de;
+  --surface-muted: #f3f1ec;
+  --line: #dfdcd2;
+  --line-strong: #c4c0b4;
+
+  --text: #111827;
+  --text-2: #4b5563;
+  --text-3: #6b7280;
+
+  --wave-bg: #f3f1ec;
+  --grid: rgba(75, 85, 99, 0.12);
+  --grid-strong: rgba(75, 85, 99, 0.28);
+
+  --ch-paw: #b45309;
+  --ch-flow: #047857;
+  --ch-vol: #1d4ed8;
+  --ch-co2: #1f2937;
+
+  --mon-hr: #047857;
+  --mon-spo2: #0284c7;
+  --mon-bp: #be123c;
+  --mon-temp: #111827;
+
+  --act: #a14a08;
+  --act-ink: #ffffff;
+  --act-soft: rgba(161, 74, 8, 0.12);
+  --key: #ffffff;
+  --key-line: #dfdcd2;
+  --key-hover: #f3f1ec;
+  --sel: #1d4ed8;
+
+  --alarm-high: #dc2626;
+  --alarm-high-ink: #ffffff;
+  --alarm-med: #a14a08;
+  --alarm-med-ink: #ffffff;
+  --ok: #059669;
+  --focus: #1d4ed8;
+
+  /* Tinted status surfaces (callouts, badges). Use these, never fixed palette colours. */
+  --info-bg: #eff6ff;   --info-ink: #1e40af;   --info-line: #bfdbfe;
+  --ok-bg: #ecfdf5;     --ok-ink: #047857;     --ok-line: #a7f3d0;
+  --warn-bg: #fffbeb;   --warn-ink: #92400e;   --warn-line: #fcd34d;
+  --danger-bg: #fef2f2; --danger-ink: #b91c1c; --danger-line: #fca5a5;
+  --primary: #0f172a; --primary-ink: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+/* Hybrid Scope Mode: Daylight Clinical Shell with Dark CRT Oscilloscope Well */
+.vt[data-theme="hybrid"] {
+  --bg-app-canvas: #efede7;
+  --bg-surface-primary: #f8f7f4;
+  --bg-surface-elevated: #ffffff;
+  --bg-telemetry-well: #090d13;
+  --border-hairline: #dfdcd2;
+
+  --bg: #efede7;
+  --surface: #f8f7f4;
+  --surface-2: #ffffff;
+  --surface-3: #eae6de;
+  --surface-muted: #f3f1ec;
+  --line: #dfdcd2;
+  --line-strong: #c4c0b4;
+
+  --text: #111827;
+  --text-2: #4b5563;
+  --text-3: #6b7280;
+
+  /* Recessed CRT Oscilloscope Well with luminous phosphors */
+  --wave-bg: #090d13;
+  --grid: rgba(148, 163, 184, 0.14);
+  --grid-strong: rgba(148, 163, 184, 0.32);
+
+  --ch-paw: #ffd43b;
+  --ch-flow: #4be08a;
+  --ch-vol: #38bdf8;
+  --ch-co2: #f8fafc;
+
+  --mon-hr: #047857;
+  --mon-spo2: #0284c7;
+  --mon-bp: #be123c;
+  --mon-temp: #111827;
+
+  --act: #a14a08;
+  --act-ink: #ffffff;
+  --act-soft: rgba(161, 74, 8, 0.12);
+  --key: #ffffff;
+  --key-line: #dfdcd2;
+  --key-hover: #f3f1ec;
+  --sel: #1d4ed8;
+
+  --alarm-high: #dc2626;
+  --alarm-high-ink: #ffffff;
+  --alarm-med: #a14a08;
+  --alarm-med-ink: #ffffff;
+  --ok: #059669;
+  --focus: #1d4ed8;
+
+  /* Tinted status surfaces (callouts, badges). Use these, never fixed palette colours. */
+  --info-bg: #eff6ff;   --info-ink: #1e40af;   --info-line: #bfdbfe;
+  --ok-bg: #ecfdf5;     --ok-ink: #047857;     --ok-line: #a7f3d0;
+  --warn-bg: #fffbeb;   --warn-ink: #92400e;   --warn-line: #fcd34d;
+  --danger-bg: #fef2f2; --danger-ink: #b91c1c; --danger-line: #fca5a5;
+  --primary: #0f172a; --primary-ink: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+/* Device Skin Overrides */
+.vt[data-skin="hamilton"] {
+  --act: #f59e0b;
+  --act-ink: #0f0b00;
+  --act-soft: rgba(245, 158, 11, 0.15);
+}
+.vt[data-skin="hamilton"][data-theme="light"] {
+  --act: #a14a08;
+  --act-ink: #ffffff;
+  --act-soft: rgba(161, 74, 8, 0.12);
+}
+
+.vt[data-skin="mindray"] {
+  --act: #00b4d8;
+  --act-ink: #011b22;
+  --act-soft: rgba(0, 180, 216, 0.16);
+  --sel: #0284c7;
+}
+.vt[data-skin="mindray"][data-theme="light"] {
+  --act: #007799;
+  --act-ink: #ffffff;
+  --act-soft: rgba(0, 119, 153, 0.12);
+  --sel: #0369a1;
+}
+
+/* Shared Primitives */
+.vt-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.vt-card:hover {
+  border-color: var(--line-strong);
+}
+
+.vt-input {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1-5) var(--space-2-5);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.vt-input:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-color: var(--focus);
+}
+
+.vt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  line-height: 1;
+  background: var(--surface-2);
+  color: var(--text-2);
+  border: 1px solid var(--line);
+}
+
+.vt-pill--active {
+  background: var(--act-soft);
+  color: var(--act);
+  border-color: var(--act);
+}
+
+/* Accessible reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vt, .vt * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "gas-07-dead-space-hypercapnia",
+  "source": "Nuckton TJ, Alonso JA, Kallet RH, et al. Pulmonary dead-space fraction as a risk factor for death in the acute respiratory distress syndrome. N Engl J Med 2002; 346(17):1281-1286.",
+  "claim": "Elevated alveolar dead space fraction impairs effective alveolar ventilation at standard minute ventilation, driving hypercapnia and widening the arterial-to-end-tidal carbon dioxide gradient.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 60,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 35,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 260,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.45,
+    "shuntFraction": 0.2,
+    "recruitability": 0.2,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 90,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.5,
+    "peep": 8,
+    "rrSetBpm": 16,
+    "vtSetMl": 450,
+    "inspFlowLpm": 55,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 42
+  },
+  "runSec": 90,
+  "checks": [
+    { "metric": "paco2", "op": ">=", "value": 55.0 }
+  ],
+  "kind": "direction",
+  "expectedToFail": true,
+  "failureReason": "With 90s arterial tau and 60/40 tissue weighting, PaCO2 rises from 42 to only 51.1 mmHg in 90s; reaching 55 mmHg requires >180s."
+}

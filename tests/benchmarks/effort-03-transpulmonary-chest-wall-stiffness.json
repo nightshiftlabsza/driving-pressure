@@ -1,0 +1,52 @@
+{
+  "id": "effort-03-transpulmonary-chest-wall-stiffness",
+  "source": "Mauri T, Yoshida T, Bellani G, et al. Esophageal and transpulmonary pressure in the clinical setting: meaning, usefulness and perspectives. Intensive Care Med 2016; 42(9):1360-1373; Akoumianaki E, et al. Am J Respir Crit Care Med 2014; 189(5):520-531.",
+  "claim": "Transpulmonary pressure is airway pressure minus esophageal pressure (PL = Paw - Pes). In a patient with stiff chest wall (chestWallComplianceMlPerCmH2O 35 mL/cmH2O, low total Crs 18 mL/cmH2O), pleural pressure rises substantially during inspiration and end-inspiratory transpulmonary pressure is markedly lower than airway plateau pressure (PL,end-insp <= 16 cmH2O vs Pplat 28 cmH2O).",
+  "patient": {
+    "sex": "F",
+    "ageYears": 50,
+    "heightCm": 160,
+    "actualWeightKg": 95,
+    "complianceMlPerCmH2O": 18,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 10,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 130,
+    "alveolarDeadSpaceFraction": 0.15,
+    "shuntFraction": 0.25,
+    "recruitability": 0.2,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 88,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.7,
+    "chestWallComplianceMlPerCmH2O": 35
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.5,
+    "peep": 8,
+    "rrSetBpm": 16,
+    "vtSetMl": 360,
+    "inspFlowLpm": 50,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 42,
+    "pao2MmHg": 80
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "plEndInsp", "op": "<=", "value": 16.0 }
+  ],
+  "kind": "published-range"
+}

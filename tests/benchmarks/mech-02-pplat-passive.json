@@ -1,0 +1,51 @@
+{
+  "id": "mech-02-pplat-passive",
+  "source": "Marini JJ, Crooke PS. A general mathematical model for respiratory mechanics during mechanical ventilation. IEEE Trans Biomed Eng 1993; 40:92-97.",
+  "claim": "End-inspiratory plateau pressure in a relaxed patient equals the sum of positive end-expiratory pressure and tidal volume divided by respiratory system compliance.",
+  "patient": {
+    "sex": "F",
+    "ageYears": 48,
+    "heightCm": 162,
+    "actualWeightKg": 60,
+    "complianceMlPerCmH2O": 40,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 180,
+    "vo2MlPerMin": 220,
+    "anatomicDeadSpaceMl": 120,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.05,
+    "recruitability": 0.2,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 75,
+    "sbpBaselineMmHg": 115,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.35,
+    "peep": 8,
+    "rrSetBpm": 14,
+    "vtSetMl": 480,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pplat", "op": "approx", "value": 20.0, "tolerance": 0.5 },
+    { "metric": "drivingPressure", "op": "approx", "value": 12.0, "tolerance": 0.5 }
+  ],
+  "kind": "exact-relation"
+}

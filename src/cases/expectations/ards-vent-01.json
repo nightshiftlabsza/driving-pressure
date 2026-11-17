@@ -1,0 +1,51 @@
+{
+  "caseId": "ards-vent-01",
+  "scenarios": [
+    {
+      "name": "left on the ED settings",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 5, "metric": "pplat", "op": ">", "value": 30 },
+        { "atSimMin": 5, "metric": "vteMlKgPbw", "op": ">", "value": 9 },
+        { "atSimMin": 5, "metric": "spo2", "op": "<", "value": 88 }
+      ],
+      "fired": ["pplat-high", "high-vt"]
+    },
+    {
+      "name": "low tidal volume without raising the rate: hypercapnic acidosis",
+      "runToSimMin": 60,
+      "orders": [ { "atSimMin": 5, "order": "change-settings", "detail": { "settings": { "vtSetMl": 400 } } } ],
+      "expect": [
+        { "atSimMin": 45, "metric": "pplat", "op": "<=", "value": 25 },
+        { "atSimMin": 45, "metric": "paco2", "op": ">", "value": 65 },
+        { "atSimMin": 45, "metric": "ph", "op": "<", "value": 7.15 }
+      ]
+    },
+    {
+      "name": "lung-protective ventilation, higher PEEP, rate up, then prone",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 3, "order": "abg" },
+        { "atSimMin": 5, "order": "change-settings", "detail": { "settings": { "vtSetMl": 400, "rrSetBpm": 30, "peep": 12 } } },
+        { "atSimMin": 40, "order": "abg" },
+        { "atSimMin": 60, "order": "prone" }
+      ],
+      "expect": [
+        { "atSimMin": 40, "metric": "pplat", "op": "<=", "value": 30 },
+        { "atSimMin": 40, "metric": "ph", "op": ">=", "value": 7.2 },
+        { "atSimMin": 40, "metric": "pfRatio", "op": "<", "value": 150 },
+        { "atSimMin": 140, "metric": "pfRatio", "op": ">", "value": 150 }
+      ],
+      "fired": ["prone-prompt"],
+      "notFired": ["pplat-high", "high-vt"]
+    },
+    {
+      "name": "PEEP 16 with 400 mL: oxygenation better but plateau over 30",
+      "runToSimMin": 50,
+      "orders": [ { "atSimMin": 5, "order": "change-settings", "detail": { "settings": { "vtSetMl": 400, "rrSetBpm": 30, "peep": 16, "fio2": 0.7 } } } ],
+      "expect": [ { "atSimMin": 30, "metric": "pplat", "op": ">", "value": 30 }, { "atSimMin": 30, "metric": "spo2", "op": ">=", "value": 94 } ],
+      "fired": ["pplat-high"]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "mech-04-autopeep-resistance",
+  "source": "Tuxen DV. Detrimental effects of positive end-expiratory pressure during controlled mechanical ventilation of patients with severe airflow obstruction. Am Rev Respir Dis 1989; 140(1):5-9.",
+  "claim": "Higher expiratory airway resistance lengthens the expiratory time constant and causes substantial auto-PEEP even at moderate respiratory rates.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 62,
+    "heightCm": 178,
+    "actualWeightKg": 80,
+    "complianceMlPerCmH2O": 55,
+    "inspResistanceCmH2OPerLps": 20,
+    "expResistanceCmH2OPerLps": 45,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 260,
+    "anatomicDeadSpaceMl": 160,
+    "alveolarDeadSpaceFraction": 0.15,
+    "shuntFraction": 0.08,
+    "recruitability": 0.2,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 25,
+    "hrBaselineBpm": 84,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "clean-kill",
+    "ppvSeverity": 0.7,
+    "respiratoryReserve": 0.7
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 20,
+    "vtSetMl": 500,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 45
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "autoPeep", "op": ">", "value": 4.0 }
+  ],
+  "kind": "direction"
+}

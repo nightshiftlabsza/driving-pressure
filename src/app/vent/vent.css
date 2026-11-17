@@ -1,0 +1,608 @@
+@import '../../styles/tokens.css';
+
+/*
+ * Ventilator-style visual system for the ICU trainer.
+ * Dark is the bedside default (near-black ground, waveform-linked numerics, Mindray/Hamilton-like);
+ * light follows the daylight themes on current ICU ventilators. Both are tokens on .vt.
+ */
+.vt,
+.vt[data-theme="dark"] {
+  --vt-font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --vt-num: Bahnschrift, "DIN Alternate", "DIN 2014", "Roboto Condensed", "Arial Narrow", var(--vt-font);
+
+  --bg: #070a0f;
+  --surface: #10151e;
+  --surface-2: #161d29;
+  --surface-3: #1f2936;
+  --surface-muted: #0d1117;
+  --line: #1e2736;
+  --line-strong: #2d3a4f;
+  --text: #f1f5f9;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+  --wave-bg: #090d13;
+  --grid: rgba(148, 163, 184, 0.12);
+  --grid-strong: rgba(148, 163, 184, 0.28);
+
+  /* channel colours: waveform and its numerics share a colour */
+  --ch-paw: #ffd43b;
+  --ch-flow: #4be08a;
+  --ch-vol: #38bdf8;
+  --ch-co2: #f8fafc;
+  /* patient monitor conventions */
+  --mon-hr: #4be08a;
+  --mon-spo2: #38bdf8;
+  --mon-bp: #f43f5e;
+  --mon-temp: #f1f5f9;
+
+  /* interaction: Hamilton's activated control is orange */
+  --act: #f59e0b;
+  --act-ink: #0f0b00;
+  --act-soft: rgba(245, 158, 11, 0.15);
+  --key: #151d27;
+  --key-line: #293748;
+  --key-hover: #1e2937;
+  --sel: #2563eb;
+
+  --alarm-high: #ef4444;
+  --alarm-high-ink: #ffffff;
+  --alarm-med: #f59e0b;
+  --alarm-med-ink: #110e00;
+  --ok: #10b981;
+
+  --focus: #38bdf8;
+  color-scheme: dark;
+  font-family: var(--vt-font);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.vt[data-theme="light"] {
+  --bg: #efede7;
+  --surface: #f8f7f4;
+  --surface-2: #ffffff;
+  --surface-3: #eae6de;
+  --surface-muted: #f3f1ec;
+  --line: #dfdcd2;
+  --line-strong: #c4c0b4;
+  --text: #111827;
+  --text-2: #4b5563;
+  --text-3: #6b7280;
+  --wave-bg: #f3f1ec;
+  --grid: rgba(75, 85, 99, 0.12);
+  --grid-strong: rgba(75, 85, 99, 0.28);
+
+  --ch-paw: #b45309;
+  --ch-flow: #047857;
+  --ch-vol: #1d4ed8;
+  --ch-co2: #1f2937;
+  --mon-hr: #047857;
+  --mon-spo2: #0284c7;
+  --mon-bp: #be123c;
+  --mon-temp: #111827;
+
+  --act: #a14a08;
+  --act-ink: #ffffff;
+  --act-soft: rgba(161, 74, 8, 0.12);
+  --key: #ffffff;
+  --key-line: #dfdcd2;
+  --key-hover: #f3f1ec;
+  --sel: #1d4ed8;
+
+  --alarm-high: #dc2626;
+  --alarm-high-ink: #ffffff;
+  --alarm-med: #a14a08;
+  --alarm-med-ink: #ffffff;
+  --ok: #059669;
+  --focus: #1d4ed8;
+  color-scheme: light;
+}
+
+.vt[data-theme="hybrid"] {
+  --bg: #efede7;
+  --surface: #f8f7f4;
+  --surface-2: #ffffff;
+  --surface-3: #eae6de;
+  --surface-muted: #f3f1ec;
+  --line: #dfdcd2;
+  --line-strong: #c4c0b4;
+  --text: #111827;
+  --text-2: #4b5563;
+  --text-3: #6b7280;
+
+  /* Recessed CRT Oscilloscope Well */
+  --wave-bg: #090d13;
+  --grid: rgba(148, 163, 184, 0.14);
+  --grid-strong: rgba(148, 163, 184, 0.32);
+
+  --ch-paw: #ffd43b;
+  --ch-flow: #4be08a;
+  --ch-vol: #38bdf8;
+  --ch-co2: #f8fafc;
+  --mon-hr: #047857;
+  --mon-spo2: #0284c7;
+  --mon-bp: #be123c;
+  --mon-temp: #111827;
+
+  --act: #a14a08;
+  --act-ink: #ffffff;
+  --act-soft: rgba(161, 74, 8, 0.12);
+  --key: #ffffff;
+  --key-line: #dfdcd2;
+  --key-hover: #f3f1ec;
+  --sel: #1d4ed8;
+
+  --alarm-high: #dc2626;
+  --alarm-high-ink: #ffffff;
+  --alarm-med: #a14a08;
+  --alarm-med-ink: #ffffff;
+  --ok: #059669;
+  --focus: #1d4ed8;
+  color-scheme: light;
+}
+
+/* Device skin tokens: Hamilton Medical vs Mindray */
+.vt[data-skin="hamilton"] {
+  --act: #ff9a1f;
+  --act-ink: #120a00;
+  --act-soft: rgba(255, 154, 31, 0.14);
+}
+.vt[data-skin="hamilton"][data-theme="light"] {
+  --act: #a14a08;
+  --act-ink: #ffffff;
+  --act-soft: rgba(161, 74, 8, 0.12);
+}
+
+.vt[data-skin="mindray"] {
+  --act: #00c0d8;
+  --act-ink: #012228;
+  --act-soft: rgba(0, 192, 216, 0.15);
+  --sel: #007a99;
+}
+.vt[data-skin="mindray"][data-theme="light"] {
+  --act: #008fa3;
+  --act-ink: #ffffff;
+  --act-soft: rgba(0, 143, 163, 0.12);
+  --sel: #006877;
+}
+
+.vt[data-skin="mindray"] .vt-key {
+  border-radius: 2px;
+}
+.vt[data-skin="mindray"] .vt-modetab {
+  border-radius: 2px 2px 0 0;
+  letter-spacing: .02em;
+}
+.vt[data-skin="hamilton"] .vt-modetab {
+  font-weight: 700;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.vt *:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.vt ::selection { background: var(--act); color: var(--act-ink); }
+.vt .num { font-family: var(--vt-num); font-variant-numeric: tabular-nums; font-stretch: semi-condensed; }
+.vt ::-webkit-scrollbar { width: 10px; height: 10px; }
+.vt ::-webkit-scrollbar-thumb { background: var(--line-strong); border: 2px solid var(--surface); border-radius: 6px; }
+.vt ::-webkit-scrollbar-track { background: var(--surface); }
+
+/* ---------- generic controls ---------- */
+.vt-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+  min-height: 32px; padding: 0 .75rem; font-size: .8125rem; font-weight: 600;
+  background: var(--key); color: var(--text); border: 1px solid var(--key-line); border-radius: 4px;
+  cursor: pointer; transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+.vt-btn:hover:not(:disabled) { background: var(--key-hover); }
+.vt-btn:disabled { opacity: .45; cursor: not-allowed; }
+.vt-btn[aria-pressed="true"] { background: var(--sel); border-color: var(--sel); color: #fff; }
+.vt-btn[aria-pressed="true"]:hover:not(:disabled) { background: var(--sel); color: #fff; filter: brightness(1.12); }
+.vt-btn--primary, .vt-btn-primary, .btn-primary-clinical {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  font-weight: 600;
+}
+.vt[data-theme="dark"] .vt-btn--primary,
+.vt[data-theme="dark"] .vt-btn-primary,
+.vt[data-theme="dark"] .btn-primary-clinical {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+.vt-btn--primary:hover:not(:disabled),
+.vt-btn-primary:hover:not(:disabled),
+.btn-primary-clinical:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+.vt-btn--secondary, .vt-btn-secondary { background: var(--surface-2); border-color: var(--line); color: var(--text); }
+.vt-btn--secondary:hover:not(:disabled), .vt-btn-secondary:hover:not(:disabled) { background: var(--surface-3); border-color: var(--line-strong); }
+.vt-btn--confirm { background: var(--act); border-color: var(--act); color: var(--act-ink); }
+.vt-btn--confirm:hover:not(:disabled) { background: var(--act); filter: brightness(1.08); }
+.vt-btn--danger { border-color: color-mix(in srgb, var(--alarm-high) 70%, transparent); color: var(--text); }
+.vt-btn--danger:hover:not(:disabled) { background: color-mix(in srgb, var(--alarm-high) 22%, var(--key)); }
+.vt-btn--quiet { background: transparent; border-color: transparent; color: var(--text-2); }
+.vt-btn--quiet:hover:not(:disabled) { background: var(--surface-3); color: var(--text); }
+
+/* Spaced Repetition Review Grades */
+.vt-grade-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.vt-grade-btn--again {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+.vt-grade-btn--again:hover {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: #ef4444;
+}
+.vt-grade-btn--hard {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.vt-grade-btn--hard:hover {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: #f59e0b;
+}
+.vt-grade-btn--good {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+.vt-grade-btn--good:hover {
+  background: rgba(56, 189, 248, 0.22);
+  border-color: #0284c7;
+}
+.vt-grade-btn--easy {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.vt-grade-btn--easy:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+}
+
+.vt[data-theme="light"] .vt-grade-btn--again {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+.vt[data-theme="light"] .vt-grade-btn--hard {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fcd34d;
+}
+.vt[data-theme="light"] .vt-grade-btn--good {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+.vt[data-theme="light"] .vt-grade-btn--easy {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #6ee7b7;
+}
+
+.vt-select {
+  min-height: 32px; padding: 0 .5rem; font: inherit; font-size: .8125rem;
+  background: var(--key); color: var(--text); border: 1px solid var(--key-line); border-radius: 4px;
+}
+
+.vt-label { font-size: .6875rem; font-weight: 600; letter-spacing: .02em; color: var(--text-2); }
+.vt-section-title { font-size: .75rem; font-weight: 700; color: var(--text-2); }
+
+/* ---------- setting keys (Mindray quick keys + Hamilton activation states) ---------- */
+.vt-key {
+  /* No fixed height: the tile grows to hold label, number and unit. A fixed height let the unit fall out of the box. */
+  position: relative; display: grid; grid-template-rows: auto 1fr auto; text-align: left;
+  min-width: 84px; min-height: 68px; padding: 5px 7px 4px; color: var(--text);
+  background: var(--key); border: 1px solid var(--key-line); border-radius: 4px; cursor: pointer;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+/* Hover must not repaint the selected tile: its text is white, so a pale hover background made the value unreadable. */
+.vt-key:hover:not(:disabled):not([data-state="active"]) { background: var(--key-hover); }
+.vt-key:disabled { cursor: default; opacity: .55; }
+.vt-key__label { font-size: .75rem; font-weight: 600; color: var(--text-2); white-space: nowrap; }
+.vt-key__value { font-size: 1.875rem; line-height: 1; align-self: center; }
+.vt-key__unit { font-size: .6875rem; line-height: 1.2; min-height: 1.2em; color: var(--text-3); justify-self: end; white-space: nowrap; }
+.vt-key[data-state="active"] { background: var(--act); border-color: var(--act); color: var(--act-ink); }
+.vt-key[data-state="active"] .vt-key__label,
+.vt-key[data-state="active"] .vt-key__unit { color: var(--act-ink); opacity: .8; }
+.vt-key[data-state="pending"] { border-color: var(--act); box-shadow: inset 0 0 0 1px var(--act); }
+.vt-key[data-state="pending"] .vt-key__value { color: var(--act); }
+.vt-key__was { position: absolute; top: 5px; right: 7px; font-size: .6875rem; color: var(--text-3); }
+.vt-key[data-state="active"] .vt-key__was { color: var(--act-ink); opacity: .75; }
+
+.vt-modetab {
+  min-height: 30px; padding: 0 .85rem; font-size: .8125rem; font-weight: 700; color: var(--text-2);
+  background: transparent; border: 1px solid transparent; border-bottom: 0; border-radius: 4px 4px 0 0; cursor: pointer;
+}
+.vt-modetab:hover:not(:disabled) { color: var(--text); background: var(--surface-3); }
+.vt-modetab[data-state="current"] { color: var(--text); background: var(--surface-2); border-color: var(--line-strong); }
+.vt-modetab[data-state="pending"] { color: var(--act); background: var(--surface-2); border-color: var(--act); border-style: dashed; }
+.vt-modetab:disabled { cursor: default; opacity: .5; }
+
+/* ---------- adjustment strip (Hamilton slider bar) ---------- */
+.vt-adjust { background: var(--surface-2); border: 1px solid var(--act); border-radius: 4px; }
+.vt-range { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; }
+.vt-range::-webkit-slider-runnable-track { height: 6px; background: var(--surface-3); border: 1px solid var(--line-strong); border-radius: 3px; }
+.vt-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 26px; margin-top: -11px; background: var(--act); border: 2px solid var(--surface-2); border-radius: 3px; }
+.vt-range::-moz-range-track { height: 6px; background: var(--surface-3); border: 1px solid var(--line-strong); border-radius: 3px; }
+.vt-range::-moz-range-thumb { width: 16px; height: 24px; background: var(--act); border: 2px solid var(--surface-2); border-radius: 3px; }
+
+/* ---------- numerics ---------- */
+.vt-numeric { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr; column-gap: 4px; padding: 5px 8px 6px; border-bottom: 1px solid var(--line); position: relative; }
+.vt-numeric__name { font-size: .75rem; font-weight: 600; }
+.vt-numeric__unit { font-size: .6875rem; color: var(--text-3); text-align: right; }
+.vt-numeric__value { font-size: 2.125rem; line-height: 1.05; }
+.vt-numeric__limits { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; font-size: .6875rem; color: var(--text-3); padding: 2px 0; }
+.vt-numeric[data-alarm="high"] .vt-numeric__value { color: var(--alarm-high-ink); background: var(--alarm-high); padding: 0 4px; border-radius: 2px; justify-self: start; }
+.vt-numeric[data-alarm="med"] .vt-numeric__value { color: var(--alarm-med-ink); background: var(--alarm-med); padding: 0 4px; border-radius: 2px; justify-self: start; }
+.vt-numeric--big .vt-numeric__value { font-size: 2.75rem; }
+
+/* ---------- alarm message field ---------- */
+.vt-alarm { display: flex; align-items: center; gap: .5rem; min-height: 32px; padding: .2rem .65rem; border-radius: 3px; font-size: .8125rem; font-weight: 700; }
+.vt-alarm[data-priority="high"] { background: var(--alarm-high); color: var(--alarm-high-ink); }
+.vt-alarm[data-priority="med"] { background: var(--alarm-med); color: var(--alarm-med-ink); }
+.vt-alarm[data-priority="none"] { background: var(--surface-2); color: var(--text-3); font-weight: 500; border: 1px solid var(--line); }
+.vt-alarm[data-priority="info"] { background: var(--surface-2); color: var(--text); font-weight: 600; border: 1px solid var(--line-strong); }
+
+.vt-alarm[data-priority="low"] { background: var(--info-bg); color: var(--info-ink); border: 1px solid var(--info-line); }
+/* The alarm bar: message on the left, its three plain-language controls on the right; wraps instead of clipping. */
+.vt-alarm-bar { justify-content: space-between; flex-wrap: wrap; row-gap: .3rem; column-gap: .75rem; }
+.vt-alarm-bar__text { display: flex; align-items: center; gap: .45rem; min-width: 0; flex: 1 1 14rem; }
+.vt-alarm-bar__actions { display: flex; align-items: center; gap: .375rem; flex-wrap: wrap; margin-left: auto; }
+.vt-alarm-bar__tag { flex: none; font-size: .6875rem; font-weight: 600; padding: 1px 6px; border-radius: 3px; white-space: nowrap; background: color-mix(in srgb, currentColor 18%, transparent); }
+.vt-alarm-bar__btn {
+  display: inline-flex; align-items: center; gap: .3rem; min-height: 26px; padding: 0 .55rem; white-space: nowrap;
+  font-size: .75rem; font-weight: 700; color: inherit; cursor: pointer; border-radius: 3px;
+  background: color-mix(in srgb, currentColor 14%, transparent); border: 1px solid color-mix(in srgb, currentColor 50%, transparent);
+}
+.vt-alarm-bar__btn:hover { background: color-mix(in srgb, currentColor 26%, transparent); }
+.vt-alarm[data-priority="none"] .vt-alarm-bar__btn { color: var(--text-2); font-weight: 600; }
+
+/* ---------- case screen grid ----------
+   Under 1024 px: one column. 1024 to 1919 px: ventilator and a side panel. From 1920 px: patient | ventilator | progress.
+   From 2800 px the left area splits into two columns. On a desktop the grid fills the window and each area scrolls on its own. */
+.vt-case-root { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; min-height: 0; }
+.vt-case { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--line); min-width: 0; min-height: 0; }
+.vt-case > * { min-width: 0; min-height: 0; }
+.vt-case__left { display: none; background: var(--surface); }
+.vt-case__centre { display: flex; flex-direction: column; background: var(--bg); }
+.vt-case__right { display: flex; flex-direction: column; background: var(--surface); }
+.vt-case__leftcols { display: grid; grid-template-columns: minmax(0, 1fr); }
+.vt-case__leftcol { padding: .75rem; min-width: 0; }
+
+.vt-scope { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--line); flex: 1 1 auto; min-height: 0; }
+.vt-scope__wave { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+/* One canvas of three traces sharing the height: 330 px gives 110 px each at short heights, 1130 px caps them near 360 px. */
+.vt-scope__canvas { position: relative; flex: 1 1 auto; min-height: 330px; max-height: 1130px; }
+.vt-scope__nums { display: flex; flex-direction: column; min-width: 0; }
+
+@media (min-width: 768px) {
+  .vt-scope { grid-template-columns: minmax(0, 1fr) minmax(15rem, 22rem); grid-template-rows: minmax(0, 1fr); }
+  .vt-scope__nums { overflow-y: auto; min-height: 0; }
+  /* The numbers size themselves from the height of their column, so every row (down to Temp) is visible without scrolling. */
+  .vt-scope__nums { container-type: size; --numv: clamp(1.25rem, calc((100cqh - 24rem) / 10.5), 2.4rem); }
+  .vt-scope__nums .vt-numeric__value { font-size: var(--numv); }
+  .vt-scope__nums .vt-numeric--big .vt-numeric__value { font-size: calc(var(--numv) * 1.25); }
+}
+/* Short screens (laptops, 3440x1440 at 200% scaling): three numbers per row so the whole monitor is visible at once. */
+@media (min-width: 768px) and (max-height: 800px) {
+  /* The waveform may shrink when the setting editor opens, instead of sliding over the hold buttons and the numbers. */
+  .vt-scope { overflow: hidden; }
+  .vt-scope__canvas { min-height: 150px; }
+  .vt-scope__nums { --numv: clamp(1rem, calc((100cqh - 15.5rem) / 6.5), 1.375rem); }
+  .vt-scope__nums .grid.grid-cols-2 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: dense; gap: 0 .25rem; }
+  .vt-scope__nums .vt-numeric { padding: 3px 6px 3px; }
+  .vt-scope__nums .vt-numeric--big .vt-numeric__value { font-size: var(--numv); }
+}
+/* Two editor bars open on a small laptop leave very little height: four numbers per row, limits hidden, so HR and SpO2 stay in view. */
+@container (max-height: 340px) {
+  .vt-scope__nums .grid.grid-cols-2 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .vt-scope__nums .vt-numeric { padding: 1px 5px; }
+  .vt-scope__nums .vt-numeric__limits { display: none; }
+  .vt-scope__nums .vt-numeric > .col-span-2 { flex-wrap: wrap; }
+  .vt-scope__nums .vt-numeric__unit { font-size: .625rem; }
+  .vt-scope__nums .vt-section-title { padding-top: 2px; padding-bottom: 0; }
+}
+@media (min-width: 768px) and (max-height: 740px) {
+  .vt-scope__nums { --numv: 1.25rem; }
+  .vt-scope__nums .vt-numeric { padding: 1px 6px 1px; }
+  .vt-scope__nums .vt-numeric__name { line-height: 1.2; }
+  .vt-scope__nums .vt-section-title { padding-top: 2px; padding-bottom: 0; }
+}
+@media (min-width: 1024px) {
+  .vt-case { grid-template-columns: minmax(0, 1fr) clamp(360px, 30vw, 460px); }
+}
+@media (min-width: 1920px) {
+  .vt-case { grid-template-columns: minmax(260px, .6fr) minmax(0, 2.6fr) minmax(360px, 1fr); }
+  .vt-case__left { display: block; }
+}
+/* Full window height on a desktop-sized screen: the page does not scroll, each area does. */
+@media (min-width: 1024px) and (min-height: 600px) {
+  .vt-app--case { height: 100vh; overflow: hidden; }
+  .vt-app--case > main { min-height: 0; display: flex; flex-direction: column; }
+  .vt-case > * { overflow-y: auto; overflow-x: hidden; }
+}
+
+/* ---------- page containers: readable on a laptop, use the room on a wide monitor ---------- */
+.vt-page { width: 100%; max-width: 64rem; margin-inline: auto; }
+@media (min-width: 1600px) { .vt-page { max-width: 80rem; } }
+@media (min-width: 2200px) { .vt-page { max-width: 112rem; } }
+@media (min-width: 3000px) { .vt-page { max-width: 150rem; } }
+/* Lists of independent rows become two columns when there is room. */
+@media (min-width: 2200px) {
+  .vt-list-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; overflow: hidden; }
+  .vt-list-cols > * { border-top: 1px solid var(--line) !important; margin-top: -1px; }
+}
+
+/* ---------- side panel tabs ---------- */
+.vt-tabs { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: 1px solid var(--line); }
+.vt-tab { padding: .45rem .7rem; font-size: .8125rem; font-weight: 600; color: var(--text-2); background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; }
+.vt-tab:hover { color: var(--text); }
+.vt-tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--sel); font-weight: 700; }
+.vt-badge { display: inline-block; min-width: 1.1rem; padding: 0 .3rem; font-size: .6875rem; line-height: 1.1rem; text-align: center; border-radius: 9px; background: var(--surface-3); color: var(--text-2); }
+
+/* ---------- open-circuit monitor tiles ---------- */
+/* Sizes follow the screen height so four tiles always fit in the panel; the panel scrolls only as a last resort. */
+.oc-grid { min-height: 26rem; }
+.oc-trend { min-height: 96px; }
+@media (max-height: 900px) {
+  .oc-grid { min-height: 0; }
+  .oc-trend { min-height: 40px; }
+  .oc-tile { padding: .5rem .625rem; }
+  .oc-tile .oc-num { font-size: 2.5rem; }
+}
+
+/* ---------- ultrawide fill (1920px to 3440px) ---------- */
+/* Setting tiles: the number box is sized in ch of its own font instead of a fixed 4rem, so three digits never clip. */
+.vt-key .vt-key__value.w-16 { width: 4ch; min-width: 4ch; box-sizing: content-box; }
+/* Everything is sized in rem, so a larger root size scales text, tiles and spacing together. */
+@media (min-width: 1920px) {
+  :root { font-size: 17px; }
+  /* Story text stays at reading size. The root size above already grows with the screen; inflating it further only looked padded. */
+  .vt-case__leftcol, .vt-case__leftcol p { font-size: 1rem; line-height: 1.6; }
+  .vt-case__leftcol h2 { font-size: 1.25rem; line-height: 1.3; }
+}
+@media (min-width: 2560px) { :root { font-size: 19px; } }
+@media (min-width: 3200px) { :root { font-size: 22px; } }
+@media (min-width: 1920px) {
+  .vt-case__right [data-testid="consultant-pane"] {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .vt-case__right [data-testid="tutor-panel"] {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+}
+
+@media (min-width: 2560px) {
+  .vt-case__right .text-sm { font-size: 1rem; line-height: 1.6; }
+  .vt-case__right .vt-table { font-size: 1rem; }
+  .vt-case__right .vt-section-title { font-size: 1.0625rem; }
+  .vt-case { grid-template-columns: minmax(260px, .55fr) minmax(0, 2.6fr) minmax(360px, .85fr); }
+  .vt-case__leftcol {
+    padding: 1.5rem 1.75rem;
+  }
+  .vt-case__leftcol h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.85rem;
+  }
+  .vt-case__leftcol p {
+    margin-bottom: 1.5rem;
+  }
+  .vt-case__leftcol .vt-section-title {
+    font-size: 1.0625rem;
+    margin-bottom: 0.85rem;
+  }
+  .vt-case__leftcol section {
+    margin-bottom: 2.25rem;
+  }
+  .vt-case__leftcol button {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+    font-size: 1.0625rem;
+  }
+  .vt-case__leftcol .vt-label {
+    font-size: 0.8125rem;
+    margin-bottom: 0.35rem;
+  }
+  .vt-case__leftcol .grid {
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+  .vt-case__leftcol .grid > div {
+    padding: 0.75rem 1rem;
+  }
+  .vt-case__leftcol .grid .text-sm {
+    font-size: 1.125rem;
+  }
+  .vt-key {
+    min-width: 108px;
+    min-height: 5.4rem;
+    padding: 7px 10px 6px;
+  }
+  .vt-key__label {
+    font-size: 0.8125rem;
+  }
+  .vt-key__value {
+    font-size: 2.25rem;
+  }
+  .vt-key__unit {
+    font-size: 0.75rem;
+  }
+  .vt-modetab {
+    min-height: 36px;
+    padding: 0 1.1rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (min-width: 3200px) {
+  .vt-case { grid-template-columns: minmax(260px, .48fr) minmax(0, 2.6fr) minmax(360px, .85fr); }
+  .vt-case__leftcol {
+    padding: 2rem 2.25rem;
+  }
+  .vt-case__leftcol button {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    font-size: 1.125rem;
+  }
+  .vt-case__leftcol .grid {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .vt-case__leftcol .grid > div {
+    padding: 1rem 1.25rem;
+  }
+  .vt-case__leftcol .grid .text-sm {
+    font-size: 1.25rem;
+  }
+  .vt-key {
+    min-width: 120px;
+    min-height: 5.6rem;
+    padding: 8px 12px 7px;
+  }
+  .vt-key__label {
+    font-size: 0.875rem;
+  }
+  .vt-key__value {
+    font-size: 2.5rem;
+  }
+}
+
+.vt-table { width: 100%; border-collapse: collapse; font-size: .8125rem; }
+.vt-table th { text-align: right; font-weight: 600; font-size: .6875rem; color: var(--text-3); padding: .25rem .4rem; border-bottom: 1px solid var(--line); }
+.vt-table td { text-align: right; padding: .3rem .4rem; border-bottom: 1px solid var(--line); }
+.vt-table th:first-child, .vt-table td:first-child { text-align: left; }
+
+.vt-dialog-backdrop { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgba(0, 0, 0, .55); }
+.vt-dialog { width: 100%; max-width: 34rem; background: var(--surface); color: var(--text); border: 1px solid var(--line-strong); border-radius: 6px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vt * { transition: none !important; }
+}

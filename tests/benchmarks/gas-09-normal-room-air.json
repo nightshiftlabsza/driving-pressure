@@ -1,0 +1,49 @@
+{
+  "id": "gas-09-normal-room-air",
+  "source": "Hall JE, Hall ME. Guyton and Hall Textbook of Medical Physiology. 14th ed. Elsevier, 2021; Chapter 31: Acid-Base Regulation, p. 411-424.",
+  "claim": "In a healthy resting adult breathing room air, intact chemoreflex feedback maintains arterial PaCO2 between 38 and 42 mmHg and arterial pH between 7.38 and 7.42 at steady state.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 35,
+    "heightCm": 175,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 60,
+    "inspResistanceCmH2OPerLps": 5,
+    "expResistanceCmH2OPerLps": 5,
+    "spontRateBpm": 14,
+    "pmusAmplitudeCmH2O": 10.0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.05,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 72,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "hco3MmolL": 24
+  },
+  "runSec": 1200,
+  "checks": [
+    { "metric": "paco2", "op": ">=", "value": 38.0 },
+    { "metric": "paco2", "op": "<=", "value": 42.0 },
+    { "metric": "ph", "op": ">=", "value": 7.38 },
+    { "metric": "ph", "op": "<=", "value": 7.42 }
+  ],
+  "kind": "published-range"
+}

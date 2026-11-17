@@ -1,0 +1,839 @@
+[
+  {
+    "id": "wave-06",
+    "drillId": "waveforms",
+    "competency": "wave.normal",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Sedated post-operative patient on volume control, making no spontaneous effort. Read the pressure, flow and volume traces. Which statement fits what you see?",
+    "vignette": "A sedated patient on volume control the morning after elective surgery, making no spontaneous effort.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 40,
+        "heightCm": 178,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 55,
+        "inspResistanceCmH2OPerLps": 8,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.12,
+        "shuntFraction": 0.08,
+        "recruitability": 0.2,
+        "hbGPerDl": 14,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 72,
+        "sbpBaselineMmHg": 118,
+        "dbpBaselineMmHg": 76,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.95
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.3,
+        "peep": 5,
+        "rrSetBpm": 12,
+        "vtSetMl": 460,
+        "inspFlowLpm": 60,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Passive breaths with complete exhalation and no dyssynchrony"
+      },
+      {
+        "id": "opt-b",
+        "text": "Incomplete exhalation with gas trapping"
+      },
+      {
+        "id": "opt-c",
+        "text": "Double triggering"
+      },
+      {
+        "id": "opt-d",
+        "text": "Flow starvation from high patient demand"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "These are ordinary passive volume-controlled breaths. Inspiratory flow is constant, pressure climbs steadily through inspiration, expiratory flow is back at zero well before the next breath, and volume returns to baseline. Nothing here needs action. Being sure of the normal pattern is what lets you spot the abnormal ones."
+  },
+  {
+    "id": "wave-07",
+    "drillId": "waveforms",
+    "competency": "wave.normal",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Sedated patient with no spontaneous effort; breaths arrive at a regular set rate. From the shape of the pressure and flow traces, which mode is delivering these breaths?",
+    "vignette": "A sedated patient with no spontaneous effort. Breaths arrive at a regular set rate.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "F",
+        "ageYears": 52,
+        "heightCm": 160,
+        "actualWeightKg": 58,
+        "complianceMlPerCmH2O": 45,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 10,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 170,
+        "vo2MlPerMin": 210,
+        "anatomicDeadSpaceMl": 120,
+        "alveolarDeadSpaceFraction": 0.14,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 12.5,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 76,
+        "sbpBaselineMmHg": 122,
+        "dbpBaselineMmHg": 78,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.9
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "PC-AC",
+        "fio2": 0.35,
+        "peep": 5,
+        "pinspAbovePeep": 15,
+        "tiSec": 1,
+        "rrSetBpm": 14
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Pressure control (PC-AC)"
+      },
+      {
+        "id": "opt-b",
+        "text": "Volume control (VC-AC) with constant flow"
+      },
+      {
+        "id": "opt-c",
+        "text": "Pressure support (PSV)"
+      },
+      {
+        "id": "opt-d",
+        "text": "CPAP without pressure support"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Airway pressure steps up to a fixed level and is held flat for the whole inspiration, while inspiratory flow peaks early and decays as the lung fills. That is a pressure-targeted breath. Volume control with constant flow would show a flat-topped flow trace and a rising pressure. Pressure support draws a similar shape, but every PSV breath needs a patient trigger, and this patient is making no effort: time-triggered, pressure-targeted breaths are pressure control."
+  },
+  {
+    "id": "wave-09",
+    "drillId": "waveforms",
+    "competency": "mech.res-vs-comp",
+    "evidenceType": "prediction",
+    "category": "waveform",
+    "stem": "In Volume Control (VC-AC) with fixed VT and flow, if respiratory system compliance halves (from 60 to 30 mL/cmH2O), what will happen to Plateau Pressure (Pplat) and Driving Pressure (Pplat - PEEP)?",
+    "vignette": "A patient with developing bilateral pneumonia experiencing worsening respiratory compliance on VC-AC.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 62,
+        "heightCm": 172,
+        "actualWeightKg": 70,
+        "complianceMlPerCmH2O": 30,
+        "inspResistanceCmH2OPerLps": 8,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 140,
+        "alveolarDeadSpaceFraction": 0.2,
+        "shuntFraction": 0.15,
+        "recruitability": 0.2,
+        "hbGPerDl": 13,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 84,
+        "sbpBaselineMmHg": 124,
+        "dbpBaselineMmHg": 78,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.8
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.45,
+        "peep": 5,
+        "rrSetBpm": 16,
+        "vtSetMl": 450,
+        "inspFlowLpm": 60,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "direction",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Both Pplat and Driving Pressure increase"
+      },
+      {
+        "id": "opt-b",
+        "text": "Both Pplat and Driving Pressure decrease"
+      },
+      {
+        "id": "opt-c",
+        "text": "Pplat increases while Driving Pressure remains constant"
+      },
+      {
+        "id": "opt-d",
+        "text": "Pplat remains unchanged while Driving Pressure increases"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Driving pressure is calculated as VT / Compliance. Halving compliance doubles the driving pressure needed to deliver the same tidal volume. Since Pplat = PEEP + Driving Pressure, Pplat must also rise."
+  },
+  {
+    "id": "wave-10",
+    "drillId": "waveforms",
+    "competency": "modes.vc-vs-pc",
+    "evidenceType": "prediction",
+    "category": "waveform",
+    "stem": "In Pressure Control (PC-AC) with fixed driving pressure and inspiratory time, if acute bronchospasm triples airway resistance, what will happen to delivered tidal volume (VT)?",
+    "vignette": "A patient ventilated in Pressure Control experiencing acute bronchospasm with high resistance.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "F",
+        "ageYears": 48,
+        "heightCm": 164,
+        "actualWeightKg": 62,
+        "complianceMlPerCmH2O": 50,
+        "inspResistanceCmH2OPerLps": 24,
+        "expResistanceCmH2OPerLps": 30,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 180,
+        "vo2MlPerMin": 220,
+        "anatomicDeadSpaceMl": 130,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 12,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 88,
+        "sbpBaselineMmHg": 122,
+        "dbpBaselineMmHg": 76,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.3,
+        "respiratoryReserve": 0.75
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "PC-AC",
+        "fio2": 0.4,
+        "peep": 5,
+        "pinspAbovePeep": 15,
+        "tiSec": 0.9,
+        "rrSetBpm": 16
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "direction",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "VT decreases"
+      },
+      {
+        "id": "opt-b",
+        "text": "VT increases"
+      },
+      {
+        "id": "opt-c",
+        "text": "VT is unchanged; peak pressure rises instead"
+      },
+      {
+        "id": "opt-d",
+        "text": "VT is unchanged; inspiratory time lengthens instead"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "In pressure control the ventilator holds airway pressure constant and volume is whatever the lung accepts in the set inspiratory time. Tripling resistance lengthens the time constant (R x C), so flow is slower and inspiration ends before the lung has filled: delivered VT falls. A rising peak pressure with preserved VT is what the same bronchospasm would do in volume control."
+  },
+  {
+    "id": "wave-11",
+    "drillId": "waveforms",
+    "competency": "wave.flow-limitation",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Ventilated 70-year-old with a long smoking history, sedated and passive. Look at the expiratory part of the flow trace. What does its shape indicate?",
+    "vignette": "A ventilated 70-year-old with a long smoking history, sedated and passive.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 70,
+        "heightCm": 174,
+        "actualWeightKg": 72,
+        "complianceMlPerCmH2O": 70,
+        "inspResistanceCmH2OPerLps": 16,
+        "expResistanceCmH2OPerLps": 32,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 160,
+        "alveolarDeadSpaceFraction": 0.25,
+        "shuntFraction": 0.12,
+        "recruitability": 0.15,
+        "hbGPerDl": 13.5,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 26,
+        "hrBaselineBpm": 86,
+        "sbpBaselineMmHg": 126,
+        "dbpBaselineMmHg": 78,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.35,
+        "respiratoryReserve": 0.7
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.4,
+        "peep": 5,
+        "rrSetBpm": 14,
+        "vtSetMl": 480,
+        "inspFlowLpm": 60,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Expiratory flow limitation from dynamic airway collapse"
+      },
+      {
+        "id": "opt-b",
+        "text": "A fixed obstruction such as a kinked or bitten tube"
+      },
+      {
+        "id": "opt-c",
+        "text": "Secretions or water in the circuit"
+      },
+      {
+        "id": "opt-d",
+        "text": "Normal passive lung emptying"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Expiratory flow peaks briefly, then drops abruptly to a low level and continues as a long, flat tail. That scooped shape is expiratory flow limitation: small airways collapse dynamically during expiration, so flow no longer depends on driving pressure. Normal emptying is a smooth exponential decay. A fixed obstruction such as a bitten tube limits inspiration as well as expiration, and secretions or water produce a sawtooth, not a scoop."
+  },
+  {
+    "id": "wave-05",
+    "drillId": "waveforms",
+    "competency": "wave.leak",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Sedated patient on volume control. One of the three traces shows a problem. What is it?",
+    "vignette": "A sedated patient on volume control. The nurse reports a low exhaled volume reading.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 60,
+        "heightCm": 170,
+        "actualWeightKg": 70,
+        "complianceMlPerCmH2O": 50,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 10,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 140,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 13,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 78,
+        "sbpBaselineMmHg": 120,
+        "dbpBaselineMmHg": 75,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.9
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.35,
+        "peep": 5,
+        "rrSetBpm": 14,
+        "vtSetMl": 500,
+        "inspFlowLpm": 60,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "A leak from the circuit or cuff"
+      },
+      {
+        "id": "opt-b",
+        "text": "Gas trapping with dynamic hyperinflation"
+      },
+      {
+        "id": "opt-c",
+        "text": "Active exhalation by the patient"
+      },
+      {
+        "id": "opt-d",
+        "text": "Ineffective triggering"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "On the volume trace the expiratory limb stops short of baseline: less gas comes back through the expiratory sensor than was delivered, so expired VT is well below inspired VT. Gas is leaving the system somewhere else, most often at the cuff or a circuit connection (a chest drain with an air leak does the same). Gas trapping looks different: in steady state expired volume still matches inspired volume, and the clue is expiratory flow that has not reached zero when the next breath starts."
+  },
+  {
+    "id": "wave-08",
+    "drillId": "waveforms",
+    "competency": "modes.ie-flow-ti",
+    "evidenceType": "prediction",
+    "category": "waveform",
+    "stem": "In Volume Control (VC-AC) with constant tidal volume, what will happen to Inspiratory Time (Ti) and Peak Inspiratory Pressure (Ppeak) if peak inspiratory flow is increased from 40 L/min to 70 L/min?",
+    "vignette": "A patient ventilated on VC-AC with set VT 480 mL, where inspiratory flow is adjusted.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 50,
+        "heightCm": 175,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 50,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 10,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 13,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 80,
+        "sbpBaselineMmHg": 120,
+        "dbpBaselineMmHg": 80,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.8
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.4,
+        "peep": 5,
+        "rrSetBpm": 14,
+        "vtSetMl": 480,
+        "inspFlowLpm": 40,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "direction",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Ti decreases and Ppeak increases"
+      },
+      {
+        "id": "opt-b",
+        "text": "Ti increases and Ppeak decreases"
+      },
+      {
+        "id": "opt-c",
+        "text": "Both Ti and Ppeak increase"
+      },
+      {
+        "id": "opt-d",
+        "text": "Both Ti and Ppeak decrease"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Delivering the same tidal volume at a higher flow rate shortens inspiratory time (Ti = VT / Flow). According to the equation of motion (P = Flow x Raw + VT / C + PEEP), increasing inspiratory flow increases resistive pressure, thereby increasing Ppeak."
+  },
+  {
+    "id": "wave-01",
+    "drillId": "waveforms",
+    "competency": "wave.incomplete-exhalation",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Sedated, passive patient with COPD on volume control, set rate 22. Read the flow trace. What does it show?",
+    "vignette": "A sedated, passive patient with COPD on volume control at a set rate of 22.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 65,
+        "heightCm": 175,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 50,
+        "inspResistanceCmH2OPerLps": 12,
+        "expResistanceCmH2OPerLps": 32,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 250,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.2,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 13,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 85,
+        "sbpBaselineMmHg": 120,
+        "dbpBaselineMmHg": 75,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.3,
+        "respiratoryReserve": 0.8
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.4,
+        "peep": 5,
+        "rrSetBpm": 22,
+        "vtSetMl": 500,
+        "inspFlowLpm": 50,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Incomplete exhalation with gas trapping"
+      },
+      {
+        "id": "opt-b",
+        "text": "Flow starvation from high patient demand"
+      },
+      {
+        "id": "opt-c",
+        "text": "A leak from the circuit or cuff"
+      },
+      {
+        "id": "opt-d",
+        "text": "Ineffective triggering"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "The expiratory flow curve fails to return to the zero flow baseline before the ventilator delivers the next mandatory breath. This indicates incomplete alveolar emptying, gas trapping, and intrinsic PEEP (auto-PEEP)."
+  },
+  {
+    "id": "wave-02",
+    "drillId": "waveforms",
+    "competency": "wave.dyssynchrony",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Patient with COPD breathing on pressure support. What dyssynchrony do these traces show?",
+    "vignette": "A patient with COPD breathing on pressure support, respiratory rate on the monitor lower than the rate counted at the bedside.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "F",
+        "ageYears": 58,
+        "heightCm": 162,
+        "actualWeightKg": 60,
+        "complianceMlPerCmH2O": 45,
+        "inspResistanceCmH2OPerLps": 14,
+        "expResistanceCmH2OPerLps": 22,
+        "spontRateBpm": 28,
+        "pmusAmplitudeCmH2O": 4,
+        "pmusInspTimeSec": 0.6,
+        "vco2MlPerMin": 180,
+        "vo2MlPerMin": 220,
+        "anatomicDeadSpaceMl": 120,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 12,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 90,
+        "sbpBaselineMmHg": 125,
+        "dbpBaselineMmHg": 78,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.3,
+        "respiratoryReserve": 0.7
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "PSV",
+        "fio2": 0.35,
+        "peep": 5,
+        "rrSetBpm": 0,
+        "psAbovePeep": 14,
+        "triggerFlowLpm": 5
+      },
+      "nBreaths": 4
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Ineffective triggering"
+      },
+      {
+        "id": "opt-b",
+        "text": "Double triggering"
+      },
+      {
+        "id": "opt-c",
+        "text": "Auto-triggering"
+      },
+      {
+        "id": "opt-d",
+        "text": "None: every effort is supported"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Between delivered breaths there are small dips in airway pressure with a brief upward notch in expiratory flow, and no breath follows. Each one is an inspiratory effort that failed to reach the trigger threshold: ineffective triggering. The usual cause is auto-PEEP, which the patient must overcome before the ventilator can sense the effort; too much pressure support makes it worse by enlarging the tidal volume that has to be exhaled."
+  },
+  {
+    "id": "wave-03",
+    "drillId": "waveforms",
+    "competency": "wave.dyssynchrony",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Awake patient on volume control, breathing above the set rate and looking uncomfortable. What dyssynchrony do these traces show?",
+    "vignette": "An awake patient on volume control, breathing above the set rate and looking uncomfortable.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "M",
+        "ageYears": 45,
+        "heightCm": 180,
+        "actualWeightKg": 80,
+        "complianceMlPerCmH2O": 55,
+        "inspResistanceCmH2OPerLps": 8,
+        "expResistanceCmH2OPerLps": 10,
+        "spontRateBpm": 18,
+        "pmusAmplitudeCmH2O": 14,
+        "pmusInspTimeSec": 1,
+        "vco2MlPerMin": 220,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 160,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 14,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 80,
+        "sbpBaselineMmHg": 120,
+        "dbpBaselineMmHg": 80,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.2,
+        "respiratoryReserve": 0.85
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.4,
+        "peep": 5,
+        "rrSetBpm": 14,
+        "vtSetMl": 450,
+        "inspFlowLpm": 30,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Flow starvation"
+      },
+      {
+        "id": "opt-b",
+        "text": "Premature cycling"
+      },
+      {
+        "id": "opt-c",
+        "text": "Double triggering"
+      },
+      {
+        "id": "opt-d",
+        "text": "Ineffective triggering"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "During inspiration the pressure trace is scooped out instead of rising steadily. The patient is pulling for more flow than the fixed 30 L/min the ventilator delivers, and that effort drags circuit pressure down: flow starvation. The fix is to meet the demand (higher flow, or a pressure-targeted mode where flow is not capped) and to ask why the demand is high."
+  },
+  {
+    "id": "wave-04",
+    "drillId": "waveforms",
+    "competency": "wave.dyssynchrony",
+    "evidenceType": "interpretation",
+    "category": "waveform",
+    "stem": "Awake patient on low tidal volume volume control, breathing above the set rate. What dyssynchrony do these traces show?",
+    "vignette": "An awake patient on low tidal volume volume control, breathing above the set rate.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "F",
+        "ageYears": 50,
+        "heightCm": 165,
+        "actualWeightKg": 65,
+        "complianceMlPerCmH2O": 40,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 12,
+        "spontRateBpm": 20,
+        "pmusAmplitudeCmH2O": 12,
+        "pmusInspTimeSec": 1.4,
+        "vco2MlPerMin": 200,
+        "vo2MlPerMin": 240,
+        "anatomicDeadSpaceMl": 130,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.1,
+        "recruitability": 0.2,
+        "hbGPerDl": 13,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 92,
+        "sbpBaselineMmHg": 130,
+        "dbpBaselineMmHg": 82,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.3,
+        "respiratoryReserve": 0.75
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.4,
+        "peep": 5,
+        "rrSetBpm": 16,
+        "vtSetMl": 320,
+        "inspFlowLpm": 65,
+        "flowPattern": "square"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Double triggering"
+      },
+      {
+        "id": "opt-b",
+        "text": "Auto-triggering"
+      },
+      {
+        "id": "opt-c",
+        "text": "Flow starvation"
+      },
+      {
+        "id": "opt-d",
+        "text": "Ineffective triggering"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Two breaths are delivered back to back with almost no expiration between them. The patient is still inspiring when the ventilator's short inspiratory time ends (neural Ti longer than ventilator Ti), so the continuing effort triggers a second breath on top of the first. The stacked breath delivers roughly double the intended tidal volume, which defeats a lung-protective setting."
+  },
+  {
+    "id": "wave-12",
+    "drillId": "waveforms",
+    "competency": "disease.ards",
+    "evidenceType": "prediction",
+    "category": "waveform",
+    "stem": "In severe ARDS with recruitable lung, PEEP is raised from 5 to 14 cmH2O and collapsed lung opens. VT is held at 360 mL. What happens to driving pressure (Pplat - PEEP), and why?",
+    "vignette": "An ARDS patient on lung-protective ventilation undergoing PEEP titration and recruitment assessment.",
+    "waveformConfig": {
+      "patient": {
+        "sex": "F",
+        "ageYears": 55,
+        "heightCm": 160,
+        "actualWeightKg": 60,
+        "complianceMlPerCmH2O": 32,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 10,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 190,
+        "vo2MlPerMin": 230,
+        "anatomicDeadSpaceMl": 120,
+        "alveolarDeadSpaceFraction": 0.3,
+        "shuntFraction": 0.25,
+        "recruitability": 0.4,
+        "hbGPerDl": 11.5,
+        "temperatureC": 37,
+        "baselineHco3MmolL": 23,
+        "hrBaselineBpm": 96,
+        "sbpBaselineMmHg": 115,
+        "dbpBaselineMmHg": 70,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.25,
+        "respiratoryReserve": 0.7
+      },
+      "device": {
+        "device": "invasive",
+        "mode": "VC-AC",
+        "fio2": 0.7,
+        "peep": 14,
+        "rrSetBpm": 24,
+        "vtSetMl": 360,
+        "inspFlowLpm": 55,
+        "flowPattern": "decelerating"
+      },
+      "nBreaths": 3
+    },
+    "answerFormat": "direction",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "It falls: the same VT is shared across more open lung"
+      },
+      {
+        "id": "opt-b",
+        "text": "It rises: the extra PEEP is added to the plateau pressure"
+      },
+      {
+        "id": "opt-c",
+        "text": "It is unchanged: driving pressure depends only on VT"
+      },
+      {
+        "id": "opt-d",
+        "text": "It falls: higher PEEP reduces the delivered VT"
+      }
+    ],
+    "answerKey": "opt-a",
+    "explanation": "Driving pressure is VT divided by respiratory system compliance. When PEEP recruits collapsed lung, compliance rises (here from 20 to 32 mL/cmH2O), so the same 360 mL needs 11 cmH2O instead of 18. Plateau pressure does rise, but by less than the PEEP increase. The opposite result is the warning sign: if driving pressure goes up after a PEEP increase, the PEEP is overdistending open lung rather than recruiting."
+  }
+]

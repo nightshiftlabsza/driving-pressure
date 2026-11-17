@@ -1,0 +1,44 @@
+[
+  {
+    "id": "HFNC-01-FLOW-ESCALATION-REASONABLE-UNCERTAIN",
+    "name": "Initial high-flow nasal cannula flow escalation",
+    "processClass": "reasonable-uncertain",
+    "explanation": "Increasing flow and FiO2 to meet high inspiratory demand is reasonable initial management while closely monitoring for respiratory fatigue.",
+    "source": "Roca O, et al. J Crit Care 2016;35:200-5; teaching-convention"
+  },
+  {
+    "id": "HFNC-01-INTUBATE-TIMELY-SOUND",
+    "name": "Timely invasive mechanical ventilation",
+    "processClass": "sound",
+    "explanation": "Proceeding with prompt endotracheal intubation when work of breathing remains high and oxygenation fails avoids emergency crash intubation.",
+    "source": "Kang BJ, et al. Intensive Care Med 2015;41:623-32; Roca O, et al. 2016"
+  },
+  {
+    "id": "HFNC-01-INTUBATE-DELAYED",
+    "name": "Delayed intubation in progressive respiratory failure",
+    "processClass": "delayed",
+    "explanation": "Intubation was delayed despite sustained tachypnoea, worsening hypoxaemia, and severe patient work of breathing.",
+    "source": "Kang BJ, et al. Failure of high-flow nasal cannula therapy may delay needed intubation and increase mortality. Intensive Care Med 2015;41:623-32"
+  },
+  {
+    "id": "HFNC-01-POST-INTUBATION-LUNG-PROTECTIVE-SOUND",
+    "name": "Post-intubation lung-protective ventilation",
+    "processClass": "sound",
+    "explanation": "Setting initial tidal volumes matched to predicted body weight (<= 6-7 mL/kg PBW) immediately upon intubation protects against ventilator-induced lung injury.",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8; ESICM ARDS Guidelines 2023"
+  },
+  {
+    "id": "HFNC-01-POST-INTUBATION-HIGH-VT-UNSAFE",
+    "name": "Unadjusted default ventilator volume after intubation",
+    "processClass": "unsafe",
+    "explanation": "Leaving an adult patient on default uncalibrated ventilator settings (e.g. 450-500 mL in a small female with PBW < 55 kg) delivers excessive tidal volumes.",
+    "source": "ARDS Network. N Engl J Med 2000;342:1301-8"
+  },
+  {
+    "id": "HFNC-01-WRONG-TARGET-DIURETIC",
+    "name": "Diuretic therapy in acute sepsis with hypovolaemia",
+    "processClass": "wrong-target",
+    "explanation": "Administering loop diuretics for severe pneumonia without cardiogenic fluid overload risks hypoperfusion and worsening acute kidney injury.",
+    "source": "Surviving Sepsis Campaign Guidelines 2021; teaching-convention"
+  }
+]

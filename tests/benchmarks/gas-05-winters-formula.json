@@ -1,0 +1,47 @@
+{
+  "id": "gas-05-winters-formula",
+  "source": "Albert MS, Dell RB, Winters RW. Quantitative displacement of acid-base equilibrium in metabolic acidosis. Ann Intern Med 1967; 66(2):312-322.",
+  "claim": "In steady-state metabolic acidosis with standard bicarbonate of 12 mmol/L, intact spontaneous chemoreflex compensation yields an arterial carbon dioxide tension of approximately 26 mmHg (1.5 x HCO3 + 8).",
+  "patient": {
+    "sex": "M",
+    "ageYears": 28,
+    "heightCm": 180,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 55,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 16,
+    "pmusAmplitudeCmH2O": 12,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 260,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.05,
+    "shuntFraction": 0.05,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 12,
+    "hrBaselineBpm": 98,
+    "sbpBaselineMmHg": 115,
+    "dbpBaselineMmHg": 70,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "hco3MmolL": 12,
+    "paco2MmHg": 40
+  },
+  "runSec": 1200,
+  "checks": [
+    { "metric": "paco2", "op": "<=", "value": 28.0 },
+    { "metric": "paco2", "op": ">=", "value": 24.0 }
+  ],
+  "kind": "published-range"
+}

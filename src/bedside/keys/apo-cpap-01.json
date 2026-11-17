@@ -1,0 +1,6 @@
+{
+  "caseId": "apo-cpap-01",
+  "acceptedAssessments": ["cardiogenic_pulmonary_edema", "hypoxaemic_failure"],
+  "explanation": "Flash pulmonary oedema causing hydrostatic alveolar flooding and severe shunt responsive to positive airway pressure and diuretics.",
+  "source": "Masip J, et al. Noninvasive ventilation in acute cardiogenic pulmonary edema: systematic review and meta-analysis. JAMA 2005;294(24):3124-3130"
+}

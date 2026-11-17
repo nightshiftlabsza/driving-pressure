@@ -1,0 +1,157 @@
+{
+  "version": "1.0.0",
+  "title": "ICU Respiratory Trainer Learning Pathway",
+  "description": "Progressive 4-level curriculum advancing from ventilator literacy and respiratory mechanics to non-invasive support and complex ICU management.",
+  "levels": [
+    {
+      "level": 1,
+      "name": "Ventilator literacy",
+      "scope": "Waveforms, modes, the equation of motion",
+      "description": "Foundational ventilator concepts: the equation of motion, volume vs pressure control, pressure support, and recognising normal waveforms.",
+      "keyCompetencies": [
+        "mech.eom",
+        "modes.vc-vs-pc",
+        "mech.res-vs-comp",
+        "wave.normal"
+      ],
+      "unlockRule": {
+        "unlockedByDefault": true,
+        "description": "Unlocked by default for all learners."
+      },
+      "activities": {
+        "labs": [
+          "03-peep-vs-pplat",
+          "02-vc-vs-pc-compliance",
+          "01-rc-time-constant-exhalation",
+          "10-ps-level-vs-vt-rr"
+        ],
+        "drills": [
+          "waveforms"
+        ],
+        "cases": [
+          "ards-vent-01",
+          "apo-cpap-01"
+        ]
+      }
+    },
+    {
+      "level": 2,
+      "name": "Mechanics and gas exchange",
+      "scope": "Time constants, dead space, shunt, PEEP and FiO2",
+      "description": "Respiratory physiology and gas exchange: expiratory time constants, auto-PEEP, dead space, shunt physiology, and haemodynamic interactions.",
+      "keyCompetencies": [
+        "mech.time-constants",
+        "mech.auto-peep",
+        "gas.dead-space",
+        "gas.hypoxaemia-mechanism",
+        "gas.acid-base",
+        "modes.peep-fio2"
+      ],
+      "unlockRule": {
+        "prerequisiteLevel": 1,
+        "requiredCompetencies": [
+          "mech.eom",
+          "modes.vc-vs-pc",
+          "mech.res-vs-comp",
+          "wave.normal"
+        ],
+        "minRequiredCompetencies": 3,
+        "description": "Requires independent or mastered status in at least 3 of 4 Level 1 key competencies."
+      },
+      "activities": {
+        "labs": [
+          "04-rr-vs-auto-peep",
+          "05-insp-flow-vs-auto-peep",
+          "06-dead-space-vs-paco2",
+          "07-vt-vs-rr-minute-ventilation",
+          "08-fio2-vs-pao2-high-shunt",
+          "09-peep-vs-shunt-recruitment",
+          "12-hfnc-flow-vs-fio2-high-demand",
+          "13-ppv-vs-bp-preload-dependent"
+        ],
+        "drills": [
+          "abg"
+        ],
+        "cases": [
+          "copd-niv-01"
+        ]
+      }
+    },
+    {
+      "level": 3,
+      "name": "Non-invasive support and common cases",
+      "scope": "HFNC, NIV, COPD, pulmonary oedema, pneumonia",
+      "description": "Acute non-invasive support and common ward/ICU presentations: high-flow nasal cannula, non-invasive ventilation, acute exacerbation of COPD, cardiogenic pulmonary oedema, and severe pneumonia.",
+      "keyCompetencies": [
+        "niv.selection",
+        "niv.titration",
+        "niv.hfnc",
+        "niv.failure",
+        "safety.alarm-response"
+      ],
+      "unlockRule": {
+        "prerequisiteLevel": 2,
+        "requiredCompetencies": [
+          "mech.time-constants",
+          "mech.auto-peep",
+          "gas.dead-space",
+          "gas.hypoxaemia-mechanism",
+          "gas.acid-base",
+          "modes.peep-fio2"
+        ],
+        "minRequiredCompetencies": 4,
+        "description": "Requires independent or mastered status in Level 2 competencies."
+      },
+      "activities": {
+        "labs": [
+          "11-trigger-sensitivity-missed-triggers"
+        ],
+        "drills": [
+          "alarms"
+        ],
+        "cases": [
+          "pneumonia-hfnc-01",
+          "copd-psv-trigger-01",
+          "dka-intubated-01",
+          "asthma-vent-01"
+        ]
+      }
+    },
+    {
+      "level": 4,
+      "name": "ICU decisions",
+      "scope": "ARDS, obstruction, dyssynchrony, crises, liberation",
+      "description": "Complex ICU decision-making: severe ARDS lung protection, severe asthma and obstruction, ventilator dyssynchrony management, acute crisis troubleshooting, and spontaneous breathing trials and liberation.",
+      "keyCompetencies": [
+        "disease.ards",
+        "disease.obstructive",
+        "safety.crisis",
+        "safety.liberation",
+        "safety.extubation",
+        "modes.dyssynchrony-management"
+      ],
+      "unlockRule": {
+        "prerequisiteLevel": 3,
+        "requiredCompetencies": [
+          "niv.selection",
+          "niv.titration",
+          "niv.hfnc",
+          "niv.failure",
+          "safety.alarm-response"
+        ],
+        "minRequiredCompetencies": 3,
+        "description": "Requires independent or mastered status in Level 3 competencies."
+      },
+      "activities": {
+        "labs": [],
+        "drills": [],
+        "cases": [
+          "vent-high-pressure-01",
+          "dyssynchrony-01",
+          "sbt-pass-01",
+          "sbt-fail-01"
+        ]
+      }
+    }
+  ]
+}

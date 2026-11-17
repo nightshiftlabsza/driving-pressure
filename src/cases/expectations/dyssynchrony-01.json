@@ -1,0 +1,65 @@
+{
+  "caseId": "dyssynchrony-01",
+  "scenarios": [
+    {
+      "name": "no changes made: persistent double triggering leads to ventilatory exhaustion",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 5, "metric": "doubleTriggerCount", "op": ">=", "value": 10 },
+        { "atSimMin": 10, "metric": "fatigue", "op": ">=", "value": 0.50 },
+        { "atSimMin": 11, "metric": "doubleTriggerCount", "op": ">=", "value": 50 }
+      ]
+    },
+    {
+      "name": "correct management: switch to decelerating flow and optimize VT to resolve double triggering",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 2, "order": "change-settings", "detail": { "flowPattern": "decelerating", "vtSetMl": 460, "inspFlowLpm": 65, "rrSetBpm": 20 } },
+        { "atSimMin": 8, "order": "abg" }
+      ],
+      "expect": [
+        { "atSimMin": 10, "metric": "doubleTriggerCount", "op": "<=", "value": 50 },
+        { "atSimMin": 20, "metric": "fatigue", "op": "<", "value": 0.45 },
+        { "atSimMin": 60, "metric": "fatigue", "op": "<=", "value": 0.35 }
+      ]
+    },
+    {
+      "name": "incorrect management: sedating the patient treats the symptom, blunting drive and worsening hypoventilation",
+      "outcome": "deteriorated",
+      "orders": [
+        { "atSimMin": 3, "order": "sedation" }
+      ],
+      "expect": [
+        { "atSimMin": 6, "metric": "rrTotal", "op": "<=", "value": 18 },
+        { "atSimMin": 30, "metric": "ph", "op": "<=", "value": 7.28 }
+      ]
+    },
+    {
+      "name": "alternative correct management: transition to PSV to resolve double triggering",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 2, "order": "change-settings", "detail": { "mode": "PSV", "psAbovePeep": 14, "peep": 8, "fio2": 0.45, "cycleOffPct": 30 } },
+        { "atSimMin": 8, "order": "abg" }
+      ],
+      "expect": [
+        { "atSimMin": 10, "metric": "doubleTriggerCount", "op": "<=", "value": 50 },
+        { "atSimMin": 20, "metric": "fatigue", "op": "<", "value": 0.45 },
+        { "atSimMin": 40, "metric": "fatigue", "op": "<=", "value": 0.35 }
+      ]
+    },
+    {
+      "name": "ineffective management: minor setting adjustments fail to relieve dyssynchrony",
+      "outcome": "deteriorated",
+      "orders": [
+        { "atSimMin": 2, "order": "change-settings", "detail": { "fio2": 0.50, "rrSetBpm": 16 } }
+      ],
+      "expect": [
+        { "atSimMin": 5, "metric": "doubleTriggerCount", "op": ">=", "value": 10 },
+        { "atSimMin": 10, "metric": "fatigue", "op": ">=", "value": 0.50 },
+        { "atSimMin": 11, "metric": "doubleTriggerCount", "op": ">=", "value": 50 }
+      ]
+    }
+  ]
+}
+

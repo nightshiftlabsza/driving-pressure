@@ -1,0 +1,446 @@
+[
+  {
+    "id": "abg-01",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 54-year-old is drowsy in the recovery unit one hour after a laparotomy. Respiratory rate 6, shallow. What is the acid-base disorder?",
+    "vignette": "Recovery unit, one hour after a laparotomy.",
+    "abgValues": {
+      "ph": 7.22,
+      "paco2MmHg": 70,
+      "pao2MmHg": 65,
+      "hco3MmolL": 27,
+      "fio2": 0.28
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "respiratory_acidosis_acute",
+        "text": "Acute respiratory acidosis"
+      },
+      {
+        "id": "respiratory_acidosis_chronic",
+        "text": "Chronic respiratory acidosis, compensated"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "mixed_metabolic_and_respiratory_acidosis",
+        "text": "Mixed metabolic and respiratory acidosis"
+      }
+    ],
+    "answerKey": "respiratory_acidosis_acute",
+    "explanation": "Severe acidaemia (pH 7.22) driven by acute alveolar hypoventilation (PaCO2 70 mmHg, delta +30 mmHg). In acute respiratory acidosis, cellular buffering generates approximately 1 mmol/L of HCO3 per 10 mmHg rise in PaCO2 (expected HCO3 = 24 + 3 = 27 mmol/L). Kidneys have not yet retained bicarbonate, confirming acute uncompensated respiratory acidosis."
+  },
+  {
+    "id": "abg-02",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 69-year-old with long-standing severe COPD attends for cataract surgery under local anaesthesia. Calm, no respiratory distress, breathing room air. What is the acid-base disorder?",
+    "vignette": "Pre-assessment clinic before day-case surgery.",
+    "abgValues": {
+      "ph": 7.34,
+      "paco2MmHg": 65,
+      "pao2MmHg": 58,
+      "hco3MmolL": 34,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "respiratory_acidosis_chronic",
+        "text": "Chronic respiratory acidosis, compensated"
+      },
+      {
+        "id": "respiratory_acidosis_acute",
+        "text": "Acute respiratory acidosis"
+      },
+      {
+        "id": "metabolic_alkalosis_appropriate_compensation",
+        "text": "Metabolic alkalosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "mixed_respiratory_acidosis_and_metabolic_alkalosis",
+        "text": "Chronic respiratory acidosis with an added metabolic alkalosis"
+      }
+    ],
+    "answerKey": "respiratory_acidosis_chronic",
+    "explanation": "Elevated PaCO2 (65 mmHg, delta +25 mmHg) with near-normal pH (7.34) and elevated bicarbonate (34 mmol/L). In chronic respiratory acidosis, renal tubular retention raises HCO3 by ~3.5 to 4.0 mmol/L per 10 mmHg delta PaCO2 (expected HCO3 = 24 + 2.5 x 3.8 ~ 33.5 mmol/L). Measured HCO3 (34 mmol/L) perfectly reflects full chronic renal compensation."
+  },
+  {
+    "id": "abg-03",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 23-year-old presents with two days of polyuria and vomiting. Respiratory rate 32, breathing deeply. What is the acid-base disorder?",
+    "vignette": "Emergency department.",
+    "abgValues": {
+      "ph": 7.26,
+      "paco2MmHg": 25,
+      "pao2MmHg": 98,
+      "hco3MmolL": 11,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "metabolic_acidosis_inadequate_compensation",
+        "text": "Metabolic acidosis with an added respiratory acidosis"
+      },
+      {
+        "id": "metabolic_acidosis_coexisting_resp_alkalosis",
+        "text": "Metabolic acidosis with an added respiratory alkalosis"
+      },
+      {
+        "id": "respiratory_alkalosis_chronic",
+        "text": "Chronic respiratory alkalosis, compensated"
+      }
+    ],
+    "answerKey": "metabolic_acidosis_appropriate_compensation",
+    "explanation": "Primary metabolic acidosis with low bicarbonate (11 mmol/L). Applying Winter's formula: expected PaCO2 = 1.5 x [HCO3-] + 8 (+/- 2) = 1.5(11) + 8 = 24.5 +/- 2 (range 22.5 to 26.5 mmHg). The measured PaCO2 of 25 mmHg falls directly within this target window, proving appropriate respiratory compensation."
+  },
+  {
+    "id": "abg-04",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 60-year-old with peritonitis and septic shock. Respiratory rate 34 and shallow, using accessory muscles. What is the acid-base disorder?",
+    "vignette": "Step-down unit.",
+    "abgValues": {
+      "ph": 7.12,
+      "paco2MmHg": 38,
+      "pao2MmHg": 88,
+      "hco3MmolL": 12,
+      "fio2": 0.4
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "metabolic_acidosis_inadequate_compensation",
+        "text": "Metabolic acidosis with an added respiratory acidosis"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "respiratory_acidosis_acute",
+        "text": "Acute respiratory acidosis"
+      },
+      {
+        "id": "metabolic_acidosis_coexisting_resp_alkalosis",
+        "text": "Metabolic acidosis with an added respiratory alkalosis"
+      }
+    ],
+    "answerKey": "metabolic_acidosis_inadequate_compensation",
+    "explanation": "Primary metabolic acidosis with low HCO3 (12 mmol/L). According to Winter's formula: expected PaCO2 = 1.5(12) + 8 (+/- 2) = 26 +/- 2 (range 24 to 28 mmHg). The measured PaCO2 is 38 mmHg. Although 38 mmHg appears 'numerically normal' on an isolated lab range, in severe metabolic acidosis it is dangerously elevated, signaling respiratory muscle fatigue and impending ventilatory arrest."
+  },
+  {
+    "id": "abg-05",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 28-year-old presents some hours after swallowing a bottle of aspirin tablets, with tinnitus and a respiratory rate of 30. What is the acid-base disorder?",
+    "vignette": "Emergency department.",
+    "abgValues": {
+      "ph": 7.41,
+      "paco2MmHg": 18,
+      "pao2MmHg": 102,
+      "hco3MmolL": 11,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "metabolic_acidosis_coexisting_resp_alkalosis",
+        "text": "Metabolic acidosis with an added respiratory alkalosis"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "respiratory_alkalosis_acute",
+        "text": "Acute respiratory alkalosis"
+      },
+      {
+        "id": "normal",
+        "text": "Normal acid-base status"
+      }
+    ],
+    "answerKey": "metabolic_acidosis_coexisting_resp_alkalosis",
+    "explanation": "Primary metabolic acidosis is present (HCO3 11 mmol/L). Winter's formula expects PaCO2 = 1.5(11) + 8 (+/- 2) = 22.5 to 26.5 mmHg. However, the actual PaCO2 is 18 mmHg, markedly below the floor of compensation. Salicylates directly stimulate the medullary respiratory centre, producing a concurrent primary respiratory alkalosis."
+  },
+  {
+    "id": "abg-06",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 48-year-old with pyloric stenosis has vomited for four days and is lethargic with muscle cramps. What is the acid-base disorder?",
+    "vignette": "Surgical ward.",
+    "abgValues": {
+      "ph": 7.5,
+      "paco2MmHg": 48,
+      "pao2MmHg": 85,
+      "hco3MmolL": 36,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "metabolic_alkalosis_appropriate_compensation",
+        "text": "Metabolic alkalosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "respiratory_acidosis_chronic",
+        "text": "Chronic respiratory acidosis, compensated"
+      },
+      {
+        "id": "mixed_respiratory_acidosis_and_metabolic_alkalosis",
+        "text": "Chronic respiratory acidosis with an added metabolic alkalosis"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      }
+    ],
+    "answerKey": "metabolic_alkalosis_appropriate_compensation",
+    "explanation": "Alkalaemia (pH 7.50) driven by high bicarbonate (36 mmol/L, delta +12 mmol/L). Respiratory compensation reduces alveolar ventilation to retain CO2: expected PaCO2 = 40 + 0.7 x (HCO3 - 24) (+/- 3) = 40 + 0.7(12) = 48.4 +/- 3 mmHg. The measured PaCO2 of 48 mmHg demonstrates appropriate compensatory hypoventilation."
+  },
+  {
+    "id": "abg-07",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 65-year-old has just regained a pulse after an out-of-hospital cardiac arrest and is being hand-ventilated slowly. What is the acid-base disorder?",
+    "vignette": "Emergency department, minutes after return of circulation.",
+    "abgValues": {
+      "ph": 6.96,
+      "paco2MmHg": 68,
+      "pao2MmHg": 55,
+      "hco3MmolL": 15,
+      "fio2": 1
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "mixed_metabolic_and_respiratory_acidosis",
+        "text": "Mixed metabolic and respiratory acidosis"
+      },
+      {
+        "id": "respiratory_acidosis_acute",
+        "text": "Acute respiratory acidosis"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "respiratory_acidosis_chronic",
+        "text": "Chronic respiratory acidosis, compensated"
+      }
+    ],
+    "answerKey": "mixed_metabolic_and_respiratory_acidosis",
+    "explanation": "Profound, life-threatening acidaemia (pH 6.96). Both acid-base axes are abnormal in the same acidic direction: severe metabolic acidosis (HCO3 15 mmol/L from anaerobic lactic acidosis) and severe respiratory acidosis (PaCO2 68 mmHg from inadequate alveolar ventilation). Both systems require immediate intervention."
+  },
+  {
+    "id": "abg-08",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 72-year-old with severe COPD and cor pulmonale has had furosemide and metolazone doses increased for leg swelling. What is the acid-base disorder?",
+    "vignette": "Respiratory clinic.",
+    "abgValues": {
+      "ph": 7.44,
+      "paco2MmHg": 62,
+      "pao2MmHg": 62,
+      "hco3MmolL": 41,
+      "fio2": 0.24
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "mixed_respiratory_acidosis_and_metabolic_alkalosis",
+        "text": "Chronic respiratory acidosis with an added metabolic alkalosis"
+      },
+      {
+        "id": "respiratory_acidosis_chronic",
+        "text": "Chronic respiratory acidosis, compensated"
+      },
+      {
+        "id": "metabolic_alkalosis_appropriate_compensation",
+        "text": "Metabolic alkalosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "normal",
+        "text": "Normal acid-base status"
+      }
+    ],
+    "answerKey": "mixed_respiratory_acidosis_and_metabolic_alkalosis",
+    "explanation": "For a chronic PaCO2 of 62 mmHg (delta +22 mmHg), expected chronic renal compensation produces HCO3 = 24 + 2.2(3.5 to 4.0) = 31.7 to 32.8 mmol/L. The patient's actual HCO3 is 41 mmol/L, far exceeding physiological renal compensation and normalizing pH to 7.44. This reflects a mixed disorder: chronic respiratory acidosis plus a coexisting contraction metabolic alkalosis from diuretic therapy."
+  },
+  {
+    "id": "abg-09",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 21-year-old student arrives during exam week breathing fast, lightheaded, with tingling hands and carpopedal spasm. What is the acid-base disorder?",
+    "vignette": "Emergency department.",
+    "abgValues": {
+      "ph": 7.56,
+      "paco2MmHg": 24,
+      "pao2MmHg": 105,
+      "hco3MmolL": 21,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "respiratory_alkalosis_acute",
+        "text": "Acute respiratory alkalosis"
+      },
+      {
+        "id": "respiratory_alkalosis_chronic",
+        "text": "Chronic respiratory alkalosis, compensated"
+      },
+      {
+        "id": "metabolic_alkalosis_appropriate_compensation",
+        "text": "Metabolic alkalosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "mixed_metabolic_and_respiratory_alkalosis",
+        "text": "Mixed metabolic and respiratory alkalosis"
+      }
+    ],
+    "answerKey": "respiratory_alkalosis_acute",
+    "explanation": "Marked acute alkalaemia (pH 7.56) caused by hypocapnia (PaCO2 24 mmHg, delta -16 mmHg). In acute respiratory alkalosis, cellular buffering lowers HCO3 by ~2 mmol/L per 10 mmHg decrease in PaCO2 (expected HCO3 = 24 - 1.6 x 2 = 20.8 mmol/L). The measured HCO3 of 21 mmol/L matches acute buffering with no renal excretion yet occurring."
+  },
+  {
+    "id": "abg-10",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 29-year-old mountaineer has been living at 4,200 m for three weeks and feels well, breathing ambient air. What is the acid-base disorder?",
+    "vignette": "Research station at 4,200 m.",
+    "abgValues": {
+      "ph": 7.46,
+      "paco2MmHg": 25,
+      "pao2MmHg": 50,
+      "hco3MmolL": 17,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "respiratory_alkalosis_chronic",
+        "text": "Chronic respiratory alkalosis, compensated"
+      },
+      {
+        "id": "respiratory_alkalosis_acute",
+        "text": "Acute respiratory alkalosis"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "mixed_metabolic_and_respiratory_acidosis",
+        "text": "Mixed metabolic and respiratory acidosis"
+      }
+    ],
+    "answerKey": "respiratory_alkalosis_chronic",
+    "explanation": "Persistent hypoxic ventilatory drive reduces PaCO2 to 25 mmHg (delta -15 mmHg). Over weeks, the kidneys chronically excrete bicarbonate (~5 mmol/L drop per 10 mmHg delta PaCO2: expected HCO3 = 24 - 1.5 x 5 = 16.5 mmol/L). Measured HCO3 (17 mmol/L) demonstrates successful chronic renal adaptation returning pH near normal (7.46)."
+  },
+  {
+    "id": "abg-11",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 56-year-old with cirrhosis and hepatic encephalopathy is breathing fast. Over the last two days they have had large-volume paracentesis and high-dose loop diuretics. What is the acid-base disorder?",
+    "vignette": "Hepatology ward.",
+    "abgValues": {
+      "ph": 7.67,
+      "paco2MmHg": 28,
+      "pao2MmHg": 95,
+      "hco3MmolL": 32,
+      "fio2": 0.28
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "mixed_metabolic_and_respiratory_alkalosis",
+        "text": "Mixed metabolic and respiratory alkalosis"
+      },
+      {
+        "id": "respiratory_alkalosis_acute",
+        "text": "Acute respiratory alkalosis"
+      },
+      {
+        "id": "metabolic_alkalosis_appropriate_compensation",
+        "text": "Metabolic alkalosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "normal",
+        "text": "Normal acid-base status"
+      }
+    ],
+    "answerKey": "mixed_metabolic_and_respiratory_alkalosis",
+    "explanation": "Severe, critical alkalaemia (pH 7.67). Hypocapnia (PaCO2 28 mmHg) from central hyperventilation is compounded by an elevated bicarbonate (32 mmol/L) from diuretic use and hypokalaemia. Both primary alkalotic processes combine to cause extreme alkalaemia."
+  },
+  {
+    "id": "abg-12",
+    "drillId": "abg",
+    "competency": "gas.acid-base",
+    "evidenceType": "interpretation",
+    "category": "abg",
+    "stem": "A 30-year-old is assessed before day-case surgery. A little anxious, respiratory rate 16, breathing room air. What is the acid-base disorder?",
+    "vignette": "Pre-assessment clinic.",
+    "abgValues": {
+      "ph": 7.4,
+      "paco2MmHg": 40,
+      "pao2MmHg": 95,
+      "hco3MmolL": 24,
+      "fio2": 0.21
+    },
+    "answerFormat": "single-choice",
+    "options": [
+      {
+        "id": "normal",
+        "text": "Normal acid-base status"
+      },
+      {
+        "id": "respiratory_acidosis_chronic",
+        "text": "Chronic respiratory acidosis, compensated"
+      },
+      {
+        "id": "metabolic_acidosis_appropriate_compensation",
+        "text": "Metabolic acidosis with appropriate respiratory compensation"
+      },
+      {
+        "id": "respiratory_alkalosis_acute",
+        "text": "Acute respiratory alkalosis"
+      }
+    ],
+    "answerKey": "normal",
+    "explanation": "All acid-base values are at the exact midpoint of normal physiological ranges: pH 7.40 (normal 7.35-7.45), PaCO2 40 mmHg (normal 35-45 mmHg), and HCO3 24 mmol/L (normal 22-26 mmol/L). There is no acid-base disturbance."
+  }
+]

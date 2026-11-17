@@ -1,0 +1,53 @@
+{
+  "id": "gas-01-alveolar-gas-equation",
+  "source": "Riley RL, Cournand A. 'Ideal' alveolar air and the analysis of ventilation-perfusion relationships in the lungs. J Appl Physiol 1949; 1(12):825-847.",
+  "claim": "Ideal alveolar oxygen tension follows the alveolar gas equation based on atmospheric pressure, water vapor pressure, inspired oxygen fraction, and respiratory quotient.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 45,
+    "heightCm": 178,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 55,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.05,
+    "shuntFraction": 0.03,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 72,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.5,
+    "peep": 5,
+    "rrSetBpm": 14,
+    "vtSetMl": 500,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 270
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pao2", "op": ">=", "value": 240 },
+    { "metric": "pao2", "op": "<=", "value": 310 },
+    { "metric": "spo2", "op": ">=", "value": 99 }
+  ],
+  "kind": "exact-relation"
+}

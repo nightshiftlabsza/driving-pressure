@@ -1,0 +1,11 @@
+{
+  "caseId": "ards-vent-01",
+  "patientName": "Mr J. Kowalski (synthetic)",
+  "location": "ICU Bed 2",
+  "who": "61-year-old male (170 cm, 98 kg)",
+  "whyAdmitted": "Transferred from ED after emergency intubation 30 minutes ago for worsening hypoxaemia following 5 days of cough and fever.",
+  "whatHasBeenDone": "Intubated in ED with rocuronium; maintained on propofol and fentanyl infusions. ED chest X-ray showed bilateral infiltrates. Bedside echo showed good LV function.",
+  "currentSupport": "Invasive mechanical ventilation on ED transfer settings: VC-AC, VT 650 mL, RR 16, PEEP 5 cmH2O, FiO2 0.70.",
+  "theWorry": "Arrives hypoxaemic despite FiO2 0.70 on the ED ventilator settings. Needs a bedside ventilator assessment.",
+  "background": "Hypertension, obesity, otherwise previously well. Full escalation."
+}

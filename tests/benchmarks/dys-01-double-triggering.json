@@ -1,0 +1,51 @@
+{
+  "id": "dys-01-double-triggering",
+  "source": "Thille AW, Rodriguez P, Cabello B, et al. Patient-ventilator asynchrony during assisted mechanical ventilation. Intensive Care Med 2006; 32(10):1515-1522; de Wit M, et al. Crit Care 2009; 13(4):R109.",
+  "claim": "When neural inspiratory time (pmusInspTimeSec 1.4 s) markedly exceeds ventilator inspiratory time (0.5 s in VC-AC with high flow 60 L/min and VT 350 mL) with strong effort (Pmus 16 cmH2O), ongoing patient muscular effort during early exhalation triggers an immediate second breath (double triggering).",
+  "patient": {
+    "sex": "M",
+    "ageYears": 45,
+    "heightCm": 175,
+    "actualWeightKg": 75,
+    "complianceMlPerCmH2O": 40,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 18,
+    "pmusAmplitudeCmH2O": 16.0,
+    "pmusInspTimeSec": 1.4,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 280,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.1,
+    "shuntFraction": 0.1,
+    "recruitability": 0.1,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 90,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 78,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.1,
+    "respiratoryReserve": 0.7
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 14,
+    "vtSetMl": 350,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 85
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "doubleTriggerCount", "op": ">=", "value": 3 }
+  ],
+  "kind": "direction"
+}

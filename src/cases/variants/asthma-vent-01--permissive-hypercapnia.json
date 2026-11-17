@@ -1,0 +1,351 @@
+{
+  "variantId": "asthma-vent-01--permissive-hypercapnia",
+  "baseCaseId": "asthma-vent-01",
+  "title": "High CO2 on the ventilator in a wheezy young man",
+  "summary": "A 24-year-old man with a severe asthma attack has a high CO2 but stable blood pressure on a low ventilator rate.",
+  "rationale": "Moderate expiratory obstruction with a safe rate (RR 12) gives modest auto-PEEP and tolerable hypercapnia; increasing RR to 26 stacks breaths. Headless engine check on the starting settings and after the named actions: untouched by 2 min: PaCO2 64, pH 7.22, SpO2 98%, Pplat 10, auto-PEEP 2.9, SBP 122; untouched by 60 min: PaCO2 67, pH 7.20, SpO2 98%, Pplat 10, auto-PEEP 2.9, SBP 122; reasonable management by 60 min: PaCO2 67, pH 7.20, SpO2 98%, Pplat 8, auto-PEEP 0.7, SBP 124; typical mistake by 60 min: PaCO2 32, pH 7.44, SpO2 99%, Pplat 18, auto-PEEP 10.7, SBP 100. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "right_action_wrong_reason",
+    "competencyId": "mech.auto-peep",
+    "clinicalFocus": "Accept permissive hypercapnia (pH above about 7.15-7.20) in asthma; raising the rate to normalise PaCO2 causes auto-PEEP and hypotension"
+  },
+  "source": "The Ventilator Book 3e (obstructive disease / auto-PEEP chapters, numbers unverified); Marino ICU Book 2025 (severe asthma and COPD exacerbation chapters, numbers unverified); Nunn & Lumb 9e (airway resistance chapter, unverified); Darioli R, Perret C. Mechanical controlled hypoventilation in status asthmaticus. Am Rev Respir Dis 1984;129:385-7; Marino ICU Book 2025 (ventilator management in asthma, unverified). Expiratory resistance 55 is a teaching assumption (unverified).",
+  "changes": {
+    "vignette": "Male 24, 178 cm (PBW 73 kg), 72 kg. VC 480 mL, RR 12, flow 70 L/min, PEEP 0.",
+    "parametersChanged": {
+      "sex": {
+        "from": "F",
+        "to": "M",
+        "reason": "Male"
+      },
+      "ageYears": {
+        "from": 26,
+        "to": 24,
+        "reason": "Young"
+      },
+      "heightCm": {
+        "from": 165,
+        "to": 178,
+        "reason": "PBW 73 kg"
+      },
+      "actualWeightKg": {
+        "from": 60,
+        "to": 72,
+        "reason": "Normal"
+      },
+      "expResistanceCmH2OPerLps": {
+        "from": 60,
+        "to": 55,
+        "reason": "Moderate-severe bronchospasm"
+      },
+      "inspResistanceCmH2OPerLps": {
+        "from": 20,
+        "to": 18,
+        "reason": "Moderate"
+      },
+      "sbpBaselineMmHg": {
+        "from": 115,
+        "to": 124,
+        "reason": "Normal"
+      },
+      "dbpBaselineMmHg": {
+        "from": 75,
+        "to": 76,
+        "reason": "Normal"
+      },
+      "hrBaselineBpm": {
+        "from": 95,
+        "to": 100,
+        "reason": "Stressed"
+      },
+      "vco2MlPerMin": {
+        "from": 240,
+        "to": 230,
+        "reason": "Sedated"
+      },
+      "ppvSeverity": {
+        "from": 0.75,
+        "to": 0.7,
+        "reason": "Preload sensitive"
+      },
+      "respiratoryReserve": {
+        "from": 0.3,
+        "to": 0.4,
+        "reason": "Reduced"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr E. Novak (synthetic)",
+      "presentingStory": "Intubated 2 hours ago for a severe attack. The ABG shows PaCO2 63 and pH 7.22. The blood pressure is stable. A colleague suggests raising the rate to \"get the CO2 normal\".",
+      "history": "Atopic asthma, poor adherence to inhalers. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 24,
+        "heightCm": 178,
+        "actualWeightKg": 72,
+        "complianceMlPerCmH2O": 65,
+        "inspResistanceCmH2OPerLps": 18,
+        "expResistanceCmH2OPerLps": 55,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 230,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 140,
+        "alveolarDeadSpaceFraction": 0.3,
+        "shuntFraction": 0.1,
+        "recruitability": 0.1,
+        "hbGPerDl": 13.5,
+        "temperatureC": 37.2,
+        "baselineHco3MmolL": 22,
+        "hrBaselineBpm": 100,
+        "sbpBaselineMmHg": 124,
+        "dbpBaselineMmHg": 76,
+        "ppvResponse": "clean-kill",
+        "ppvSeverity": 0.7,
+        "respiratoryReserve": 0.4
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.5,
+      "peep": 0,
+      "rrSetBpm": 12,
+      "vtSetMl": 480,
+      "inspFlowLpm": 70,
+      "flowPattern": "square"
+    },
+    "initialPhys": {
+      "paco2MmHg": 63,
+      "pao2MmHg": 82,
+      "hco3MmolL": 25,
+      "fatigue": 0.3
+    },
+    "orderEffects": [
+      {
+        "order": "disconnect-ventilator",
+        "delaySimMin": 0,
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "You disconnect the ventilator. A short rush of air escapes from the endotracheal tube over a few seconds. The blood pressure is unchanged."
+          }
+        ],
+        "note": "Apnoea trial / ventilator disconnection permits complete exhalation of trapped air"
+      },
+      {
+        "order": "bronchodilator",
+        "delaySimMin": 3,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "inspResistanceCmH2OPerLps": 12,
+              "expResistanceCmH2OPerLps": 28
+            },
+            "rampSimMin": 15
+          }
+        ],
+        "note": "Inhaled beta-2 agonist and anticholinergic reduce bronchospasm"
+      },
+      {
+        "order": "steroid",
+        "delaySimMin": 240,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "expResistanceCmH2OPerLps": 24
+            },
+            "rampSimMin": 240
+          }
+        ],
+        "note": "Systemic corticosteroid anti-inflammatory action occurs over hours"
+      },
+      {
+        "order": "fluid-bolus",
+        "delaySimMin": 2,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "sbpBaselineMmHg": 130,
+              "dbpBaselineMmHg": 80
+            },
+            "rampSimMin": 5
+          }
+        ],
+        "note": "Intravascular volume expansion partially counteracts intrathoracic pressure on venous return"
+      }
+    ],
+    "triggers": [
+      {
+        "id": "t-auto-peep-warning",
+        "when": {
+          "threshold": {
+            "metric": "autoPeep",
+            "op": ">=",
+            "value": 11,
+            "forSimSec": 60
+          }
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Nurse notes: Expiratory hold shows auto-PEEP is high! The systolic pressure is dipping on the monitor."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-predict-settings",
+        "when": {
+          "ordered": {
+            "order": "change-settings"
+          }
+        },
+        "then": [
+          {
+            "type": "prediction",
+            "predictionId": "p-asthma-mechanics"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-high-rr",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rrTotal",
+                "op": ">=",
+                "value": 20
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "disease.obstructive",
+            "severity": "critical",
+            "detail": "Maintaining or increasing set respiratory rate (>= 20 bpm) in severe bronchospasm leads to dynamic hyperinflation, severe auto-PEEP, and hemodynamic collapse."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-high-peep",
+        "when": {
+          "threshold": {
+            "metric": "peep",
+            "op": ">=",
+            "value": 10
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "faulty_model",
+            "competency": "mech.auto-peep",
+            "severity": "major",
+            "detail": "Applying high external PEEP (>= 10 cmH2O) in passively ventilated asthma adds directly to alveolar pressure and exacerbates hyperinflation and hypotension."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "autoPeep",
+                "op": "<=",
+                "value": 6,
+                "forSimSec": 900
+              }
+            },
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": ">=",
+                "value": 95,
+                "forSimSec": 900
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 30
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "His blood pressure is stable, the peak pressures have dropped and the dynamic hyperinflation is resolving."
+          },
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "Obstructive strategy applied successfully: dynamic hyperinflation resolved, auto-PEEP lowered, and hemodynamic collapse averted."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": "<",
+                "value": 85,
+                "forSimSec": 600
+              }
+            },
+            {
+              "threshold": {
+                "metric": "autoPeep",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient is in severe obstructive shock with unrecordable blood pressure and pulseless electrical activity!"
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Severe dynamic hyperinflation and auto-PEEP caused complete loss of venous return and PEA arrest."
+          }
+        ],
+        "once": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "variantId": "vent-high-pressure-01--mucus-plug",
+  "baseCaseId": "vent-high-pressure-01",
+  "title": "High-pressure alarm and falling tidal volumes",
+  "summary": "A ventilated 58-year-old man has a high peak pressure alarm, small returned breaths and a rising CO2.",
+  "rationale": "A partial tube or large-airway plug raises resistance but not compliance, so Ppk rises while Pplat stays near 18; it also slows exhalation. Suction restores resistance. Headless engine check on the starting settings and after the named actions: untouched by 2 min: PaCO2 49, pH 7.31, SpO2 94%, Pplat 19, auto-PEEP 0.6, SBP 106; untouched by 30 min: PaCO2 55, pH 7.27, SpO2 94%, Pplat 19, auto-PEEP 0.6, SBP 106; reasonable management by 30 min: PaCO2 52, pH 7.30, SpO2 94%, Pplat 18, SBP 110; typical mistake by 30 min: PaCO2 37, pH 7.41, SpO2 94%, Pplat 21, auto-PEEP 2.5, SBP 101. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "misinterpretation",
+    "competencyId": "mech.res-vs-comp",
+    "clinicalFocus": "High peak with a normal plateau means resistance: suction and check the tube before searching for exotic causes"
+  },
+  "source": "The Ventilator Book 3e (alarms / troubleshooting and respiratory mechanics chapters, numbers unverified); Marino ICU Book 2025 (ventilator-associated complications and airway pressure chapters, unverified); Nunn & Lumb 9e (resistance and compliance chapters, unverified); Hess DR. Respir Care 2014;59:1773-94 (peak minus plateau pressure); Resistance 26 cmH2O/L/s and expiratory resistance 28 are teaching assumptions for a partly occluded tube (unverified).",
+  "changes": {
+    "vignette": "Male 58, 172 cm, 75 kg. VC 420 mL, RR 16, PEEP 8, FiO2 0.4. Tube resistance high from inspissated secretions.",
+    "parametersChanged": {
+      "inspResistanceCmH2OPerLps": {
+        "from": 8,
+        "to": 26,
+        "reason": "Partial occlusion of the tube"
+      },
+      "expResistanceCmH2OPerLps": {
+        "from": 8,
+        "to": 28,
+        "reason": "Partial occlusion slows exhalation"
+      },
+      "sbpBaselineMmHg": {
+        "from": 124,
+        "to": 118,
+        "reason": "Stable"
+      },
+      "dbpBaselineMmHg": {
+        "from": 78,
+        "to": 74,
+        "reason": "Stable"
+      },
+      "hrBaselineBpm": {
+        "from": 88,
+        "to": 96,
+        "reason": "Stress"
+      },
+      "ppvSeverity": {
+        "from": 0.95,
+        "to": 0.5,
+        "reason": "Moderate"
+      },
+      "temperatureC": {
+        "from": 38,
+        "to": 37.8,
+        "reason": "Pneumonia"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr D. Thorne (synthetic)",
+      "presentingStory": "Intubated for pneumonia 3 days ago, on VC 420 mL. The high-pressure alarm has been sounding on and off and the nurse notes thick secretions overnight. Blood pressure is acceptable.",
+      "history": "Pneumonia with thick secretions, dry humidifier overnight. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 58,
+        "heightCm": 172,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 42,
+        "inspResistanceCmH2OPerLps": 26,
+        "expResistanceCmH2OPerLps": 28,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 230,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.22,
+        "shuntFraction": 0.2,
+        "recruitability": 0.25,
+        "hbGPerDl": 13.5,
+        "temperatureC": 37.8,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 96,
+        "sbpBaselineMmHg": 118,
+        "dbpBaselineMmHg": 74,
+        "ppvResponse": "clean-kill",
+        "ppvSeverity": 0.5,
+        "respiratoryReserve": 0.5
+      }
+    },
+    "initialPhys": {
+      "paco2MmHg": 48,
+      "pao2MmHg": 82,
+      "hco3MmolL": 24,
+      "fatigue": 0.2
+    },
+    "findings": {
+      "examine": "Sedated. Equal chest movement, coarse transmitted sounds, no wheeze. The suction catheter meets resistance 8 cm into the tube. Tube at 22 cm at the teeth.",
+      "cxr": "Tube 4 cm above the carina, right lower zone consolidation, both lungs expanded, no pneumothorax."
+    },
+    "evidence": [
+      {
+        "claim": "A partly obstructed tube raises peak pressure but not plateau pressure; suction clears the plug and restores flow.",
+        "source": "Marino PL. Marino's The ICU Book, 2025 edition (chapter on ventilator troubleshooting; number unverified)",
+        "year": 2025,
+        "kind": "textbook"
+      },
+      {
+        "claim": "Measurement of plateau pressure via inspiratory hold differentiates high resistance (elevated Ppeak, normal Pplat) from low compliance (both Ppeak and Pplat elevated).",
+        "source": "Hess DR. Respiratory mechanics in the mechanically ventilated patient. Respir Care 2014;59(11):1773-1794",
+        "year": 2014,
+        "kind": "review"
+      }
+    ],
+    "course": [],
+    "predictionPoints": [],
+    "availableOrders": [
+      "abg",
+      "cxr",
+      "examine",
+      "change-settings",
+      "disconnect-ventilator",
+      "suction",
+      "bronchodilator",
+      "call-senior",
+      "diuretic"
+    ],
+    "orderEffects": [
+      {
+        "order": "suction",
+        "delaySimMin": 1,
+        "note": "Removing the plug restores airway resistance",
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "inspResistanceCmH2OPerLps": 9,
+              "expResistanceCmH2OPerLps": 9
+            },
+            "rampSimMin": 1
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "A thick mucus plug is suctioned from the tube. The peak pressure falls and the tidal volume returns."
+          }
+        ]
+      },
+      {
+        "order": "bronchodilator",
+        "delaySimMin": 2,
+        "note": "No obvious bronchospasm here",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Salbutamol given through the circuit. There is no obvious change in the airway pressures."
+          }
+        ]
+      },
+      {
+        "order": "call-senior",
+        "delaySimMin": 2,
+        "note": "Prompts a structured check",
+        "actions": [
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "The senior says: what do the peak and plateau pressures show, and where does the tube sit? Work through the DOPE checklist."
+          }
+        ]
+      },
+      {
+        "order": "diuretic",
+        "delaySimMin": 5,
+        "note": "No diuretic-responsive cause here",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Furosemide 40 mg given and the urine output rises a little. There is no immediate change in the airway pressures."
+          }
+        ]
+      }
+    ],
+    "contextTags": [
+      "high-pressure-alarm",
+      "crisis",
+      "mechanics",
+      "icu"
+    ],
+    "triggers": [
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "ppeak",
+                "op": "<=",
+                "value": 32,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": ">=",
+                "value": 95,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": ">=",
+                "value": 92,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "The cause of the high airway pressure was found and treated; pressures, blood pressure and oxygenation have recovered."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "any": [
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": "<",
+                "value": 70,
+                "forSimSec": 240
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": "<",
+                "value": 75,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "The high airway pressure was not corrected, and the patient became profoundly hypotensive or hypoxaemic."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-ignore",
+        "when": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": ">=",
+            "value": 40,
+            "forSimSec": 420
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "misinterpretation",
+            "competency": "safety.alarm-response",
+            "severity": "major",
+            "detail": "A high peak airway pressure persisted for 7 minutes without a structured check (DOPE: tube, obstruction, pneumothorax, equipment) and an inspiratory hold to separate resistance from compliance."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-examine",
+        "description": "Examined the patient within 8 minutes of the alarm",
+        "competency": "safety.alarm-response",
+        "evidenceType": "prioritisation",
+        "met": {
+          "ordered": {
+            "order": "examine",
+            "withinSimMin": 8
+          }
+        },
+        "bySimMin": 8,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-fix",
+        "description": "Treated the cause within 15 minutes",
+        "competency": "safety.crisis",
+        "evidenceType": "decision",
+        "met": {
+          "ordered": {
+            "order": "suction",
+            "withinSimMin": 15
+          }
+        },
+        "bySimMin": 15,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-ppeak",
+        "description": "Brought peak pressure to 32 cmH2O or below",
+        "competency": "mech.res-vs-comp",
+        "evidenceType": "reassessment",
+        "met": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": "<=",
+            "value": 32
+          }
+        },
+        "bySimMin": 25,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-abg",
+        "description": "Checked a blood gas within 20 minutes",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg",
+            "withinSimMin": 20
+          }
+        },
+        "bySimMin": 20,
+        "weight": 1,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "Peak pressure high with a normal plateau pressure means a resistance problem (secretions, kinked or bitten tube); both high means a compliance problem.",
+        "Suction and a suction-catheter pass are the first step for a suspected obstructed airway; do not wait for imaging.",
+        "Treating the alarm by raising the rate in an obstructed patient worsens air trapping."
+      ],
+      "resources": []
+    }
+  }
+}

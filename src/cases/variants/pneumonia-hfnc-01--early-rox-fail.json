@@ -1,0 +1,67 @@
+{
+  "variantId": "pneumonia-hfnc-01--early-rox-fail",
+  "baseCaseId": "pneumonia-hfnc-01",
+  "title": "Severe hypoxaemia and tachypnoea failing high-flow oxygen",
+  "summary": "A 59-year-old man with severe bilateral pneumonia in the emergency department has persistent tachypnoea despite high-flow nasal oxygen.",
+  "rationale": "Severe multifocal pneumonia with high work of breathing (spontRate 34, pmus 13, shunt 0.28) demonstrating rapid failure on HFNC with falling ROX index (< 2.85). Re-tests failure to recognise non-invasive failure and delayed intubation.",
+  "retestsMistake": {
+    "mistakeId": "failure_to_reassess",
+    "competencyId": "niv.failure",
+    "clinicalFocus": "Timely recognition of non-invasive respiratory failure using ROX index trajectory to avoid emergency crash intubation"
+  },
+  "source": "Roca O, et al. An index combining respiratory rate and oxygenation. Am J Respir Crit Care Med 2019;199:1368-76; Kang BJ, et al. Failure of high-flow nasal cannula therapy. Intensive Care Med 2015;41:623-32; teaching-convention",
+  "changes": {
+    "vignette": "Male 59, height 175 cm, weight 82 kg. Bilateral consolidation with higher work of breathing.",
+    "parametersChanged": {
+      "sex": { "from": "F", "to": "M", "reason": "Male patient with larger thoracic volume" },
+      "ageYears": { "from": 56, "to": 59, "reason": "Typical severe CAP demographic" },
+      "heightCm": { "from": 163, "to": 175, "reason": "Taller frame setting PBW to 71 kg" },
+      "actualWeightKg": { "from": 70, "to": 82, "reason": "Male body mass" },
+      "spontRateBpm": { "from": 30, "to": 34, "reason": "Higher tachypnoeic drive driving ROX index down" },
+      "pmusAmplitudeCmH2O": { "from": 11, "to": 13, "reason": "Greater inspiratory effort" },
+      "shuntFraction": { "from": 0.24, "to": 0.28, "reason": "More extensive alveolar filling and V/Q mismatch" },
+      "complianceMlPerCmH2O": { "from": 40, "to": 36, "reason": "Reduced compliance from bilateral infiltration" }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr A. Chen (synthetic)",
+      "presentingStory": "Four days of rigors, high fevers, and pleuritic chest tightness. Arrived via ambulance on 15 L/min non-rebreather mask with SpO2 89% and tachypnoea at 34/min. Intravenous ceftriaxone and azithromycin commenced.",
+      "history": "Active smoker (30 pack-years), chronic hypertension on amlodipine. No prior hospitalisations. Independent accountant. Full resuscitation agreed. Height 175 cm, weight 82 kg.",
+      "params": {
+        "sex": "M",
+        "ageYears": 59,
+        "heightCm": 175,
+        "actualWeightKg": 82,
+        "complianceMlPerCmH2O": 36,
+        "inspResistanceCmH2OPerLps": 6,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 34,
+        "pmusAmplitudeCmH2O": 13,
+        "pmusInspTimeSec": 0.75,
+        "vco2MlPerMin": 300,
+        "vo2MlPerMin": 340,
+        "anatomicDeadSpaceMl": 155,
+        "alveolarDeadSpaceFraction": 0.25,
+        "shuntFraction": 0.28,
+        "recruitability": 0.45,
+        "hbGPerDl": 13.0,
+        "temperatureC": 39.1,
+        "baselineHco3MmolL": 21,
+        "hrBaselineBpm": 116,
+        "sbpBaselineMmHg": 115,
+        "dbpBaselineMmHg": 66,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.25,
+        "respiratoryReserve": 0.45
+      }
+    },
+    "initialPhys": {
+      "paco2MmHg": 31
+    },
+    "findings": {
+      "examine": "Markedly tachypnoeic at 34/min, intercostal recession and prominent tracheal tug. Unable to speak more than single words. Extensive bilateral crackles across both mid and lower zones. Warm, bounding pulse, capillary refill 2 s.",
+      "cxr": "Bilateral multifocal airspace opacities, most prominent in right lower and left mid/lower zones. Costophrenic angles sharp. No pneumothorax."
+    }
+  }
+}

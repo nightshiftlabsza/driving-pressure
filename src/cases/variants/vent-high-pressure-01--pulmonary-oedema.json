@@ -1,0 +1,391 @@
+{
+  "variantId": "vent-high-pressure-01--pulmonary-oedema",
+  "baseCaseId": "vent-high-pressure-01",
+  "title": "Stiff lungs and rising pressures overnight",
+  "summary": "A 58-year-old ventilated man has rising peak and plateau pressures with falling oxygen saturation and high blood pressure.",
+  "rationale": "Flooded alveoli lower compliance and raise shunt, so Pplat and Ppk rise together and SpO2 falls; the blood pressure is high. A diuretic reduces the oedema over about 40 minutes and extra PEEP recruits. Headless engine check on the starting settings and after the named actions: untouched by 2 min: PaCO2 46, pH 7.34, SpO2 89%, Pplat 27, SBP 161; untouched by 30 min: PaCO2 47, pH 7.33, SpO2 90%, Pplat 27, SBP 161; reasonable management by 30 min: PaCO2 47, pH 7.33, SpO2 97%, Pplat 24, SBP 145; typical mistake by 30 min: PaCO2 47, pH 7.33, SpO2 80%, Pplat 21, SBP 164. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "missed_clue",
+    "competencyId": "mech.res-vs-comp",
+    "clinicalFocus": "Both peak and plateau are high: a compliance problem; look for oedema, collapse or pneumothorax; here the answer is cardiogenic oedema (diuretic, PEEP)"
+  },
+  "source": "The Ventilator Book 3e (alarms / troubleshooting and respiratory mechanics chapters, numbers unverified); Marino ICU Book 2025 (ventilator-associated complications and airway pressure chapters, unverified); Nunn & Lumb 9e (resistance and compliance chapters, unverified); Hess DR. Respir Care 2014;59:1773-94 (peak minus plateau pressure); Marino ICU Book 2025 (acute cardiogenic pulmonary oedema, number unverified). Compliance 20 and shunt 0.35 are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Male 58, 172 cm, 75 kg. VC 420 mL, RR 20, PEEP 6, FiO2 0.5. Compliance 20 mL/cmH2O.",
+    "parametersChanged": {
+      "complianceMlPerCmH2O": {
+        "from": 42,
+        "to": 20,
+        "reason": "Alveolar flooding"
+      },
+      "shuntFraction": {
+        "from": 0.2,
+        "to": 0.35,
+        "reason": "Flooded alveoli"
+      },
+      "recruitability": {
+        "from": 0.25,
+        "to": 0.5,
+        "reason": "Oedema is PEEP-recruitable (unverified)"
+      },
+      "sbpBaselineMmHg": {
+        "from": 124,
+        "to": 165,
+        "reason": "Hypertensive, afterload high"
+      },
+      "dbpBaselineMmHg": {
+        "from": 78,
+        "to": 95,
+        "reason": "Hypertensive"
+      },
+      "hrBaselineBpm": {
+        "from": 88,
+        "to": 105,
+        "reason": "Stress"
+      },
+      "ppvSeverity": {
+        "from": 0.95,
+        "to": 0.4,
+        "reason": "Weak preload dependence"
+      },
+      "ppvResponse": {
+        "from": "clean-kill",
+        "to": "helpful",
+        "reason": "LV benefits from positive pressure"
+      },
+      "temperatureC": {
+        "from": 38,
+        "to": 37.2,
+        "reason": "No fever"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr W. Brandt (synthetic)",
+      "presentingStory": "Ventilated after a myocardial infarction. Over the last hour the peak pressures have crept up, SpO2 has fallen and blood pressure is high, with pink froth in the tube. The nurse asks if the tube is blocked.",
+      "history": "Recent anterior myocardial infarction, hypertension, 20 litres positive overall. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 58,
+        "heightCm": 172,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 20,
+        "inspResistanceCmH2OPerLps": 8,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 230,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.22,
+        "shuntFraction": 0.35,
+        "recruitability": 0.5,
+        "hbGPerDl": 13.5,
+        "temperatureC": 37.2,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 105,
+        "sbpBaselineMmHg": 165,
+        "dbpBaselineMmHg": 95,
+        "ppvResponse": "helpful",
+        "ppvSeverity": 0.4,
+        "respiratoryReserve": 0.5
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.5,
+      "peep": 6,
+      "rrSetBpm": 20,
+      "vtSetMl": 420,
+      "inspFlowLpm": 60,
+      "flowPattern": "square"
+    },
+    "initialPhys": {
+      "paco2MmHg": 46,
+      "pao2MmHg": 70,
+      "hco3MmolL": 24,
+      "fatigue": 0.2
+    },
+    "findings": {
+      "examine": "Sedated. Pink frothy secretions in the tube, bilateral coarse crackles. Cold peripheries, distended neck veins. Tube at 22 cm at the teeth.",
+      "cxr": "Bilateral perihilar airspace shadowing with upper lobe diversion and a large heart. Tube 4 cm above the carina. No pneumothorax."
+    },
+    "evidence": [
+      {
+        "claim": "Pulmonary oedema lowers compliance and raises shunt; both peak and plateau pressures rise.",
+        "source": "Marino PL. Marino's The ICU Book, 2025 edition (chapter on ventilator troubleshooting; number unverified)",
+        "year": 2025,
+        "kind": "textbook"
+      },
+      {
+        "claim": "Measurement of plateau pressure via inspiratory hold differentiates high resistance (elevated Ppeak, normal Pplat) from low compliance (both Ppeak and Pplat elevated).",
+        "source": "Hess DR. Respiratory mechanics in the mechanically ventilated patient. Respir Care 2014;59(11):1773-1794",
+        "year": 2014,
+        "kind": "review"
+      }
+    ],
+    "course": [],
+    "predictionPoints": [],
+    "availableOrders": [
+      "abg",
+      "cxr",
+      "examine",
+      "change-settings",
+      "disconnect-ventilator",
+      "suction",
+      "bronchodilator",
+      "call-senior",
+      "diuretic"
+    ],
+    "orderEffects": [
+      {
+        "order": "diuretic",
+        "delaySimMin": 5,
+        "note": "Loop diuretic removes oedema fluid over about 40 minutes",
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "complianceMlPerCmH2O": 36,
+              "shuntFraction": 0.14,
+              "sbpBaselineMmHg": 138
+            },
+            "rampSimMin": 40
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Furosemide 80 mg IV given. Urine is starting to flow."
+          }
+        ]
+      },
+      {
+        "order": "suction",
+        "delaySimMin": 1,
+        "note": "Suction is a DOPE discriminator",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The suction catheter passes freely to the carina and returns scant clear secretions. The pressures are unchanged."
+          }
+        ]
+      },
+      {
+        "order": "bronchodilator",
+        "delaySimMin": 2,
+        "note": "No obvious bronchospasm here",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Salbutamol given through the circuit. There is no obvious change in the airway pressures."
+          }
+        ]
+      },
+      {
+        "order": "call-senior",
+        "delaySimMin": 2,
+        "note": "Prompts a structured check",
+        "actions": [
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "The senior says: what do the peak and plateau pressures show, and where does the tube sit? Work through the DOPE checklist."
+          }
+        ]
+      }
+    ],
+    "contextTags": [
+      "high-pressure-alarm",
+      "crisis",
+      "mechanics",
+      "icu"
+    ],
+    "triggers": [
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "ppeak",
+                "op": "<=",
+                "value": 32,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": ">=",
+                "value": 95,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": ">=",
+                "value": 92,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "The cause of the high airway pressure was found and treated; pressures, blood pressure and oxygenation have recovered."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "any": [
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": "<",
+                "value": 70,
+                "forSimSec": 240
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": "<",
+                "value": 75,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "The high airway pressure was not corrected, and the patient became profoundly hypotensive or hypoxaemic."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-ignore",
+        "when": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": ">=",
+            "value": 40,
+            "forSimSec": 420
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "misinterpretation",
+            "competency": "safety.alarm-response",
+            "severity": "major",
+            "detail": "A high peak airway pressure persisted for 7 minutes without a structured check (DOPE: tube, obstruction, pneumothorax, equipment) and an inspiratory hold to separate resistance from compliance."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-examine",
+        "description": "Examined the patient within 8 minutes of the alarm",
+        "competency": "safety.alarm-response",
+        "evidenceType": "prioritisation",
+        "met": {
+          "ordered": {
+            "order": "examine",
+            "withinSimMin": 8
+          }
+        },
+        "bySimMin": 8,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-fix",
+        "description": "Treated the cause within 15 minutes",
+        "competency": "safety.crisis",
+        "evidenceType": "decision",
+        "met": {
+          "any": [
+            {
+              "ordered": {
+                "order": "diuretic",
+                "withinSimMin": 15
+              }
+            },
+            {
+              "threshold": {
+                "metric": "peep",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "bySimMin": 15,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-ppeak",
+        "description": "Brought peak pressure to 32 cmH2O or below",
+        "competency": "mech.res-vs-comp",
+        "evidenceType": "reassessment",
+        "met": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": "<=",
+            "value": 32
+          }
+        },
+        "bySimMin": 25,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-abg",
+        "description": "Checked a blood gas within 20 minutes",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg",
+            "withinSimMin": 20
+          }
+        },
+        "bySimMin": 20,
+        "weight": 1,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "When both peak and plateau pressures are high and SpO2 and compliance fall together, look for pulmonary oedema, collapse or pneumothorax.",
+        "Cardiogenic pulmonary oedema responds to diuresis and PEEP; positive pressure also reduces left ventricular afterload.",
+        "Check that the endotracheal tube is not blocked, but a normal suction pass should not delay the search for a compliance cause."
+      ],
+      "resources": []
+    }
+  }
+}

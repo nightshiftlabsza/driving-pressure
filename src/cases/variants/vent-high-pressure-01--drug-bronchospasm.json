@@ -1,0 +1,364 @@
+{
+  "variantId": "vent-high-pressure-01--drug-bronchospasm",
+  "baseCaseId": "vent-high-pressure-01",
+  "title": "Wheeze and high pressures after a new drug",
+  "summary": "A 58-year-old ventilated man develops wheeze, high peak pressures and a slow expiratory flow.",
+  "rationale": "Airway narrowing raises resistance, mostly in expiration, so Ppk rises, Pplat stays normal and gas trapping builds slowly. A bronchodilator reduces resistance within minutes; increasing the rate makes trapping worse. Headless engine check on the starting settings and after the named actions: untouched by 2 min: PaCO2 48, pH 7.32, SpO2 93%, Pplat 21, auto-PEEP 2.7, SBP 89; untouched by 30 min: PaCO2 51, pH 7.30, SpO2 93%, Pplat 21, auto-PEEP 2.7, SBP 89; reasonable management by 30 min: PaCO2 50, pH 7.31, SpO2 94%, Pplat 18, SBP 99; typical mistake by 30 min: PaCO2 35, pH 7.43, SpO2 93%, Pplat 25, auto-PEEP 6.7, SBP 79. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "faulty_model",
+    "competencyId": "mech.res-vs-comp",
+    "clinicalFocus": "Bronchospasm raises peak pressure with a normal plateau; give bronchodilator and watch for air trapping rather than raising the rate"
+  },
+  "source": "The Ventilator Book 3e (alarms / troubleshooting and respiratory mechanics chapters, numbers unverified); Marino ICU Book 2025 (ventilator-associated complications and airway pressure chapters, unverified); Nunn & Lumb 9e (resistance and compliance chapters, unverified); Hess DR. Respir Care 2014;59:1773-94 (peak minus plateau pressure); Marino ICU Book 2025 (acute severe asthma / bronchospasm, number unverified). Expiratory resistance 45 and inspiratory 22 are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Male 58, 172 cm, 75 kg. VC 420 mL, RR 18, PEEP 8, FiO2 0.4. Wheeze began after a new antibiotic infusion.",
+    "parametersChanged": {
+      "inspResistanceCmH2OPerLps": {
+        "from": 8,
+        "to": 22,
+        "reason": "Bronchospasm"
+      },
+      "expResistanceCmH2OPerLps": {
+        "from": 8,
+        "to": 45,
+        "reason": "Expiratory narrowing"
+      },
+      "sbpBaselineMmHg": {
+        "from": 124,
+        "to": 112,
+        "reason": "Slightly lower"
+      },
+      "dbpBaselineMmHg": {
+        "from": 78,
+        "to": 70,
+        "reason": "Slightly lower"
+      },
+      "hrBaselineBpm": {
+        "from": 88,
+        "to": 102,
+        "reason": "Stress"
+      },
+      "ppvSeverity": {
+        "from": 0.95,
+        "to": 0.7,
+        "reason": "Preload sensitive"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr B. Hollis (synthetic)",
+      "presentingStory": "Ventilated for pneumonia. About 10 minutes after starting a new antibiotic the nurse hears wheeze, and the high-pressure alarm is sounding. Blood pressure is slightly lower.",
+      "history": "Pneumonia, penicillin allergy label not confirmed. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 58,
+        "heightCm": 172,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 42,
+        "inspResistanceCmH2OPerLps": 22,
+        "expResistanceCmH2OPerLps": 45,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 230,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.22,
+        "shuntFraction": 0.2,
+        "recruitability": 0.25,
+        "hbGPerDl": 13.5,
+        "temperatureC": 38,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 102,
+        "sbpBaselineMmHg": 112,
+        "dbpBaselineMmHg": 70,
+        "ppvResponse": "clean-kill",
+        "ppvSeverity": 0.7,
+        "respiratoryReserve": 0.5
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.4,
+      "peep": 8,
+      "rrSetBpm": 18,
+      "vtSetMl": 420,
+      "inspFlowLpm": 60,
+      "flowPattern": "square"
+    },
+    "initialPhys": {
+      "paco2MmHg": 48,
+      "pao2MmHg": 85,
+      "hco3MmolL": 24,
+      "fatigue": 0.2
+    },
+    "findings": {
+      "examine": "Sedated. Widespread expiratory wheeze both sides, prolonged expiration, no rash. Equal chest movement. Tube at 22 cm at the teeth.",
+      "cxr": "Tube 4 cm above the carina, right lower zone consolidation, hyperinflated lungs, no pneumothorax."
+    },
+    "evidence": [
+      {
+        "claim": "Bronchospasm raises airway resistance; peak pressure rises while plateau pressure does not.",
+        "source": "Marino PL. Marino's The ICU Book, 2025 edition (chapter on ventilator troubleshooting; number unverified)",
+        "year": 2025,
+        "kind": "textbook"
+      },
+      {
+        "claim": "Measurement of plateau pressure via inspiratory hold differentiates high resistance (elevated Ppeak, normal Pplat) from low compliance (both Ppeak and Pplat elevated).",
+        "source": "Hess DR. Respiratory mechanics in the mechanically ventilated patient. Respir Care 2014;59(11):1773-1794",
+        "year": 2014,
+        "kind": "review"
+      }
+    ],
+    "course": [],
+    "predictionPoints": [],
+    "availableOrders": [
+      "abg",
+      "cxr",
+      "examine",
+      "change-settings",
+      "disconnect-ventilator",
+      "suction",
+      "bronchodilator",
+      "call-senior",
+      "diuretic"
+    ],
+    "orderEffects": [
+      {
+        "order": "bronchodilator",
+        "delaySimMin": 2,
+        "note": "Inhaled bronchodilator reduces airway resistance",
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "inspResistanceCmH2OPerLps": 11,
+              "expResistanceCmH2OPerLps": 14
+            },
+            "rampSimMin": 8
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Salbutamol given through the circuit. The wheeze is easing."
+          }
+        ]
+      },
+      {
+        "order": "suction",
+        "delaySimMin": 1,
+        "note": "Suction is a DOPE discriminator",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The suction catheter passes freely to the carina and returns scant clear secretions. The pressures are unchanged."
+          }
+        ]
+      },
+      {
+        "order": "call-senior",
+        "delaySimMin": 2,
+        "note": "Prompts a structured check",
+        "actions": [
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "The senior says: what do the peak and plateau pressures show, and where does the tube sit? Work through the DOPE checklist."
+          }
+        ]
+      },
+      {
+        "order": "diuretic",
+        "delaySimMin": 5,
+        "note": "No diuretic-responsive cause here",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Furosemide 40 mg given and the urine output rises a little. There is no immediate change in the airway pressures."
+          }
+        ]
+      }
+    ],
+    "contextTags": [
+      "high-pressure-alarm",
+      "crisis",
+      "mechanics",
+      "icu"
+    ],
+    "triggers": [
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "ppeak",
+                "op": "<=",
+                "value": 32,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": ">=",
+                "value": 95,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": ">=",
+                "value": 92,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "The cause of the high airway pressure was found and treated; pressures, blood pressure and oxygenation have recovered."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "any": [
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": "<",
+                "value": 70,
+                "forSimSec": 240
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": "<",
+                "value": 75,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "The high airway pressure was not corrected, and the patient became profoundly hypotensive or hypoxaemic."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-ignore",
+        "when": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": ">=",
+            "value": 40,
+            "forSimSec": 420
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "misinterpretation",
+            "competency": "safety.alarm-response",
+            "severity": "major",
+            "detail": "A high peak airway pressure persisted for 7 minutes without a structured check (DOPE: tube, obstruction, pneumothorax, equipment) and an inspiratory hold to separate resistance from compliance."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-examine",
+        "description": "Examined the patient within 8 minutes of the alarm",
+        "competency": "safety.alarm-response",
+        "evidenceType": "prioritisation",
+        "met": {
+          "ordered": {
+            "order": "examine",
+            "withinSimMin": 8
+          }
+        },
+        "bySimMin": 8,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-fix",
+        "description": "Treated the cause within 15 minutes",
+        "competency": "safety.crisis",
+        "evidenceType": "decision",
+        "met": {
+          "ordered": {
+            "order": "bronchodilator",
+            "withinSimMin": 15
+          }
+        },
+        "bySimMin": 15,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-ppeak",
+        "description": "Brought peak pressure to 32 cmH2O or below",
+        "competency": "mech.res-vs-comp",
+        "evidenceType": "reassessment",
+        "met": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": "<=",
+            "value": 32
+          }
+        },
+        "bySimMin": 25,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-abg",
+        "description": "Checked a blood gas within 20 minutes",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg",
+            "withinSimMin": 20
+          }
+        },
+        "bySimMin": 20,
+        "weight": 1,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "Wheeze with high peak pressure, normal plateau and a long expiratory phase points to bronchospasm; stop the likely trigger and give a bronchodilator.",
+        "Raising the rate shortens expiration and causes air trapping and hypotension.",
+        "Reassess the pressures and the flow-time waveform after the bronchodilator."
+      ],
+      "resources": []
+    }
+  }
+}

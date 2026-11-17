@@ -1,0 +1,6 @@
+{
+  "caseId": "dka-intubated-01",
+  "acceptedAssessments": ["hypercapnic_failure", "uncertain"],
+  "explanation": "Severe metabolic acidosis with inadequate minute ventilation on standard post-intubation ventilator settings failing to replicate Winter's formula compensation.",
+  "source": "Albert MS, Dell RB, Winters RW. Ann Intern Med 1967;66(2):312-322; Mosier JM. West J Emerg Med 2015;16(7):1109-1117"
+}

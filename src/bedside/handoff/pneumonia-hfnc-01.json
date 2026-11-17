@@ -1,0 +1,11 @@
+{
+  "caseId": "pneumonia-hfnc-01",
+  "patientName": "Ms R. Okafor (synthetic)",
+  "location": "Emergency Department Cubicle 3",
+  "who": "56-year-old female (163 cm, 70 kg)",
+  "whyAdmitted": "Three days of fever, productive cough, and right-sided pleuritic chest pain; antibiotics and IV fluid given in ED.",
+  "whatHasBeenDone": "Placed on a non-rebreather mask at 15 L/min.",
+  "currentSupport": "Non-rebreather mask at 15 L/min.",
+  "theWorry": "Bedside nurse is concerned she is exhausting herself with marked work of breathing, accessory muscle use, and thoraco-abdominal paradox.",
+  "background": "Type 2 diabetes on metformin, otherwise well. School teacher, independent, no treatment limitations."
+}

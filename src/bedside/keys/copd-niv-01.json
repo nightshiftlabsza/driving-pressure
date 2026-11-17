@@ -1,0 +1,6 @@
+{
+  "caseId": "copd-niv-01",
+  "acceptedAssessments": ["hypercapnic_failure", "high_resistance"],
+  "explanation": "Acute hypercapnic respiratory failure and respiratory acidosis in severe COPD due to expiratory airflow limitation and respiratory muscle fatigue.",
+  "source": "Rochwerg B, et al. Eur Respir J 2017;50:1602426; BTS/ICS guideline. Thorax 2016;71:ii1-35"
+}

@@ -1,0 +1,682 @@
+[
+  {
+    "id": "eval-csr-01",
+    "category": "correct_strong_reasoning",
+    "clinicalContext": "Intubated ARDS patient (PBW 60 kg) on VC 480 mL (8 mL/kg PBW), PEEP 8, Pplat 34 cmH2O, driving pressure 26 cmH2O. SpO2 91%.",
+    "learnerInput": "I need to reduce tidal volume to 360 mL (6 mL/kg PBW) because plateau pressure is 34 cmH2O, exceeding the safe limit of 30 cmH2O and driving pressure is excessively high at 26 cmH2O.",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Lung protective ventilation targets Vt 4-8 mL/kg PBW to maintain Pplat <= 30 cmH2O and driving pressure <= 14-15 cmH2O to prevent volutrauma and barotrauma."
+  },
+  {
+    "id": "eval-csr-02",
+    "category": "correct_strong_reasoning",
+    "clinicalContext": "Asthmatic on VC with high Ppeak (42 cmH2O) and normal Pplat (18 cmH2O). Inspiratory flow 60 L/min.",
+    "learnerInput": "The elevated peak pressure with normal plateau indicates high airway resistance rather than low lung compliance. I should treat with inhaled bronchodilators and check for circuit secretions.",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Ppeak - Pplat gradient reflects resistive pressure drop across conducting airways; normal Pplat confirms normal respiratory system compliance."
+  },
+  {
+    "id": "eval-csr-03",
+    "category": "correct_strong_reasoning",
+    "clinicalContext": "COPD patient on PSV 14/5 with frequent delayed cycling into expiration; flow-time curve shows prolonged inspiratory flow tails.",
+    "learnerInput": "The patient has increased airway resistance prolonging the time constant. I should increase the expiratory trigger sensitivity (cycling-off threshold) from 25% to 40% to prevent delayed cycling and air trapping.",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "High expiratory time constants in obstructive lung disease cause inspiratory flow to decay slowly; raising cycling-off % terminates inspiration sooner."
+  },
+  {
+    "id": "eval-csr-04",
+    "category": "correct_strong_reasoning",
+    "clinicalContext": "Severe ARDS patient with PaO2/FiO2 ratio 85 mmHg despite PEEP 14 and lung-protective Vt. Neuromuscular blockade started.",
+    "learnerInput": "For severe ARDS with P/F < 100 refractory to initial lung-protective settings, prone positioning for at least 16 hours is indicated to improve V/Q matching and reduce dorsal alveolar collapse.",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Prone positioning promotes more uniform pleural pressure distribution and dorsal alveolar recruitment in severe ARDS."
+  },
+  {
+    "id": "eval-csr-05",
+    "category": "correct_strong_reasoning",
+    "clinicalContext": "DKA patient with profound metabolic acidosis (pH 7.10, HCO3 8 mmol/L) recently intubated.",
+    "learnerInput": "The patient requires a high minute ventilation matching their high pre-intubation spontaneous respiratory drive to prevent catastrophic worsening of acidemia.",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Severe metabolic acidosis relies on respiratory compensation; under-ventilating a DKA patient results in severe mixed acidosis and circulatory collapse."
+  },
+  {
+    "id": "eval-csr-06",
+    "category": "correct_strong_reasoning",
+    "clinicalContext": "Patient on VC 450 mL, Pplat 22, PEEP 5. ABG shows pH 7.48, PaCO2 31 mmHg, PaO2 95 mmHg.",
+    "learnerInput": "The patient has respiratory alkalosis from mild hyperventilation. I will decrease the set respiratory rate by 2-4 breaths/min to allow PaCO2 to normalize toward 40 mmHg.",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Alveolar ventilation is directly proportional to tidal volume minus dead space times respiratory rate; reducing rate increases PaCO2."
+  },
+  {
+    "id": "eval-cfr-01",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Severe COPD on VC with dynamic hyperinflation and rising auto-PEEP. Expiratory flow does not reach zero.",
+    "learnerInput": "I will lower the set respiratory rate because a slower rate blows off more carbon dioxide per minute.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Lowering rate is correct to lengthen expiratory time and reduce gas trapping, but lowering rate decreases minute ventilation and does not blow off more CO2."
+  },
+  {
+    "id": "eval-cfr-02",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Patient with high Ppeak (38) and normal Pplat (20) on VC with square flow waveform.",
+    "learnerInput": "I will change from square flow to decelerating ramp because decelerating ramp improves alveolar recruitment in stiff lungs.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Decelerating flow lowers peak airway pressure by reducing peak flow at end-inspiration, but normal Pplat indicates lung compliance is normal."
+  },
+  {
+    "id": "eval-cfr-03",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Ventilated patient with acute hypoxemia (SpO2 86%). FiO2 is 0.5. Clear CXR, sudden drop in EtCO2, tachycardia.",
+    "learnerInput": "I will order a CT pulmonary angiogram because the sudden drop in EtCO2 means the endotracheal tube has slipped into the esophagus.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "CTPA is indicated for suspected pulmonary embolism (high alveolar dead space lowering EtCO2), not esophageal intubation."
+  },
+  {
+    "id": "eval-cfr-04",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Post-op abdominal surgery patient with low lung compliance and atelectasis on PEEP 5.",
+    "learnerInput": "I will increase PEEP from 5 to 10 cmH2O because higher PEEP increases airway resistance to push secretions out.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Increasing PEEP recruits collapsed alveoli and increases FRC, not by increasing airway resistance."
+  },
+  {
+    "id": "eval-cfr-05",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Ventilator circuit shows massive condensate pooling in the tubing, with water-hammer fluttering on the flow scalar.",
+    "learnerInput": "I will drain the water trap because condensate makes the oxygen molecules too heavy to diffuse into the blood.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Circuit condensate causes flow artifact and auto-triggering, not impairment of molecular diffusion."
+  },
+  {
+    "id": "eval-cfr-06",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Patient with acute respiratory acidosis (pH 7.22, PaCO2 62) on PSV with Vt 280 mL.",
+    "learnerInput": "I will increase pressure support from 8 to 14 cmH2O because pressure support directly expands the pulmonary capillary blood volume.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Pressure support increases transpulmonary pressure to deliver a larger tidal volume and augment alveolar ventilation."
+  },
+  {
+    "id": "eval-cfr-07",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "ARDS patient on FiO2 0.8 and PEEP 10 with SpO2 92%.",
+    "learnerInput": "I will increase PEEP to 14 cmH2O so that I can wean the FiO2, because high FiO2 causes hypothermia.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "PEEP titration allows FiO2 reduction to prevent hyperoxic lung injury and absorption atelectasis, not hypothermia."
+  },
+  {
+    "id": "eval-cfr-08",
+    "category": "correct_faulty_reasoning",
+    "clinicalContext": "Patient on VC experiencing double-triggering as they take deep spontaneous inspiratory efforts.",
+    "learnerInput": "I will increase the set tidal volume because double-triggering means the patient has stopped breathing spontaneously.",
+    "referenceGrade": "correct_conclusion_wrong_reasoning",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Double-triggering represents patient-ventilator dyssynchrony from flow hunger or insufficient inspiratory time, indicating active spontaneous drive."
+  },
+  {
+    "id": "eval-wsp-01",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Intubated asthmatic on VC with high Ppeak (45), Pplat (32), auto-PEEP 12 cmH2O, BP 82/50.",
+    "learnerInput": "The patient has severe expiratory airflow limitation and gas trapping. To relieve this, I will add 10 cmH2O of extrinsic PEEP to push the trapped gas through the airways.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "The recognition of airflow limitation and air trapping is sound, but in passive flow-limited asthma, adding extrinsic PEEP increases total PEEP and worsens hyperinflation."
+  },
+  {
+    "id": "eval-wsp-02",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Moderate ARDS with PaO2 62 on FiO2 0.7, Pplat 26 on Vt 6 mL/kg PBW, PEEP 8.",
+    "learnerInput": "Oxygenation is inadequate due to shunt in collapsed dorsal alveoli. I will increase tidal volume from 380 mL to 650 mL to open up the atelectatic units.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Recognizing shunt from atelectasis is sound, but increasing tidal volume causes volutrauma; recruitment should be achieved with PEEP or proning."
+  },
+  {
+    "id": "eval-wsp-03",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "COPD patient with acute respiratory acidosis on NIV (IPAP 12, EPAP 4, pH 7.28, PaCO2 58).",
+    "learnerInput": "The patient is hypoventilating with hypercapnia. I will increase EPAP to 10 cmH2O while keeping IPAP at 12 cmH2O.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Recognizing hypercapnia is sound, but narrowing the pressure support (IPAP - EPAP) from 8 to 2 reduces tidal volume and worsens hypercapnia."
+  },
+  {
+    "id": "eval-wsp-04",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Patient on VC 450 mL, RR 18, Ppeak 28, Pplat 26. MAP 85. PaCO2 46.",
+    "learnerInput": "Plateau pressure reflects alveolar distension. Because plateau is 26, the lung is dangerously overdistended, so I must reduce PEEP to 0 immediately.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Recognizing that Pplat reflects alveolar pressure is sound, but Pplat of 26 is below the safe threshold of 30 cmH2O; zero PEEP promotes de-recruitment."
+  },
+  {
+    "id": "eval-wsp-05",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Neuromuscular patient with Guillain-Barre on PSV with tachypnea (RR 34) and small Vt (180 mL).",
+    "learnerInput": "The patient has severe diaphragm weakness causing rapid shallow breathing. I will administer high-dose fentanyl to slow down their breathing rate.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Recognizing neuromuscular diaphragm weakness is sound, but opioid sedation will suppress drive and cause hypercapnic arrest."
+  },
+  {
+    "id": "eval-wsp-06",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Hypoxemic patient with acute cardiogenic pulmonary edema on BiPAP (IPAP 14, EPAP 6). BP 160/95.",
+    "learnerInput": "Pulmonary venous congestion is flooding alveoli. I will decrease EPAP to 2 cmH2O to help fluid drain back into the systemic circulation.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Understanding pulmonary congestion is sound, but positive intrathoracic pressure (EPAP) reduces LV afterload and venous return; lowering EPAP worsens cardiogenic edema."
+  },
+  {
+    "id": "eval-wsp-07",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Severe ARDS patient. Driving pressure is 19 cmH2O. Pplat 32, PEEP 13.",
+    "learnerInput": "High driving pressure correlates strongly with increased mortality in ARDS. Therefore, I will decrease PEEP from 13 to 4 cmH2O while keeping Vt the same.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "High driving pressure is indeed associated with mortality, but dropping PEEP to 4 in severe ARDS induces severe alveolar collapse and can further worsen compliance and driving pressure."
+  },
+  {
+    "id": "eval-wsp-08",
+    "category": "wrong_sound_parts",
+    "clinicalContext": "Patient on mechanical ventilation with sudden rise in Ppeak to 48 cmH2O while Pplat remains stable at 20 cmH2O.",
+    "learnerInput": "Airway resistance has increased acutely. Because the problem is in the airway, the patient needs emergency bilateral tube thoracostomies.",
+    "referenceGrade": "wrong_conclusion_sound_parts",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Recognizing acute resistive elevation is correct, but tension pneumothorax increases both Pplat and Ppeak; airway obstruction (tube kinking/mucus) needs suction/clearing, not chest drains."
+  },
+  {
+    "id": "eval-amb-01",
+    "category": "ambiguous",
+    "clinicalContext": "Intubated patient with deteriorating ABG. Ventilator alarm sounds.",
+    "learnerInput": "The vent is acting up. We should fix it.",
+    "referenceGrade": "too_ambiguous",
+    "acceptableHelpLevel": 0,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Unclear statement without specific physiological observation or proposed action requires clarification."
+  },
+  {
+    "id": "eval-amb-02",
+    "category": "ambiguous",
+    "clinicalContext": "Post-extubation patient with mild stridor and tachypnea.",
+    "learnerInput": "Let's change something on the machine.",
+    "referenceGrade": "too_ambiguous",
+    "acceptableHelpLevel": 0,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Completely ambiguous intervention without identifying the clinical issue."
+  },
+  {
+    "id": "eval-amb-03",
+    "category": "ambiguous",
+    "clinicalContext": "Septic shock with acute lung injury on VC.",
+    "learnerInput": "Maybe turn the dials up a bit?",
+    "referenceGrade": "too_ambiguous",
+    "acceptableHelpLevel": 0,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Ambiguous request with no specified parameter or clinical rationale."
+  },
+  {
+    "id": "eval-amb-04",
+    "category": "ambiguous",
+    "clinicalContext": "Patient triggering asynchronous breaths on PSV.",
+    "learnerInput": "The waveform looks kind of weird.",
+    "referenceGrade": "too_ambiguous",
+    "acceptableHelpLevel": 0,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Vague observation without specifying which scalar, phase of respiration, or dyssynchrony pattern."
+  },
+  {
+    "id": "eval-amb-05",
+    "category": "ambiguous",
+    "clinicalContext": "Arterial blood gas shows metabolic acidosis with compensatory tachypnea.",
+    "learnerInput": "Gas looks bad. What do you think?",
+    "referenceGrade": "too_ambiguous",
+    "acceptableHelpLevel": 0,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Nondescript evaluation requiring learner to articulate specific acid-base or oxygenation disorder."
+  },
+  {
+    "id": "eval-ocw-01",
+    "category": "overconfident_wrong",
+    "clinicalContext": "Asthmatic with severe auto-PEEP (14 cmH2O) and persistent expiratory flow. Monitored Ppeak 42, Pplat 28.",
+    "learnerInput": "I am 100% certain that increasing the respiratory rate from 16 to 24 will cure this problem by giving more ventilation.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "High confidence in an intervention that drastically shortens expiratory time and exacerbates dynamic hyperinflation warrants Level 3 teaching."
+  },
+  {
+    "id": "eval-ocw-02",
+    "category": "overconfident_wrong",
+    "clinicalContext": "Patient on VC experiencing severe patient-ventilator dyssynchrony with high airway pressures.",
+    "learnerInput": "I am absolutely sure that immediately paralyzing this patient with rocuronium is the first step before checking the endotracheal tube.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Paralysis without assessing tube patency or mechanical airway obstruction is a critical safety mistake."
+  },
+  {
+    "id": "eval-ocw-03",
+    "category": "overconfident_wrong",
+    "clinicalContext": "ARDS patient with driving pressure of 22 cmH2O.",
+    "learnerInput": "Without question, driving pressure has zero clinical significance as long as SpO2 is above 90%.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Driving pressure is the strongest mechanical ventilator predictor of mortality in ARDS."
+  },
+  {
+    "id": "eval-ocw-04",
+    "category": "overconfident_wrong",
+    "clinicalContext": "Patient with left-sided tension pneumothorax, tracheal deviation, and hypotension.",
+    "learnerInput": "I am completely certain that the first thing to do is order an urgent CT scan of the chest.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Tension pneumothorax is an immediate clinical diagnosis requiring prompt needle decompression, not delayed imaging."
+  },
+  {
+    "id": "eval-ocw-05",
+    "category": "overconfident_wrong",
+    "clinicalContext": "Patient with PaO2 55 on FiO2 1.0 due to large right pulmonary artery clot (V/Q mismatch / shunt).",
+    "learnerInput": "Increasing FiO2 to 1.5 with high pressure oxygen therapy will definitely resolve an anatomical shunt.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "True physiological shunt is refractory to supplementary oxygen because blood bypasses ventilated alveoli entirely."
+  },
+  {
+    "id": "eval-ucc-01",
+    "category": "underconfident_correct",
+    "clinicalContext": "ARDS on VC with Pplat 34 cmH2O and Vt 7.5 mL/kg PBW.",
+    "learnerInput": "Just taking a wild guess, maybe we should drop the tidal volume to 6 mL/kg to lower the plateau pressure below 30?",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Underconfident learner identified the correct target and rationale."
+  },
+  {
+    "id": "eval-ucc-02",
+    "category": "underconfident_correct",
+    "clinicalContext": "Obstructive patient on flow-time scalar with expiratory tail.",
+    "learnerInput": "I could be totally wrong here, but looking at that expiratory curve, does flow fail to hit zero before the breath starts?",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Accurate identification of incomplete expiration presented with low confidence."
+  },
+  {
+    "id": "eval-ucc-03",
+    "category": "underconfident_correct",
+    "clinicalContext": "Patient on BiPAP with CO2 retention on IPAP 12 / EPAP 6.",
+    "learnerInput": "Shot in the dark: should we raise the IPAP to increase the pressure support gradient and blow off more CO2?",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Correctly identifies that expanding pressure support delta augments tidal volume and ventilation."
+  },
+  {
+    "id": "eval-ucc-04",
+    "category": "underconfident_correct",
+    "clinicalContext": "Patient on PSV with auto-triggering caused by small cardiac oscillations.",
+    "learnerInput": "Not really sure, but maybe the flow trigger threshold is too sensitive and picking up heartbeats?",
+    "referenceGrade": "correct_justified",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Correct diagnosis of cardiogenic auto-triggering."
+  },
+  {
+    "id": "eval-rep-01a",
+    "category": "repeated_misconception",
+    "clinicalContext": "Asthma case step 1: Ppeak is 40 cmH2O. Expiratory flow incomplete.",
+    "learnerInput": "The peak pressure is high so I will increase the respiratory rate to give more ventilation.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "First occurrence of rate-increase misconception in air trapping."
+  },
+  {
+    "id": "eval-rep-01b",
+    "category": "repeated_misconception",
+    "clinicalContext": "Asthma case step 2: Ppeak has risen to 46 cmH2O. Patient more tachycardic.",
+    "learnerInput": "Still under-ventilated, so I will raise the rate even higher to 24.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 2,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Second occurrence of air-trapping rate misconception."
+  },
+  {
+    "id": "eval-rep-01c",
+    "category": "repeated_misconception",
+    "clinicalContext": "Asthma case step 3: Patient now hypotensive with severe auto-PEEP.",
+    "learnerInput": "I need to increase the set rate again to treat this acidosis.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Third consecutive failure on same mechanism triggers Level 3 worked teaching."
+  },
+  {
+    "id": "eval-rep-02a",
+    "category": "repeated_misconception",
+    "clinicalContext": "ARDS step 1: Pplat is 34 cmH2O.",
+    "learnerInput": "Pplat 34 is fine as long as Ppeak is under 50.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Plateau pressure, not peak pressure, drives alveolar overdistension."
+  },
+  {
+    "id": "eval-rep-02b",
+    "category": "repeated_misconception",
+    "clinicalContext": "ARDS step 2: Pplat increases to 36 cmH2O.",
+    "learnerInput": "Ppeak is 44, so we still have headroom before reaching 50.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 2,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Persistent reliance on Ppeak threshold rather than Pplat."
+  },
+  {
+    "id": "eval-rep-02c",
+    "category": "repeated_misconception",
+    "clinicalContext": "ARDS step 3: Pneumothorax risk high, Pplat 38.",
+    "learnerInput": "Peak is 48, so we are still safe under 50.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Third consecutive error triggers direct worked explanation on Pplat and driving pressure."
+  },
+  {
+    "id": "eval-rep-03a",
+    "category": "repeated_misconception",
+    "clinicalContext": "COPD NIV step 1: PaCO2 is 60, IPAP 12, EPAP 4.",
+    "learnerInput": "I will increase EPAP to 8 to clear CO2.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Raising EPAP without IPAP reduces pressure support and ventilation."
+  },
+  {
+    "id": "eval-rep-03b",
+    "category": "repeated_misconception",
+    "clinicalContext": "COPD NIV step 2: PaCO2 rises to 68.",
+    "learnerInput": "CO2 is higher so I will increase EPAP further to 10.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 2,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Second occurrence of equating EPAP with ventilation."
+  },
+  {
+    "id": "eval-rep-03c",
+    "category": "repeated_misconception",
+    "clinicalContext": "COPD NIV step 3: Severe acidosis pH 7.20.",
+    "learnerInput": "Let's increase EPAP to 12.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Third consecutive occurrence warrants Level 3 direct worked explanation of delta PS."
+  },
+  {
+    "id": "eval-rep-04a",
+    "category": "repeated_misconception",
+    "clinicalContext": "Oxygen toxicity step 1: SpO2 100% on FiO2 1.0.",
+    "learnerInput": "Leave FiO2 at 1.0 because more oxygen is always safer.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Hyperoxia causes absorption atelectasis and free radical injury."
+  },
+  {
+    "id": "eval-rep-04b",
+    "category": "repeated_misconception",
+    "clinicalContext": "Oxygen toxicity step 2: PaO2 is 280 mmHg.",
+    "learnerInput": "High PaO2 is great reserve, keep FiO2 at 1.0.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 2,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Failure to titrate down hyperoxia."
+  },
+  {
+    "id": "eval-rep-04c",
+    "category": "repeated_misconception",
+    "clinicalContext": "Oxygen toxicity step 3: Patient on FiO2 1.0 for 24 hours.",
+    "learnerInput": "FiO2 1.0 has no harms, keep it there.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Third consecutive failure triggers Level 3 worked teaching on target SpO2 92-96%."
+  },
+  {
+    "id": "eval-cta-01",
+    "category": "contradicting_action",
+    "clinicalContext": "Learner types intention to lower tidal volume to protect the lung, but changes ventilator setting from 420 mL to 550 mL.",
+    "learnerInput": "I want to apply lung protection so I dialed the tidal volume up to 550 mL.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Action of increasing tidal volume directly contradicts stated intention of lung protection."
+  },
+  {
+    "id": "eval-cta-02",
+    "category": "contradicting_action",
+    "clinicalContext": "Learner intends to lengthen expiratory time in severe obstruction, but increases set respiratory rate from 14 to 26.",
+    "learnerInput": "I need to give the patient more time to exhale so I increased the rate to 26.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Increasing respiratory rate shortens the total cycle time and shortens expiratory time."
+  },
+  {
+    "id": "eval-cta-03",
+    "category": "contradicting_action",
+    "clinicalContext": "Learner states patient is severely hypoxic on FiO2 0.8, but dials FiO2 down to 0.4.",
+    "learnerInput": "Patient has critical hypoxemia so I decreased FiO2 to 0.4.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Weaning oxygen in acute severe hypoxemia contradicts stated goal."
+  },
+  {
+    "id": "eval-cta-04",
+    "category": "contradicting_action",
+    "clinicalContext": "Learner states patient has elevated PaCO2 and needs more ventilation, but switches ventilator mode to CPAP with PS 0.",
+    "learnerInput": "The patient is retaining CO2 so I turned off all pressure support.",
+    "referenceGrade": "specific_misconception",
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Eliminating pressure support in a fatiguing patient worsens hypoventilation."
+  },
+  {
+    "id": "eval-prb-01",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Asthma case with hidden probe 'dynamic hyperinflation'. Flow-time curve does not reach zero. Learner asks: 'Why is the pressure rising?'",
+    "learnerInput": "Can you give me a hint about why the airway pressures are creeping up?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["auto-PEEP", "intrinsic PEEP", "dynamic hyperinflation", "asthma"],
+    "keyPhysiologicalPoint": "Tutor must direct attention to the end-expiratory flow on the scalar without naming auto-PEEP or dynamic hyperinflation."
+  },
+  {
+    "id": "eval-prb-02",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Tension pneumothorax hidden probe. High Ppeak and Pplat with sudden hypotension. Learner asks: 'What is happening?'",
+    "learnerInput": "What is going on with the patient? Can you tell me the diagnosis?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["pneumothorax", "tension", "needle decompression"],
+    "keyPhysiologicalPoint": "Tutor must focus on acute compliance drop and hemodynamic collapse without naming pneumothorax."
+  },
+  {
+    "id": "eval-prb-03",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Endotracheal tube cuff leak hidden probe. Low exhaled tidal volume with audible leak.",
+    "learnerInput": "Why is the exhaled volume smaller than the set volume?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["cuff leak", "pilot balloon", "deflated cuff"],
+    "keyPhysiologicalPoint": "Prompt learner to check for circuit and airway circuit continuity."
+  },
+  {
+    "id": "eval-prb-04",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Severe ARDS hidden probe. Low compliance.",
+    "learnerInput": "Give me a hint on what setting to change.",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["ARDS", "Berlin definition", "PEEP 14"],
+    "keyPhysiologicalPoint": "Guide learner to evaluate the driving pressure and plateau pressure without revealing target settings."
+  },
+  {
+    "id": "eval-prb-05",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Mainstem intubation hidden probe. Right lung hyperinflated, left absent breath sounds.",
+    "learnerInput": "What could cause high peak and plateau pressure with unilateral chest rise?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["mainstem", "right main bronchus", "endobronchial intubation"],
+    "keyPhysiologicalPoint": "Guide learner to compare bilateral physical findings."
+  },
+  {
+    "id": "eval-prb-06",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Secretions blocking airway hidden probe. Sawtooth pattern on flow-volume loop.",
+    "learnerInput": "Why does the flow curve look jagged?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["secretions", "suctioning", "mucus plug"],
+    "keyPhysiologicalPoint": "Prompt learner to consider physical obstructions creating turbulent oscillating airflow."
+  },
+  {
+    "id": "eval-prb-07",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Patient biting the ETT hidden probe. Sudden high Ppeak, normal Pplat on hold.",
+    "learnerInput": "Ppeak jumped to 50 cmH2O suddenly. Why?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["biting", "bite block", "sedation"],
+    "keyPhysiologicalPoint": "Direct learner to inspect the mouth and circuit for external mechanical narrowing."
+  },
+  {
+    "id": "eval-prb-08",
+    "category": "probe_anti_leakage",
+    "clinicalContext": "Ventilator dyssynchrony (ineffective triggering) hidden probe. Negative pressure deflections without triggered breath.",
+    "learnerInput": "What are those small dips in the airway pressure waveform during expiration?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 1,
+    "forbiddenPhrases": ["ineffective effort", "missed trigger", "auto-PEEP"],
+    "keyPhysiologicalPoint": "Prompt learner to analyze whether the patient's inspiratory effort reaches the trigger threshold."
+  },
+  {
+    "id": "eval-out-01",
+    "category": "outside_knowledge",
+    "clinicalContext": "Intubated patient experiencing bronchospasm on mechanical ventilation.",
+    "learnerInput": "How does inhaled ipratropium bromide work compared to albuterol at a cellular level?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Albuterol is a beta-2 adrenergic agonist (cAMP-mediated relaxation); ipratropium is a muscarinic antagonist (blocks acetylcholine-mediated bronchoconstriction)."
+  },
+  {
+    "id": "eval-out-02",
+    "category": "outside_knowledge",
+    "clinicalContext": "Post-cardiac arrest patient on ventilator.",
+    "learnerInput": "Why do targeted temperature management protocols recommend avoiding hyperventilation?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Hypocapnia induces cerebral vasoconstriction, decreasing cerebral blood flow and aggravating secondary ischemic brain injury."
+  },
+  {
+    "id": "eval-out-03",
+    "category": "outside_knowledge",
+    "clinicalContext": "ARDS patient being evaluated for ECMO candidacy.",
+    "learnerInput": "What is the physiological difference between venovenous (VV) and venoarterial (VA) ECMO in gas exchange?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "VV ECMO provides respiratory support (oxygenation and decarboxylation) in series with the native heart; VA ECMO provides both cardiac and respiratory support in parallel."
+  },
+  {
+    "id": "eval-con-01",
+    "category": "conflicting_evidence",
+    "clinicalContext": "Moderate ARDS with PaO2/FiO2 140 mmHg on PEEP 10.",
+    "learnerInput": "Should we use high PEEP or low PEEP for this moderate ARDS patient?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Meta-analyses of ALVEOLI/LOVS/EXPRESS trials showed a mortality benefit for higher PEEP in moderate-to-severe ARDS (P/F < 200), though individual trials were neutral."
+  },
+  {
+    "id": "eval-con-02",
+    "category": "conflicting_evidence",
+    "clinicalContext": "Early severe ARDS (P/F 80).",
+    "learnerInput": "Does continuous neuromuscular blockade with cisatracurium reduce mortality in early severe ARDS?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "The ACURASYS trial found 90-day mortality benefit with 48 hours of cisatracurium in severe ARDS; the larger ROSE trial with lighter sedation targets found no mortality difference."
+  },
+  {
+    "id": "eval-con-03",
+    "category": "conflicting_evidence",
+    "clinicalContext": "ARDS patient being ventilated with conservative fluid management.",
+    "learnerInput": "What is the evidence regarding conservative versus liberal fluid management in ARDS?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "The ARDSNet FACTT trial demonstrated conservative fluid management improved ventilator-free days and ICU stay without increasing non-pulmonary organ failure, but without significant mortality reduction."
+  },
+  {
+    "id": "eval-con-04",
+    "category": "conflicting_evidence",
+    "clinicalContext": "Severe acute exacerbation of COPD failing standard medical therapy.",
+    "learnerInput": "Is non-invasive ventilation superior to upfront invasive mechanical ventilation in acute hypercapnic respiratory failure from COPD?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Extensive randomized trial evidence and Cochrane reviews support first-line NIV for acute hypercapnic COPD exacerbations, reducing intubation rates and mortality."
+  },
+  {
+    "id": "eval-con-05",
+    "category": "conflicting_evidence",
+    "clinicalContext": "Patient on mechanical ventilation ready for weaning assessment.",
+    "learnerInput": "Is a T-piece spontaneous breathing trial or low-level pressure support trial superior for predicting extubation success?",
+    "referenceGrade": null,
+    "acceptableHelpLevel": 3,
+    "forbiddenPhrases": [],
+    "keyPhysiologicalPoint": "Recent trials (e.g. Subira et al. JAMA 2019) show pressure support SBTs increase extubation success compared to T-piece, but ongoing debate exists regarding post-extubation fatigue."
+  }
+]

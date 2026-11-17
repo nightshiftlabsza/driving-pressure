@@ -1,0 +1,58 @@
+{
+  "caseId": "ards-vent-01",
+  "title": "Severe ARDS lung-protective titration and early prone positioning",
+  "label": "One reasonable approach",
+  "source": "ARDS Network (ARMA) NEJM 2000; PROSEVA NEJM 2013; ESICM ARDS Guidelines 2023",
+  "decisions": [
+    {
+      "simTimeSec": 60,
+      "kind": "order",
+      "order": "abg",
+      "rationale": "Verify baseline PaO2/FiO2 ratio, PaCO2 and degree of acute respiratory acidosis on arrival ED settings.",
+      "source": "teaching-convention; clinical-practice-standard"
+    },
+    {
+      "simTimeSec": 120,
+      "kind": "settings_change",
+      "settings": {
+        "vtSetMl": 400,
+        "rrSetBpm": 28
+      },
+      "rationale": "Immediate lung-protective tidal volume reduction to 6.1 mL/kg PBW (400 mL for 66 kg PBW) paired with RR increase to 28 bpm to avoid volutrauma and maintain pH >= 7.20.",
+      "source": "ARDS Network. N Engl J Med 2000;342:1301-8; ESICM ARDS Guidelines 2023"
+    },
+    {
+      "simTimeSec": 240,
+      "kind": "settings_change",
+      "settings": {
+        "peep": 14,
+        "fio2": 0.8
+      },
+      "rationale": "Titrate PEEP to 14 cmH2O at FiO2 0.8 according to the ARDSNet PEEP/FiO2 titration table (recommends PEEP 14 cmH2O at FiO2 0.8 to recruit lung units and support oxygenation).",
+      "source": "ARDS Network. N Engl J Med 2000;342:1301-8; ALVEOLI Study Group. N Engl J Med 2004;351:327-36"
+    },
+    {
+      "simTimeSec": 600,
+      "kind": "order",
+      "order": "prone",
+      "rationale": "Early prone positioning for persistent severe ARDS with PaO2/FiO2 < 150 on FiO2 >= 0.6. Note: In clinical practice, proning follows an initial stabilization period of 12 to 24 hours (PROSEVA); simulation time is compressed here for bedside teaching.",
+      "source": "Guérin C, et al. PROSEVA trial. N Engl J Med 2013;368:2159-68"
+    },
+    {
+      "simTimeSec": 1200,
+      "kind": "order",
+      "order": "abg",
+      "rationale": "Follow-up blood gas to confirm improvement in PaO2/FiO2 and safe pH/PaCO2 equilibration.",
+      "source": "teaching-convention; clinical-practice-standard"
+    },
+    {
+      "simTimeSec": 3600,
+      "kind": "settings_change",
+      "settings": {
+        "fio2": 0.5
+      },
+      "rationale": "Wean FiO2 from 0.80 to 0.50 once PEEP recruitment and prone positioning restore SpO2 >= 94%, avoiding hyperoxia exposure.",
+      "source": "Chu DK, et al. IOTA trial. Lancet 2018;391:1693-705; BTS Oxygen Guideline 2017"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "caseId": "copd-psv-trigger-01",
+  "patientName": "Harold Miller (synthetic)",
+  "location": "ICU Bed 7",
+  "who": "71-year-old male (175 cm, 72 kg)",
+  "whyAdmitted": "Intubated 4 days ago for acute hypercapnic respiratory failure; currently undergoing weaning trial.",
+  "whatHasBeenDone": "Transitioned onto pressure support ventilation (PSV 14 cmH2O, PEEP 5 cmH2O, FiO2 0.40).",
+  "currentSupport": "Invasive pressure support ventilation (PSV).",
+  "theWorry": "Increasingly agitated over the last 30 minutes with diaphoresis; bedside nurse reports he is 'fighting the ventilator' with frequent monitor alarms.",
+  "background": "Severe COPD (GOLD stage IV, baseline FEV1 32% predicted, baseline PaCO2 52 mmHg on room air), 55 pack-year smoking history, coronary artery disease, hypertension. Difficult wean 2 years ago."
+}

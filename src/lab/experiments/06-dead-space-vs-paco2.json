@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0",
+  "id": "06-dead-space-vs-paco2",
+  "number": 6,
+  "title": "Dead Space versus PaCO2 and the PaCO2 - EtCO2 Gap",
+  "subtitle": "Observe how changes in physiological dead space fraction influence alveolar ventilation, carbon dioxide clearance, and end-tidal values",
+  "difficulty": 2,
+  "competencies": [
+    "gas.dead-space",
+    "gas.alveolar-ventilation"
+  ],
+  "contextTags": [
+    "gas-exchange",
+    "dead-space",
+    "capnography",
+    "ventilation",
+    "acid-base"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Synthetic Patient F",
+    "summary": "Intubated patient receiving mechanical ventilation with continuous capnography monitoring following orthopedic surgery.",
+    "params": {
+      "sex": "F",
+      "ageYears": 58,
+      "heightCm": 165,
+      "actualWeightKg": 65,
+      "complianceMlPerCmH2O": 50,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 10,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 180,
+      "vo2MlPerMin": 220,
+      "anatomicDeadSpaceMl": 130,
+      "alveolarDeadSpaceFraction": 0.1,
+      "shuntFraction": 0.1,
+      "recruitability": 0.05,
+      "hbGPerDl": 13.0,
+      "temperatureC": 37.0,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 75,
+      "sbpBaselineMmHg": 120,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 14,
+    "vtSetMl": 450,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 40,
+  "variable": {
+    "target": "patient",
+    "field": "alveolarDeadSpaceFraction",
+    "label": "Alveolar dead space fraction",
+    "unit": "fraction",
+    "baselineValue": 0.1,
+    "options": [
+      {
+        "label": "Increase alveolar dead space to 0.45",
+        "value": 0.45
+      },
+      {
+        "label": "Increase alveolar dead space to 0.30",
+        "value": 0.3
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When alveolar dead space fraction increases from 0.10 to 0.45 at constant ventilator settings, how will arterial PaCO2, end-tidal CO2 (EtCO2), and arterial pH change over the observation period?",
+    "metrics": [
+      "paco2",
+      "etco2",
+      "ph"
+    ]
+  },
+  "observeSimSec": 240,
+  "whatToLookAtHint": "Compare arterial PaCO2 from the blood gas with end-tidal CO2 on the capnogram, noting the size of the PaCO2 - EtCO2 difference.",
+  "reflection": {
+    "question": "Why does an increase in alveolar dead space fraction cause arterial PaCO2 to rise while end-tidal CO2 (EtCO2) paradoxically falls?",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Alveolar ventilation drops so CO2 accumulates in blood, while unperfused ventilated alveoli dilute expired gas with CO2-free air."
+      },
+      {
+        "id": "opt-b",
+        "text": "CO2 production (VCO2) falls sharply due to impaired alveolar capillary diffusion."
+      },
+      {
+        "id": "opt-c",
+        "text": "The capnograph sensor malfunctions in the presence of increased physiological shunt."
+      },
+      {
+        "id": "opt-d",
+        "text": "High dead space causes metabolic alkalosis, which shifts the hemoglobin-CO2 dissociation curve."
+      }
+    ],
+    "correctOptionId": "opt-a",
+    "explanation": "Alveolar dead space consists of alveoli that are ventilated but underperfused (high V/Q). Because these alveoli do not participate in gas exchange, their gas contains virtually zero CO2. During exhalation, this CO2-free gas mixes with gas from perfused alveoli, lowering the mixed alveolar and end-tidal PCO2. Simultaneously, effective alveolar ventilation (VA = VE × (1 - VD/VT)) falls, impairing overall CO2 clearance and causing arterial PaCO2 to rise, markedly widening the PaCO2 - EtCO2 difference."
+  },
+  "causalChainFields": [
+    "deadSpaceFraction",
+    "alveolarVentilation",
+    "steadyPaco2Target",
+    "paco2",
+    "ph"
+  ],
+  "evidence": [
+    {
+      "claim": "Increased alveolar dead space impairs carbon dioxide elimination, elevating arterial PaCO2 while lowering mixed expired and end-tidal CO2, increasing the arterial-to-end-tidal CO2 difference.",
+      "source": "Nuckton TJ, et al. Pulmonary dead-space fraction as a risk factor for death in the acute respiratory distress syndrome. N Engl J Med. 2002;346(17):1281-1286.",
+      "year": 2002,
+      "kind": "trial"
+    },
+    {
+      "claim": "Alveolar dead space produces dilution of alveolar gas by unperfused ventilated units, reducing EtCO2 relative to PaCO2.",
+      "source": "Verscheure S, et al. Volumetric capnography: physiology and clinical applications. Curr Opin Crit Care. 2016;22(3):216-221.",
+      "year": 2016,
+      "kind": "review"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "dev-01-hfnc-peep",
+  "source": "Parke RL, Eccleston ML, McGuinness SP. The effects of flow on airway pressure during high-flow nasal therapy. Respir Care 2011; 56(8):1151-1155; Groves N, Tobin A. Aust Crit Care 2007; 20(4):126-131.",
+  "claim": "High-flow nasal therapy with mouth open generates positive airway pressure of approximately 0.05 cmH2O per L/min flow (Parke 2011, Groves & Tobin 2007), yielding approximately 2.5 cmH2O of continuous airway distending pressure at 50 L/min.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 42,
+    "heightCm": 176,
+    "actualWeightKg": 78,
+    "complianceMlPerCmH2O": 55,
+    "inspResistanceCmH2OPerLps": 8,
+    "expResistanceCmH2OPerLps": 8,
+    "spontRateBpm": 16,
+    "pmusAmplitudeCmH2O": 6.0,
+    "pmusInspTimeSec": 0.9,
+    "vco2MlPerMin": 210,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.08,
+    "shuntFraction": 0.12,
+    "recruitability": 0.2,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 80,
+    "sbpBaselineMmHg": 120,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 1.0
+  },
+  "device": {
+    "device": "hfnc",
+    "flowLpm": 50,
+    "fio2": 0.5,
+    "temperatureC": 37
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 85
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "hfncPressure", "op": "approx", "value": 2.5, "tolerance": 0.5 }
+  ],
+  "kind": "published-range"
+}

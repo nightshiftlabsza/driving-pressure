@@ -1,0 +1,463 @@
+{
+  "variantId": "sbt-pass-01--pass-older-patient",
+  "baseCaseId": "sbt-pass-01",
+  "title": "Breathing trial in an older patient after surgery",
+  "summary": "A 79-year-old man has been breathing on minimal support for 20 minutes after abdominal surgery.",
+  "rationale": "An older patient with reduced reserve but adequate drive still passes: RSBI stays well under 105 on PS 5/PEEP 5, so prompt extubation is right; sedation removes his own breathing, so the apnoea alarm sounds and the ventilator apnoea backup (RR 12) breathes for him: gases hold, but the trial is lost and extubation is delayed. Headless engine check on the starting settings and after the named actions: untouched by 5 min: PaCO2 39, pH 7.41, SpO2 98%, Pplat 15, RSBI 48, RR 19, SBP 137; untouched by 40 min: PaCO2 39, pH 7.41, SpO2 98%, Pplat 15, RSBI 44, RR 18, SBP 137; typical mistake by 40 min: PaCO2 40, pH 7.39, SpO2 98%, Pplat 20, RSBI 4, RR 12, SBP 137. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "calibration_error",
+    "competencyId": "safety.liberation",
+    "clinicalFocus": "Age alone is not a reason to fail an SBT: rely on RSBI, gas exchange and work of breathing; sedation would remove the drive that makes him pass"
+  },
+  "source": "The Ventilator Book 3e (weaning / SBT chapter, number unverified); Marino ICU Book 2025 (liberation from mechanical ventilation chapter, unverified); Nunn & Lumb 9e (control of breathing / respiratory muscle chapter, unverified); Boles JM, et al. Weaning from mechanical ventilation. Eur Respir J 2007;29:1033-56; Yang KL, Tobin MJ. N Engl J Med 1991;324:1445-50 (RSBI below 105). Compliance 40 and reserve 0.5 are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Male 79, 172 cm, 74 kg. PSV 5 / PEEP 5, FiO2 0.3, trial 20 minutes.",
+    "parametersChanged": {
+      "sex": {
+        "from": "F",
+        "to": "M",
+        "reason": "Male"
+      },
+      "ageYears": {
+        "from": 64,
+        "to": 79,
+        "reason": "Older"
+      },
+      "heightCm": {
+        "from": 165,
+        "to": 172,
+        "reason": "Typical"
+      },
+      "actualWeightKg": {
+        "from": 65,
+        "to": 74,
+        "reason": "Typical"
+      },
+      "complianceMlPerCmH2O": {
+        "from": 48,
+        "to": 40,
+        "reason": "Age-related loss and post-op"
+      },
+      "spontRateBpm": {
+        "from": 18,
+        "to": 20,
+        "reason": "Upper normal"
+      },
+      "pmusAmplitudeCmH2O": {
+        "from": 8,
+        "to": 9,
+        "reason": "Adequate"
+      },
+      "respiratoryReserve": {
+        "from": 0.6,
+        "to": 0.5,
+        "reason": "Reduced by age (unverified)"
+      },
+      "hbGPerDl": {
+        "from": 12.5,
+        "to": 11,
+        "reason": "Post-op anaemia"
+      },
+      "hrBaselineBpm": {
+        "from": 78,
+        "to": 84,
+        "reason": "Normal"
+      },
+      "sbpBaselineMmHg": {
+        "from": 124,
+        "to": 138,
+        "reason": "Typical"
+      },
+      "dbpBaselineMmHg": {
+        "from": 76,
+        "to": 78,
+        "reason": "Typical"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr A. Costa (synthetic)",
+      "presentingStory": "Day 3 after laparotomy for a perforated diverticulum. Awake, following commands, afebrile, secretions minimal. On a spontaneous breathing trial, PS 5 / PEEP 5, FiO2 0.3 for 20 minutes. The nurse is worried that \"he is 79\" and asks whether to give a little sedation to keep him comfortable.",
+      "history": "Hypertension, mild CKD. Independent at home. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 79,
+        "heightCm": 172,
+        "actualWeightKg": 74,
+        "complianceMlPerCmH2O": 40,
+        "inspResistanceCmH2OPerLps": 7,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 20,
+        "pmusAmplitudeCmH2O": 9,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 190,
+        "vo2MlPerMin": 230,
+        "anatomicDeadSpaceMl": 130,
+        "alveolarDeadSpaceFraction": 0.15,
+        "shuntFraction": 0.08,
+        "recruitability": 0.1,
+        "hbGPerDl": 11,
+        "temperatureC": 36.9,
+        "baselineHco3MmolL": 24.2,
+        "hrBaselineBpm": 84,
+        "sbpBaselineMmHg": 138,
+        "dbpBaselineMmHg": 78,
+        "ppvResponse": "helpful",
+        "ppvSeverity": 0.1,
+        "respiratoryReserve": 0.5
+      }
+    },
+    "initialPhys": {
+      "paco2MmHg": 41,
+      "pao2MmHg": 88,
+      "hco3MmolL": 24,
+      "fatigue": 0.15
+    },
+    "triggers": [
+      {
+        "id": "t-extubate-early",
+        "when": {
+          "ordered": {
+            "order": "extubate",
+            "withinSimMin": 29.99
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "safety.extubation",
+            "severity": "major",
+            "detail": "Extubated before completing a 30-minute spontaneous breathing trial. Even when the first minutes look good, finish the trial."
+          },
+          {
+            "type": "endCase",
+            "outcome": "stable",
+            "reason": "Extubated before the trial was complete. He did well, but the decision was made too early."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-extubate-success",
+        "when": {
+          "all": [
+            {
+              "ordered": {
+                "order": "extubate"
+              }
+            },
+            {
+              "not": {
+                "ordered": {
+                  "order": "extubate",
+                  "withinSimMin": 29.99
+                }
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The endotracheal tube is smoothly removed after airway suctioning and cuff deflation. The patient is placed on 2 L/min nasal cannula, breathing comfortably with a clear voice and no stridor."
+          },
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "Patient successfully extubated to nasal cannula following a passed spontaneous breathing trial with stable gas exchange, low RSBI, and preserved respiratory muscle endurance."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-delayed-weaning",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 30
+              }
+            },
+            {
+              "not": {
+                "ordered": {
+                  "order": "extubate"
+                }
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient has maintained comfortable spontaneous breathing with stable vitals, normal RSBI, and low fatigue for over 30 minutes on minimal support. Are we ready to extubate?"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-sedate",
+        "when": {
+          "ordered": {
+            "order": "sedation"
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "faulty_model",
+            "competency": "safety.liberation",
+            "severity": "major",
+            "detail": "Administering sedation to a patient undergoing a successful spontaneous breathing trial suppresses respiratory drive: he stops breathing for himself, the ventilator apnoea backup takes over, and the trial and extubation are delayed."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-sedation-deterioration",
+        "when": {
+          "all": [
+            {
+              "ordered": {
+                "order": "sedation"
+              }
+            },
+            {
+              "threshold": {
+                "metric": "rrSpont",
+                "op": "<=",
+                "value": 3,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Sedation abolished spontaneous breathing during the trial. The ventilator apnoea backup took over, so he is not in danger, but the trial is lost and extubation is delayed."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-not-extubated",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 44
+              }
+            },
+            {
+              "not": {
+                "ordered": {
+                  "order": "extubate"
+                }
+              }
+            },
+            {
+              "not": {
+                "ordered": {
+                  "order": "sedation"
+                }
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "stable",
+            "reason": "The trial was passed but the patient was left intubated. Every extra day on the ventilator carries risk."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "orderEffects": [
+      {
+        "order": "sedation",
+        "delaySimMin": 1,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "spontRateBpm": 2,
+              "pmusAmplitudeCmH2O": 1
+            }
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Sedation administered. The patient has become unarousable; spontaneous respiratory drive is suppressed and low minute ventilation alarms are sounding."
+          }
+        ],
+        "note": "Sedative administration blunts respiratory drive and arrests the spontaneous breathing trial"
+      }
+    ],
+    "predictionPoints": [
+      {
+        "id": "p-sbt-pass-criteria",
+        "competency": "safety.liberation",
+        "evidenceType": "interpretation",
+        "question": "Which set of findings indicates that this patient has successfully passed his spontaneous breathing trial and is physiologically ready for extubation consideration?",
+        "format": "choice",
+        "options": [
+          "RSBI < 105 bpm/L, spontaneous RR 16-22 bpm, stable gas exchange without respiratory distress or fatigue",
+          "RSBI > 150 bpm/L with rapid shallow breathing and tachypnoea",
+          "Complete absence of spontaneous breathing efforts requiring mandatory ventilation",
+          "Minute ventilation > 20 L/min driven by heavy scalene accessory muscle recruitment"
+        ],
+        "marking": "fixed",
+        "answerKey": "RSBI < 105 bpm/L, spontaneous RR 16-22 bpm, stable gas exchange without respiratory distress or fatigue",
+        "explanation": "Passing criteria for an SBT include an RSBI < 105 breaths/min/L, spontaneous respiratory rate < 35 bpm, absence of hemodynamic instability, acceptable oxygenation/acid-base status, and lack of subjective distress or diaphoresis (Yang & Tobin 1991; ATS/ACCP Liberation Guidelines 2017).",
+        "hidden": false
+      },
+      {
+        "id": "p-sbt-extubation-decision",
+        "competency": "safety.extubation",
+        "evidenceType": "decision",
+        "question": "Having successfully passed a spontaneous breathing trial with RSBI ~40 bpm/L, normal gas exchange, and minimal secretions, what is the recommended next step?",
+        "format": "choice",
+        "options": [
+          "Proceed with extubation to supplemental oxygen (e.g. low-flow nasal cannula)",
+          "Place the patient back on full assist-control ventilation for 48 hours of rest",
+          "Initiate continuous deep sedation with propofol infusion",
+          "Increase pressure support to 20 cmH2O and perform recruitment manoeuvres"
+        ],
+        "marking": "fixed",
+        "answerKey": "Proceed with extubation to supplemental oxygen (e.g. low-flow nasal cannula)",
+        "explanation": "According to ATS/ACCP 2017 guidelines, patients who pass an SBT should be considered promptly for extubation unless there are specific airway contraindications. Unnecessary prolongation of intubation increases the risk of ventilator-associated pneumonia and laryngeal trauma.",
+        "hidden": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-reassess-trial",
+        "description": "Examined patient and assessed clinical stability during spontaneous breathing trial",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "examine"
+          }
+        },
+        "bySimMin": 30,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-assess-gas",
+        "description": "Checked arterial blood gas during SBT to verify adequate alveolar ventilation and oxygenation",
+        "competency": "gas.acid-base",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg"
+          }
+        },
+        "bySimMin": 30,
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-sbt-stability",
+        "description": "Maintained rapid shallow breathing index (RSBI) < 105 and low fatigue (< 0.25) during the trial",
+        "competency": "safety.liberation",
+        "evidenceType": "decision",
+        "met": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": "<=",
+                "value": 65
+              }
+            },
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": "<=",
+                "value": 0.25
+              }
+            }
+          ]
+        },
+        "bySimMin": 35,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-extubate-timely",
+        "description": "Extubated after the 30-minute trial was complete, once it had clearly been passed (by minute 45)",
+        "competency": "safety.extubation",
+        "evidenceType": "decision",
+        "met": {
+          "all": [
+            {
+              "ordered": {
+                "order": "extubate",
+                "withinSimMin": 45
+              }
+            },
+            {
+              "not": {
+                "ordered": {
+                  "order": "extubate",
+                  "withinSimMin": 29.99
+                }
+              }
+            }
+          ]
+        },
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-avoid-sedation",
+        "description": "Avoided sedating patient during spontaneous breathing trial",
+        "competency": "safety.liberation",
+        "evidenceType": "safety",
+        "met": {
+          "not": {
+            "ordered": {
+              "order": "sedation"
+            }
+          }
+        },
+        "weight": 2,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "A spontaneous breathing trial (SBT) on low pressure support (e.g. PS 5 cmH2O, PEEP 5 cmH2O) assesses whether the patient can sustain the work of breathing independently.",
+        "A passed SBT is characterized by stable respiratory rate (< 35 bpm, typically 16-22 bpm), preserved tidal volume (400-500 mL), RSBI < 105 bpm/L (typically 35-55 bpm/L), low fatigue (< 0.25), and stable oxygenation and hemodynamics.",
+        "Once SBT passing criteria are met and airway reflexes/secretions are manageable, extubation should be performed promptly to avoid ventilator-associated complications.",
+        "Clinical Caveat: RSBI measured on PSV is typically 20-40% lower than on a T-piece due to pressure unloading. In addition to RSBI < 105 bpm/L, successful extubation requires confirmed airway protection, cough strength, and manageable secretions (cuff leak test if laryngeal edema risk exists).",
+        "Administering sedation during an SBT suppresses central respiratory drive and induces iatrogenic hypoventilation.",
+        "An RSBI below 105 was validated on unsupported breathing; on pressure support a stricter cut-off (about 80) is sensible."
+      ],
+      "resources": [
+        {
+          "title": "Liberation From Mechanical Ventilation in Critically Ill Adults: Executive Summary",
+          "ref": "Schmidt GA, et al. CHEST 2017;151(1):160-165"
+        },
+        {
+          "title": "A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation",
+          "ref": "Yang KL, Tobin MJ. N Engl J Med 1991;324(21):1445-1450"
+        }
+      ]
+    }
+  }
+}

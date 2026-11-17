@@ -1,0 +1,421 @@
+{
+  "variantId": "sbt-fail-01--cardiac-failure-sbt",
+  "baseCaseId": "sbt-fail-01",
+  "title": "Breathing trial that turns wet and hypertensive",
+  "summary": "A 70-year-old man with a weak heart becomes breathless, hypertensive and hypoxaemic during a breathing trial.",
+  "rationale": "Ischaemic cardiomyopathy: positive pressure unloads the left ventricle; at PS 5 / PEEP 5 compliance is low and shunt is high, SpO2 falls, SBP is high. PEEP/PS plus furosemide lowers shunt over time. Headless engine check on the starting settings and after the named actions: untouched by 5 min: PaCO2 47, pH 7.34, SpO2 89%, Pplat 15, RSBI 119, RR 34, SBP 162; untouched by 60 min: PaCO2 58, pH 7.26, SpO2 88%, Pplat 15, RSBI 118, RR 34, SBP 162; reasonable management by 60 min: PaCO2 43, pH 7.37, SpO2 95%, Pplat 23, RSBI 79, RR 30, SBP 157; diuretic only by 60 min: PaCO2 54, pH 7.29, SpO2 97%, Pplat 14, RSBI 110, RR 34, SBP 143; typical mistake by 60 min: PaCO2 44, pH 7.36, SpO2 90%, Pplat 15, RSBI 111, RR 31, SBP 163. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "missed_clue",
+    "competencyId": "circ.ppv-preload",
+    "clinicalFocus": "Weaning-induced pulmonary oedema: withdrawing positive pressure raises LV afterload and preload; restore PEEP/PS and give a diuretic rather than extubating"
+  },
+  "source": "The Ventilator Book 3e (weaning / SBT chapter, number unverified); Marino ICU Book 2025 (liberation from mechanical ventilation chapter, unverified); Nunn & Lumb 9e (control of breathing / respiratory muscle chapter, unverified); 36:1292-7 (title unverified); Lemaire F, et al. Anesthesiology 1988;69:171-9 (acute pulmonary oedema during weaning); Marino ICU Book 2025 (cardiogenic pulmonary oedema chapter, unverified). Numbers unverified.",
+  "changes": {
+    "vignette": "Male 70, 175 cm, 82 kg. PSV 5 / PEEP 5, FiO2 0.4, 30 minutes in. Diuretic available.",
+    "parametersChanged": {
+      "ageYears": {
+        "from": 68,
+        "to": 70,
+        "reason": "Older"
+      },
+      "heightCm": {
+        "from": 175,
+        "to": 175,
+        "reason": "Typical"
+      },
+      "actualWeightKg": {
+        "from": 75,
+        "to": 82,
+        "reason": "Fluid overloaded"
+      },
+      "complianceMlPerCmH2O": {
+        "from": 28,
+        "to": 30,
+        "reason": "Interstitial oedema"
+      },
+      "spontRateBpm": {
+        "from": 28,
+        "to": 24,
+        "reason": "Tachypnoeic"
+      },
+      "pmusAmplitudeCmH2O": {
+        "from": 7.5,
+        "to": 9,
+        "reason": "Adequate"
+      },
+      "shuntFraction": {
+        "from": 0.14,
+        "to": 0.3,
+        "reason": "Oedema flooding dependent lung"
+      },
+      "recruitability": {
+        "from": 0.1,
+        "to": 0.6,
+        "reason": "Oedema responds to PEEP (unverified)"
+      },
+      "hrBaselineBpm": {
+        "from": 98,
+        "to": 104,
+        "reason": "Stress"
+      },
+      "sbpBaselineMmHg": {
+        "from": 135,
+        "to": 168,
+        "reason": "Afterload rises off positive pressure"
+      },
+      "dbpBaselineMmHg": {
+        "from": 82,
+        "to": 92,
+        "reason": "Hypertensive"
+      },
+      "ppvResponse": {
+        "from": "helpful",
+        "to": "helpful",
+        "reason": "Left ventricle benefits from positive pressure"
+      },
+      "ppvSeverity": {
+        "from": 0.2,
+        "to": 0.8,
+        "reason": "Strong"
+      },
+      "respiratoryReserve": {
+        "from": 0.25,
+        "to": 0.4,
+        "reason": "Reduced"
+      },
+      "hbGPerDl": {
+        "from": 10.5,
+        "to": 11,
+        "reason": "Anaemia"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr G. Rosen (synthetic)",
+      "presentingStory": "Day 5 on the ventilator after a cardiac arrest and ischaemic cardiomyopathy (EF 30%). On a breathing trial for 30 minutes he has become sweaty, SBP is up and SpO2 is drifting down, with crackles at both bases. The nurse asks whether to extubate \"because he is awake\".",
+      "history": "Ischaemic cardiomyopathy EF 30%, hypertension, diabetes. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 70,
+        "heightCm": 175,
+        "actualWeightKg": 82,
+        "complianceMlPerCmH2O": 30,
+        "inspResistanceCmH2OPerLps": 10,
+        "expResistanceCmH2OPerLps": 12,
+        "spontRateBpm": 24,
+        "pmusAmplitudeCmH2O": 9,
+        "pmusInspTimeSec": 0.65,
+        "vco2MlPerMin": 240,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.3,
+        "shuntFraction": 0.3,
+        "recruitability": 0.6,
+        "hbGPerDl": 11,
+        "temperatureC": 37.4,
+        "baselineHco3MmolL": 23.8,
+        "hrBaselineBpm": 104,
+        "sbpBaselineMmHg": 168,
+        "dbpBaselineMmHg": 92,
+        "ppvResponse": "helpful",
+        "ppvSeverity": 0.8,
+        "respiratoryReserve": 0.4
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "PSV",
+      "fio2": 0.4,
+      "peep": 5,
+      "rrSetBpm": 0,
+      "psAbovePeep": 5,
+      "cyclePctPeakFlow": 25,
+      "triggerFlowLpm": 2,
+      "riseTimeSec": 0.1
+    },
+    "initialPhys": {
+      "paco2MmHg": 42,
+      "pao2MmHg": 75,
+      "hco3MmolL": 24,
+      "fatigue": 0.3
+    },
+    "availableOrders": [
+      "abg",
+      "cxr",
+      "examine",
+      "change-settings",
+      "extubate",
+      "diuretic"
+    ],
+    "orderEffects": [
+      {
+        "order": "extubate",
+        "delaySimMin": 0,
+        "note": "Extubation during weaning-induced pulmonary oedema leads to post-extubation failure",
+        "actions": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "safety.extubation",
+            "severity": "major",
+            "detail": "Extubating while the trial is failing from pulmonary oedema (rising SBP, falling SpO2, crackles) removes the positive pressure that was unloading the left ventricle."
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "He is extubated. Within minutes he is distressed with pink frothy sputum and SpO2 falls steeply on the monitor. Emergency reintubation is called."
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Post-extubation pulmonary oedema needed urgent reintubation."
+          }
+        ]
+      },
+      {
+        "order": "diuretic",
+        "delaySimMin": 5,
+        "note": "Loop diuretic reduces pulmonary venous congestion over about 30 minutes",
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "complianceMlPerCmH2O": 38,
+              "shuntFraction": 0.1,
+              "sbpBaselineMmHg": 142,
+              "ppvSeverity": 0.4
+            },
+            "rampSimMin": 40
+          },
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Furosemide 40 mg IV given. Urine output is starting to pick up."
+          }
+        ]
+      }
+    ],
+    "competencies": [
+      "safety.liberation",
+      "safety.extubation",
+      "safety.reassess",
+      "gas.acid-base",
+      "circ.ppv-preload"
+    ],
+    "triggers": [
+      {
+        "id": "t-sbt-failing-warning",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": ">=",
+                "value": 105,
+                "forSimSec": 60
+              }
+            },
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": ">=",
+                "value": 0.45
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient is struggling on PS 5. Look at the monitor: the respiratory rate is high and the tidal volumes are small, so the RSBI is clearly poor and he is visibly fatiguing. Should we abort the trial?"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-support-resumed",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "vte",
+                "op": ">=",
+                "value": 350,
+                "forSimSec": 180
+              }
+            },
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": "<=",
+                "value": 85,
+                "forSimSec": 180
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient looks much calmer and is resting comfortably. Tachypnoea has settled, tidal volume has recovered on the monitor, and the diaphragm is resting."
+          },
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "SBT failure recognized; ventilatory support resumed to prevent diaphragmatic exhaustion."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-exhaustion-deteriorated",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "fatigue",
+                "op": ">=",
+                "value": 0.55,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "rsbi",
+                "op": ">=",
+                "value": 110,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "He is drenched in sweat, increasingly breathless and the crackles have spread up both lungs. SpO2 is falling and the blood pressure is high."
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Unrecognized spontaneous breathing trial failure led to severe diaphragmatic fatigue and ventilatory exhaustion."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-recognise-wet",
+        "description": "Examined or imaged the patient within 15 minutes and recognised pulmonary oedema as the cause of the failing trial",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "any": [
+            {
+              "ordered": {
+                "order": "examine",
+                "withinSimMin": 15
+              }
+            },
+            {
+              "ordered": {
+                "order": "cxr",
+                "withinSimMin": 15
+              }
+            }
+          ]
+        },
+        "bySimMin": 15,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-restore-pressure",
+        "description": "Restored PEEP of 8 cmH2O or more within 20 minutes to unload the left ventricle and recruit oedematous lung",
+        "competency": "circ.ppv-preload",
+        "evidenceType": "decision",
+        "met": {
+          "threshold": {
+            "metric": "peep",
+            "op": ">=",
+            "value": 8
+          }
+        },
+        "bySimMin": 20,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-diuretic",
+        "description": "Gave a diuretic within 30 minutes",
+        "competency": "circ.ppv-preload",
+        "evidenceType": "decision",
+        "met": {
+          "ordered": {
+            "order": "diuretic",
+            "withinSimMin": 30
+          }
+        },
+        "bySimMin": 30,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-no-extubation",
+        "description": "Did not extubate during the failing trial",
+        "competency": "safety.extubation",
+        "evidenceType": "safety",
+        "met": {
+          "not": {
+            "ordered": {
+              "order": "extubate"
+            }
+          }
+        },
+        "weight": 2,
+        "critical": true
+      },
+      {
+        "id": "r-oxygenation",
+        "description": "SpO2 of 94% or more at the end",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "threshold": {
+            "metric": "spo2",
+            "op": ">=",
+            "value": 94
+          }
+        },
+        "bySimMin": 60,
+        "weight": 1,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "Weaning-induced pulmonary oedema: removing positive pressure raises left ventricular preload and afterload in a patient with a poor ventricle, so oedema and hypoxaemia appear during the trial.",
+        "Clues are rising blood pressure, a rising shunt (falling SpO2 at the same FiO2), crackles and a falling compliance; compare with muscle weakness, where gas exchange is preserved but CO2 rises.",
+        "Treat by restoring PEEP/pressure support and giving a diuretic; the PEEP works within minutes, the diuretic over about 30-40 minutes.",
+        "Do not extubate during a failing trial, and re-run the trial only when the oedema has been treated."
+      ],
+      "resources": [
+        {
+          "title": "Acute pulmonary oedema during weaning from mechanical ventilation",
+          "ref": "Lemaire F, et al. Anesthesiology 1988;69:171-9"
+        }
+      ]
+    }
+  }
+}

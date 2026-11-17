@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "id": "13-ppv-vs-bp-preload-dependent",
+  "number": 13,
+  "title": "Positive pressure versus BP in a preload-dependent patient",
+  "subtitle": "Hemodynamic consequences of positive intrathoracic pressure in severe preload dependency",
+  "difficulty": 2,
+  "competencies": [
+    "circ.ppv-preload"
+  ],
+  "contextTags": [
+    "circulation",
+    "hemodynamics",
+    "peep",
+    "preload",
+    "hypotension"
+  ],
+  "ruleBased": true,
+  "ruleBasedNote": "Hemodynamic response to mean alveolar pressure (ppvResponse = clean-kill) is a rule-based circulation model, not a mechanistic cardiovascular simulation.",
+  "patient": {
+    "displayName": "Preload-dependent hypovolemic patient",
+    "summary": "A 68-year-old mechanically ventilated patient with distributive shock and intravascular volume depletion receiving volume-controlled ventilation.",
+    "params": {
+      "sex": "F",
+      "ageYears": 68,
+      "heightCm": 160,
+      "actualWeightKg": 60,
+      "complianceMlPerCmH2O": 40,
+      "inspResistanceCmH2OPerLps": 10,
+      "expResistanceCmH2OPerLps": 10,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 180,
+      "vo2MlPerMin": 220,
+      "anatomicDeadSpaceMl": 120,
+      "alveolarDeadSpaceFraction": 0.1,
+      "shuntFraction": 0.1,
+      "recruitability": 0.2,
+      "hbGPerDl": 11,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 88,
+      "sbpBaselineMmHg": 115,
+      "dbpBaselineMmHg": 68,
+      "ppvResponse": "clean-kill",
+      "ppvSeverity": 0.9,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "vtSetMl": 450,
+    "rrSetBpm": 16,
+    "peep": 5,
+    "fio2": 0.4,
+    "inspFlowLpm": 50,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "peep",
+    "label": "Positive end-expiratory pressure (PEEP)",
+    "unit": "cmH2O",
+    "baselineValue": 5,
+    "options": [
+      {
+        "label": "PEEP 16 cmH2O",
+        "value": 16
+      },
+      {
+        "label": "PEEP 10 cmH2O",
+        "value": 10
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When PEEP is elevated from 5 to 16 cmH2O in this preload-dependent patient, how do mean airway pressure (Pmean), systolic blood pressure (SBP), and heart rate respond?",
+    "metrics": [
+      "pmean",
+      "sbp",
+      "hr"
+    ]
+  },
+  "observeSimSec": 90,
+  "whatToLookAtHint": "Watch the mean airway pressure on the ventilator alongside systolic blood pressure and heart rate on the bedside monitor.",
+  "reflection": {
+    "question": "Why does escalating PEEP from 5 to 16 cmH2O precipitate profound hypotension and tachycardia in this patient?",
+    "options": [
+      {
+        "id": "opt-preload-impedance",
+        "text": "Elevated mean alveolar and intrathoracic pressure increases right atrial pressure, reducing the pressure gradient for systemic venous return (MSFP - RAP) and drastically lowering right ventricular stroke volume."
+      },
+      {
+        "id": "opt-cholinergic-syncope",
+        "text": "High airway pressure triggers direct cholinergic vagal discharge that dilates systemic arterioles."
+      },
+      {
+        "id": "opt-coronary-spasm",
+        "text": "Excess positive pressure directly compresses the ascending aorta and precipitates acute myocardial ischemia."
+      },
+      {
+        "id": "opt-splanchnic-pooling",
+        "text": "PEEP relaxes abdominal vascular tone by mechanical vibration of the celiac plexus."
+      }
+    ],
+    "correctOptionId": "opt-preload-impedance",
+    "explanation": "In hypovolemic and preload-dependent circulations (phenotype 'clean-kill'), cardiac filling is precarious. Venous return is driven by the pressure gradient between mean systemic filling pressure (MSFP) and right atrial pressure (RAP). Increasing PEEP from 5 to 16 cmH2O raises mean airway pressure (from ~7 to ~18 cmH2O). Transmission of this positive pressure into the pericardial space increases RAP, attenuating venous return, stroke volume, and cardiac output. Consequently, systolic blood pressure plummets (from ~110 to ~75 mmHg) while reflex baroreceptor activation elevates heart rate."
+  },
+  "causalChainFields": [
+    "setPeep",
+    "pmean",
+    "circulationMultiplier",
+    "map",
+    "sbp",
+    "hr"
+  ],
+  "evidence": [
+    {
+      "claim": "Positive intrathoracic pressure increases right atrial pressure and impedes venous return, which significantly reduces cardiac output in preload-dependent patients.",
+      "source": "Pinsky MR. Cardiopulmonary interactions: the basics. Curr Opin Crit Care 2007; 13(1):3-10.",
+      "year": 2007,
+      "kind": "review"
+    },
+    {
+      "claim": "Increasing positive end-expiratory pressure in volume-depleted states produces significant left ventricular stroke volume reduction via decreased right ventricular filling.",
+      "source": "Jardin F, Farcot JC, Boisnante L, et al. Influence of positive end-expiratory pressure on left ventricular performance. N Engl J Med 1981; 304(7):387-392.",
+      "year": 1981,
+      "kind": "observational"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "caseId": "asthma-vent-01",
+  "acceptedAssessments": ["dynamic_hyperinflation", "high_resistance"],
+  "explanation": "Severe airflow obstruction with critical dynamic hyperinflation (auto-PEEP) impeding venous return and causing hemodynamic collapse.",
+  "source": "Leatherman J. Mechanical ventilation for severe asthma. Chest 2015;147(6):1671-1680"
+}

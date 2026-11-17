@@ -1,0 +1,96 @@
+{
+  "variantId": "copd-niv-01--retention-alkalosis",
+  "baseCaseId": "copd-niv-01",
+  "title": "Severe drowsiness and hypercapnia on the medical ward",
+  "summary": "A 71-year-old woman with severe COPD and chronic hypercapnic respiratory failure is found unrousable with high oxygen flow.",
+  "rationale": "Elderly female with chronic CO2 retention and compensatory metabolic alkalosis (baseline standard bicarbonate 34 mmol/L) presenting with acute-on-chronic hypercapnic respiratory failure and hyperoxaemia (SpO2 95% on 4 L/min nasal prongs). Re-tests SpO2 target selection (88-92%), ABG compensation recognition, and timely NIV initiation. Engine note: the engine models a modest FiO2-dependent rise in V/Q dead space in chronic retainers, so oxygen alone nudges PaCO2 up; headless at 30 sim-min with no other treatment, 4 L/min gives PaCO2 82 mmHg / pH 7.24 / SpO2 91% vs 1 L/min giving PaCO2 80 mmHg / pH 7.25 / SpO2 82%. The CO2 difference is small (about 2 mmHg) because the dead-space effect is modest and hypoxaemia on 1 L/min adds fatigue, so the lesson is a controlled target (88-92%, about 2 L/min gives SpO2 87% at 30 min) plus early NIV, not withholding oxygen.",
+  "retestsMistake": {
+    "mistakeId": "unsafe_action",
+    "competencyId": "modes.peep-fio2",
+    "clinicalFocus": "SpO2 target selection (target 88-92% rather than hyperoxaemia) in acute-on-chronic hypercapnic respiratory failure (high FiO2 modestly worsens CO2 retention; hypoxaemia is also harmful)"
+  },
+  "source": "O'Driscoll BR, et al. BTS guideline for oxygen use in adults. Thorax 2017;72 Suppl 1:ii1-90; Rochwerg B, et al. ERS/ATS clinical practice guidelines. Eur Respir J 2017;50:1602426; teaching-convention",
+  "changes": {
+    "vignette": "Female 71, chronic baseline bicarbonate 34 mmol/L, found drowsy on 4 L/min nasal prongs.",
+    "parametersChanged": {
+      "sex": {
+        "from": "M",
+        "to": "F",
+        "reason": "Female patient with smaller baseline tidal volumes"
+      },
+      "ageYears": {
+        "from": 68,
+        "to": 71,
+        "reason": "Elderly cohort typical for advanced home COPD"
+      },
+      "heightCm": {
+        "from": 172,
+        "to": 160,
+        "reason": "Female stature"
+      },
+      "actualWeightKg": {
+        "from": 70,
+        "to": 62,
+        "reason": "Sarcopenia associated with advanced COPD"
+      },
+      "baselineHco3MmolL": {
+        "from": 30,
+        "to": 34,
+        "reason": "Higher chronic metabolic compensation"
+      },
+      "anatomicDeadSpaceMl": {
+        "from": 150,
+        "to": 130,
+        "reason": "Scaled to smaller body size"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mrs M. Schmidt (synthetic)",
+      "presentingStory": "Admitted yesterday with acute infective exacerbation of COPD. The overnight nurse calls because she is somnolent, flapping tremor present, and oxygen was turned up to 4 L/min two hours ago when her saturations dipped to 86%. She is currently on nasal cannula 4 L/min with SpO2 97%.",
+      "history": "Severe COPD (FEV1 32% predicted, chronic retainer with baseline PaCO2 56 mmHg), osteoporosis. Dependent on mobility frame. No formal DNAR or treatment limitations.",
+      "params": {
+        "sex": "F",
+        "ageYears": 71,
+        "heightCm": 160,
+        "actualWeightKg": 62,
+        "complianceMlPerCmH2O": 52,
+        "inspResistanceCmH2OPerLps": 13,
+        "expResistanceCmH2OPerLps": 18,
+        "spontRateBpm": 26,
+        "pmusAmplitudeCmH2O": 18,
+        "pmusInspTimeSec": 0.9,
+        "vco2MlPerMin": 220,
+        "vo2MlPerMin": 260,
+        "anatomicDeadSpaceMl": 130,
+        "alveolarDeadSpaceFraction": 0.46,
+        "shuntFraction": 0.17,
+        "recruitability": 0.2,
+        "hbGPerDl": 16.2,
+        "temperatureC": 37.8,
+        "baselineHco3MmolL": 34,
+        "hrBaselineBpm": 108,
+        "sbpBaselineMmHg": 146,
+        "dbpBaselineMmHg": 82,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.3,
+        "respiratoryReserve": 0.65
+      }
+    },
+    "initialDevice": {
+      "device": "none",
+      "o2": "nasal-cannula",
+      "o2FlowLpm": 4
+    },
+    "initialPhys": {
+      "paco2MmHg": 80,
+      "hco3MmolL": 34,
+      "fatigue": 0.35
+    },
+    "findings": {
+      "examine": "Markedly somnolent, rousable only to loud voice. RR 26, shallow breathing, prominent coarse expiratory wheezes bilaterally. Coarse asterixis on hand extension. Warm, bounding pulse.",
+      "cxr": "Marked hyperinflation, flattened hemidiaphragms, widened intercostal spaces. No focal consolidation or pneumothorax."
+    }
+  }
+}

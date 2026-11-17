@@ -1,0 +1,67 @@
+{
+  "id": "recruit-02-peep-overdistension-driving-pressure",
+  "source": "Gattinoni L, Caironi P, Cressoni M, et al. Lung recruitment in patients with the acute respiratory distress syndrome. N Engl J Med 2006; 354(17):1775-1786; Grasso S, Stripoli T, Sacchi M, et al. PEEP titration in ARDS: is driving pressure the answer? Intensive Care Med 2016; 42(10):1651-1653.",
+  "claim": "Raising PEEP beyond the optimal recruitment point (from 14 to 22 cmH2O) at fixed tidal volume causes progressive alveolar overdistension, decreasing compliance and increasing driving pressure.",
+  "patient": {
+    "sex": "F",
+    "ageYears": 48,
+    "heightCm": 165,
+    "actualWeightKg": 65,
+    "complianceMlPerCmH2O": 28,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 180,
+    "vo2MlPerMin": 220,
+    "anatomicDeadSpaceMl": 130,
+    "alveolarDeadSpaceFraction": 0.2,
+    "shuntFraction": 0.4,
+    "recruitability": 0.6,
+    "hbGPerDl": 12,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 95,
+    "sbpBaselineMmHg": 110,
+    "dbpBaselineMmHg": 65,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.3,
+    "respiratoryReserve": 0.8,
+    "lungModel": "two-compartment"
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.6,
+    "peep": 22,
+    "rrSetBpm": 16,
+    "vtSetMl": 420,
+    "inspFlowLpm": 55,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 45,
+    "pao2MmHg": 95
+  },
+  "baseline": {
+    "device": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.6,
+      "peep": 14,
+      "rrSetBpm": 16,
+      "vtSetMl": 420,
+      "inspFlowLpm": 55,
+      "flowPattern": "square"
+    },
+    "checks": [
+      { "metric": "drivingPressure", "op": ">" }
+    ]
+  },
+  "runSec": 120,
+  "checks": [
+    { "metric": "drivingPressure", "op": ">=", "value": 16.5 }
+  ],
+  "kind": "direction"
+}

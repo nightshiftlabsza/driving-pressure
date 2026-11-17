@@ -1,0 +1,433 @@
+{
+  "schemaVersion": "1.0",
+  "id": "dyssynchrony-01",
+  "version": "0.1.2",
+  "title": "Ventilator alarming repeatedly in a patient recovering from ARDS",
+  "summary": "A 48-year-old woman recovering from viral ARDS is uncomfortable on volume control and the ventilator keeps alarming.",
+  "difficulty": 2,
+  "setting": "icu",
+  "competencies": [
+    "wave.dyssynchrony",
+    "modes.trigger-cycle",
+    "modes.dyssynchrony-management",
+    "safety.reassess",
+    "gas.acid-base",
+    "safety.crisis"
+  ],
+  "hiddenCompetencies": ["wave.dyssynchrony"],
+  "contextTags": ["ards", "dyssynchrony", "double-triggering", "breath-stacking", "flow-starvation", "sedation-trap", "inspiratory-mismatch", "short-ti", "icu"],
+  "evidence": [
+    {
+      "claim": "Patient-ventilator dyssynchrony is common during assisted mechanical ventilation, with double triggering representing a major form of asynchrony driven by high respiratory drive and short ventilator inspiratory time relative to neural inspiratory time.",
+      "source": "Thille AW, et al. Patient-ventilator asynchrony during assisted mechanical ventilation. Intensive Care Med 2006;32(10):1515-1522",
+      "year": 2006,
+      "kind": "review"
+    },
+    {
+      "claim": "Breath stacking from double triggering delivers occult large tidal volumes exceeding lung-protective limits and substantially elevates peak airway and transpulmonary pressures in ARDS.",
+      "source": "Beitler JR, et al. Breath stacking increases the risk of higher tidal volumes and transpulmonary pressures in ARDS. Crit Care Med 2016;44(11):2071-2081",
+      "year": 2016,
+      "kind": "trial"
+    },
+    {
+      "claim": "Dyssynchrony should be addressed by adjusting ventilator settings to match patient neural demand rather than by escalating sedation, which suppresses drive, increases ICU complications, and prolongs mechanical ventilation.",
+      "source": "Telias I, et al. Dyssynchrony and patient-ventilator interaction. Intensive Care Med 2018;44(2):193-205",
+      "year": 2018,
+      "kind": "review"
+    },
+    {
+      "claim": "Frequent double cycling is associated with prolonged mechanical ventilation and increased ICU mortality, making prompt recognition and mechanical correction essential.",
+      "source": "de Haro C, et al. Double cycling during mechanical ventilation: frequency, determinants, and outcome. Intensive Care Med 2018;44(11):1885-1895",
+      "year": 2018,
+      "kind": "trial"
+    }
+  ],
+  "patient": {
+    "displayName": "Elena Rostova (synthetic)",
+    "presentingStory": "Intubated 4 days ago for severe viral pneumonia and secondary ARDS. Sedation was lightened 2 hours ago to evaluate readiness for weaning. The bedside nurse calls urgently: 'She is fighting the ventilator, tachycardic, and the high pressure alarm is constantly sounding. Can I give a bolus of propofol to settle her down?'",
+    "history": "No prior cardiopulmonary disease. Non-smoker. Previously healthy 48-year-old woman admitted 5 days ago with viral pneumonia progressing to ARDS requiring intubation and mechanical ventilation.",
+    "params": {
+      "sex": "F",
+      "ageYears": 48,
+      "heightCm": 165,
+      "actualWeightKg": 62,
+      "complianceMlPerCmH2O": 45,
+      "inspResistanceCmH2OPerLps": 8,
+      "expResistanceCmH2OPerLps": 10,
+      "spontRateBpm": 26,
+      "pmusAmplitudeCmH2O": 16,
+      "pmusInspTimeSec": 1.05,
+      "vco2MlPerMin": 230,
+      "vo2MlPerMin": 270,
+      "anatomicDeadSpaceMl": 140,
+      "alveolarDeadSpaceFraction": 0.30,
+      "shuntFraction": 0.18,
+      "recruitability": 0.20,
+      "hbGPerDl": 12.5,
+      "temperatureC": 37.2,
+      "baselineHco3MmolL": 24.0,
+      "hrBaselineBpm": 102,
+      "sbpBaselineMmHg": 132,
+      "dbpBaselineMmHg": 78,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.30,
+      "respiratoryReserve": 0.33
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.45,
+    "peep": 8,
+    "rrSetBpm": 14,
+    "vtSetMl": 360,
+    "inspFlowLpm": 34,
+    "flowPattern": "square",
+    "triggerFlowLpm": 2.0
+  },
+  "initialPhys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 85,
+    "hco3MmolL": 24.0,
+    "fatigue": 0.48
+  },
+  "availableOrders": [
+    "abg",
+    "cxr",
+    "examine",
+    "change-settings",
+    "sedation",
+    "bronchodilator",
+    "call-senior"
+  ],
+  "orderEffects": [
+    {
+      "order": "sedation",
+      "delaySimMin": 2,
+      "note": "Sedation suppresses spontaneous respiratory drive without addressing the ventilator-patient mismatch, causing hypoventilation, hypercapnia, and hemodynamic depression",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "spontRateBpm": 2,
+            "pmusAmplitudeCmH2O": 1,
+            "sbpBaselineMmHg": 86,
+            "dbpBaselineMmHg": 50,
+            "hrBaselineBpm": 68
+          }
+        },
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Sedative administered. The patient is deeply sedated and barely triggering the ventilator. Monitored minute ventilation has dropped, and arterial blood pressure has fallen on the monitor."
+        }
+      ]
+    },
+    {
+      "order": "bronchodilator",
+      "delaySimMin": 2,
+      "note": "Inhaled bronchodilator produces mild airway relaxation but does not correct inspiratory time mismatch",
+      "actions": [
+        {
+          "type": "patientChange",
+          "change": {
+            "inspResistanceCmH2OPerLps": 7,
+            "expResistanceCmH2OPerLps": 8
+          },
+          "rampSimMin": 5
+        },
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "Bronchodilator nebulisation completed. Auscultation is slightly clearer, but breath-stacking and high peak pressure alarms persist."
+        }
+      ]
+    },
+    {
+      "order": "call-senior",
+      "delaySimMin": 1,
+      "note": "Senior ICU registrar advice on ventilator dyssynchrony",
+      "actions": [
+        {
+          "type": "message",
+          "from": "senior",
+          "text": "Look closely at the ventilator graphics. The patient has a strong respiratory drive with a neural inspiratory time over 1.0 second, but the ventilator is delivering 360 mL at square flow, which cycles off in under 0.6 seconds. She is still inspiring when the ventilator breath ends, immediately triggering a second breath (double triggering) and breath stacking. Do NOT sedate her—that suppresses her drive and causes hypotension! Adjust the ventilator settings: switch to a decelerating flow pattern or increase inspiratory flow/Ti, or switch to Pressure Support (PSV) so her effort can cycle the breath naturally."
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "examine": "The patient is awake, diaphoretic, and visibly distressed. Sternocleidomastoid and intercostal accessory muscle retractions are evident with each respiratory cycle. On the ventilator graphics, two consecutive inspiratory flow waveforms occur in rapid succession with virtually no expiratory interval, causing the airway pressure waveform to surge sharply toward 30 cmH2O on the stacked breath (compared to 12-14 cmH2O on non-stacked breaths). Auscultation reveals bilateral coarse crackles at the bases without wheezing.",
+    "cxr": "Endotracheal tip 3.5 cm above the carina. Bilateral patchy basilar and dependent opacities consistent with resolving ARDS/pneumonia. No pneumothorax, large pleural effusion, or acute lobar collapse."
+  },
+  "course": [],
+  "triggers": [
+    {
+      "id": "t-predict-settings",
+      "when": {
+        "ordered": {
+          "order": "change-settings"
+        }
+      },
+      "then": [
+        {
+          "type": "prediction",
+          "predictionId": "p-dyssynchrony-response"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-mistake-sedation",
+      "when": {
+        "ordered": {
+          "order": "sedation"
+        }
+      },
+      "then": [
+        {
+          "type": "mistake",
+          "mistake": "faulty_model",
+          "competency": "modes.dyssynchrony-management",
+          "severity": "major",
+          "detail": "Administering sedation to suppress respiratory drive treats ventilator-patient dyssynchrony as behavioral agitation, causing hypoventilation, hypercapnia, and hypotension rather than correcting the mechanical inspiratory time mismatch."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-improved",
+      "when": {
+        "all": [
+          {
+            "ordered": {
+              "order": "change-settings"
+            }
+          },
+          {
+            "not": {
+              "ordered": {
+                "order": "sedation"
+              }
+            }
+          },
+          {
+            "threshold": {
+              "metric": "fatigue",
+              "op": "<=",
+              "value": 0.35,
+              "forSimSec": 300
+            }
+          },
+          {
+            "threshold": {
+              "metric": "simMin",
+              "op": ">=",
+              "value": 20
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "The patient looks much calmer and is breathing comfortably in sync with the ventilator. Double triggering has resolved and peak airway pressures have normalised."
+        },
+        {
+          "type": "endCase",
+          "outcome": "improved",
+          "reason": "Ventilator synchrony successfully restored: matching ventilator delivery to neural inspiratory time eliminated double triggering and allowed respiratory muscle recovery."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-deteriorated-sedation",
+      "when": {
+        "all": [
+          {
+            "ordered": {
+              "order": "sedation"
+            }
+          },
+          {
+            "threshold": {
+              "metric": "ph",
+              "op": "<=",
+              "value": 7.28,
+              "forSimSec": 180
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "The patient is deeply unresponsive, hypotensive, and ABG demonstrates worsening respiratory acidosis from sedative-induced hypoventilation."
+        },
+        {
+          "type": "endCase",
+          "outcome": "deteriorated",
+          "reason": "Inappropriate sedation suppressed respiratory drive, causing severe hypercapnic respiratory failure and hemodynamic instability without solving the ventilator mismatch."
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "t-deteriorated-fatigue",
+      "when": {
+        "all": [
+          {
+            "threshold": {
+              "metric": "fatigue",
+              "op": ">=",
+              "value": 0.52,
+              "forSimSec": 120
+            }
+          },
+          {
+            "threshold": {
+              "metric": "doubleTriggerCount",
+              "op": ">=",
+              "value": 25
+            }
+          }
+        ]
+      },
+      "then": [
+        {
+          "type": "message",
+          "from": "nurse",
+          "text": "The patient is completely exhausted from relentless breath stacking and patient-ventilator dyssynchrony. Her work of breathing has failed and diaphoresis is profound."
+        },
+        {
+          "type": "endCase",
+          "outcome": "deteriorated",
+          "reason": "Uncorrected patient-ventilator dyssynchrony and breath stacking caused severe diaphragmatic muscle fatigue and ventilatory exhaustion."
+        }
+      ],
+      "once": true
+    },
+    {"id":"t-nurse-worse","when":{"threshold":{"metric":"fatigue","op":">=","value":0.58,"forSimSec":90}},"then":[{"type":"message","from":"nurse","text":"Doctor, she's tiring and looks uncomfortable on the ventilator. Can you come and look?"}],"once":true},
+    {"id":"t-nurse-better","when":{"all":[{"threshold":{"metric":"fatigue","op":"<=","value":0.38,"forSimSec":180}},{"threshold":{"metric":"rrTotal","op":"<=","value":28,"forSimSec":180}}]},"then":[{"type":"message","from":"nurse","text":"She looks more comfortable and the ventilator has quietened down. I'll keep an eye on her."}],"once":true}
+  ],
+  "predictionPoints": [
+    {
+      "id": "p-dyssynchrony-response",
+      "competency": "modes.dyssynchrony-management",
+      "evidenceType": "prediction",
+      "question": "You optimize ventilator settings to abolish double triggering by switching flow pattern to decelerating (prolonging ventilator Ti to match neural Ti) and increasing set VT to 440 mL (7.7 mL/kg PBW). Over the next 15 minutes, which direction will each parameter move?",
+      "format": "direction",
+      "variables": ["fatigue", "ppeak", "rrTotal"],
+      "marking": "engine",
+      "explanation": "Matching ventilator inspiratory time to the patient's neural inspiratory time prevents premature cycling and double triggering. Eliminating breath-stacking resolves occult rate doubling (monitored rrTotal drops toward true respiratory rate), abolishes high peak airway pressure surges, and unloads respiratory muscles so fatigue decreases.",
+      "hidden": false
+    },
+    {
+      "id": "p-dyssynchrony-mechanism",
+      "competency": "wave.dyssynchrony",
+      "evidenceType": "interpretation",
+      "question": "What is the primary pathophysiology producing double triggering in this ventilated patient?",
+      "format": "choice",
+      "options": [
+        "Patient neural inspiratory time exceeds ventilator inspiratory time, so persistent inspiratory effort triggers a second breath upon expiration",
+        "High auto-PEEP creates an inspiratory threshold load that delays the ventilator trigger",
+        "Large endotracheal tube cuff leak causes continuous flow loss that tricks the flow sensor into cycling off",
+        "Severe bronchospasm prolongs expiratory time constants, preventing exhalation"
+      ],
+      "marking": "fixed",
+      "answerKey": "Patient neural inspiratory time exceeds ventilator inspiratory time, so persistent inspiratory effort triggers a second breath upon expiration",
+      "explanation": "Double triggering (or breath stacking) occurs when the ventilator's inspiratory time is shorter than the patient's neural inspiratory time (Ti_vent < Ti_neural). When the ventilator cycles into expiration, the patient's diaphragm is still contracting vigorously; this continuing inspiratory effort drops airway pressure and triggers an immediate second breath.",
+      "hidden": true
+    }
+  ],
+  "rubric": [
+    {
+      "id": "r-avoid-sedation",
+      "description": "Avoided administering sedation to treat patient-ventilator dyssynchrony",
+      "competency": "modes.dyssynchrony-management",
+      "evidenceType": "decision",
+      "met": {
+        "not": {
+          "ordered": {
+            "order": "sedation"
+          }
+        }
+      },
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "r-correct-dyssynchrony",
+      "description": "Corrected dyssynchrony mechanically via settings adjustment to eliminate double triggering",
+      "competency": "modes.trigger-cycle",
+      "evidenceType": "decision",
+      "met": {
+        "ordered": {
+          "order": "change-settings"
+        }
+      },
+      "bySimMin": 30,
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "r-reduce-fatigue",
+      "description": "Successfully relieved respiratory muscle fatigue below 0.35",
+      "competency": "wave.dyssynchrony",
+      "evidenceType": "reassessment",
+      "met": {
+        "threshold": {
+          "metric": "fatigue",
+          "op": "<=",
+          "value": 0.35
+        }
+      },
+      "bySimMin": 60,
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "r-abg-reassess",
+      "description": "Assessed arterial blood gas to verify ventilation and acid-base status",
+      "competency": "safety.reassess",
+      "evidenceType": "reassessment",
+      "met": {
+        "ordered": {
+          "order": "abg"
+        }
+      },
+      "weight": 1,
+      "critical": false
+    }
+  ],
+  "maxSimMin": 120,
+  "debrief": {
+    "keyPoints": [
+      "Double triggering occurs when the ventilator inspiratory time is shorter than the patient's neural inspiratory time (Ti_vent < Ti_neural), commonly seen in patients with elevated respiratory drive on VC-AC with small set tidal volume and high square flow.",
+      "The patient's diaphragm continues contracting after the first breath ends, immediately triggering a second breath. This breath stacking delivers double the intended tidal volume, spiking peak and plateau pressures and increasing VILI risk.",
+      "Sedation should NOT be used as the primary treatment for patient-ventilator dyssynchrony. Sedating the patient treats the symptom, blunts recovering drive, causes hypotension, and prolongs mechanical ventilation.",
+      "The physiological fix is mechanical: match ventilator delivery to neural demand by increasing inspiratory time (e.g. using a decelerating flow pattern or higher VT within lung-protective limits) or switching to Pressure Support Ventilation (PSV) where the patient controls cycling."
+    ],
+    "resources": [
+      {
+        "title": "Patient-ventilator asynchrony during assisted mechanical ventilation",
+        "ref": "Thille AW, et al. Intensive Care Med 2006;32(10):1515-1522"
+      },
+      {
+        "title": "Breath stacking increases the risk of higher tidal volumes and transpulmonary pressures in ARDS",
+        "ref": "Beitler JR, et al. Crit Care Med 2016;44(11):2071-2081"
+      },
+      {
+        "title": "Dyssynchrony and patient-ventilator interaction",
+        "ref": "Telias I, et al. Intensive Care Med 2018;44(2):193-205"
+      },
+      {
+        "title": "Double cycling during mechanical ventilation: frequency, determinants, and outcome",
+        "ref": "de Haro C, et al. Intensive Care Med 2018;44(11):1885-1895"
+      }
+    ]
+  }
+}

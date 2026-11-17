@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0",
+  "id": "05-insp-flow-vs-auto-peep",
+  "number": 5,
+  "title": "Inspiratory Flow Rate versus Auto-PEEP",
+  "subtitle": "Assess how inspiratory flow rate changes affect duty cycle timing, auto-PEEP, and airway pressures during volume control",
+  "difficulty": 2,
+  "competencies": [
+    "modes.ie-flow-ti",
+    "mech.auto-peep"
+  ],
+  "contextTags": [
+    "mechanics",
+    "auto-peep",
+    "inspiratory-flow",
+    "expiratory-time",
+    "obstructive"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Synthetic Patient E",
+    "summary": "Intubated patient with severe status asthmaticus receiving volume-controlled ventilation.",
+    "params": {
+      "sex": "M",
+      "ageYears": 65,
+      "heightCm": 175,
+      "actualWeightKg": 78,
+      "complianceMlPerCmH2O": 55,
+      "inspResistanceCmH2OPerLps": 15,
+      "expResistanceCmH2OPerLps": 35,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.15,
+      "shuntFraction": 0.1,
+      "recruitability": 0.05,
+      "hbGPerDl": 14.0,
+      "temperatureC": 37.0,
+      "baselineHco3MmolL": 25,
+      "hrBaselineBpm": 80,
+      "sbpBaselineMmHg": 125,
+      "dbpBaselineMmHg": 80,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.8
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 18,
+    "vtSetMl": 500,
+    "inspFlowLpm": 30,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 40,
+  "variable": {
+    "target": "device",
+    "field": "inspFlowLpm",
+    "label": "Set inspiratory flow",
+    "unit": "L/min",
+    "baselineValue": 30,
+    "options": [
+      {
+        "label": "Increase flow to 75 L/min",
+        "value": 75
+      },
+      {
+        "label": "Increase flow to 60 L/min",
+        "value": 60
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When inspiratory flow is increased from 30 to 75 L/min at a fixed tidal volume of 500 mL and rate of 18 breaths/min, how will auto-PEEP, peak airway pressure (Ppeak), and plateau pressure (Pplat) change?",
+    "metrics": [
+      "autoPeep",
+      "ppeak",
+      "pplat"
+    ]
+  },
+  "observeSimSec": 60,
+  "whatToLookAtHint": "Compare the inspiratory time, expiratory time, peak airway pressure, and end-expiratory alveolar pressure across flow settings.",
+  "reflection": {
+    "question": "Why does increasing inspiratory flow from 30 to 75 L/min reduce auto-PEEP in severe airflow obstruction, even though peak airway pressure increases?",
+    "options": [
+      {
+        "id": "opt-a",
+        "text": "Higher inspiratory flow delivers the set tidal volume faster, shortening Ti and lengthening available expiratory time (Te) for lung emptying."
+      },
+      {
+        "id": "opt-b",
+        "text": "Higher inspiratory flow generates positive airway vibration that dilates obstructed bronchi."
+      },
+      {
+        "id": "opt-c",
+        "text": "High flow rates reduce alveolar dead space, lowering CO2 and ventilatory drive."
+      },
+      {
+        "id": "opt-d",
+        "text": "The ventilator switches from square to decelerating flow pattern automatically at 75 L/min."
+      }
+    ],
+    "correctOptionId": "opt-a",
+    "explanation": "In volume control with a square flow pattern, Ti = VT / Flow. At 30 L/min (0.5 L/s), delivering 500 mL requires 1.0 s, leaving only 2.33 s for expiration at RR 18. Increasing flow to 75 L/min (1.25 L/s) cuts Ti to 0.4 s, expanding expiratory time to 2.93 s (+0.60 s). This additional time allows more trapped air to escape, decreasing trapped volume, auto-PEEP, and end-inspiratory plateau pressure. Peak pressure rises solely because resistive pressure drop (Flow × R_insp) increases during inspiration."
+  },
+  "causalChainFields": [
+    "setInspFlow",
+    "tiSec",
+    "teSec",
+    "trappedVolume",
+    "autoPeep",
+    "pplat",
+    "ppeak"
+  ],
+  "evidence": [
+    {
+      "claim": "Increasing inspiratory flow rate shortens inspiratory time, extending expiratory time and reducing dynamic hyperinflation and intrinsic PEEP at the cost of higher peak inspiratory pressure.",
+      "source": "Marini JJ. Dynamic hyperinflation and auto-PEEP: lessons learned over 30 years. Am J Respir Crit Care Med. 2011;184(7):756-762.",
+      "year": 2011,
+      "kind": "review"
+    },
+    {
+      "claim": "Adjusting flow rate and duty cycle optimizes expiratory time in obstructive disease.",
+      "source": "Tobin MJ. Advances in mechanical ventilation. N Engl J Med. 2001;344(26):1986-1996.",
+      "year": 2001,
+      "kind": "review"
+    }
+  ]
+}

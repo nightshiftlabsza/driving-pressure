@@ -1,0 +1,101 @@
+{
+  "variantId": "copd-psv-trigger-01--ineffective-efforts-autopeep",
+  "baseCaseId": "copd-psv-trigger-01",
+  "title": "Missed breaths and distress on pressure support",
+  "summary": "A 69-year-old man with COPD on pressure support has many breathing efforts that the ventilator does not respond to.",
+  "rationale": "Severe expiratory flow limitation and a high spontaneous rate trap gas; the patient must overcome auto-PEEP before the ventilator senses a breath, so many efforts are wasted. Correct management has two parts that work together: treat the obstruction (bronchodilator) and set applied PEEP at about 75-85% of the measured auto-PEEP (here 8.8 at PEEP 4, so PEEP 7). In a flow-limited chest (waterfall) PEEP below the critical closing pressure barely adds to total PEEP, so the missed efforts clear without more hyperinflation; PEEP above the auto-PEEP (here 14) does add to it. Headless engine check, the case ending at 18 min: untouched by 2 min: PaCO2 70, pH 7.27, SpO2 96%, Pplat 16, auto-PEEP 8.8, total PEEP 12.8, SBP 143; untouched by 18 min (case ended deteriorated): PaCO2 134, pH 7.07, SpO2 20%, Pplat 15, auto-PEEP 8.3; reasonable management (bronchodilator, PEEP 7) by 18 min: PaCO2 45, pH 7.41, SpO2 98%, Pplat 18, auto-PEEP 0.6, total PEEP 7.6, SBP 143; typical mistake (PEEP 14, above the auto-PEEP) by 18 min: PaCO2 50, pH 7.38, Pplat 25, total PEEP 17.8; other arms at 18 min: bronchodilator alone PaCO2 51 / pH 7.37 / auto-PEEP 2.4; PEEP 7 alone PaCO2 95 / pH 7.17 / auto-PEEP 7.9, so the missed efforts clear (rate 39) but breaths stay shallow and the patient tires; sedation (case ended deteriorated) PaCO2 135, pH 7.06, SpO2 4%. The bronchodilator is the main driver, PEEP at about 80% of auto-PEEP helps on its own but only together with it restores a safe pattern, and PEEP above auto-PEEP buys gas exchange at the price of about 10 cmH2O more total PEEP and 7 cmH2O more plateau pressure; the untouched arm is deliberately unstable, as in the base case.",
+  "retestsMistake": {
+    "mistakeId": "missed_clue",
+    "competencyId": "mech.auto-peep",
+    "clinicalFocus": "Ineffective triggering from auto-PEEP: treat the airway obstruction (bronchodilator) and set applied PEEP at about 75-85% of the measured auto-PEEP; in a flow-limited patient this clears missed efforts without adding to hyperinflation. PEEP above the auto-PEEP worsens hyperinflation; more pressure support or sedation do not help"
+  },
+  "source": "The Ventilator Book 3e (obstructive disease / auto-PEEP chapters, numbers unverified); Marino ICU Book 2025 (severe asthma and COPD exacerbation chapters, numbers unverified); Nunn & Lumb 9e (airway resistance chapter, unverified); Appendini L, et al. Physiologic effects of PEEP in COPD with auto-PEEP. Am J Respir Crit Care Med 1994;149:1069-76. Flow limitation 11.5 cmH2O and rate 28 are teaching assumptions (unverified); waterfall PEEP behaviour after Ranieri/Appendini (numbers unverified).",
+  "changes": {
+    "vignette": "Male 69, 175 cm, 72 kg. PSV 13 over PEEP 4, cycle 25%, trigger 2 L/min.",
+    "parametersChanged": {
+      "ageYears": {
+        "from": 71,
+        "to": 69,
+        "reason": "Older"
+      },
+      "expResistanceCmH2OPerLps": {
+        "from": 30,
+        "to": 30,
+        "reason": "Severe obstruction"
+      },
+      "expFlowLimitationCmH2O": {
+        "from": 10.5,
+        "to": 11.5,
+        "reason": "Marked expiratory flow limitation"
+      },
+      "spontRateBpm": {
+        "from": 30,
+        "to": 28,
+        "reason": "Tachypnoeic"
+      },
+      "pmusAmplitudeCmH2O": {
+        "from": 16,
+        "to": 14,
+        "reason": "Moderate effort"
+      },
+      "anatomicDeadSpaceMl": {
+        "from": 160,
+        "to": 140,
+        "reason": "Keeps some alveolar ventilation at Vt near 170 mL, so the untouched arm does not drop to zero alveolar ventilation"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr H. Ferrand (synthetic)",
+      "presentingStory": "Day 4 of ventilation for a COPD exacerbation, on pressure support for 3 hours. The nurse sees him pulling hard with chest-wall movement that the ventilator does not follow. He is sweaty and tachycardic.",
+      "history": "Severe COPD, FEV1 30% predicted, chronic retainer. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 69,
+        "heightCm": 175,
+        "actualWeightKg": 72,
+        "complianceMlPerCmH2O": 55,
+        "inspResistanceCmH2OPerLps": 14,
+        "expResistanceCmH2OPerLps": 30,
+        "expFlowLimitationCmH2O": 11.5,
+        "spontRateBpm": 28,
+        "pmusAmplitudeCmH2O": 14,
+        "pmusInspTimeSec": 0.75,
+        "vco2MlPerMin": 230,
+        "vo2MlPerMin": 270,
+        "anatomicDeadSpaceMl": 140,
+        "alveolarDeadSpaceFraction": 0.25,
+        "shuntFraction": 0.1,
+        "recruitability": 0.15,
+        "hbGPerDl": 14.8,
+        "temperatureC": 37.1,
+        "baselineHco3MmolL": 29.3,
+        "chronicPaco2MmHg": 55,
+        "hrBaselineBpm": 108,
+        "sbpBaselineMmHg": 145,
+        "dbpBaselineMmHg": 84,
+        "ppvResponse": "unhelpful",
+        "ppvSeverity": 0.35,
+        "respiratoryReserve": 0.44
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "PSV",
+      "fio2": 0.35,
+      "peep": 4,
+      "rrSetBpm": 0,
+      "psAbovePeep": 13,
+      "cyclePctPeakFlow": 25,
+      "triggerFlowLpm": 2,
+      "riseTimeSec": 0.1
+    },
+    "initialPhys": {
+      "paco2MmHg": 60,
+      "pao2MmHg": 75,
+      "hco3MmolL": 30,
+      "fatigue": 0.45
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": false,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src/shared/**/*",
+    "src/engine/**/*",
+    "src/cases/**/*",
+    "src/learner/**/*",
+    "src/drills/**/*",
+    "src/screens/**/*",
+    "src/runtime/**/*",
+    "src/app/**/*",
+    "src/bugreport/**/*",
+    "src/alarms/alarmSound.ts",
+    "server/bugreport/**/*",
+    "tests/**/*",
+    "scripts/**/*",
+    "vite-env.d.ts"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "vq-02-low-vq-vs-shunt",
+  "source": "West JB. Respiratory Physiology: The Essentials. 10th ed. Wolters Kluwer, 2016; Chapter 5; Nunn JF. Nunn's Applied Respiratory Physiology. 8th ed. Elsevier, 2016; Chapter 10.",
+  "claim": "In low V/Q inequality without shunt, alveolar PO2 in low V/Q units remains depressed at moderate inspired oxygen (FiO2 0.35), keeping arterial PaO2 below 100 mmHg; in contrast to true shunt, increasing FiO2 to 1.0 eliminates hypoxemia by washing out nitrogen from poorly ventilated units.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 62,
+    "heightCm": 172,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 45,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.15,
+    "shuntFraction": 0.0,
+    "recruitability": 0.0,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 85,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 78,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.8,
+    "lowVqFraction": 0.55,
+    "lowVqRatio": 0.1
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.35,
+    "peep": 5,
+    "rrSetBpm": 15,
+    "vtSetMl": 480,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 80
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pao2", "op": "<=", "value": 100.0 }
+  ],
+  "kind": "direction"
+}

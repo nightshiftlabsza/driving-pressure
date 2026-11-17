@@ -1,0 +1,46 @@
+{
+  "id": "gas-11-copd-chronic-metabolic-compensation",
+  "source": "Schwartz WB, Brackett NC Jr, Cohen JJ. The response of extracellular hydrogen ion concentration to symptomatic hypercapnia. J Clin Invest 1965; 44(2):291-301.",
+  "claim": "In a patient with chronic hypercapnia (chronic baseline PaCO2 55 mmHg) presenting with an acute exacerbation to PaCO2 72 mmHg, preexisting renal bicarbonate retention is preserved, yielding standard base excess (SBE) > +4 mmol/L rather than an uncompensated near-zero value.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 68,
+    "heightCm": 172,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 12,
+    "expResistanceCmH2OPerLps": 16,
+    "spontRateBpm": 20,
+    "pmusAmplitudeCmH2O": 12.0,
+    "pmusInspTimeSec": 0.9,
+    "vco2MlPerMin": 220,
+    "vo2MlPerMin": 270,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.35,
+    "shuntFraction": 0.12,
+    "recruitability": 0.1,
+    "hbGPerDl": 15,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "chronicPaco2MmHg": 55,
+    "hrBaselineBpm": 85,
+    "sbpBaselineMmHg": 130,
+    "dbpBaselineMmHg": 80,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "none",
+    "o2": "room-air",
+    "o2FlowLpm": 0
+  },
+  "phys": {
+    "paco2MmHg": 72
+  },
+  "runSec": 10,
+  "checks": [
+    { "metric": "sbe", "op": ">", "value": 4.0 }
+  ],
+  "kind": "direction"
+}

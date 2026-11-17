@@ -1,0 +1,6 @@
+{
+  "caseId": "pneumonia-hfnc-01",
+  "acceptedAssessments": ["hypoxaemic_failure"],
+  "explanation": "Severe community-acquired pneumonia with consolidation, intrapulmonary shunt, and high work of breathing.",
+  "source": "Frat JP, et al. High-flow oxygen through nasal cannula in acute hypoxemic respiratory failure (FLORALI). N Engl J Med 2015;372:2185-96"
+}

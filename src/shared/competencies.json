@@ -1,0 +1,222 @@
+{
+  "version": "1.0.0",
+  "evidenceTypes": [
+    "recall",
+    "interpretation",
+    "prediction",
+    "decision",
+    "prioritisation",
+    "reassessment",
+    "safety",
+    "calibration"
+  ],
+  "statusLadder": [
+    "not_seen",
+    "practising",
+    "independent",
+    "mastered",
+    "retained"
+  ],
+  "domains": [
+    {
+      "id": "mech",
+      "name": "Mechanics",
+      "competencies": [
+        {
+          "id": "mech.eom",
+          "name": "Equation of motion: pressure = flow x resistance + volume / compliance + PEEP"
+        },
+        {
+          "id": "mech.res-vs-comp",
+          "name": "Separate resistance from compliance problems using Ppeak and Pplat"
+        },
+        {
+          "id": "mech.driving-pressure",
+          "name": "Calculate and interpret driving pressure (Pplat - total PEEP)"
+        },
+        {
+          "id": "mech.time-constants",
+          "name": "Time constants and how long the lung needs to fill and empty"
+        },
+        {
+          "id": "mech.auto-peep",
+          "name": "Detect, measure (expiratory hold) and explain the causes of auto-PEEP"
+        }
+      ]
+    },
+    {
+      "id": "gas",
+      "name": "Gas exchange",
+      "competencies": [
+        {
+          "id": "gas.oxy-vs-vent",
+          "name": "Separate oxygenation (FiO2, PEEP, mean pressure) from ventilation (RR, VT)"
+        },
+        {
+          "id": "gas.hypoxaemia-mechanism",
+          "name": "Distinguish shunt, V/Q mismatch and hypoventilation as causes of hypoxaemia"
+        },
+        {
+          "id": "gas.dead-space",
+          "name": "Dead space and the PaCO2 - EtCO2 gap"
+        },
+        {
+          "id": "gas.alveolar-ventilation",
+          "name": "Alveolar ventilation determines PaCO2; predict PaCO2 after RR or VT changes"
+        },
+        {
+          "id": "gas.acid-base",
+          "name": "Interpret ABGs: primary disorder, compensation, mixed disorders"
+        }
+      ]
+    },
+    {
+      "id": "modes",
+      "name": "Modes and settings",
+      "competencies": [
+        {
+          "id": "modes.vc-vs-pc",
+          "name": "What VC and PC each fix and what each lets vary"
+        },
+        {
+          "id": "modes.ps-spont",
+          "name": "Pressure support and spontaneous modes; what the patient controls"
+        },
+        {
+          "id": "modes.trigger-cycle",
+          "name": "Trigger and cycle settings and their effect on synchrony"
+        },
+        {
+          "id": "modes.peep-fio2",
+          "name": "Titrate PEEP and FiO2 to oxygenation targets"
+        },
+        {
+          "id": "modes.ie-flow-ti",
+          "name": "Set I:E, inspiratory flow and inspiratory time; their effect on expiratory time"
+        },
+        {
+          "id": "modes.dyssynchrony-management",
+          "name": "Manage patient-ventilator dyssynchrony via settings adjustments rather than sedation"
+        }
+      ]
+    },
+    {
+      "id": "wave",
+      "name": "Waveforms",
+      "competencies": [
+        {
+          "id": "wave.normal",
+          "name": "Recognise normal pressure, flow and volume waveforms per mode"
+        },
+        {
+          "id": "wave.incomplete-exhalation",
+          "name": "Recognise incomplete exhalation (flow not returning to zero)"
+        },
+        {
+          "id": "wave.flow-limitation",
+          "name": "Recognise expiratory flow limitation"
+        },
+        {
+          "id": "wave.dyssynchrony",
+          "name": "Recognise dyssynchrony: ineffective triggering, double triggering, flow starvation, cycle mismatch"
+        },
+        {
+          "id": "wave.leak",
+          "name": "Recognise leak (VTi > VTe, volume not returning to baseline)"
+        }
+      ]
+    },
+    {
+      "id": "disease",
+      "name": "Disease strategies",
+      "competencies": [
+        {
+          "id": "disease.ards",
+          "name": "ARDS lung-protective ventilation (VT by predicted body weight, Pplat, driving pressure, PEEP)"
+        },
+        {
+          "id": "disease.obstructive",
+          "name": "Obstructive strategy: long expiratory time, accept hypercapnia, treat bronchospasm"
+        },
+        {
+          "id": "disease.restrictive-nm",
+          "name": "Neuromuscular and restrictive patients"
+        },
+        {
+          "id": "disease.metabolic-acidosis",
+          "name": "Match minute ventilation to a metabolic acidosis"
+        }
+      ]
+    },
+    {
+      "id": "niv",
+      "name": "Noninvasive support",
+      "competencies": [
+        {
+          "id": "niv.selection",
+          "name": "Select patients for NIV or HFNC and recognise contraindications"
+        },
+        {
+          "id": "niv.titration",
+          "name": "Titrate NIV: EPAP for oxygenation and upper airway, IPAP - EPAP for ventilation"
+        },
+        {
+          "id": "niv.interface-leak",
+          "name": "Choose an interface and manage leak"
+        },
+        {
+          "id": "niv.hfnc",
+          "name": "HFNC physiology (flow, FiO2, dead-space washout, PEEP effect) and titration"
+        },
+        {
+          "id": "niv.failure",
+          "name": "Recognise NIV/HFNC failure and decide timing of intubation"
+        }
+      ]
+    },
+    {
+      "id": "circ",
+      "name": "Circulation",
+      "competencies": [
+        {
+          "id": "circ.ppv-preload",
+          "name": "Effects of positive pressure on preload and afterload; predict response by phenotype"
+        },
+        {
+          "id": "circ.auto-peep-hypotension",
+          "name": "Recognise auto-PEEP causing hypotension and respond (disconnect, lower RR)"
+        },
+        {
+          "id": "circ.rv-peep",
+          "name": "PEEP and the right ventricle"
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "name": "Safety and troubleshooting",
+      "competencies": [
+        {
+          "id": "safety.alarm-response",
+          "name": "Respond to alarms: high pressure, low volume / low minute ventilation, apnoea, leak"
+        },
+        {
+          "id": "safety.crisis",
+          "name": "Crisis approach for the deteriorating ventilated patient (DOPE: displacement, obstruction, pneumothorax, equipment, plus stacking)"
+        },
+        {
+          "id": "safety.reassess",
+          "name": "Reassess after every change within an appropriate time"
+        },
+        {
+          "id": "safety.liberation",
+          "name": "Assess readiness for liberation (SBT criteria)"
+        },
+        {
+          "id": "safety.extubation",
+          "name": "Assess extubation readiness, airway patency and post-extubation management"
+        }
+      ]
+    }
+  ]
+}

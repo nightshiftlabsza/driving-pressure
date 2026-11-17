@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0",
+  "id": "11-trigger-sensitivity-missed-triggers",
+  "number": 11,
+  "title": "Trigger sensitivity versus missed triggers",
+  "subtitle": "Influence of flow trigger sensitivity threshold on patient-ventilator synchrony and triggering effort in obstructive lung disease",
+  "difficulty": 3,
+  "competencies": [
+    "modes.trigger-cycle",
+    "wave.dyssynchrony"
+  ],
+  "contextTags": [
+    "triggering",
+    "dyssynchrony",
+    "auto-peep",
+    "copd",
+    "work-of-breathing"
+  ],
+  "ruleBased": false,
+  "patient": {
+    "displayName": "Obstructive lung disease patient with auto-PEEP",
+    "summary": "A 65-year-old mechanically ventilated patient with acute severe COPD exacerbation exhibiting expiratory flow delay, dynamic hyperinflation, and modest inspiratory muscle strength.",
+    "params": {
+      "sex": "M",
+      "ageYears": 65,
+      "heightCm": 172,
+      "actualWeightKg": 70,
+      "complianceMlPerCmH2O": 55,
+      "inspResistanceCmH2OPerLps": 12,
+      "expResistanceCmH2OPerLps": 28,
+      "spontRateBpm": 20,
+      "pmusAmplitudeCmH2O": 7,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 200,
+      "vo2MlPerMin": 250,
+      "anatomicDeadSpaceMl": 150,
+      "alveolarDeadSpaceFraction": 0.2,
+      "shuntFraction": 0.1,
+      "recruitability": 0.2,
+      "hbGPerDl": 13,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 26,
+      "hrBaselineBpm": 88,
+      "sbpBaselineMmHg": 130,
+      "dbpBaselineMmHg": 78,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 0.6
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "vtSetMl": 450,
+    "rrSetBpm": 10,
+    "peep": 5,
+    "fio2": 0.35,
+    "inspFlowLpm": 60,
+    "flowPattern": "square",
+    "triggerFlowLpm": 2
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "triggerFlowLpm",
+    "label": "Flow trigger sensitivity threshold",
+    "unit": "L/min",
+    "baselineValue": 2,
+    "options": [
+      {
+        "label": "Trigger flow 8.0 L/min (insensitive)",
+        "value": 8
+      },
+      {
+        "label": "Trigger flow 5.0 L/min (moderate)",
+        "value": 5
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When flow trigger threshold is changed from 2.0 L/min to an insensitive 8.0 L/min, how do ineffective triggering efforts, total respiratory rate, and minute ventilation respond?",
+    "metrics": [
+      "ineffectiveEfforts",
+      "rrTotal",
+      "minuteVent"
+    ]
+  },
+  "observeSimSec": 90,
+  "whatToLookAtHint": "Watch the ineffective trigger count on the breath log alongside total respiratory rate and minute ventilation.",
+  "reflection": {
+    "question": "Why does desensitizing the flow trigger from 2.0 to 8.0 L/min lead to ineffective triggering and a drop in delivered minute ventilation?",
+    "options": [
+      {
+        "id": "opt-missed-trigger-autopeep",
+        "text": "The patient's inspiratory muscles must first overcome intrinsic PEEP before drawing inspiratory flow; an insensitive threshold of 8 L/min requires more inspiratory flow than the weak muscles can generate against high resistance, causing efforts to go unrecognized."
+      },
+      {
+        "id": "opt-ventilator-apnoea",
+        "text": "Setting a trigger above 5 L/min triggers an automatic safety lock that suppresses all mandatory and assisted breaths."
+      },
+      {
+        "id": "opt-expiratory-valve",
+        "text": "An 8 L/min trigger opens the expiratory valve during inspiration, venting the tidal volume directly into room air."
+      },
+      {
+        "id": "opt-airway-closure",
+        "text": "Flow trigger thresholds directly constrict large conducting airways via vagal reflex, halting all air movement."
+      }
+    ],
+    "correctOptionId": "opt-missed-trigger-autopeep",
+    "explanation": "In patients with severe airflow obstruction and dynamic hyperinflation (auto-PEEP), inspiratory effort must first drop alveolar pressure below circuit PEEP before any inspiratory flow can be drawn. With a sensitive trigger (2.0 L/min), the patient's 7 cmH2O effort succeeds in triggering assisted breaths, maintaining a total rate of ~18 bpm and VE of ~8.3 L/min. When the trigger threshold is raised to 8.0 L/min, the patient's weak effort during exhalation cannot reach the required inspiratory flow threshold. The effort fails to trigger (ineffective effort increases), total rate drops to the ventilator backup rate of 10 bpm, and minute ventilation falls."
+  },
+  "causalChainFields": [
+    "setTriggerFlow",
+    "autoPeep",
+    "ineffectiveEfforts",
+    "minuteVent",
+    "alveolarVentilation",
+    "paco2"
+  ],
+  "evidence": [
+    {
+      "claim": "Ineffective triggering is the most common patient-ventilator dyssynchrony and occurs when patient effort fails to reach the ventilator's trigger threshold, often exacerbated by intrinsic PEEP and trigger insensitivity.",
+      "source": "Chao DC, Scheinhorn DJ, Stearn-Hassenpflug M. Patient-ventilator trigger asynchrony in prolonged mechanical ventilation. Chest 1997; 112(6):1592-1599.",
+      "year": 1997,
+      "kind": "observational"
+    },
+    {
+      "claim": "Optimizing trigger sensitivity and counteracting auto-PEEP reduces missed efforts and improves synchrony and comfort.",
+      "source": "Epstein SK. How often does patient-ventilator asynchrony occur and what are the consequences? Respir Care 2011; 56(1):25-38.",
+      "year": 2011,
+      "kind": "review"
+    }
+  ]
+}

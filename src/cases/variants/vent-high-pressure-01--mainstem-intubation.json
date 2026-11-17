@@ -1,0 +1,385 @@
+{
+  "variantId": "vent-high-pressure-01--mainstem-intubation",
+  "baseCaseId": "vent-high-pressure-01",
+  "title": "Falling saturation and high pressures after a tube change",
+  "summary": "A 58-year-old ventilated man has a higher airway pressure and falling SpO2 after a tube was replaced.",
+  "rationale": "Ventilating one lung roughly halves compliance, so both Ppk and Pplat rise, and the unventilated lung is perfused (shunt rises), so SpO2 falls. Withdrawing the tube reopens the left lung. Headless engine check on the starting settings and after the named actions: untouched by 2 min: PaCO2 45, pH 7.35, SpO2 82%, Pplat 27, SBP 111; untouched by 30 min: PaCO2 53, pH 7.29, SpO2 83%, Pplat 27, SBP 111; reasonable management by 30 min: PaCO2 49, pH 7.32, SpO2 96%, Pplat 19, SBP 112; typical mistake by 30 min: PaCO2 36, pH 7.42, SpO2 89%, Pplat 35, SBP 108. Values for an arm whose case ended early (improved or deteriorated trigger) are the values when it ended.",
+  "retestsMistake": {
+    "mistakeId": "missed_clue",
+    "competencyId": "safety.alarm-response",
+    "clinicalFocus": "Compliance falls when one lung is ventilated (tube in the right main bronchus): check tube depth and breath sounds; chest X-ray and senior help, not more tidal volume"
+  },
+  "source": "The Ventilator Book 3e (alarms / troubleshooting and respiratory mechanics chapters, numbers unverified); Marino ICU Book 2025 (ventilator-associated complications and airway pressure chapters, unverified); Nunn & Lumb 9e (resistance and compliance chapters, unverified); Hess DR. Respir Care 2014;59:1773-94 (peak minus plateau pressure); Compliance 22 and shunt 0.4 (one lung ventilated) are teaching assumptions (unverified).",
+  "changes": {
+    "vignette": "Male 58, 172 cm, 75 kg. VC 420 mL, RR 16, PEEP 8, FiO2 0.5. Tube at 26 cm at the teeth after replacement.",
+    "parametersChanged": {
+      "complianceMlPerCmH2O": {
+        "from": 42,
+        "to": 22,
+        "reason": "One lung ventilated"
+      },
+      "shuntFraction": {
+        "from": 0.2,
+        "to": 0.4,
+        "reason": "Perfused but unventilated left lung"
+      },
+      "recruitability": {
+        "from": 0.25,
+        "to": 0.1,
+        "reason": "Collapse is airway-obstructed, not PEEP-recruitable"
+      },
+      "sbpBaselineMmHg": {
+        "from": 124,
+        "to": 120,
+        "reason": "Stable"
+      },
+      "dbpBaselineMmHg": {
+        "from": 78,
+        "to": 76,
+        "reason": "Stable"
+      },
+      "hrBaselineBpm": {
+        "from": 88,
+        "to": 100,
+        "reason": "Mild stress"
+      },
+      "ppvSeverity": {
+        "from": 0.95,
+        "to": 0.5,
+        "reason": "Moderate"
+      },
+      "temperatureC": {
+        "from": 38,
+        "to": 37.6,
+        "reason": "Pneumonia"
+      }
+    }
+  },
+  "overlay": {
+    "patient": {
+      "displayName": "Mr R. Vance (synthetic)",
+      "presentingStory": "The tube was replaced 20 minutes ago for a leak. Since then the high-pressure alarm sounds on every breath and SpO2 has drifted from 95 to 88. Blood pressure is acceptable. The tube is marked at 26 cm at the teeth, 4 cm deeper than before.",
+      "history": "Pneumonia, tube exchange for cuff leak. Full escalation.",
+      "params": {
+        "sex": "M",
+        "ageYears": 58,
+        "heightCm": 172,
+        "actualWeightKg": 75,
+        "complianceMlPerCmH2O": 22,
+        "inspResistanceCmH2OPerLps": 8,
+        "expResistanceCmH2OPerLps": 8,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 230,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 150,
+        "alveolarDeadSpaceFraction": 0.22,
+        "shuntFraction": 0.4,
+        "recruitability": 0.1,
+        "hbGPerDl": 13.5,
+        "temperatureC": 37.6,
+        "baselineHco3MmolL": 24,
+        "hrBaselineBpm": 100,
+        "sbpBaselineMmHg": 120,
+        "dbpBaselineMmHg": 76,
+        "ppvResponse": "clean-kill",
+        "ppvSeverity": 0.5,
+        "respiratoryReserve": 0.5
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.5,
+      "peep": 8,
+      "rrSetBpm": 16,
+      "vtSetMl": 420,
+      "inspFlowLpm": 60,
+      "flowPattern": "square"
+    },
+    "initialPhys": {
+      "paco2MmHg": 44,
+      "pao2MmHg": 58,
+      "hco3MmolL": 24,
+      "fatigue": 0.2
+    },
+    "findings": {
+      "examine": "Tube at 26 cm at the teeth. Right chest moves, left chest moves poorly with reduced breath sounds on the left. Trachea central. Warm and well perfused.",
+      "cxr": "Tube tip in the right main bronchus. Left lung volume reduced with partial collapse of the left lower lobe. No pneumothorax."
+    },
+    "evidence": [
+      {
+        "claim": "A tube advanced into a main bronchus ventilates one lung, so compliance falls and shunt rises; withdraw the tube.",
+        "source": "Marino PL. Marino's The ICU Book, 2025 edition (chapter on ventilator troubleshooting; number unverified)",
+        "year": 2025,
+        "kind": "textbook"
+      },
+      {
+        "claim": "Measurement of plateau pressure via inspiratory hold differentiates high resistance (elevated Ppeak, normal Pplat) from low compliance (both Ppeak and Pplat elevated).",
+        "source": "Hess DR. Respiratory mechanics in the mechanically ventilated patient. Respir Care 2014;59(11):1773-1794",
+        "year": 2014,
+        "kind": "review"
+      }
+    ],
+    "course": [],
+    "predictionPoints": [],
+    "availableOrders": [
+      "abg",
+      "cxr",
+      "examine",
+      "change-settings",
+      "disconnect-ventilator",
+      "suction",
+      "bronchodilator",
+      "call-senior",
+      "diuretic"
+    ],
+    "orderEffects": [
+      {
+        "order": "call-senior",
+        "delaySimMin": 3,
+        "note": "Senior pulls the tube back 3 cm under examination and X-ray guidance",
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "complianceMlPerCmH2O": 40,
+              "shuntFraction": 0.2,
+              "recruitability": 0.25
+            },
+            "rampSimMin": 2
+          },
+          {
+            "type": "message",
+            "from": "senior",
+            "text": "The tube is at 26 cm and the left chest is quiet. I have pulled it back to 23 cm and now hear air entry on both sides. Peak pressures are falling."
+          }
+        ]
+      },
+      {
+        "order": "suction",
+        "delaySimMin": 1,
+        "note": "Suction is a DOPE discriminator",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The suction catheter passes freely to the carina and returns scant clear secretions. The pressures are unchanged."
+          }
+        ]
+      },
+      {
+        "order": "bronchodilator",
+        "delaySimMin": 2,
+        "note": "No obvious bronchospasm here",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Salbutamol given through the circuit. There is no obvious change in the airway pressures."
+          }
+        ]
+      },
+      {
+        "order": "diuretic",
+        "delaySimMin": 5,
+        "note": "No diuretic-responsive cause here",
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Furosemide 40 mg given and the urine output rises a little. There is no immediate change in the airway pressures."
+          }
+        ]
+      }
+    ],
+    "contextTags": [
+      "high-pressure-alarm",
+      "crisis",
+      "mechanics",
+      "icu"
+    ],
+    "triggers": [
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "ppeak",
+                "op": "<=",
+                "value": 32,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": ">=",
+                "value": 95,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": ">=",
+                "value": 92,
+                "forSimSec": 300
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "The cause of the high airway pressure was found and treated; pressures, blood pressure and oxygenation have recovered."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "any": [
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": "<",
+                "value": 70,
+                "forSimSec": 240
+              }
+            },
+            {
+              "threshold": {
+                "metric": "spo2",
+                "op": "<",
+                "value": 75,
+                "forSimSec": 300
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "The high airway pressure was not corrected, and the patient became profoundly hypotensive or hypoxaemic."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-ignore",
+        "when": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": ">=",
+            "value": 40,
+            "forSimSec": 420
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "misinterpretation",
+            "competency": "safety.alarm-response",
+            "severity": "major",
+            "detail": "A high peak airway pressure persisted for 7 minutes without a structured check (DOPE: tube, obstruction, pneumothorax, equipment) and an inspiratory hold to separate resistance from compliance."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-examine",
+        "description": "Examined the patient within 8 minutes of the alarm",
+        "competency": "safety.alarm-response",
+        "evidenceType": "prioritisation",
+        "met": {
+          "ordered": {
+            "order": "examine",
+            "withinSimMin": 8
+          }
+        },
+        "bySimMin": 8,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-fix",
+        "description": "Treated the cause within 15 minutes",
+        "competency": "safety.crisis",
+        "evidenceType": "decision",
+        "met": {
+          "any": [
+            {
+              "ordered": {
+                "order": "call-senior",
+                "withinSimMin": 15
+              }
+            },
+            {
+              "ordered": {
+                "order": "cxr",
+                "withinSimMin": 10
+              }
+            }
+          ]
+        },
+        "bySimMin": 15,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-ppeak",
+        "description": "Brought peak pressure to 32 cmH2O or below",
+        "competency": "mech.res-vs-comp",
+        "evidenceType": "reassessment",
+        "met": {
+          "threshold": {
+            "metric": "ppeak",
+            "op": "<=",
+            "value": 32
+          }
+        },
+        "bySimMin": 25,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-abg",
+        "description": "Checked a blood gas within 20 minutes",
+        "competency": "safety.reassess",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg",
+            "withinSimMin": 20
+          }
+        },
+        "bySimMin": 20,
+        "weight": 1,
+        "critical": false
+      }
+    ],
+    "debrief": {
+      "keyPoints": [
+        "When both peak and plateau pressures rise after a tube change with a unilateral fall in breath sounds and a new fall in SpO2, think tube in the right main bronchus.",
+        "Check the depth marking, listen to both sides and confirm with a chest X-ray; withdraw the tube until bilateral air entry returns.",
+        "Raising tidal volume or FiO2 on a one-lung tube raises pressures further without fixing the shunt."
+      ],
+      "resources": []
+    }
+  }
+}

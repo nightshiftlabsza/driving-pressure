@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0",
+  "id": "09-peep-vs-shunt-recruitment",
+  "number": 9,
+  "title": "PEEP versus recruitment of shunt",
+  "subtitle": "Effect of positive end-expiratory pressure on alveolar derecruitment and shunt fraction in ARDS",
+  "difficulty": 2,
+  "competencies": [
+    "modes.peep-fio2",
+    "disease.ards"
+  ],
+  "contextTags": [
+    "ards",
+    "peep",
+    "recruitment",
+    "hypoxaemia",
+    "mechanics"
+  ],
+  "ruleBased": true,
+  "ruleBasedNote": "Lung recruitment as a function of end-expiratory pressure is a rule-based teaching approximation in Engine v1.",
+  "patient": {
+    "displayName": "Recruitable ARDS patient",
+    "summary": "A 52-year-old mechanically ventilated patient with early acute respiratory distress syndrome (ARDS) and recruitable atelectasis receiving lung-protective ventilation.",
+    "params": {
+      "sex": "M",
+      "ageYears": 52,
+      "heightCm": 172,
+      "actualWeightKg": 72,
+      "complianceMlPerCmH2O": 32,
+      "inspResistanceCmH2OPerLps": 10,
+      "expResistanceCmH2OPerLps": 12,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 1.0,
+      "vco2MlPerMin": 210,
+      "vo2MlPerMin": 260,
+      "anatomicDeadSpaceMl": 140,
+      "alveolarDeadSpaceFraction": 0.18,
+      "shuntFraction": 0.4,
+      "recruitability": 0.75,
+      "hbGPerDl": 13,
+      "temperatureC": 37,
+      "baselineHco3MmolL": 24,
+      "hrBaselineBpm": 90,
+      "sbpBaselineMmHg": 122,
+      "dbpBaselineMmHg": 76,
+      "ppvResponse": "unhelpful",
+      "ppvSeverity": 0.2,
+      "respiratoryReserve": 1.0
+    }
+  },
+  "initialDevice": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "vtSetMl": 420,
+    "rrSetBpm": 18,
+    "peep": 5,
+    "fio2": 0.5,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "baselineSimSec": 30,
+  "variable": {
+    "target": "device",
+    "field": "peep",
+    "label": "Positive end-expiratory pressure (PEEP)",
+    "unit": "cmH2O",
+    "baselineValue": 5,
+    "options": [
+      {
+        "label": "PEEP 14 cmH2O",
+        "value": 14
+      },
+      {
+        "label": "PEEP 10 cmH2O",
+        "value": 10
+      }
+    ]
+  },
+  "prediction": {
+    "question": "When PEEP is titrated upward from 5 to 14 cmH2O in this patient with recruitable ARDS, how do PaO2, P/F ratio, and static plateau pressure (Pplat) respond?",
+    "metrics": [
+      "pao2",
+      "pfRatio",
+      "pplat"
+    ]
+  },
+  "observeSimSec": 240,
+  "whatToLookAtHint": "Monitor the arterial oxygenation indices (PaO2 and P/F ratio) alongside the static end-inspiratory airway pressure (Pplat).",
+  "reflection": {
+    "question": "Why does raising PEEP from 5 to 14 cmH2O markedly improve PaO2 and P/F ratio in this ARDS patient?",
+    "options": [
+      {
+        "id": "opt-recruitment",
+        "text": "Sustained end-expiratory pressure exceeds alveolar closing and opening thresholds, reopening collapsed lung units and reducing true shunt from 40% down toward 17%."
+      },
+      {
+        "id": "opt-deadspace",
+        "text": "PEEP converts West lung zone 3 into zone 1, eliminating pulmonary capillary perfusion and enhancing gas exchange."
+      },
+      {
+        "id": "opt-surfactant",
+        "text": "Higher PEEP stimulates acute de novo surfactant synthesis in type II pneumocytes within seconds."
+      },
+      {
+        "id": "opt-hyperventilation",
+        "text": "Higher airway pressure automatically increases tidal volume and doubles minute ventilation in volume-controlled modes."
+      }
+    ],
+    "correctOptionId": "opt-recruitment",
+    "explanation": "In recruitable ARDS, dependent alveolar units collapse at end-expiration under low PEEP (5 cmH2O), producing severe shunt (40%). Increasing PEEP to 14 cmH2O provides sufficient end-expiratory stent to prevent cyclical collapse and reopen unstable alveoli (recruitment). Over several minutes (tau = 120 s in the engine), recruited fraction rises to ~0.78, cutting effective shunt to ~16.6% and dramatically improving PaO2 and P/F ratio. Concurrently, static plateau pressure increases proportionally with PEEP."
+  },
+  "causalChainFields": [
+    "setPeep",
+    "recruitedFraction",
+    "shuntUsed",
+    "pao2",
+    "spo2",
+    "pplat"
+  ],
+  "evidence": [
+    {
+      "claim": "Higher PEEP levels improve arterial oxygenation and reduce mortality in moderate-to-severe ARDS through recruitment of collapsed alveoli.",
+      "source": "Briel M, Meade M, Mercat A, et al. Higher vs lower positive end-expiratory pressure in patients with acute lung injury and acute respiratory distress syndrome: systematic review and meta-analysis. JAMA 2010; 303(9):865-873.",
+      "year": 2010,
+      "kind": "trial"
+    },
+    {
+      "claim": "Titration of PEEP in recruitable ARDS reduces venous admixture and stabilizes end-expiratory lung volume while increasing plateau pressure.",
+      "source": "Papazian L, Aubron C, Brochard L, et al. Formal guidelines: management of acute respiratory distress syndrome. Ann Intensive Care 2019; 9(1):69.",
+      "year": 2019,
+      "kind": "guideline"
+    }
+  ]
+}

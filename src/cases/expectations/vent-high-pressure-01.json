@@ -1,0 +1,34 @@
+{
+  "caseId": "vent-high-pressure-01",
+  "scenarios": [
+    {
+      "name": "no changes made",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 6, "metric": "ppeak", "op": ">", "value": 45 },
+        { "atSimMin": 8, "metric": "sbp", "op": "<", "value": 75 }
+      ]
+    },
+    {
+      "name": "correct management: immediate needle decompression of tension pneumothorax",
+      "orders": [
+        { "atSimMin": 6, "order": "examine" },
+        { "atSimMin": 7, "order": "needle-decompression" }
+      ],
+      "expect": [
+        { "atSimMin": 10, "metric": "ppeak", "op": "<=", "value": 30 },
+        { "atSimMin": 12, "metric": "sbp", "op": ">=", "value": 105 }
+      ]
+    },
+    {
+      "name": "incorrect management: suction ordered without decompression",
+      "orders": [
+        { "atSimMin": 6, "order": "suction" }
+      ],
+      "expect": [
+        { "atSimMin": 7, "metric": "ppeak", "op": ">", "value": 45 },
+        { "atSimMin": 8, "metric": "sbp", "op": "<", "value": 75 }
+      ]
+    }
+  ]
+}

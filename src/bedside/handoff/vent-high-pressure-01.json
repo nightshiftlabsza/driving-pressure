@@ -1,0 +1,11 @@
+{
+  "caseId": "vent-high-pressure-01",
+  "patientName": "David Thorne (synthetic)",
+  "location": "ICU Bed 4",
+  "who": "58-year-old male (178 cm, 82 kg)",
+  "whyAdmitted": "Admitted 48 hours ago with severe right lower lobe pneumonia, intubated and mechanically ventilated.",
+  "whatHasBeenDone": "Ventilated on VC-AC (VT 500 mL, RR 16, PEEP 8 cmH2O, FiO2 0.50); had been clinically stable until now.",
+  "currentSupport": "Invasive mechanical ventilation on VC-AC.",
+  "theWorry": "High airway pressure alarm is sounding loudly, accompanied by sudden tachycardia and precipitous hypotension.",
+  "background": "40 pack-year smoking history, mild chronic bronchitis. No prior pneumothorax or cardiothoracic surgery."
+}

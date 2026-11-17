@@ -1,0 +1,11 @@
+{
+  "caseId": "apo-cpap-01",
+  "patientName": "Eleanor Vance (synthetic)",
+  "location": "Emergency Resuscitation Bay",
+  "who": "74-year-old female (160 cm, 78 kg)",
+  "whyAdmitted": "Brought in by ambulance with sudden severe breathlessness waking her from sleep 2 hours ago.",
+  "whatHasBeenDone": "Placed on simple face mask at 10 L/min by the ambulance crew.",
+  "currentSupport": "Simple face mask 10 L/min. Sits bolt upright, diaphoresis, coughing pink frothy sputum.",
+  "theWorry": "SpO2 is 84% despite 10 L/min oxygen; severe hypertension (BP 198/108 mmHg) and tachycardia (HR 124 bpm) in respiratory extremis.",
+  "background": "Hypertension, ischemic cardiomyopathy (ejection fraction 35%), previous MI 4 years ago. Medication compliance recently interrupted."
+}

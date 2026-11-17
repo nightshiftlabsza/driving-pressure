@@ -1,0 +1,58 @@
+{
+  "caseId": "sbt-pass-01",
+  "scenarios": [
+    {
+      "name": "good management: assess stability and extubate",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 5, "order": "examine" },
+        { "atSimMin": 10, "order": "abg" },
+        { "atSimMin": 32, "order": "extubate" }
+      ],
+      "expect": [
+        { "atSimMin": 5, "metric": "rrTotal", "op": "<=", "value": 24 },
+        { "atSimMin": 5, "metric": "vte", "op": ">=", "value": 380 },
+        { "atSimMin": 10, "metric": "rsbi", "op": "<=", "value": 55 },
+        { "atSimMin": 10, "metric": "fatigue", "op": "<=", "value": 0.25 },
+        { "atSimMin": 10, "metric": "ph", "op": ">=", "value": 7.35 }
+      ],
+      "fired": ["t-extubate-success"],
+      "notFired": ["t-extubate-early"]
+    },
+    {
+      "name": "extubated before the 30-minute trial was complete",
+      "outcome": "stable",
+      "orders": [
+        { "atSimMin": 10, "order": "extubate" }
+      ],
+      "expect": [],
+      "fired": ["t-extubate-early"],
+      "notFired": ["t-extubate-success"]
+    },
+    {
+      "name": "no changes made: delayed extubation",
+      "runToSimMin": 40,
+      "orders": [],
+      "expect": [
+        { "atSimMin": 15, "metric": "rsbi", "op": "<=", "value": 55 },
+        { "atSimMin": 25, "metric": "fatigue", "op": "<=", "value": 0.25 },
+        { "atSimMin": 36, "metric": "rsbi", "op": "<=", "value": 55 }
+      ],
+      "fired": ["t-delayed-weaning"],
+      "notFired": ["t-extubate-success"]
+    },
+    {
+      "name": "inappropriate intervention: administering sedation during SBT",
+      "outcome": "deteriorated",
+      "orders": [
+        { "atSimMin": 5, "order": "sedation" }
+      ],
+      "expect": [
+        { "atSimMin": 10, "metric": "rrSpont", "op": "<=", "value": 10 },
+        { "atSimMin": 15, "metric": "minuteVent", "op": ">=", "value": 4 }
+      ],
+      "fired": ["t-mistake-sedate", "t-sedation-deterioration"],
+      "notFired": ["t-extubate-success"]
+    }
+  ]
+}

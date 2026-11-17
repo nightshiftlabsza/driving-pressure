@@ -1,0 +1,50 @@
+{
+  "id": "mech-03-autopeep-rate",
+  "source": "Pepe PE, Marini JJ. Occult positive end-expiratory pressure in mechanically ventilated patients with airflow obstruction. Am Rev Respir Dis 1982; 126(1):166-170.",
+  "claim": "Increasing mandatory ventilation rate in obstructive mechanics shortens expiratory time below that needed for lung emptying, generating measurable dynamic auto-PEEP.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 65,
+    "heightCm": 172,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 50,
+    "inspResistanceCmH2OPerLps": 18,
+    "expResistanceCmH2OPerLps": 35,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.15,
+    "shuntFraction": 0.08,
+    "recruitability": 0.2,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 26,
+    "hrBaselineBpm": 85,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 75,
+    "ppvResponse": "clean-kill",
+    "ppvSeverity": 0.6,
+    "respiratoryReserve": 0.8
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.4,
+    "peep": 5,
+    "rrSetBpm": 24,
+    "vtSetMl": 500,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 45
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "autoPeep", "op": ">", "value": 3.5 }
+  ],
+  "kind": "direction"
+}

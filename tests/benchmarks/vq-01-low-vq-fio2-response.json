@@ -1,0 +1,53 @@
+{
+  "id": "vq-01-low-vq-fio2-response",
+  "source": "Riley RL, Cournand A. 'Ideal' alveolar air and the analysis of ventilation-perfusion relationships in the lungs. J Appl Physiol 1949; 1(12):825-847; West JB. Respiratory Physiology: The Essentials. 10th ed. Wolters Kluwer, 2016; Chapter 5.",
+  "claim": "In ventilation-perfusion inequality modelled via the three-compartment Riley framework, low V/Q units (lowVqFraction 0.55, lowVqRatio 0.1) without shunt cause arterial hypoxemia at room air (PaO2 <= 65 mmHg) due to venous admixture from poorly ventilated units.",
+  "patient": {
+    "sex": "M",
+    "ageYears": 62,
+    "heightCm": 172,
+    "actualWeightKg": 70,
+    "complianceMlPerCmH2O": 45,
+    "inspResistanceCmH2OPerLps": 10,
+    "expResistanceCmH2OPerLps": 12,
+    "spontRateBpm": 0,
+    "pmusAmplitudeCmH2O": 0,
+    "pmusInspTimeSec": 1.0,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.15,
+    "shuntFraction": 0.0,
+    "recruitability": 0.0,
+    "hbGPerDl": 14,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 24,
+    "hrBaselineBpm": 85,
+    "sbpBaselineMmHg": 125,
+    "dbpBaselineMmHg": 78,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.8,
+    "lowVqFraction": 0.55,
+    "lowVqRatio": 0.1
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "VC-AC",
+    "fio2": 0.21,
+    "peep": 5,
+    "rrSetBpm": 15,
+    "vtSetMl": 480,
+    "inspFlowLpm": 60,
+    "flowPattern": "square"
+  },
+  "phys": {
+    "paco2MmHg": 40,
+    "pao2MmHg": 60
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "pao2", "op": "<=", "value": 65.0 }
+  ],
+  "kind": "direction"
+}

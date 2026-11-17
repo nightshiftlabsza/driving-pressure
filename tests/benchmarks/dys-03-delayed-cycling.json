@@ -1,0 +1,50 @@
+{
+  "id": "dys-03-delayed-cycling",
+  "source": "Tassaux D, Gainnier M, Battisti A, Jolliet P. Impact of expiratory trigger setting on delayed cycling and inspiratory work of breathing in patients with COPD on pressure support ventilation. Crit Care Med 2005; 33(6):1263-1269; Yamada Y, Du HL. Analysis of the mechanisms of expiratory asynchrony in pressure support ventilation: a mathematical approach. Crit Care Med 2000; 28(7):2463-2473.",
+  "claim": "In an obstructive patient with prolonged expiratory time constant on PSV, setting a low expiratory cycling percentage (cycleOffPct 5% of peak flow) excessively prolongs machine inspiratory time past the end of neural inspiration, forcing the patient to actively exhale against the ongoing ventilator breath (delayed cycling).",
+  "patient": {
+    "sex": "M",
+    "ageYears": 68,
+    "heightCm": 170,
+    "actualWeightKg": 68,
+    "complianceMlPerCmH2O": 55,
+    "inspResistanceCmH2OPerLps": 16,
+    "expResistanceCmH2OPerLps": 28,
+    "spontRateBpm": 20,
+    "pmusAmplitudeCmH2O": 12.0,
+    "pmusInspTimeSec": 0.8,
+    "vco2MlPerMin": 200,
+    "vo2MlPerMin": 250,
+    "anatomicDeadSpaceMl": 150,
+    "alveolarDeadSpaceFraction": 0.2,
+    "shuntFraction": 0.1,
+    "recruitability": 0.1,
+    "hbGPerDl": 13,
+    "temperatureC": 37,
+    "baselineHco3MmolL": 26,
+    "hrBaselineBpm": 88,
+    "sbpBaselineMmHg": 130,
+    "dbpBaselineMmHg": 78,
+    "ppvResponse": "unhelpful",
+    "ppvSeverity": 0.2,
+    "respiratoryReserve": 0.6
+  },
+  "device": {
+    "device": "invasive",
+    "mode": "PSV",
+    "fio2": 0.35,
+    "peep": 5,
+    "rrSetBpm": 0,
+    "psAbovePeep": 10,
+    "cycleOffPct": 5
+  },
+  "phys": {
+    "paco2MmHg": 42,
+    "pao2MmHg": 80
+  },
+  "runSec": 60,
+  "checks": [
+    { "metric": "delayedCycleCount", "op": ">=", "value": 3 }
+  ],
+  "kind": "direction"
+}

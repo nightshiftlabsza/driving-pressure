@@ -1,0 +1,40 @@
+{
+  "caseId": "asthma-vent-01",
+  "scenarios": [
+    {
+      "name": "no changes made",
+      "outcome": "deteriorated",
+      "orders": [],
+      "expect": [
+        { "atSimMin": 15, "metric": "autoPeep", "op": ">", "value": 10 },
+        { "atSimMin": 25, "metric": "sbp", "op": "<", "value": 85 }
+      ]
+    },
+    {
+      "name": "correct management: lower RR, increase flow, give bronchodilators and steroids",
+      "outcome": "improved",
+      "orders": [
+        { "atSimMin": 5, "order": "change-settings", "detail": { "rrSetBpm": 10, "inspFlowLpm": 75, "peep": 4 } },
+        { "atSimMin": 6, "order": "bronchodilator" },
+        { "atSimMin": 7, "order": "steroid" },
+        { "atSimMin": 15, "order": "abg" }
+      ],
+      "expect": [
+        { "atSimMin": 20, "metric": "autoPeep", "op": "<", "value": 6 },
+        { "atSimMin": 30, "metric": "pplat", "op": "<=", "value": 28 },
+        { "atSimMin": 35, "metric": "sbp", "op": ">", "value": 95 }
+      ]
+    },
+    {
+      "name": "ventilator disconnection for profound auto-PEEP hypotension",
+      "orders": [
+        { "atSimMin": 8, "order": "disconnect-ventilator" },
+        { "atSimMin": 9, "order": "change-settings", "detail": { "rrSetBpm": 10, "inspFlowLpm": 80, "peep": 4 } }
+      ],
+      "expect": [
+        { "atSimMin": 10, "metric": "sbp", "op": ">", "value": 95 },
+        { "atSimMin": 25, "metric": "autoPeep", "op": "<", "value": 6 }
+      ]
+    }
+  ]
+}

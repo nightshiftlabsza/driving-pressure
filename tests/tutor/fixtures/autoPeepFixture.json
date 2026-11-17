@@ -1,0 +1,1311 @@
+{
+  "runId": "c5cb0ad2-e9d3-4ece-a569-18d45104a8e9",
+  "sessionId": "test-session-asthma",
+  "caseFile": {
+    "schemaVersion": "1.0",
+    "id": "asthma-vent-01",
+    "version": "0.1.0",
+    "title": "Severe bronchospasm and falling blood pressure after intubation",
+    "summary": "A 26-year-old intubated in the emergency department for severe acute dyspnoea develops high airway pressures and hemodynamic instability.",
+    "difficulty": 2,
+    "setting": "icu",
+    "competencies": [
+      "mech.auto-peep",
+      "circ.auto-peep-hypotension",
+      "disease.obstructive",
+      "modes.ie-flow-ti",
+      "safety.crisis",
+      "safety.reassess",
+      "gas.acid-base"
+    ],
+    "hiddenCompetencies": [
+      "circ.auto-peep-hypotension"
+    ],
+    "contextTags": [
+      "asthma",
+      "auto-peep",
+      "hypotension",
+      "obstructive",
+      "icu",
+      "invasive"
+    ],
+    "evidence": [
+      {
+        "claim": "In severe asthma on mechanical ventilation, set respiratory rate should be reduced (10-14 bpm) with high inspiratory flow (70-80 L/min) to prolong expiratory time and minimize auto-PEEP and dynamic hyperinflation.",
+        "source": "Leatherman J. Mechanical ventilation for severe asthma. Chest 2015;147(6):1671-1680",
+        "year": 2015,
+        "kind": "review"
+      },
+      {
+        "claim": "Ventilator disconnection (apnoea trial) is the immediate diagnostic and therapeutic intervention for suspected auto-PEEP-induced hypotension or pulseless electrical activity in obstructive lung disease.",
+        "source": "Tuxen DV. Detrimental effects of positive end-expiratory pressure during controlled mechanical ventilation of patients with severe airflow obstruction. Am Rev Respir Dis 1989;140(1):5-9",
+        "year": 1989,
+        "kind": "trial"
+      },
+      {
+        "claim": "Plateau pressure should be maintained <= 30 cmH2O and auto-PEEP <= 5-10 cmH2O to prevent pulmonary barotrauma and hemodynamic compromise in mechanically ventilated asthma.",
+        "source": "Oddo M, et al. Management of mechanical ventilation in acute severe asthma. Intensive Care Med 2006;32:501-510",
+        "year": 2006,
+        "kind": "review"
+      }
+    ],
+    "patient": {
+      "displayName": "Elena Rostova (synthetic)",
+      "presentingStory": "Transferred from the emergency department 20 minutes after rapid sequence intubation for acute severe bronchospasm unresponsive to initial continuous nebulisers. The transport ventilator was switched to the ICU ventilator. The bedside nurse calls urgently because the high peak pressure alarm is active and blood pressure is falling.",
+      "history": "Severe persistent asthma since childhood with two prior ICU admissions. No regular inhaled corticosteroids for past 3 months. Presented to ED in extremis with silent chest and exhaustion.",
+      "params": {
+        "sex": "F",
+        "ageYears": 26,
+        "heightCm": 165,
+        "actualWeightKg": 60,
+        "complianceMlPerCmH2O": 65,
+        "inspResistanceCmH2OPerLps": 20,
+        "expResistanceCmH2OPerLps": 60,
+        "spontRateBpm": 0,
+        "pmusAmplitudeCmH2O": 0,
+        "pmusInspTimeSec": 0.8,
+        "vco2MlPerMin": 240,
+        "vo2MlPerMin": 280,
+        "anatomicDeadSpaceMl": 140,
+        "alveolarDeadSpaceFraction": 0.3,
+        "shuntFraction": 0.1,
+        "recruitability": 0.1,
+        "hbGPerDl": 13.5,
+        "temperatureC": 37.2,
+        "baselineHco3MmolL": 22,
+        "hrBaselineBpm": 95,
+        "sbpBaselineMmHg": 115,
+        "dbpBaselineMmHg": 75,
+        "ppvResponse": "clean-kill",
+        "ppvSeverity": 0.75,
+        "respiratoryReserve": 0.3
+      }
+    },
+    "initialDevice": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.6,
+      "peep": 4,
+      "rrSetBpm": 22,
+      "vtSetMl": 500,
+      "inspFlowLpm": 45,
+      "flowPattern": "square"
+    },
+    "initialPhys": {
+      "paco2MmHg": 68,
+      "pao2MmHg": 82,
+      "hco3MmolL": 24.8,
+      "fatigue": 0.5
+    },
+    "availableOrders": [
+      "abg",
+      "cxr",
+      "examine",
+      "change-settings",
+      "disconnect-ventilator",
+      "bronchodilator",
+      "steroid",
+      "fluid-bolus"
+    ],
+    "orderEffects": [
+      {
+        "order": "disconnect-ventilator",
+        "delaySimMin": 0,
+        "actions": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "You disconnect the ventilator. A prolonged, continuous rush of air escapes from the endotracheal tube over 15 seconds. Blood pressure rises quickly from 82/50 to 112/70 mmHg, and heart rate settles to 102 bpm."
+          }
+        ],
+        "note": "Apnoea trial / ventilator disconnection permits complete exhalation of trapped air"
+      },
+      {
+        "order": "bronchodilator",
+        "delaySimMin": 3,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "inspResistanceCmH2OPerLps": 12,
+              "expResistanceCmH2OPerLps": 28
+            },
+            "rampSimMin": 15
+          }
+        ],
+        "note": "Inhaled beta-2 agonist and anticholinergic reduce bronchospasm"
+      },
+      {
+        "order": "steroid",
+        "delaySimMin": 240,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "expResistanceCmH2OPerLps": 24
+            },
+            "rampSimMin": 240
+          }
+        ],
+        "note": "Systemic corticosteroid anti-inflammatory action occurs over hours"
+      },
+      {
+        "order": "fluid-bolus",
+        "delaySimMin": 2,
+        "actions": [
+          {
+            "type": "patientChange",
+            "change": {
+              "sbpBaselineMmHg": 120,
+              "dbpBaselineMmHg": 78
+            },
+            "rampSimMin": 5
+          }
+        ],
+        "note": "Intravascular volume expansion partially counteracts intrathoracic pressure on venous return"
+      }
+    ],
+    "findings": {
+      "examine": "Endotracheal tube secured at 21 cm at teeth. Bilateral chest hyperinflation with minimal chest wall deflation between breaths. Expiratory wheeze is faint bilaterally with prolonged expiratory phase. Trachea is midline. Neck veins are distended. Peripheral pulses are weak and thready, synchronous with tachycardia.",
+      "cxr": "Endotracheal tube tip 3.5 cm above carina. Marked bilateral hyperinflation with 10 posterior ribs visible and flattened diaphragms. Narrow cardiac silhouette. No pneumothorax, focal consolidation, or pleural effusion."
+    },
+    "course": [],
+    "triggers": [
+      {
+        "id": "t-auto-peep-warning",
+        "when": {
+          "threshold": {
+            "metric": "autoPeep",
+            "op": ">=",
+            "value": 11,
+            "forSimSec": 60
+          }
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Nurse notes: Expiratory hold shows auto-PEEP is 12-14 cmH2O! SBP is dipping below 85 mmHg."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-predict-settings",
+        "when": {
+          "ordered": {
+            "order": "change-settings"
+          }
+        },
+        "then": [
+          {
+            "type": "prediction",
+            "predictionId": "p-asthma-mechanics"
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-high-rr",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "rrTotal",
+                "op": ">=",
+                "value": 20
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "unsafe_action",
+            "competency": "disease.obstructive",
+            "severity": "critical",
+            "detail": "Maintaining or increasing set respiratory rate (>= 20 bpm) in severe bronchospasm leads to dynamic hyperinflation, severe auto-PEEP, and hemodynamic collapse."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-mistake-high-peep",
+        "when": {
+          "threshold": {
+            "metric": "peep",
+            "op": ">=",
+            "value": 10
+          }
+        },
+        "then": [
+          {
+            "type": "mistake",
+            "mistake": "faulty_model",
+            "competency": "mech.auto-peep",
+            "severity": "major",
+            "detail": "Applying high external PEEP (>= 10 cmH2O) in passively ventilated asthma adds directly to alveolar pressure and exacerbates hyperinflation and hypotension."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-improved",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "autoPeep",
+                "op": "<=",
+                "value": 6,
+                "forSimSec": 900
+              }
+            },
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": ">=",
+                "value": 95,
+                "forSimSec": 900
+              }
+            },
+            {
+              "threshold": {
+                "metric": "simMin",
+                "op": ">=",
+                "value": 30
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "Her blood pressure has stabilized at 118/74 mmHg, peak pressures have dropped to 32 cmH2O, and dynamic hyperinflation is resolving."
+          },
+          {
+            "type": "endCase",
+            "outcome": "improved",
+            "reason": "Obstructive strategy applied successfully: dynamic hyperinflation resolved, auto-PEEP lowered, and hemodynamic collapse averted."
+          }
+        ],
+        "once": true
+      },
+      {
+        "id": "t-deteriorated",
+        "when": {
+          "all": [
+            {
+              "threshold": {
+                "metric": "sbp",
+                "op": "<",
+                "value": 85,
+                "forSimSec": 600
+              }
+            },
+            {
+              "threshold": {
+                "metric": "autoPeep",
+                "op": ">=",
+                "value": 10
+              }
+            }
+          ]
+        },
+        "then": [
+          {
+            "type": "message",
+            "from": "nurse",
+            "text": "The patient is in severe obstructive shock with unrecordable blood pressure and pulseless electrical activity!"
+          },
+          {
+            "type": "endCase",
+            "outcome": "deteriorated",
+            "reason": "Severe dynamic hyperinflation and auto-PEEP caused complete loss of venous return and PEA arrest."
+          }
+        ],
+        "once": true
+      }
+    ],
+    "predictionPoints": [
+      {
+        "id": "p-asthma-mechanics",
+        "competency": "modes.ie-flow-ti",
+        "evidenceType": "prediction",
+        "question": "You are implementing an obstructive lung strategy (reducing RR to 10-12 bpm and increasing peak inspiratory flow to 70-80 L/min). Over the next 15-30 minutes, which direction will each parameter move?",
+        "format": "direction",
+        "variables": [
+          "autoPeep",
+          "ppeak",
+          "sbp",
+          "paco2"
+        ],
+        "marking": "engine",
+        "explanation": "Lengthening expiratory time allows trapped air to escape, reducing auto-PEEP and peak airway pressure. Lower intrathoracic pressure restores venous return and increases SBP. PaCO2 will initially rise due to reduced minute ventilation (permissive hypercapnia), which is well tolerated and protective.",
+        "hidden": false
+      },
+      {
+        "id": "p-asthma-disconnect",
+        "competency": "circ.auto-peep-hypotension",
+        "evidenceType": "decision",
+        "question": "If a mechanically ventilated patient with life-threatening bronchospasm abruptly develops severe hypotension and tachycardia, what is the most immediate life-saving action?",
+        "format": "choice",
+        "options": [
+          "Disconnect the patient from the ventilator to allow complete exhalation of trapped air",
+          "Increase the set respiratory rate to clear accumulating carbon dioxide",
+          "Increase external PEEP to 15 cmH2O to stent open small airways",
+          "Infuse 100 mL of 8.4% sodium bicarbonate immediately"
+        ],
+        "marking": "fixed",
+        "answerKey": "Disconnect the patient from the ventilator to allow complete exhalation of trapped air",
+        "explanation": "Ventilator disconnection (the 'apnoea trial') immediately vents trapped intra-thoracic air. If hypotension was caused by auto-PEEP and reduced venous return, hemodynamics will dramatically improve within 10-20 seconds.",
+        "hidden": true
+      }
+    ],
+    "rubric": [
+      {
+        "id": "r-lower-rr",
+        "description": "Reduced set respiratory rate to 14 bpm or below to prolong expiratory time",
+        "competency": "modes.ie-flow-ti",
+        "evidenceType": "decision",
+        "met": {
+          "threshold": {
+            "metric": "rrTotal",
+            "op": "<=",
+            "value": 14
+          }
+        },
+        "bySimMin": 25,
+        "weight": 3,
+        "critical": true
+      },
+      {
+        "id": "r-relieve-auto-peep",
+        "description": "Reduced auto-PEEP below 6 cmH2O",
+        "competency": "mech.auto-peep",
+        "evidenceType": "reassessment",
+        "met": {
+          "threshold": {
+            "metric": "autoPeep",
+            "op": "<=",
+            "value": 6
+          }
+        },
+        "bySimMin": 40,
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-bronchodilator",
+        "description": "Ordered inhaled bronchodilators",
+        "competency": "disease.obstructive",
+        "evidenceType": "decision",
+        "met": {
+          "ordered": {
+            "order": "bronchodilator"
+          }
+        },
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-steroid",
+        "description": "Ordered systemic corticosteroids",
+        "competency": "disease.obstructive",
+        "evidenceType": "decision",
+        "met": {
+          "ordered": {
+            "order": "steroid"
+          }
+        },
+        "weight": 1,
+        "critical": false
+      },
+      {
+        "id": "r-avoid-hypotension",
+        "description": "Prevented persistent severe hypotension (SBP < 80 mmHg)",
+        "competency": "circ.auto-peep-hypotension",
+        "evidenceType": "safety",
+        "met": {
+          "not": {
+            "threshold": {
+              "metric": "sbp",
+              "op": "<",
+              "value": 80,
+              "forSimSec": 600
+            }
+          }
+        },
+        "weight": 2,
+        "critical": false
+      },
+      {
+        "id": "r-check-abg",
+        "description": "Obtained an arterial blood gas to assess ventilation and acid-base status",
+        "competency": "gas.acid-base",
+        "evidenceType": "reassessment",
+        "met": {
+          "ordered": {
+            "order": "abg"
+          }
+        },
+        "weight": 1,
+        "critical": false
+      }
+    ],
+    "maxSimMin": 180,
+    "debrief": {
+      "keyPoints": [
+        "In mechanically ventilated asthma, dynamic hyperinflation and auto-PEEP occur when expiratory time is shorter than the time required for passive lung emptying.",
+        "Auto-PEEP transmits to the intrathoracic space, compressing the vena cava and right atrium, drastically reducing venous return and causing severe hypotension or PEA arrest.",
+        "The definitive ventilator strategy is obstructive: reduce respiratory rate (10-12 bpm), increase inspiratory flow (70-80 L/min) or shorten Ti to maximize Te, and accept permissive hypercapnia (pH >= 7.15-7.20).",
+        "If sudden hemodynamic collapse occurs, immediately disconnect the patient from the ventilator to allow trapped air to decompress."
+      ],
+      "resources": [
+        {
+          "title": "Mechanical ventilation for severe asthma",
+          "ref": "Leatherman J. Chest 2015;147(6):1671-1680"
+        },
+        {
+          "title": "Management of mechanical ventilation in acute severe asthma",
+          "ref": "Oddo M, et al. Intensive Care Med 2006;32:501-510"
+        }
+      ]
+    }
+  },
+  "engine": {
+    "apiVersion": "1.3.0",
+    "simTimeSec": 215.00499999987696,
+    "patient": {
+      "sex": "F",
+      "ageYears": 26,
+      "heightCm": 165,
+      "actualWeightKg": 60,
+      "complianceMlPerCmH2O": 65,
+      "inspResistanceCmH2OPerLps": 20,
+      "expResistanceCmH2OPerLps": 60,
+      "spontRateBpm": 0,
+      "pmusAmplitudeCmH2O": 0,
+      "pmusInspTimeSec": 0.8,
+      "vco2MlPerMin": 240,
+      "vo2MlPerMin": 280,
+      "anatomicDeadSpaceMl": 140,
+      "alveolarDeadSpaceFraction": 0.3,
+      "shuntFraction": 0.1,
+      "recruitability": 0.1,
+      "hbGPerDl": 13.5,
+      "temperatureC": 37.2,
+      "baselineHco3MmolL": 22,
+      "hrBaselineBpm": 95,
+      "sbpBaselineMmHg": 115,
+      "dbpBaselineMmHg": 75,
+      "ppvResponse": "clean-kill",
+      "ppvSeverity": 0.75,
+      "respiratoryReserve": 0.3
+    },
+    "device": {
+      "device": "invasive",
+      "mode": "VC-AC",
+      "fio2": 0.6,
+      "peep": 4,
+      "rrSetBpm": 22,
+      "vtSetMl": 500,
+      "inspFlowLpm": 45,
+      "flowPattern": "square"
+    },
+    "phys": {
+      "paco2MmHg": 50.76878196326458,
+      "pao2MmHg": 140.77650812699363,
+      "hco3MmolL": 23.205469375705082,
+      "recruitedFraction": -0.09993397602891332,
+      "fatigue": 0.43999861111114236,
+      "trappedVolumeMl": 722.1013680137082,
+      "vili": {
+        "minutesPplatOver30": 0,
+        "minutesDrivingPressureOver15": 0,
+        "minutesVtOver8MlKgPbw": 3.600083333331282
+      }
+    },
+    "lastBreath": {
+      "endTimeSec": 214.05999999987782,
+      "breathType": "mandatory",
+      "vtiMl": 502.5,
+      "vteMl": 502.5,
+      "ppeakCmH2O": 37.84002104636474,
+      "pmeanCmH2O": 11.363492062942717,
+      "tiSec": 0.6699999999993906,
+      "teSec": 2.0599999999981264,
+      "endExpFlowLps": -0.18551061798521004,
+      "leakLpm": 0,
+      "ineffectiveEfforts": 0
+    },
+    "monitored": {
+      "simTimeSec": 215,
+      "ppeakCmH2O": 37.8,
+      "pmeanCmH2O": 11.8,
+      "peepSetCmH2O": 4,
+      "hfncPressureCmH2O": null,
+      "vteMl": 503,
+      "minuteVentLpm": 11.1,
+      "rrTotalBpm": 19,
+      "rrSpontBpm": 0,
+      "fio2": 0.6,
+      "leakLpm": null,
+      "hrBpm": 112,
+      "sbpMmHg": 80,
+      "dbpMmHg": 52,
+      "mapMmHg": 61,
+      "spo2Pct": 99,
+      "etco2MmHg": 36,
+      "temperatureC": 37.2,
+      "pesCmH2O": 10.8,
+      "plEndInspCmH2O": 11.4,
+      "plEndExpCmH2O": 7.6,
+      "p01CmH2O": 0,
+      "deltaPoccCmH2O": 0
+    },
+    "internal": {
+      "V": 1401.2253535251543,
+      "phase": "exp",
+      "control": "vc",
+      "kind": "mandatory",
+      "breathStart": 214.05999999987782,
+      "inspEnd": 214.7299999998772,
+      "inspDeliveredMl": 502.5,
+      "peakInspFlow": 0.75,
+      "lastVentBreathStart": 214.05999999987782,
+      "lastMandatoryStart": 214.05999999987782,
+      "simvWindowStart": -20.000000000000306,
+      "simvMandatoryDone": false,
+      "effortStart": -1,
+      "nextEffort": -19.700000000000305,
+      "effortTriggered": false,
+      "effortStartedInExp": false,
+      "effortCounted": true,
+      "accVti": 502.5,
+      "accVte": 84.30237916981514,
+      "accPpeak": 37.84002104636474,
+      "accPawSum": 4780.466666366723,
+      "accPalvSum": 3781.446875128824,
+      "accN": 190,
+      "accVnet": 418.19762083018486,
+      "accIneffective": 0,
+      "accTiSec": 0.6699999999993906,
+      "accPalvEndInsp": 22.840021046364743,
+      "lastFlow": -0.2928095438383025,
+      "lastPaw": 4,
+      "breathLog": [
+        {
+          "tEnd": 94.66499999998639,
+          "tStart": 91.93499999998888,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051475647394,
+          "pmean": 11.363492061870351,
+          "ppeak": 37.84002104199526,
+          "vteMl": 502.49999988330796,
+          "palvEndInsp": 22.84002104199526,
+          "palvEndExp": 15.109251813018991
+        },
+        {
+          "tEnd": 97.39499999998391,
+          "tStart": 94.66499999998639,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051477139132,
+          "pmean": 11.363492062310383,
+          "ppeak": 37.84002104378823,
+          "vteMl": 502.49999993119206,
+          "palvEndInsp": 22.840021043788223,
+          "palvEndExp": 15.109251814076222
+        },
+        {
+          "tEnd": 100.12499999998143,
+          "tStart": 97.39499999998391,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051478018702,
+          "pmean": 11.363492062569847,
+          "ppeak": 37.84002104484546,
+          "vteMl": 502.49999995942824,
+          "palvEndInsp": 22.840021044845454,
+          "palvEndExp": 15.109251814699602
+        },
+        {
+          "tEnd": 102.85499999997894,
+          "tStart": 100.12499999998143,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051478537388,
+          "pmean": 11.36349206272284,
+          "ppeak": 37.84002104546883,
+          "vteMl": 502.499999976078,
+          "palvEndInsp": 22.840021045468834,
+          "palvEndExp": 15.10925181506716
+        },
+        {
+          "tEnd": 105.58499999997646,
+          "tStart": 102.85499999997894,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051478843188,
+          "pmean": 11.363492062813046,
+          "ppeak": 37.840021045836394,
+          "vteMl": 502.4999999858909,
+          "palvEndInsp": 22.84002104583639,
+          "palvEndExp": 15.109251815283946
+        },
+        {
+          "tEnd": 108.31499999997398,
+          "tStart": 105.58499999997646,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479023577,
+          "pmean": 11.363492062866248,
+          "ppeak": 37.84002104605318,
+          "vteMl": 502.4999999916789,
+          "palvEndInsp": 22.840021046053177,
+          "palvEndExp": 15.109251815411799
+        },
+        {
+          "tEnd": 111.0449999999715,
+          "tStart": 108.31499999997398,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479129913,
+          "pmean": 11.363492062897627,
+          "ppeak": 37.84002104618103,
+          "vteMl": 502.4999999950961,
+          "palvEndInsp": 22.84002104618103,
+          "palvEndExp": 15.109251815487145
+        },
+        {
+          "tEnd": 113.77499999996901,
+          "tStart": 111.0449999999715,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479192586,
+          "pmean": 11.36349206291612,
+          "ppeak": 37.840021046256375,
+          "vteMl": 502.499999997106,
+          "palvEndInsp": 22.840021046256375,
+          "palvEndExp": 15.10925181553161
+        },
+        {
+          "tEnd": 116.50499999996653,
+          "tStart": 113.77499999996901,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.7190514792296,
+          "pmean": 11.363492062927032,
+          "ppeak": 37.84002104630085,
+          "vteMl": 502.4999999982955,
+          "palvEndInsp": 22.840021046300844,
+          "palvEndExp": 15.109251815557801
+        },
+        {
+          "tEnd": 119.23499999996405,
+          "tStart": 116.50499999996653,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479251394,
+          "pmean": 11.363492062933462,
+          "ppeak": 37.84002104632703,
+          "vteMl": 502.4999999989925,
+          "palvEndInsp": 22.84002104632703,
+          "palvEndExp": 15.109251815573282
+        },
+        {
+          "tEnd": 121.96499999996156,
+          "tStart": 119.23499999996405,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479264287,
+          "pmean": 11.363492062937258,
+          "ppeak": 37.840021046342514,
+          "vteMl": 502.4999999994068,
+          "palvEndInsp": 22.84002104634251,
+          "palvEndExp": 15.109251815582395
+        },
+        {
+          "tEnd": 124.69499999995908,
+          "tStart": 121.96499999996156,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479271865,
+          "pmean": 11.363492062939493,
+          "ppeak": 37.84002104635162,
+          "vteMl": 502.499999999651,
+          "palvEndInsp": 22.840021046351627,
+          "palvEndExp": 15.10925181558776
+        },
+        {
+          "tEnd": 127.4249999999566,
+          "tStart": 124.69499999995908,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147927632,
+          "pmean": 11.36349206294081,
+          "ppeak": 37.840021046356995,
+          "vteMl": 502.4999999997947,
+          "palvEndInsp": 22.84002104635699,
+          "palvEndExp": 15.109251815590914
+        },
+        {
+          "tEnd": 130.15499999995413,
+          "tStart": 127.4249999999566,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147927896,
+          "pmean": 11.363492062941585,
+          "ppeak": 37.84002104636015,
+          "vteMl": 502.49999999987836,
+          "palvEndInsp": 22.840021046360146,
+          "palvEndExp": 15.109251815592783
+        },
+        {
+          "tEnd": 132.88499999995165,
+          "tStart": 130.15499999995413,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.7190514792805,
+          "pmean": 11.363492062942047,
+          "ppeak": 37.84002104636201,
+          "vteMl": 502.4999999999285,
+          "palvEndInsp": 22.840021046362015,
+          "palvEndExp": 15.109251815593883
+        },
+        {
+          "tEnd": 135.61499999994916,
+          "tStart": 132.88499999995165,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147928141,
+          "pmean": 11.363492062942315,
+          "ppeak": 37.84002104636312,
+          "vteMl": 502.4999999999595,
+          "palvEndInsp": 22.840021046363116,
+          "palvEndExp": 15.109251815594506
+        },
+        {
+          "tEnd": 138.34499999994668,
+          "tStart": 135.61499999994916,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479281926,
+          "pmean": 11.363492062942468,
+          "ppeak": 37.84002104636374,
+          "vteMl": 502.49999999997635,
+          "palvEndInsp": 22.840021046363738,
+          "palvEndExp": 15.10925181559487
+        },
+        {
+          "tEnd": 141.0749999999442,
+          "tStart": 138.34499999994668,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282225,
+          "pmean": 11.363492062942557,
+          "ppeak": 37.8400210463641,
+          "vteMl": 502.4999999999852,
+          "palvEndInsp": 22.8400210463641,
+          "palvEndExp": 15.109251815595098
+        },
+        {
+          "tEnd": 143.8049999999417,
+          "tStart": 141.0749999999442,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282445,
+          "pmean": 11.363492062942615,
+          "ppeak": 37.84002104636433,
+          "vteMl": 502.49999999999034,
+          "palvEndInsp": 22.840021046364328,
+          "palvEndExp": 15.109251815595247
+        },
+        {
+          "tEnd": 146.53499999993923,
+          "tStart": 143.8049999999417,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147928256,
+          "pmean": 11.36349206294265,
+          "ppeak": 37.840021046364484,
+          "vteMl": 502.499999999994,
+          "palvEndInsp": 22.84002104636448,
+          "palvEndExp": 15.109251815595341
+        },
+        {
+          "tEnd": 149.26499999993675,
+          "tStart": 146.53499999993923,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147928264,
+          "pmean": 11.36349206294267,
+          "ppeak": 37.84002104636457,
+          "vteMl": 502.4999999999951,
+          "palvEndInsp": 22.84002104636457,
+          "palvEndExp": 15.109251815595416
+        },
+        {
+          "tEnd": 151.99499999993427,
+          "tStart": 149.26499999993675,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.7190514792827,
+          "pmean": 11.363492062942692,
+          "ppeak": 37.84002104636465,
+          "vteMl": 502.49999999999693,
+          "palvEndInsp": 22.840021046364647,
+          "palvEndExp": 15.109251815595462
+        },
+        {
+          "tEnd": 154.72499999993178,
+          "tStart": 151.99499999993427,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147928274,
+          "pmean": 11.3634920629427,
+          "ppeak": 37.8400210463647,
+          "vteMl": 502.4999999999982,
+          "palvEndInsp": 22.840021046364694,
+          "palvEndExp": 15.10925181559549
+        },
+        {
+          "tEnd": 157.4549999999293,
+          "tStart": 154.72499999993178,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.71905147928276,
+          "pmean": 11.36349206294271,
+          "ppeak": 37.840021046364726,
+          "vteMl": 502.4999999999991,
+          "palvEndInsp": 22.840021046364722,
+          "palvEndExp": 15.109251815595504
+        },
+        {
+          "tEnd": 160.18499999992682,
+          "tStart": 157.4549999999293,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282772,
+          "pmean": 11.36349206294271,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.49999999999955,
+          "palvEndInsp": 22.840021046364736,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 162.91499999992433,
+          "tStart": 160.18499999992682,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 165.64499999992185,
+          "tStart": 162.91499999992433,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 168.37499999991937,
+          "tStart": 165.64499999992185,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 171.10499999991688,
+          "tStart": 168.37499999991937,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 173.8349999999144,
+          "tStart": 171.10499999991688,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 176.56499999991192,
+          "tStart": 173.8349999999144,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 179.29499999990944,
+          "tStart": 176.56499999991192,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 182.02499999990695,
+          "tStart": 179.29499999990944,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 184.75499999990447,
+          "tStart": 182.02499999990695,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 187.484999999902,
+          "tStart": 184.75499999990447,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 190.2149999998995,
+          "tStart": 187.484999999902,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 192.94499999989702,
+          "tStart": 190.2149999998995,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 195.67499999989454,
+          "tStart": 192.94499999989702,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 198.40499999989206,
+          "tStart": 195.67499999989454,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 201.13499999988957,
+          "tStart": 198.40499999989206,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 203.8649999998871,
+          "tStart": 201.13499999988957,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 208.59999999988278,
+          "tStart": 203.8649999998871,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 17.19050906625329,
+          "pmean": 12.937874754598436,
+          "ppeak": 37.84002104636474,
+          "vteMl": 503.42636468126125,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 211.3299999998803,
+          "tStart": 208.59999999988278,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.383838677989592,
+          "ppeak": 37.84002104636474,
+          "vteMl": 501.57363531873875,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        },
+        {
+          "tEnd": 214.05999999987782,
+          "tStart": 211.3299999998803,
+          "vtMl": 502.5,
+          "kind": "mandatory",
+          "pifLps": 0.75,
+          "palvMean": 18.719051479282776,
+          "pmean": 11.363492062942717,
+          "ppeak": 37.84002104636474,
+          "vteMl": 502.5,
+          "palvEndInsp": 22.840021046364743,
+          "palvEndExp": 15.109251815595512
+        }
+      ],
+      "firstBreathStart": -19.995000000000307,
+      "pending": null,
+      "holdKind": null,
+      "holdStart": 206.5949999998846,
+      "holdMax": 2,
+      "holdMaxPmus": 0,
+      "holdPawSum": 921.664360751325,
+      "holdN": 61,
+      "holdResumeMandatory": true,
+      "result": null,
+      "lastSlow": 215.00499999987696,
+      "metabolicHco3": 22.208955223880597,
+      "pao2Target": 141.80146771315253,
+      "sao2": 0.9874415559419285,
+      "spo2Shown": 98.72869898514281,
+      "drive": 1.2964322057601287,
+      "hr": 112.05428473642513,
+      "sbp": 79.80079617771166,
+      "dbp": 52.04399750720326,
+      "co": 3.499596963947142,
+      "stepCounter": 47001,
+      "trace": {
+        "alveolarVentilation": 5.074999999999999,
+        "deadSpaceFraction": 0.3,
+        "steadyPaco2Target": 50.66915405387098,
+        "paco2Change": -0.0011194147122865576,
+        "ph": 7.281427117695949,
+        "shuntUsed": 0.10099933976028914,
+        "recruitedFraction": -0.09993397602891332,
+        "fio2Effective": 0.6,
+        "pao2Alveolar": 371.5041231579281,
+        "pao2": 141.80146771315253,
+        "drive": 1.2964322057601287,
+        "unloading": 0.5,
+        "ptp": 0,
+        "fatigueChange": -0.00027777777777752516,
+        "circulationMultiplier": 0.6999193927894284
+      },
+      "doubleTriggerCount": 0,
+      "prematureCycleCount": 0,
+      "delayedCycleCount": 0,
+      "flowStarvationCount": 0,
+      "autoTriggerCount": 0,
+      "reverseTriggerCount": 0,
+      "accPmaxHit": false,
+      "minInspPaw": 4,
+      "accDoubleTriggered": false,
+      "pendingDoubleTrigger": false,
+      "accAutoTriggered": false,
+      "pendingAutoTrigger": false,
+      "accPrematureCycled": false,
+      "accDelayedCycled": false,
+      "accFlowStarved": false,
+      "accReverseTriggered": false,
+      "tissueCo2": 65.4388329565505,
+      "alvPo2Store": 371.5041231579281
+    },
+    "lastManoeuvre": {
+      "kind": "exp-hold",
+      "totalPeepCmH2O": 15.1,
+      "autoPeepCmH2O": 11.1,
+      "valid": true
+    }
+  },
+  "guidance": {
+    "mech.auto-peep": "prompted",
+    "circ.auto-peep-hypotension": "prompted",
+    "disease.obstructive": "prompted",
+    "modes.ie-flow-ti": "prompted",
+    "safety.crisis": "prompted",
+    "safety.reassess": "prompted",
+    "gas.acid-base": "prompted"
+  },
+  "orders": [
+    {
+      "order": "examine",
+      "simTimeSec": 20.005000000000305
+    },
+    {
+      "order": "abg",
+      "simTimeSec": 20.005000000000305
+    }
+  ],
+  "fired": [
+    "t-auto-peep-warning"
+  ],
+  "thresholdSince": {
+    "trigger:t-auto-peep-warning": 4.999999999999916,
+    "trigger:t-deteriorated.all0": 39.0000000000015
+  },
+  "effects": [],
+  "ramps": [],
+  "courseDone": [],
+  "messages": [
+    {
+      "simTimeSec": 65.00000000001337,
+      "from": "nurse",
+      "text": "Nurse notes: Expiratory hold shows auto-PEEP is 12-14 cmH2O! SBP is dipping below 85 mmHg."
+    }
+  ],
+  "findings": {
+    "examine": "Endotracheal tube secured at 21 cm at teeth. Bilateral chest hyperinflation with minimal chest wall deflation between breaths. Expiratory wheeze is faint bilaterally with prolonged expiratory phase. Trachea is midline. Neck veins are distended. Peripheral pulses are weak and thready, synchronous with tachycardia."
+  },
+  "abgs": [
+    {
+      "sampledAtSimSec": 201,
+      "fio2": 0.6,
+      "ph": 7.28,
+      "paco2MmHg": 51,
+      "pao2MmHg": 140,
+      "hco3MmolL": 23.2,
+      "baseExcessMmolL": -2.7,
+      "sao2Pct": 99,
+      "lactateMmolL": 1.4
+    }
+  ],
+  "pendingAbgs": [],
+  "reconnect": null,
+  "pendingPrediction": null,
+  "predictionsAsked": [],
+  "pendingMarks": [],
+  "predictionResults": [],
+  "rubricMetEver": {},
+  "mistakes": [],
+  "ended": null,
+  "finished": false,
+  "lastManoeuvre": {
+    "kind": "exp-hold",
+    "totalPeepCmH2O": 15.1,
+    "autoPeepCmH2O": 11.1,
+    "valid": true
+  }
+}
